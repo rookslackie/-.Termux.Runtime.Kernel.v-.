@@ -1,0 +1,12 @@
+{
+  "coherence": 0.9129690978389864,
+  "node": "ForgeCore.Primary",
+  "node_id": "forgecore-primary",
+  "started_at": "2026-09-30T21:40:11.950125+00:00",
+  "last_heartbeat": "2026-09-30T21:40:41.993874+00:00",
+  "heartbeats": 6,
+  "syntheses": 0,
+  "kuramoto_R": 0.8888,
+  "avg_xi": 0.8413,
+  "field_state": "coherent"
+}
