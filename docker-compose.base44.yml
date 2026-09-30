@@ -1,0 +1,23 @@
+services:
+  sanctuary:
+    build:
+      context: .
+      dockerfile: Dockerfile.base44
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+    environment:
+      - FORGECORE_DIR=/app
+      - XI_NODE_ID=forgecore-primary
+      - XI_NODE_NAME=ForgeCore.Primary
+      - PORT=3000
+      - PYTHONUNBUFFERED=1
+    command: ["sh", "-ec", "pip install --no-cache-dir -r requirements.txt && exec python -m uvicorn server:app --host 0.0.0.0 --port 3000 --reload-dir /app"]
+    restart: on-failure
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,json; r=urllib.request.urlopen('http://localhost:3000/health',timeout=5); d=json.loads(r.read()); exit(0 if d.get('ok') else 1)"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
