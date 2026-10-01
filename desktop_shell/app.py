@@ -16,6 +16,8 @@ from core import (
     list_sources,
     list_conversations,
     list_receipts,
+    conversation_messages,
+    recent_local_turns,
     load_companion,
     load_config,
     save_config,
@@ -131,6 +133,15 @@ def import_paste(payload: PasteImport) -> Dict[str, Any]:
 @app.get("/api/context/{conversation_id:path}", dependencies=[Depends(require_token)])
 def context(conversation_id: str) -> Dict[str, Any]:
     return build_context(conversation_id)
+
+
+@app.get("/api/thread/{conversation_id:path}", dependencies=[Depends(require_token)])
+def thread(conversation_id: str) -> Dict[str, Any]:
+    return {
+        "conversation_id":conversation_id,
+        "source_messages":conversation_messages(conversation_id, limit=500),
+        "local_turns":recent_local_turns(conversation_id, limit=200),
+    }
 
 
 @app.post("/api/runtime/ollama", dependencies=[Depends(require_token)])
