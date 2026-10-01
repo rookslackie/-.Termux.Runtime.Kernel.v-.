@@ -1,10 +1,56 @@
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-from core import add_messages, store_source
+from core import add_messages, load_companion, store_source
+
+
+SPEAKER_RE = re.compile(r"^([^:\n]{1,80}):\s*(.*)$")
+
+
+def _parse_pasted_dialogue(text: str) -> List[Dict[str, Any]]:
+    companion = load_companion()
+    companion_name = str(companion.get("name") or "").strip().lower()
+    messages: List[Dict[str, Any]] = []
+    current: Optional[Dict[str, Any]] = None
+
+    for raw_line in text.splitlines():
+        line = raw_line.rstrip()
+        match = SPEAKER_RE.match(line)
+        if match:
+            speaker = match.group(1).strip()
+            body = match.group(2)
+            lower = speaker.lower()
+
+            if companion_name and lower == companion_name:
+                role = "assistant"
+            elif lower in {"assistant", "chatgpt", "gpt", "ai"}:
+                role = "assistant"
+            elif lower in {"system"}:
+                role = "system"
+            else:
+                role = "user"
+
+            current = {
+                "role": role,
+                "author": speaker,
+                "content": body,
+                "created_at": None,
+            }
+            messages.append(current)
+            continue
+
+        if current is not None:
+            if line:
+                current["content"] = (current["content"] + "\n" + line).strip()
+            elif current["content"]:
+                current["content"] += "\n"
+
+    messages = [m for m in messages if str(m.get("content", "")).strip()]
+    return messages
 
 
 def import_pasted_text(path: Path, title: Optional[str] = None) -> Dict[str, Any]:
@@ -13,13 +59,24 @@ def import_pasted_text(path: Path, title: Optional[str] = None) -> Dict[str, Any
     source = store_source("pasted_conversation", title, raw, {"original_path": str(path)})
     text = raw.decode("utf-8", errors="replace")
     conversation_id = f"paste:{source.id}"
-    count = add_messages(source.id, conversation_id, [{
-        "role":"source",
-        "author":"imported_thread",
-        "content":text,
-        "created_at":None,
-    }])
-    return {"source_id":source.id, "conversation_id":conversation_id, "messages":count, "title":title}
+
+    messages = _parse_pasted_dialogue(text)
+    if not messages:
+        messages = [{
+            "role":"source",
+            "author":"imported_thread",
+            "content":text,
+            "created_at":None,
+        }]
+
+    count = add_messages(source.id, conversation_id, messages)
+    return {
+        "source_id":source.id,
+        "conversation_id":conversation_id,
+        "messages":count,
+        "title":title,
+        "parsed_speakers": sorted({m.get("author") for m in messages if m.get("author")}),
+    }
 
 
 def _message_text(message: Dict[str, Any]) -> str:
