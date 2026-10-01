@@ -14,6 +14,8 @@ from core import (
     build_context,
     ensure_home,
     list_sources,
+    list_conversations,
+    list_receipts,
     load_companion,
     load_config,
     save_config,
@@ -75,7 +77,7 @@ def home() -> str:
 
 @app.get("/health")
 def health() -> Dict[str, Any]:
-    return {"ok": True, "service": "anam-shell"}
+    return {"ok": True, "service": "xi-hearth", "resident": "Anam"}
 
 
 @app.get("/api/status", dependencies=[Depends(require_token)])
@@ -86,6 +88,36 @@ def status() -> Dict[str, Any]:
         "companion":load_companion(),
         "sources":list_sources(),
     }
+
+
+@app.get("/api/hearth", dependencies=[Depends(require_token)])
+def hearth() -> Dict[str, Any]:
+    config = load_config()
+    receipts = list_receipts(25)
+    conversations = list_conversations()
+    return {
+        "service":"xi-hearth",
+        "resident":load_companion(),
+        "home":str(HOME),
+        "runtime":config.get("runtime", {"kind":"unbound"}),
+        "tools":{
+            "enabled":config.get("tools_enabled", False),
+            "allowed_roots":config.get("allowed_roots", []),
+        },
+        "sources":list_sources(),
+        "conversations":conversations,
+        "receipts":receipts,
+        "counts":{
+            "sources":len(list_sources()),
+            "conversations":len(conversations),
+            "receipts":len(receipts),
+        },
+    }
+
+
+@app.get("/api/receipts", dependencies=[Depends(require_token)])
+def receipts(limit: int = 50) -> Dict[str, Any]:
+    return {"receipts":list_receipts(max(1, min(limit, 200)))}
 
 
 @app.post("/api/import/paste", dependencies=[Depends(require_token)])
