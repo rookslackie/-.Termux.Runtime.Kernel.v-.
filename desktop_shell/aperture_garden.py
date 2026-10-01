@@ -1,0 +1,104 @@
+from __future__ import annotations
+
+import json
+import time
+from pathlib import Path
+from typing import Any, Dict, List
+
+import httpx
+
+from core import RECEIPT_DIR, build_context, now_iso, sha256_json
+from runtime import _messages_for_ollama, list_ollama_models
+
+
+def compare_apertures(
+    conversation_id: str,
+    prompt: str,
+    *,
+    models: List[str] | None = None,
+    base_url: str = "http://127.0.0.1:11434",
+) -> Dict[str, Any]:
+    """
+    Run the same Hearth context + prompt through multiple local Ollama models.
+
+    This is an observation pass, not a conversation turn:
+    - it does not append user/assistant turns;
+    - it does not change the active runtime;
+    - it preserves one context hash shared by every aperture;
+    - each model result is attributed and receipted.
+    """
+    prompt = prompt.strip()
+    if not prompt:
+        raise ValueError("Experiment prompt is empty.")
+
+    available = list_ollama_models(base_url)
+    available_names = [m["name"] for m in available]
+
+    if models:
+        selected = [m for m in models if m in available_names]
+    else:
+        selected = available_names
+
+    if not selected:
+        raise ValueError("No requested local models are available.")
+
+    ctx = build_context(conversation_id)
+    context_hash = ctx["receipt"]["context_sha256"]
+    messages = _messages_for_ollama(ctx, prompt)
+
+    results: List[Dict[str, Any]] = []
+    endpoint = base_url.rstrip("/") + "/api/chat"
+
+    # Sequential on purpose: one local GPU/CPU aperture at a time.
+    with httpx.Client(timeout=300.0) as client:
+        for model in selected:
+            started = time.perf_counter()
+            item: Dict[str, Any] = {
+                "model": model,
+                "started_at": now_iso(),
+                "context_sha256": context_hash,
+            }
+            try:
+                response = client.post(
+                    endpoint,
+                    json={
+                        "model": model,
+                        "messages": messages,
+                        "stream": False,
+                    },
+                )
+                response.raise_for_status()
+                payload = response.json()
+                text = ((payload.get("message") or {}).get("content") or "").strip()
+                item.update({
+                    "ok": True,
+                    "text": text,
+                    "eval_count": payload.get("eval_count"),
+                    "prompt_eval_count": payload.get("prompt_eval_count"),
+                    "total_duration": payload.get("total_duration"),
+                    "load_duration": payload.get("load_duration"),
+                })
+            except Exception as exc:
+                item.update({"ok": False, "error": str(exc)})
+            item["elapsed_seconds"] = round(time.perf_counter() - started, 3)
+            results.append(item)
+
+    receipt = {
+        "kind": "aperture_compare",
+        "created_at": now_iso(),
+        "conversation_id": conversation_id,
+        "prompt": prompt,
+        "context_receipt": ctx["receipt"],
+        "models": selected,
+        "results": results,
+        "mutation": "none",
+        "note": (
+            "Observation only. No conversation turns appended and active runtime unchanged."
+        ),
+    }
+    receipt["receipt_sha256"] = sha256_json(receipt)
+    RECEIPT_DIR.mkdir(parents=True, exist_ok=True)
+    path = RECEIPT_DIR / f"aperture_{receipt['receipt_sha256'][:20]}.json"
+    path.write_text(json.dumps(receipt, indent=2, ensure_ascii=False), encoding="utf-8")
+    receipt["receipt_path"] = str(path)
+    return receipt
