@@ -18,6 +18,33 @@ def configure_ollama(model: str = "mistral:latest", base_url: str = "http://127.
     return config["runtime"]
 
 
+def _normalize_ollama_models(payload: Dict[str, Any]) -> List[Dict[str, Any]]:
+    models = []
+    for row in payload.get("models", []) or []:
+        name = row.get("name") or row.get("model")
+        if not name:
+            continue
+        details = row.get("details") or {}
+        models.append({
+            "name": name,
+            "modified_at": row.get("modified_at"),
+            "size": row.get("size"),
+            "family": details.get("family"),
+            "families": details.get("families") or [],
+            "parameter_size": details.get("parameter_size"),
+            "quantization_level": details.get("quantization_level"),
+        })
+    return sorted(models, key=lambda x: x["name"].lower())
+
+
+def list_ollama_models(base_url: str = "http://127.0.0.1:11434") -> List[Dict[str, Any]]:
+    url = base_url.rstrip("/") + "/api/tags"
+    with httpx.Client(timeout=15.0) as client:
+        r = client.get(url)
+        r.raise_for_status()
+        return _normalize_ollama_models(r.json())
+
+
 def _system_text(ctx: Dict[str, Any]) -> str:
     c = ctx["context"]["companion"]
     name = c.get("name", "Companion")
