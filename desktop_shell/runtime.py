@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import json
 from typing import Any, Dict, List
 
 import httpx
@@ -43,15 +42,21 @@ Conversation comes before capability. Local tools are separate and require expli
 
 def _messages_for_ollama(ctx: Dict[str, Any], user_text: str) -> List[Dict[str, str]]:
     out: List[Dict[str, str]] = [{"role":"system","content":_system_text(ctx)}]
+
     for m in ctx["context"]["source_messages"][-80:]:
         role = m.get("role")
         if role not in ("user","assistant","system"):
             role = "user"
         out.append({"role":role, "content":m.get("content","")})
-    for m in ctx["context"]["local_turns"][-30:]:
+
+    local_turns = ctx["context"]["local_turns"][-30:]
+    for m in local_turns:
         role = m.get("role") if m.get("role") in ("user","assistant") else "user"
         out.append({"role":role, "content":m.get("content","")})
-    out.append({"role":"user","content":user_text})
+
+    if not local_turns or local_turns[-1].get("role") != "user" or local_turns[-1].get("content") != user_text:
+        out.append({"role":"user","content":user_text})
+
     return out
 
 
