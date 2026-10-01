@@ -27,6 +27,7 @@ from core import (
 from thread_import import import_pasted_text
 from bus_bridge import emit as bus_emit, feed as bus_feed, register as bus_register
 from runtime import chat as runtime_chat, configure_ollama, list_ollama_models
+from aperture_garden import compare_apertures
 
 
 HERE = Path(__file__).resolve().parent
@@ -70,6 +71,13 @@ class OllamaConfig(BaseModel):
 class ChatTurn(BaseModel):
     conversation_id: str
     text: str
+
+
+class ApertureCompare(BaseModel):
+    conversation_id: str
+    prompt: str
+    models: list[str] = []
+    base_url: str = "http://127.0.0.1:11434"
 
 
 @app.get("/", response_class=HTMLResponse)
@@ -173,6 +181,21 @@ def chat(payload: ChatTurn) -> Dict[str, Any]:
     receipt_path = result["context_receipt"].get("receipt_path")
     add_local_turn(payload.conversation_id, "assistant", result["text"], receipt_path)
     return result
+
+
+@app.post("/api/aperture/compare", dependencies=[Depends(require_token)])
+def aperture_compare(payload: ApertureCompare) -> Dict[str, Any]:
+    try:
+        return compare_apertures(
+            payload.conversation_id,
+            payload.prompt,
+            models=payload.models or None,
+            base_url=payload.base_url,
+        )
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=502, detail=str(e))
 
 
 @app.post("/api/tools/configure", dependencies=[Depends(require_token)])
