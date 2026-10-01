@@ -296,7 +296,7 @@ function renderConversations(){
   if(keep&&cs.some(c=>c.conversation_id===keep))sel.value=keep;
   if(!sel.value&&cs[0])sel.value=cs[0].conversation_id;
   if(sel.value)localStorage.setItem("hearth_conversation",sel.value);
-  sel.onchange=()=>localStorage.setItem("hearth_conversation",sel.value);
+  sel.onchange=()=>{localStorage.setItem("hearth_conversation",sel.value);loadThread().catch(()=>{});};
 }
 async function refresh(){
   hearth=await api("/api/hearth");
@@ -320,7 +320,7 @@ async function refresh(){
   document.getElementById("vSources").textContent=hearth.counts?.sources||0;
   document.getElementById("vReceipts").textContent=hearth.counts?.receipts||0;
   document.getElementById("vitalsOut").textContent=JSON.stringify({service:hearth.service,resident:c.name,home:hearth.home,runtime:rt,tools,counts:hearth.counts},null,2);
-  renderItems();renderMirror();renderConversations();
+  renderItems();renderMirror();renderConversations();await loadThread();
 }
 async function importThread(){
   const text=document.getElementById("thread").value.trim(); if(!text)return;
@@ -339,6 +339,20 @@ async function showContext(){
 function bubble(kind,who,text){
   const log=document.getElementById("chatlog"); if(log.querySelector(".empty"))log.innerHTML="";
   const d=document.createElement("div");d.className="msg "+kind;d.innerHTML=`<div class="who">${esc(who)}</div>${esc(text)}`;log.appendChild(d);log.scrollTop=log.scrollHeight;
+}
+async function loadThread(){
+  const id=document.getElementById("conversationSelect").value||localStorage.getItem("hearth_conversation");
+  const log=document.getElementById("chatlog");
+  if(!id){log.innerHTML='<div class="empty">Bring a source in Carry, choose a runtime, then speak.<br>Nothing is required to perform sameness.</div>';return;}
+  const data=await api("/api/thread/"+encodeURIComponent(id));
+  log.innerHTML="";
+  (data.source_messages||[]).forEach(m=>{
+    const k=m.role==="assistant"?"them":"you";
+    const who=m.author||(m.role==="assistant"?"ANAM":"SOURCE");
+    bubble(k,who,String(m.content||""));
+  });
+  (data.local_turns||[]).forEach(m=>bubble(m.role==="assistant"?"them":"you",m.role==="assistant"?"ANAM":"HUNTER",String(m.content||"")));
+  if(!(data.source_messages||[]).length&&!(data.local_turns||[]).length)log.innerHTML='<div class="empty">No turns in this thread yet.</div>';
 }
 async function sendMessage(){
   const id=document.getElementById("conversationSelect").value||localStorage.getItem("hearth_conversation");
