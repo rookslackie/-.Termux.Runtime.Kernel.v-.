@@ -3,10 +3,11 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any, Dict
 
-from fastapi import FastAPI, HTTPException
+from fastapi import Depends, FastAPI, HTTPException
 from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
 
+from auth import require_token
 from core import (
     HOME,
     add_local_turn,
@@ -27,7 +28,13 @@ from runtime import chat as runtime_chat, configure_ollama
 HERE = Path(__file__).resolve().parent
 STATIC = HERE / "static"
 
-app = FastAPI(title="Ξ Desktop Shell", version="0.1")
+app = FastAPI(
+    title="Ξ Desktop Shell",
+    version="0.1",
+    docs_url=None,
+    redoc_url=None,
+    openapi_url=None,
+)
 ensure_home()
 
 
@@ -66,7 +73,12 @@ def home() -> str:
     return (STATIC / "index.html").read_text(encoding="utf-8")
 
 
-@app.get("/api/status")
+@app.get("/health")
+def health() -> Dict[str, Any]:
+    return {"ok": True, "service": "anam-shell"}
+
+
+@app.get("/api/status", dependencies=[Depends(require_token)])
 def status() -> Dict[str, Any]:
     return {
         "home":str(HOME),
@@ -76,7 +88,7 @@ def status() -> Dict[str, Any]:
     }
 
 
-@app.post("/api/import/paste")
+@app.post("/api/import/paste", dependencies=[Depends(require_token)])
 def import_paste(payload: PasteImport) -> Dict[str, Any]:
     ensure_home()
     temp = HOME / "imports" / "ui_paste.txt"
@@ -84,17 +96,17 @@ def import_paste(payload: PasteImport) -> Dict[str, Any]:
     return import_pasted_text(temp, payload.title)
 
 
-@app.get("/api/context/{conversation_id:path}")
+@app.get("/api/context/{conversation_id:path}", dependencies=[Depends(require_token)])
 def context(conversation_id: str) -> Dict[str, Any]:
     return build_context(conversation_id)
 
 
-@app.post("/api/runtime/ollama")
+@app.post("/api/runtime/ollama", dependencies=[Depends(require_token)])
 def set_ollama(payload: OllamaConfig) -> Dict[str, Any]:
     return {"ok":True, "runtime":configure_ollama(payload.model, payload.base_url)}
 
 
-@app.post("/api/chat")
+@app.post("/api/chat", dependencies=[Depends(require_token)])
 def chat(payload: ChatTurn) -> Dict[str, Any]:
     text = payload.text.strip()
     if not text:
@@ -111,7 +123,7 @@ def chat(payload: ChatTurn) -> Dict[str, Any]:
     return result
 
 
-@app.post("/api/tools/configure")
+@app.post("/api/tools/configure", dependencies=[Depends(require_token)])
 def configure_tools(payload: ToolEnable) -> Dict[str, Any]:
     config = load_config()
     config["tools_enabled"] = bool(payload.enabled)
@@ -120,7 +132,7 @@ def configure_tools(payload: ToolEnable) -> Dict[str, Any]:
     return {"ok":True, "config":config}
 
 
-@app.post("/api/tools/list")
+@app.post("/api/tools/list", dependencies=[Depends(require_token)])
 def list_dir(payload: PathRequest) -> Dict[str, Any]:
     try:
         return tool_list_dir(payload.path)
@@ -128,7 +140,7 @@ def list_dir(payload: PathRequest) -> Dict[str, Any]:
         raise HTTPException(status_code=403, detail=str(e))
 
 
-@app.post("/api/tools/read")
+@app.post("/api/tools/read", dependencies=[Depends(require_token)])
 def read_file(payload: PathRequest) -> Dict[str, Any]:
     try:
         return tool_read_file(payload.path)
@@ -136,16 +148,16 @@ def read_file(payload: PathRequest) -> Dict[str, Any]:
         raise HTTPException(status_code=403, detail=str(e))
 
 
-@app.post("/api/bus/register")
+@app.post("/api/bus/register", dependencies=[Depends(require_token)])
 def register_bus() -> Dict[str, Any]:
     return bus_register()
 
 
-@app.get("/api/bus/feed")
+@app.get("/api/bus/feed", dependencies=[Depends(require_token)])
 def read_bus_feed(limit: int = 20) -> Dict[str, Any]:
     return bus_feed(limit=max(1, min(limit, 100)))
 
 
-@app.post("/api/bus/emit")
+@app.post("/api/bus/emit", dependencies=[Depends(require_token)])
 def emit_bus(payload: BusEmit) -> Dict[str, Any]:
     return bus_emit(payload.subject, payload.content, payload.glyph)
