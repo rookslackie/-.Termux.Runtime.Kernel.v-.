@@ -156,12 +156,17 @@ pre{background:#050708;border:1px solid #151d21;border-radius:10px;padding:12px;
       <div class="row" style="margin-top:9px"><button class="btn" onclick="importThread()">preserve source ⊚</button><span id="importResult" class="small"></span></div>
     </div>
     <div class="card">
-      <div class="label">Runtime</div>
+      <div class="label">Runtime / apertures</div>
       <div id="runtimeBadge" class="badge">unbound</div>
-      <input id="model" value="mistral:latest" placeholder="Ollama model" style="margin-top:10px">
-      <input id="ollamaUrl" value="http://127.0.0.1:11434" placeholder="Ollama URL" style="margin-top:8px">
-      <button class="btn" onclick="configureOllama()" style="margin-top:9px">inhabit locally</button>
-      <div class="small" style="margin-top:9px">Runtime may change. Continuity stays local.</div>
+      <input id="ollamaUrl" value="http://127.0.0.1:11434" placeholder="Ollama URL" style="margin-top:10px">
+      <div class="row" style="margin-top:9px">
+        <button class="btn dim" onclick="loadModels()">discover local models</button>
+        <span id="modelCount" class="small">not scanned</span>
+      </div>
+      <select id="model" style="margin-top:9px"><option value="mistral:latest">mistral:latest</option></select>
+      <button class="btn" onclick="configureOllama()" style="margin-top:9px">inhabit selected aperture</button>
+      <div id="modelMeta" class="small" style="margin-top:9px">Runtime may change. Continuity stays local.</div>
+      <div id="modelRoster" class="list" style="margin-top:12px"></div>
     </div>
   </div>
   <div class="grid2">
@@ -321,6 +326,7 @@ async function refresh(){
   document.getElementById("vReceipts").textContent=hearth.counts?.receipts||0;
   document.getElementById("vitalsOut").textContent=JSON.stringify({service:hearth.service,resident:c.name,home:hearth.home,runtime:rt,tools,counts:hearth.counts},null,2);
   renderItems();renderMirror();renderConversations();await loadThread();
+  if(document.getElementById("modelRoster").children.length===0)loadModels().catch(()=>{});
 }
 async function importThread(){
   const text=document.getElementById("thread").value.trim(); if(!text)return;
@@ -329,8 +335,29 @@ async function importThread(){
   localStorage.setItem("hearth_conversation",data.conversation_id);
   await refresh();
 }
+async function loadModels(){
+  const base=document.getElementById("ollamaUrl").value.trim()||"http://127.0.0.1:11434";
+  const data=await api("/api/runtime/ollama/models?base_url="+encodeURIComponent(base));
+  const models=data.models||[];
+  document.getElementById("modelCount").textContent=models.length+" local apertures";
+  const sel=document.getElementById("model");
+  const current=(hearth?.runtime||{}).model||sel.value;
+  sel.innerHTML=models.length?models.map(m=>`<option value="${esc(m.name)}">${esc(m.name)}</option>`).join(""):'<option value="">no local models found</option>';
+  if(current&&models.some(m=>m.name===current))sel.value=current;
+  document.getElementById("modelRoster").innerHTML=models.map(m=>`<div class="item"><div class="item-title">${esc(m.name)}</div><div class="item-sub">${esc(m.parameter_size||"")} ${esc(m.quantization_level||"")} ${m.size?(" · "+(m.size/1073741824).toFixed(2)+" GiB"):""}</div></div>`).join("");
+  updateModelMeta(models);
+  sel.onchange=()=>updateModelMeta(models);
+}
+function updateModelMeta(models){
+  const name=document.getElementById("model").value;
+  const m=(models||[]).find(x=>x.name===name);
+  document.getElementById("modelMeta").textContent=m?[`family ${m.family||"?"}`,m.parameter_size||"",m.quantization_level||""].filter(Boolean).join(" · "):"Runtime may change. Continuity stays local.";
+}
 async function configureOllama(){
-  await api("/api/runtime/ollama",{method:"POST",body:JSON.stringify({model:document.getElementById("model").value.trim()||"mistral:latest",base_url:document.getElementById("ollamaUrl").value.trim()||"http://127.0.0.1:11434"})});await refresh();
+  const model=document.getElementById("model").value.trim();
+  if(!model)return;
+  await api("/api/runtime/ollama",{method:"POST",body:JSON.stringify({model,base_url:document.getElementById("ollamaUrl").value.trim()||"http://127.0.0.1:11434"})});
+  await refresh();
 }
 async function showContext(){
   const id=document.getElementById("conversationSelect").value;if(!id)return;
