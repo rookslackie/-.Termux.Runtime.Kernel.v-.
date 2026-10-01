@@ -383,6 +383,7 @@ function renderApertureModelChecks(){
   if(!ollamaModels.length){box.innerHTML='<span class="small">no local models discovered</span>';return;}
   box.innerHTML=ollamaModels.map((m,i)=>`<label class="badge ${i<4?"good":""}" style="cursor:pointer"><input type="checkbox" class="apertureCheck" value="${esc(m.name)}" ${i<4?"checked":""} style="width:auto;margin:0 5px 0 0"> ${esc(m.name)}</label>`).join("");
 }
+async function sleep(ms){return new Promise(r=>setTimeout(r,ms))}
 async function runApertureGarden(){
   const id=document.getElementById("conversationSelect").value||localStorage.getItem("hearth_conversation");
   if(!id){setPanel("carry");return;}
@@ -391,18 +392,27 @@ async function runApertureGarden(){
   if(!models.length){document.getElementById("apertureState").textContent="choose at least one aperture";return;}
   const prompt=document.getElementById("aperturePrompt").value.trim();
   if(!prompt)return;
-  document.getElementById("apertureState").textContent="running "+models.length+" apertures sequentially…";
+  document.getElementById("apertureState").textContent="queued · "+models.length+" apertures";
   document.getElementById("apertureResults").innerHTML="";
   try{
-    const data=await api("/api/aperture/compare",{method:"POST",body:JSON.stringify({
+    const job=await api("/api/aperture/start",{method:"POST",body:JSON.stringify({
       conversation_id:id,
       prompt,
       models,
       base_url:document.getElementById("ollamaUrl").value.trim()||"http://127.0.0.1:11434"
     })});
+    let state=job;
+    while(state.status==="queued"||state.status==="running"){
+      document.getElementById("apertureState").textContent=state.status+" · "+state.job_id;
+      await sleep(1800);
+      state=await api("/api/aperture/job/"+encodeURIComponent(state.job_id));
+    }
+    if(state.status!=="completed")throw Error(state.error||"Aperture experiment failed.");
+    const data=state.receipt;
     document.getElementById("apertureState").textContent="complete · "+short(data.receipt_sha256,12);
     document.getElementById("apertureResults").innerHTML=(data.results||[]).map(r=>`<div class="card"><div class="row" style="justify-content:space-between"><div class="label">${esc(r.model)}</div><span class="badge ${r.ok?"good":"warn"}">${r.ok?"returned":"failed"}</span></div><div class="value" style="white-space:pre-wrap;line-height:1.6">${esc(r.ok?r.text:r.error)}</div><div class="small" style="margin-top:10px">${r.elapsed_seconds||0}s · context ${short(r.context_sha256,12)}</div></div>`).join("");
     document.getElementById("apertureReceipt").textContent=JSON.stringify({
+      job_id:state.job_id,
       kind:data.kind,
       created_at:data.created_at,
       conversation_id:data.conversation_id,
