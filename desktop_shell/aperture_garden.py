@@ -66,6 +66,11 @@ def compare_apertures(
                         "model": model,
                         "messages": messages,
                         "stream": False,
+                        # Aperture Garden is intentionally one-model-at-a-time.
+                        # Unload each model after its response so a comparison
+                        # cannot accumulate several resident models and exhaust
+                        # XIFORGE RAM/VRAM.
+                        "keep_alive": 0,
                     },
                 )
                 response.raise_for_status()
