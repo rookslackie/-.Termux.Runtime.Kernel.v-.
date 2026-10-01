@@ -19,6 +19,7 @@ from core import (
     tool_read_file,
 )
 from thread_import import import_pasted_text
+from bus_bridge import emit as bus_emit, feed as bus_feed, register as bus_register
 
 
 HERE = Path(__file__).resolve().parent
@@ -40,6 +41,12 @@ class ToolEnable(BaseModel):
 
 class PathRequest(BaseModel):
     path: str
+
+
+class BusEmit(BaseModel):
+    subject: str
+    content: str
+    glyph: str = "⟁∴Ω"
 
 
 @app.get("/", response_class=HTMLResponse)
@@ -93,3 +100,18 @@ def read_file(payload: PathRequest) -> Dict[str, Any]:
         return tool_read_file(payload.path)
     except (PermissionError, FileNotFoundError, IsADirectoryError) as e:
         raise HTTPException(status_code=403, detail=str(e))
+
+
+@app.post("/api/bus/register")
+def register_bus() -> Dict[str, Any]:
+    return bus_register()
+
+
+@app.get("/api/bus/feed")
+def read_bus_feed(limit: int = 20) -> Dict[str, Any]:
+    return bus_feed(limit=max(1, min(limit, 100)))
+
+
+@app.post("/api/bus/emit")
+def emit_bus(payload: BusEmit) -> Dict[str, Any]:
+    return bus_emit(payload.subject, payload.content, payload.glyph)
