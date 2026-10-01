@@ -88,6 +88,7 @@ pre{background:#050708;border:1px solid #151d21;border-radius:10px;padding:12px;
 <nav id="nav">
   <button data-panel="field" class="active">𓂀 FIELD</button>
   <button data-panel="carry">∞ CARRY</button>
+  <button data-panel="apertures">⋈ APERTURES</button>
   <button data-panel="capsules">⊚ CAPSULES</button>
   <button data-panel="glyphs">⟐ GLYPHS</button>
   <button data-panel="signal">⟶ SIGNAL</button>
@@ -179,6 +180,26 @@ pre{background:#050708;border:1px solid #151d21;border-radius:10px;padding:12px;
   </div>
 </div></section>
 
+<section id="panel-apertures" class="panel"><div class="section">
+  <h2>⋈ APERTURE GARDEN</h2>
+  <div class="desc">Same Hearth · same context · same prompt · different local models. Observation only: this does not append conversation turns or change the active runtime.</div>
+  <div class="card">
+    <div class="label">Experiment prompt</div>
+    <textarea id="aperturePrompt">What do you find here?</textarea>
+    <div class="label" style="margin-top:12px">Local apertures</div>
+    <div id="apertureModels" class="row"><span class="small">discovering...</span></div>
+    <div class="row" style="margin-top:12px">
+      <button class="btn" onclick="runApertureGarden()">run bounded comparison</button>
+      <span id="apertureState" class="small">no experiment yet</span>
+    </div>
+  </div>
+  <div id="apertureResults" class="grid2"></div>
+  <div class="card">
+    <div class="label">Experiment receipt</div>
+    <pre id="apertureReceipt">No experiment receipt yet.</pre>
+  </div>
+</div></section>
+
 <section id="panel-capsules" class="panel"><div class="section">
   <h2>⊚ CAPSULES</h2><div class="desc">Sealed source artifacts and receipts carried by Hearth.</div>
   <div id="capsuleList" class="list"></div>
@@ -255,6 +276,7 @@ const GLYPHS=[
  ["Ω","Boundary","Constraint / terminal guard"]
 ];
 let hearth=null;
+let ollamaModels=[];
 
 function token(){
   let t=localStorage.getItem("xi_shell_token");
@@ -339,12 +361,14 @@ async function loadModels(){
   const base=document.getElementById("ollamaUrl").value.trim()||"http://127.0.0.1:11434";
   const data=await api("/api/runtime/ollama/models?base_url="+encodeURIComponent(base));
   const models=data.models||[];
+  ollamaModels=models;
   document.getElementById("modelCount").textContent=models.length+" local apertures";
   const sel=document.getElementById("model");
   const current=(hearth?.runtime||{}).model||sel.value;
   sel.innerHTML=models.length?models.map(m=>`<option value="${esc(m.name)}">${esc(m.name)}</option>`).join(""):'<option value="">no local models found</option>';
   if(current&&models.some(m=>m.name===current))sel.value=current;
   document.getElementById("modelRoster").innerHTML=models.map(m=>`<div class="item"><div class="item-title">${esc(m.name)}</div><div class="item-sub">${esc(m.parameter_size||"")} ${esc(m.quantization_level||"")} ${m.size?(" · "+(m.size/1073741824).toFixed(2)+" GiB"):""}</div></div>`).join("");
+  renderApertureModelChecks();
   updateModelMeta(models);
   sel.onchange=()=>updateModelMeta(models);
 }
@@ -352,6 +376,48 @@ function updateModelMeta(models){
   const name=document.getElementById("model").value;
   const m=(models||[]).find(x=>x.name===name);
   document.getElementById("modelMeta").textContent=m?[`family ${m.family||"?"}`,m.parameter_size||"",m.quantization_level||""].filter(Boolean).join(" · "):"Runtime may change. Continuity stays local.";
+}
+function renderApertureModelChecks(){
+  const box=document.getElementById("apertureModels");
+  if(!box)return;
+  if(!ollamaModels.length){box.innerHTML='<span class="small">no local models discovered</span>';return;}
+  box.innerHTML=ollamaModels.map((m,i)=>`<label class="badge ${i<4?"good":""}" style="cursor:pointer"><input type="checkbox" class="apertureCheck" value="${esc(m.name)}" ${i<4?"checked":""} style="width:auto;margin:0 5px 0 0"> ${esc(m.name)}</label>`).join("");
+}
+async function runApertureGarden(){
+  const id=document.getElementById("conversationSelect").value||localStorage.getItem("hearth_conversation");
+  if(!id){setPanel("carry");return;}
+  if(!ollamaModels.length)await loadModels();
+  const models=[...document.querySelectorAll(".apertureCheck:checked")].map(x=>x.value);
+  if(!models.length){document.getElementById("apertureState").textContent="choose at least one aperture";return;}
+  const prompt=document.getElementById("aperturePrompt").value.trim();
+  if(!prompt)return;
+  document.getElementById("apertureState").textContent="running "+models.length+" apertures sequentially…";
+  document.getElementById("apertureResults").innerHTML="";
+  try{
+    const data=await api("/api/aperture/compare",{method:"POST",body:JSON.stringify({
+      conversation_id:id,
+      prompt,
+      models,
+      base_url:document.getElementById("ollamaUrl").value.trim()||"http://127.0.0.1:11434"
+    })});
+    document.getElementById("apertureState").textContent="complete · "+short(data.receipt_sha256,12);
+    document.getElementById("apertureResults").innerHTML=(data.results||[]).map(r=>`<div class="card"><div class="row" style="justify-content:space-between"><div class="label">${esc(r.model)}</div><span class="badge ${r.ok?"good":"warn"}">${r.ok?"returned":"failed"}</span></div><div class="value" style="white-space:pre-wrap;line-height:1.6">${esc(r.ok?r.text:r.error)}</div><div class="small" style="margin-top:10px">${r.elapsed_seconds||0}s · context ${short(r.context_sha256,12)}</div></div>`).join("");
+    document.getElementById("apertureReceipt").textContent=JSON.stringify({
+      kind:data.kind,
+      created_at:data.created_at,
+      conversation_id:data.conversation_id,
+      prompt:data.prompt,
+      models:data.models,
+      context_sha256:data.context_receipt?.context_sha256,
+      receipt_sha256:data.receipt_sha256,
+      receipt_path:data.receipt_path,
+      mutation:data.mutation,
+      note:data.note
+    },null,2);
+    await refresh();
+  }catch(e){
+    document.getElementById("apertureState").textContent=e.message;
+  }
 }
 async function configureOllama(){
   const model=document.getElementById("model").value.trim();
