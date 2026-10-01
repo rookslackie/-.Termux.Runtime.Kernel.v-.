@@ -43,7 +43,7 @@ fi
 
 say "Installing runtime dependencies into local virtualenv"
 "$VENV/bin/python" -m pip install --upgrade pip >/dev/null
-"$VENV/bin/python" -m pip install -r "$ROOT/requirements.txt"
+"$VENV/bin/python" -m pip install -r "$ROOT/desktop_shell/requirements.txt"
 
 say "Running desktop-shell tests"
 PYTHONPATH="$ROOT/desktop_shell" "$VENV/bin/python" -m unittest discover -s "$ROOT/desktop_shell/tests" -v
