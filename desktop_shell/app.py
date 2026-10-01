@@ -26,7 +26,7 @@ from core import (
 )
 from thread_import import import_pasted_text
 from bus_bridge import emit as bus_emit, feed as bus_feed, register as bus_register
-from runtime import chat as runtime_chat, configure_ollama
+from runtime import chat as runtime_chat, configure_ollama, list_ollama_models
 
 
 HERE = Path(__file__).resolve().parent
@@ -147,6 +147,15 @@ def thread(conversation_id: str) -> Dict[str, Any]:
 @app.post("/api/runtime/ollama", dependencies=[Depends(require_token)])
 def set_ollama(payload: OllamaConfig) -> Dict[str, Any]:
     return {"ok":True, "runtime":configure_ollama(payload.model, payload.base_url)}
+
+
+@app.get("/api/runtime/ollama/models", dependencies=[Depends(require_token)])
+def ollama_models(base_url: str = "http://127.0.0.1:11434") -> Dict[str, Any]:
+    try:
+        models = list_ollama_models(base_url)
+        return {"ok":True, "base_url":base_url.rstrip("/"), "models":models}
+    except Exception as e:
+        raise HTTPException(status_code=502, detail=str(e))
 
 
 @app.post("/api/chat", dependencies=[Depends(require_token)])
