@@ -34,17 +34,21 @@ available to whichever runtime is selected.
 - companion continuity file
 - local turn history
 - context assembly with provenance
+- local browser chat UI on `127.0.0.1:8765`
+- local Ollama runtime seam (default example: `mistral:latest`)
 - local read-only tools, disabled by default
 - explicit allow-listed filesystem roots
 - optional xiBus bridge using the existing `xi_bus_client.py`
-- local browser UI on `127.0.0.1`
 - append-only receipts showing what context and local tool results were used
 
-## What is intentionally not wired yet
+## Runtime boundary
 
-A hosted GPT runtime is not silently assumed. Runtime adapters are a separate edge.
-v0.1 ships the local shell and preserves the boundary so a provider can be added
-without making the provider the continuity authority.
+The first runnable runtime is local Ollama. That is intentional: it proves the
+shell can keep continuity and runtime separate.
+
+A hosted GPT runtime is **not silently assumed** and is not wired yet.
+It remains a separate adapter edge so adding a provider later does not make that
+provider the continuity authority.
 
 ## Start
 
@@ -63,6 +67,13 @@ bash desktop_shell/start.sh
 ```
 
 Then open `http://127.0.0.1:8765`.
+
+In the UI:
+
+1. paste a conversation and preserve it;
+2. select local Ollama and a model;
+3. chat;
+4. only then enable read-only local tools if wanted.
 
 ## CLI
 
@@ -85,6 +96,12 @@ Default:
 - command execution: unavailable
 - outbound tool-result transmission: never automatic
 - continuity writes: append / revise, not silent overwrite
+
+## xiBus
+
+The optional desktop bridge identifies as `Ξ.DesktopShell` and can register,
+read the shared feed, or emit through the existing xiBus client. It does not
+turn bus connectivity into local filesystem authority.
 
 ## The first useful promise
 
