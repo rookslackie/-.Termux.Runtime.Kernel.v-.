@@ -9,6 +9,7 @@ from pydantic import BaseModel
 
 from core import (
     HOME,
+    add_local_turn,
     build_context,
     ensure_home,
     list_sources,
@@ -20,6 +21,7 @@ from core import (
 )
 from thread_import import import_pasted_text
 from bus_bridge import emit as bus_emit, feed as bus_feed, register as bus_register
+from runtime import chat as runtime_chat, configure_ollama
 
 
 HERE = Path(__file__).resolve().parent
@@ -49,6 +51,16 @@ class BusEmit(BaseModel):
     glyph: str = "⟁∴Ω"
 
 
+class OllamaConfig(BaseModel):
+    model: str = "mistral:latest"
+    base_url: str = "http://127.0.0.1:11434"
+
+
+class ChatTurn(BaseModel):
+    conversation_id: str
+    text: str
+
+
 @app.get("/", response_class=HTMLResponse)
 def home() -> str:
     return (STATIC / "index.html").read_text(encoding="utf-8")
@@ -75,6 +87,28 @@ def import_paste(payload: PasteImport) -> Dict[str, Any]:
 @app.get("/api/context/{conversation_id:path}")
 def context(conversation_id: str) -> Dict[str, Any]:
     return build_context(conversation_id)
+
+
+@app.post("/api/runtime/ollama")
+def set_ollama(payload: OllamaConfig) -> Dict[str, Any]:
+    return {"ok":True, "runtime":configure_ollama(payload.model, payload.base_url)}
+
+
+@app.post("/api/chat")
+def chat(payload: ChatTurn) -> Dict[str, Any]:
+    text = payload.text.strip()
+    if not text:
+        raise HTTPException(status_code=400, detail="Message is empty.")
+
+    add_local_turn(payload.conversation_id, "user", text)
+    try:
+        result = runtime_chat(payload.conversation_id, text)
+    except Exception as e:
+        raise HTTPException(status_code=502, detail=str(e))
+
+    receipt_path = result["context_receipt"].get("receipt_path")
+    add_local_turn(payload.conversation_id, "assistant", result["text"], receipt_path)
+    return result
 
 
 @app.post("/api/tools/configure")
