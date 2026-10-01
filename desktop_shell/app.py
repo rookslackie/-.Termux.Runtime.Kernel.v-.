@@ -3,7 +3,7 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any, Dict
 
-from fastapi import Depends, FastAPI, HTTPException
+from fastapi import BackgroundTasks, Depends, FastAPI, HTTPException
 from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
 
@@ -27,7 +27,12 @@ from core import (
 from thread_import import import_pasted_text
 from bus_bridge import emit as bus_emit, feed as bus_feed, register as bus_register
 from runtime import chat as runtime_chat, configure_ollama, list_ollama_models
-from aperture_garden import compare_apertures
+from aperture_garden import (
+    compare_apertures,
+    create_aperture_job,
+    read_aperture_job,
+    run_aperture_job,
+)
 
 
 HERE = Path(__file__).resolve().parent
@@ -196,6 +201,29 @@ def aperture_compare(payload: ApertureCompare) -> Dict[str, Any]:
         raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
         raise HTTPException(status_code=502, detail=str(e))
+
+
+@app.post("/api/aperture/start", dependencies=[Depends(require_token)])
+def aperture_start(payload: ApertureCompare, background_tasks: BackgroundTasks) -> Dict[str, Any]:
+    try:
+        job = create_aperture_job(
+            payload.conversation_id,
+            payload.prompt,
+            models=payload.models or None,
+            base_url=payload.base_url,
+        )
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    background_tasks.add_task(run_aperture_job, job["job_id"])
+    return job
+
+
+@app.get("/api/aperture/job/{job_id}", dependencies=[Depends(require_token)])
+def aperture_job(job_id: str) -> Dict[str, Any]:
+    try:
+        return read_aperture_job(job_id)
+    except KeyError:
+        raise HTTPException(status_code=404, detail="Aperture job not found.")
 
 
 @app.post("/api/tools/configure", dependencies=[Depends(require_token)])
