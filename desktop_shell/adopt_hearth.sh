@@ -6,6 +6,7 @@ XI_HOME="${XI_SHELL_HOME:-/root/.anam-shell}"
 VENV="$XI_HOME/venv"
 PORT="${XI_HEARTH_PORT:-8877}"
 OLD_SERVICE="anam-shell.service"
+FAILED_SERVICE="xi-desktop-shell.service"
 NEW_SERVICE="xi-hearth.service"
 
 say(){ printf '\n[Ξ.Hearth] %s\n' "$*"; }
@@ -15,8 +16,13 @@ say(){ printf '\n[Ξ.Hearth] %s\n' "$*"; }
 
 say "Preserving existing Home at $XI_HOME"
 
+if systemctl list-unit-files "$FAILED_SERVICE" >/dev/null 2>&1; then
+  say "Stopping obsolete 8765 service that collided with XiMesh (XiMesh untouched)"
+  systemctl disable --now "$FAILED_SERVICE" 2>/dev/null || true
+fi
+
 if systemctl list-unit-files "$OLD_SERVICE" >/dev/null 2>&1; then
-  say "Stopping old service name (data untouched)"
+  say "Stopping old shell service name (data untouched)"
   systemctl disable --now "$OLD_SERVICE" 2>/dev/null || true
 fi
 
