@@ -94,9 +94,19 @@ small{opacity:.65}
 </main>
 
 <script>
+function shellToken(){
+  let t=localStorage.getItem('xi_shell_token');
+  if(!t){
+    t=prompt('Ξ Shell access token');
+    if(t) localStorage.setItem('xi_shell_token',t.trim());
+  }
+  return (t||'').trim();
+}
 async function j(url, options={}) {
-  const r = await fetch(url, {headers:{'Content-Type':'application/json'}, ...options});
+  const token=shellToken();
+  const r = await fetch(url, {headers:{'Content-Type':'application/json','X-Xi-Token':token}, ...options});
   const data = await r.json();
+  if (r.status===401){ localStorage.removeItem('xi_shell_token'); throw new Error('Access token rejected. Refresh to enter it again.'); }
   if (!r.ok) throw new Error(data.detail || data.error || r.statusText);
   return data;
 }
