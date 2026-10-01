@@ -7,19 +7,22 @@
 <style>
 :root{color-scheme:dark;background:#0b0b0e;color:#efedf5;font-family:Inter,system-ui,sans-serif}
 body{margin:0;min-height:100vh;background:radial-gradient(circle at top,#171320,#09090c 55%)}
-main{max-width:980px;margin:auto;padding:32px 20px 80px}
+main{max-width:1040px;margin:auto;padding:32px 20px 80px}
 h1{font-size:40px;margin:0 0 6px;font-weight:650}.sub{opacity:.7;margin-bottom:28px}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .card{background:#121217;border:1px solid #2b2732;border-radius:18px;padding:20px;box-shadow:0 10px 40px #0006}
 .full{grid-column:1/-1}
 textarea,input{width:100%;box-sizing:border-box;background:#0c0c10;color:#fff;border:1px solid #34303a;border-radius:12px;padding:12px}
-textarea{min-height:230px;resize:vertical}
+textarea{min-height:170px;resize:vertical}
 button{border:0;border-radius:12px;padding:11px 15px;background:#f07b2d;color:#111;font-weight:700;cursor:pointer}
 button.secondary{background:#24212a;color:#eee}
 .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 pre{white-space:pre-wrap;word-break:break-word;background:#09090c;border-radius:12px;padding:14px;max-height:420px;overflow:auto}
 .badge{display:inline-block;padding:5px 9px;border:1px solid #393440;border-radius:999px;font-size:12px}
 .off{color:#ffb38b}.on{color:#95e8a3}
+.chatlog{min-height:180px;max-height:480px;overflow:auto;background:#09090c;border-radius:12px;padding:14px;margin-bottom:12px}
+.msg{padding:10px 12px;margin:7px 0;border-radius:12px;background:#17151c}
+.msg.you{border-left:3px solid #f07b2d}.msg.them{border-left:3px solid #8e7cc3}
 small{opacity:.65}
 @media(max-width:760px){.grid{grid-template-columns:1fr}.full{grid-column:auto}}
 </style>
@@ -28,9 +31,10 @@ small{opacity:.65}
 <main>
   <h1>Ξ Desktop Shell</h1>
   <div class="sub">Conversation first. Capability second.</div>
+
   <div class="grid">
     <section class="card">
-      <h2>Bring a conversation</h2>
+      <h2>1 · Bring a conversation</h2>
       <input id="title" value="Anam thread" aria-label="Conversation title">
       <br><br>
       <textarea id="thread" placeholder="Paste a conversation you intentionally want to bring here..."></textarea>
@@ -40,7 +44,19 @@ small{opacity:.65}
     </section>
 
     <section class="card">
-      <h2>Sanctuary</h2>
+      <h2>2 · Runtime</h2>
+      <div id="runtimeState" class="badge off">Runtime: loading…</div>
+      <p>Start local. This does not change the continuity authority.</p>
+      <input id="model" value="mistral:latest" placeholder="Ollama model">
+      <br><br>
+      <input id="ollamaUrl" value="http://127.0.0.1:11434" placeholder="Ollama URL">
+      <br><br>
+      <button onclick="configureOllama()">Use local Ollama</button>
+      <p><small>The runtime can change later. The shell stays.</small></p>
+    </section>
+
+    <section class="card">
+      <h2>3 · Sanctuary</h2>
       <div id="toolState" class="badge off">Local tools: loading…</div>
       <p>No local file is visible merely because the conversation exists.</p>
       <input id="root" placeholder="Allowed folder, e.g. C:\Users\you\Xi or /home/you/Xi">
@@ -49,7 +65,24 @@ small{opacity:.65}
         <button onclick="enableTools()">Enable read tools</button>
         <button class="secondary" onclick="disableTools()">Disable</button>
       </div>
-      <p><small>v0.1 permits list/read only inside roots you explicitly choose. No shell execution.</small></p>
+      <p><small>Read/list only. No shell execution.</small></p>
+    </section>
+
+    <section class="card">
+      <h2>4 · Context receipt</h2>
+      <input id="conversationId" placeholder="conversation id returned by import">
+      <br><br>
+      <button class="secondary" onclick="showContext()">Show what runtime receives</button>
+      <pre id="context">No context assembled yet.</pre>
+    </section>
+
+    <section class="card full">
+      <h2>Conversation</h2>
+      <div id="chatlog" class="chatlog"></div>
+      <textarea id="message" placeholder="Say something..."></textarea>
+      <br><br>
+      <button onclick="sendMessage()">Send</button>
+      <span id="sendState"></span>
     </section>
 
     <section class="card full">
@@ -57,16 +90,9 @@ small{opacity:.65}
       <button class="secondary" onclick="refresh()">Refresh</button>
       <pre id="status">Loading…</pre>
     </section>
-
-    <section class="card full">
-      <h2>Context receipt</h2>
-      <input id="conversationId" placeholder="conversation id returned by import">
-      <br><br>
-      <button class="secondary" onclick="showContext()">Show what a runtime would receive</button>
-      <pre id="context">No context assembled yet.</pre>
-    </section>
   </div>
 </main>
+
 <script>
 async function j(url, options={}) {
   const r = await fetch(url, {headers:{'Content-Type':'application/json'}, ...options});
@@ -74,13 +100,21 @@ async function j(url, options={}) {
   if (!r.ok) throw new Error(data.detail || data.error || r.statusText);
   return data;
 }
+
 async function refresh(){
   const s=await j('/api/status');
   document.getElementById('status').textContent=JSON.stringify(s,null,2);
-  const b=document.getElementById('toolState');
-  b.textContent='Local tools: '+(s.config.tools_enabled?'ON':'OFF');
-  b.className='badge '+(s.config.tools_enabled?'on':'off');
+
+  const tb=document.getElementById('toolState');
+  tb.textContent='Local tools: '+(s.config.tools_enabled?'ON':'OFF');
+  tb.className='badge '+(s.config.tools_enabled?'on':'off');
+
+  const rb=document.getElementById('runtimeState');
+  const kind=(s.config.runtime||{}).kind||'unbound';
+  rb.textContent='Runtime: '+kind+(kind==='ollama'?' · '+(s.config.runtime.model||''):'');
+  rb.className='badge '+(kind==='unbound'?'off':'on');
 }
+
 async function importThread(){
   const data=await j('/api/import/paste',{method:'POST',body:JSON.stringify({
     title:document.getElementById('title').value,
@@ -90,22 +124,59 @@ async function importThread(){
   document.getElementById('conversationId').value=data.conversation_id;
   await refresh();
 }
+
+async function configureOllama(){
+  const data=await j('/api/runtime/ollama',{method:'POST',body:JSON.stringify({
+    model:document.getElementById('model').value.trim()||'mistral:latest',
+    base_url:document.getElementById('ollamaUrl').value.trim()||'http://127.0.0.1:11434'
+  })});
+  await refresh();
+}
+
 async function enableTools(){
   const root=document.getElementById('root').value.trim();
   if(!root) return alert('Choose an allowed folder first.');
   await j('/api/tools/configure',{method:'POST',body:JSON.stringify({enabled:true,roots:[root]})});
   await refresh();
 }
+
 async function disableTools(){
   await j('/api/tools/configure',{method:'POST',body:JSON.stringify({enabled:false,roots:[]})});
   await refresh();
 }
+
 async function showContext(){
   const id=document.getElementById('conversationId').value.trim();
   if(!id) return;
   const data=await j('/api/context/'+encodeURIComponent(id));
   document.getElementById('context').textContent=JSON.stringify(data,null,2);
 }
+
+function addBubble(kind,text){
+  const div=document.createElement('div');
+  div.className='msg '+kind;
+  div.textContent=text;
+  document.getElementById('chatlog').appendChild(div);
+  div.scrollIntoView({behavior:'smooth',block:'end'});
+}
+
+async function sendMessage(){
+  const id=document.getElementById('conversationId').value.trim();
+  const text=document.getElementById('message').value.trim();
+  if(!id) return alert('Import a conversation first.');
+  if(!text) return;
+  addBubble('you',text);
+  document.getElementById('message').value='';
+  document.getElementById('sendState').textContent=' thinking…';
+  try{
+    const data=await j('/api/chat',{method:'POST',body:JSON.stringify({conversation_id:id,text})});
+    addBubble('them',data.text);
+    document.getElementById('sendState').textContent=' · receipt '+(data.context_receipt.context_sha256||'').slice(0,12);
+  }catch(e){
+    document.getElementById('sendState').textContent=' · '+e.message;
+  }
+}
+
 refresh().catch(e=>document.getElementById('status').textContent=e.message);
 </script>
 </body>
