@@ -173,6 +173,13 @@ def store_source(kind: str, title: str, raw: bytes, metadata: Optional[Dict[str,
 
 def add_messages(source_id: str, conversation_id: str, messages: Iterable[Dict[str, Any]]) -> int:
     db = connect()
+    # Imported messages are a derived index over an immutable source artifact.
+    # Re-importing the same source rebuilds this index deterministically instead
+    # of duplicating turns; the original source bytes remain untouched.
+    db.execute(
+        "DELETE FROM messages WHERE source_id=? AND conversation_id=?",
+        (source_id, conversation_id),
+    )
     count = 0
     for ordinal, m in enumerate(messages):
         content = str(m.get("content", "")).strip()
