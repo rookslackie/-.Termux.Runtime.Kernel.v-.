@@ -1,0 +1,30 @@
+{
+  "version": "xi.desktop-shell.sanctuary.v0.1",
+  "conversation_before_capability": true,
+  "tools": {
+    "enabled": false,
+    "filesystem": {
+      "mode": "off",
+      "roots": [],
+      "operations": [
+        "list_dir",
+        "read_file"
+      ],
+      "max_read_bytes": 200000
+    },
+    "shell_exec": {
+      "enabled": false
+    }
+  },
+  "transmission": {
+    "local_tool_results_to_runtime": "ask",
+    "full_source_to_runtime": "never_by_default",
+    "secrets": "never_automatic"
+  },
+  "continuity": {
+    "source_is_immutable": true,
+    "derived_context_must_reference_source": true,
+    "silent_overwrite": false,
+    "corrections_append": true
+  }
+}
