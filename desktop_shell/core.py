@@ -232,6 +232,51 @@ def list_sources() -> List[Dict[str, Any]]:
     return out
 
 
+def list_conversations() -> List[Dict[str, Any]]:
+    db = connect()
+    rows = db.execute(
+        """SELECT conversation_id,
+                  COUNT(*) AS message_count,
+                  MIN(ordinal) AS first_ordinal,
+                  MAX(ordinal) AS last_ordinal,
+                  MAX(source_id) AS source_id
+           FROM messages
+           GROUP BY conversation_id
+           ORDER BY conversation_id"""
+    ).fetchall()
+    out = []
+    for row in rows:
+        item = dict(row)
+        source = db.execute(
+            "SELECT title, kind, imported_at FROM sources WHERE id=?",
+            (item.get("source_id"),),
+        ).fetchone()
+        if source:
+            item["title"] = source["title"]
+            item["source_kind"] = source["kind"]
+            item["imported_at"] = source["imported_at"]
+        out.append(item)
+    db.close()
+    return out
+
+
+def list_receipts(limit: int = 100) -> List[Dict[str, Any]]:
+    ensure_home()
+    receipts = []
+    for path in sorted(RECEIPT_DIR.glob("*.json"), key=lambda p: p.stat().st_mtime, reverse=True)[:limit]:
+        try:
+            body = json.loads(path.read_text(encoding="utf-8"))
+        except Exception:
+            body = {"error":"unreadable receipt"}
+        receipts.append({
+            "name":path.name,
+            "path":str(path),
+            "modified_at":datetime.fromtimestamp(path.stat().st_mtime, timezone.utc).isoformat(),
+            "body":body,
+        })
+    return receipts
+
+
 def add_local_turn(conversation_id: str, role: str, content: str, context_receipt: Optional[str] = None) -> int:
     db = connect()
     cur = db.execute(
