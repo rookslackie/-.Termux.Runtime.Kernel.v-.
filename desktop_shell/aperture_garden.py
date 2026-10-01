@@ -2,12 +2,13 @@ from __future__ import annotations
 
 import json
 import time
+import uuid
 from pathlib import Path
 from typing import Any, Dict, List
 
 import httpx
 
-from core import RECEIPT_DIR, build_context, now_iso, sha256_json
+from core import HOME, RECEIPT_DIR, build_context, now_iso, sha256_json
 from runtime import _messages_for_ollama, list_ollama_models
 
 
@@ -102,3 +103,71 @@ def compare_apertures(
     path.write_text(json.dumps(receipt, indent=2, ensure_ascii=False), encoding="utf-8")
     receipt["receipt_path"] = str(path)
     return receipt
+
+
+JOB_DIR = HOME / "aperture_jobs"
+
+
+def _job_path(job_id: str) -> Path:
+    JOB_DIR.mkdir(parents=True, exist_ok=True)
+    return JOB_DIR / f"{job_id}.json"
+
+
+def _write_job(job_id: str, body: Dict[str, Any]) -> None:
+    path = _job_path(job_id)
+    path.write_text(json.dumps(body, indent=2, ensure_ascii=False), encoding="utf-8")
+
+
+def read_aperture_job(job_id: str) -> Dict[str, Any]:
+    path = _job_path(job_id)
+    if not path.exists():
+        raise KeyError(job_id)
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def create_aperture_job(
+    conversation_id: str,
+    prompt: str,
+    *,
+    models: List[str] | None = None,
+    base_url: str = "http://127.0.0.1:11434",
+) -> Dict[str, Any]:
+    job_id = "ap_" + uuid.uuid4().hex[:20]
+    body = {
+        "job_id": job_id,
+        "status": "queued",
+        "created_at": now_iso(),
+        "conversation_id": conversation_id,
+        "prompt": prompt,
+        "models": models or [],
+        "base_url": base_url,
+    }
+    _write_job(job_id, body)
+    return body
+
+
+def run_aperture_job(job_id: str) -> None:
+    job = read_aperture_job(job_id)
+    job["status"] = "running"
+    job["started_at"] = now_iso()
+    _write_job(job_id, job)
+
+    try:
+        receipt = compare_apertures(
+            job["conversation_id"],
+            job["prompt"],
+            models=job.get("models") or None,
+            base_url=job.get("base_url") or "http://127.0.0.1:11434",
+        )
+        job.update({
+            "status": "completed",
+            "finished_at": now_iso(),
+            "receipt": receipt,
+        })
+    except Exception as exc:
+        job.update({
+            "status": "failed",
+            "finished_at": now_iso(),
+            "error": str(exc),
+        })
+    _write_job(job_id, job)
