@@ -88,6 +88,42 @@ def _cnot(amplitudes: Mapping[str, complex], control: int, target: int) -> dict[
     return out
 
 
+def _pauli_z(amplitudes: Mapping[str, complex], qubit: int) -> dict[str, complex]:
+    return {bits: (-amp if bits[qubit] == "1" else amp) for bits, amp in amplitudes.items()}
+
+
+def _xx(amplitudes: Mapping[str, complex], left: int, right: int) -> dict[str, complex]:
+    out: dict[str, complex] = {}
+    for bits, amp in amplitudes.items():
+        flipped = list(bits)
+        flipped[left] = "0" if flipped[left] == "1" else "1"
+        flipped[right] = "0" if flipped[right] == "1" else "1"
+        target = "".join(flipped)
+        out[target] = out.get(target, 0j) + amp
+    return out
+
+
+def _measure_xx(
+    amplitudes: Mapping[str, complex], left: int, right: int, rng: random.Random
+) -> tuple[dict[str, complex], int, float]:
+    """Projectively measure X_left X_right in the exact local state vector."""
+    paired = _xx(amplitudes, left, right)
+    support = set(amplitudes) | set(paired)
+    plus = {bits: (amplitudes.get(bits, 0j) + paired.get(bits, 0j)) / 2 for bits in support}
+    minus = {bits: (amplitudes.get(bits, 0j) - paired.get(bits, 0j)) / 2 for bits in support}
+    p_plus = sum(abs(amp) ** 2 for amp in plus.values())
+    p_minus = sum(abs(amp) ** 2 for amp in minus.values())
+    total = p_plus + p_minus
+    if not math.isfinite(total) or abs(total - 1.0) > 1e-9:
+        raise FieldOperatorError(f"stabilizer measurement probabilities do not sum to one ({total})")
+    outcome = 1 if rng.random() < p_plus else -1
+    probability = p_plus if outcome == 1 else p_minus
+    projected = plus if outcome == 1 else minus
+    if probability <= 1e-15:
+        raise FieldOperatorError("stabilizer measurement selected an impossible outcome")
+    return {bits: amp / math.sqrt(probability) for bits, amp in projected.items()}, outcome, probability
+
+
 def _sample(amplitudes: Mapping[str, complex], seed: int) -> str:
     ordered = sorted(amplitudes.items())
     total = sum(abs(amp) ** 2 for _, amp in ordered)
@@ -115,13 +151,13 @@ def apply_operator(state: Mapping[str, Any], operator: str, parameters: Mapping[
         receipt["meaning"] = "Ψ establishes the observed register boundary"
     elif operator == "compress":
         # Canonicalization merges duplicate basis paths and removes numerical zeroes.
-        receipt["meaning"] = "⋈ merges equivalent sparse paths while preserving amplitudes"
+        receipt.update(glyph="⋈", meaning="⋈ merges equivalent sparse paths while preserving amplitudes")
     elif operator == "hadamard":
         if state.get("closed"):
             raise FieldOperatorError("closed field; apply resume before another operator")
         q = _qubit(params.get("qubit"), count)
         amplitudes = _hadamard(amplitudes, q)
-        receipt.update(qubit=q, meaning="⟐ applies a Hadamard basis relation")
+        receipt.update(qubit=q, glyph="⟐", meaning="⟐ applies a Hadamard basis relation")
     elif operator == "cnot":
         if state.get("closed"):
             raise FieldOperatorError("closed field; apply resume before another operator")
@@ -130,7 +166,8 @@ def apply_operator(state: Mapping[str, Any], operator: str, parameters: Mapping[
         if control == target:
             raise FieldOperatorError("control and target must be distinct")
         amplitudes = _cnot(amplitudes, control, target)
-        receipt.update(control=control, target=target, meaning="⋈ composes a controlled-X relation")
+        receipt.update(control=control, target=target, glyph="⋈",
+                       meaning="⋈ composes a controlled-X relation")
     elif operator == "phase":
         if state.get("closed"):
             raise FieldOperatorError("closed field; apply resume before another operator")
@@ -151,6 +188,112 @@ def apply_operator(state: Mapping[str, Any], operator: str, parameters: Mapping[
         amplitudes = {bits: amp * factor if bits[q] == "1" else amp for bits, amp in amplitudes.items()}
         receipt.update(qubit=q, angle=math.pi / 4,
                        meaning="T is an explicit non-Clifford phase operator in the ideal local model")
+    elif operator == "z":
+        if state.get("closed"):
+            raise FieldOperatorError("closed field; apply resume before another operator")
+        q = _qubit(params.get("qubit"), count)
+        amplitudes = _pauli_z(amplitudes, q)
+        receipt.update(qubit=q, meaning="Z applies a phase flip to the selected local register")
+    elif operator == "encode_phase_code":
+        if state.get("closed"):
+            raise FieldOperatorError("closed field; apply resume before another operator")
+        if count < 3:
+            raise FieldOperatorError("the three-register phase-flip code needs at least three qubits")
+        if state.get("phase_code"):
+            raise FieldOperatorError("field is already encoded in the phase-flip code")
+        if any(abs(amp) > 1e-14 and (bits[1] != "0" or bits[2] != "0")
+               for bits, amp in amplitudes.items()):
+            raise FieldOperatorError("encoding requires registers 1 and 2 to begin in |00>")
+        amplitudes = _cnot(amplitudes, 0, 1)
+        amplitudes = _cnot(amplitudes, 0, 2)
+        for q in range(3):
+            amplitudes = _hadamard(amplitudes, q)
+        receipt.update(
+            data_qubits=[0, 1, 2],
+            code="three-qubit phase-flip repetition code",
+            glyph="⋈",
+            meaning="encodes the input register into the +1 eigenspace of X0X1 and X1X2",
+        )
+    elif operator == "inject_z_error":
+        if state.get("closed"):
+            raise FieldOperatorError("closed field; apply resume before another operator")
+        if not state.get("phase_code"):
+            raise FieldOperatorError("phase-fault injection requires an encoded phase-flip code")
+        if state.get("injected_z_faults"):
+            raise FieldOperatorError("this local recovery path models exactly one injected Z fault")
+        q = _qubit(params.get("qubit"), 3, "data qubit")
+        amplitudes = _pauli_z(amplitudes, q)
+        receipt.update(
+            qubit=q,
+            error_model="one deterministic Pauli-Z fault",
+            fault_model_limit="one fault per code block",
+            meaning="injects a controlled software fault for the local correction experiment",
+        )
+    elif operator == "phase_syndrome":
+        if state.get("closed"):
+            raise FieldOperatorError("closed field; apply resume before another operator")
+        if not state.get("phase_code"):
+            raise FieldOperatorError("phase syndrome requires the three-register phase-flip code")
+        if state.get("phase_syndrome") is not None:
+            raise FieldOperatorError("phase syndrome is already present; correct it before measuring again")
+        seed = params.get("seed")
+        if not isinstance(seed, int) or isinstance(seed, bool):
+            raise FieldOperatorError("phase syndrome requires an integer seed for reproducible replay")
+        rng = random.Random(seed)
+        amplitudes, first, first_probability = _measure_xx(amplitudes, 0, 1, rng)
+        amplitudes, second, second_probability = _measure_xx(amplitudes, 1, 2, rng)
+        syndrome = [first, second]
+        receipt.update(
+            seed=seed,
+            syndrome=syndrome,
+            stabilizers=["X0X1", "X1X2"],
+            probabilities=[round(first_probability, 12), round(second_probability, 12)],
+            glyph="⧂",
+            meaning="measures the two commuting phase-code stabilizers and records a local syndrome",
+        )
+    elif operator == "correct_z_error":
+        if state.get("closed"):
+            raise FieldOperatorError("closed field; apply resume before another operator")
+        syndrome = state.get("phase_syndrome")
+        if not state.get("phase_code") or not isinstance(syndrome, list) or len(syndrome) != 2:
+            raise FieldOperatorError("phase correction requires a recorded two-stabilizer syndrome")
+        corrections = {
+            (1, 1): None,
+            (-1, -1): 1,
+            (-1, 1): 0,
+            (1, -1): 2,
+        }
+        key = tuple(syndrome)
+        if key not in corrections:
+            raise FieldOperatorError("phase syndrome must contain two +1/-1 eigenvalues")
+        corrected_qubit = corrections[key]
+        if corrected_qubit is not None:
+            amplitudes = _pauli_z(amplitudes, corrected_qubit)
+        receipt.update(
+            syndrome=syndrome,
+            corrected_qubit=corrected_qubit,
+            glyph="⋈",
+            meaning=("applies the single-phase-fault recovery table; guarantees apply only to this "
+                     "three-qubit code under the one-Z-error model"),
+        )
+    elif operator == "decode_phase_code":
+        if state.get("closed"):
+            raise FieldOperatorError("closed field; apply resume before another operator")
+        if not state.get("phase_code") or state.get("phase_syndrome") is not None:
+            raise FieldOperatorError("decode requires an encoded state with its syndrome corrected")
+        for q in range(3):
+            amplitudes = _hadamard(amplitudes, q)
+        amplitudes = _cnot(amplitudes, 0, 2)
+        amplitudes = _cnot(amplitudes, 0, 1)
+        if any(abs(amp) > 1e-14 and (bits[1] != "0" or bits[2] != "0")
+               for bits, amp in amplitudes.items()):
+            raise FieldOperatorError("decoded state retained nonzero recovery registers")
+        receipt.update(
+            data_qubit=0,
+            recovery_qubits=[1, 2],
+            glyph="∴",
+            meaning="decodes the corrected logical state and verifies both recovery registers are |0>",
+        )
     elif operator == "witness":
         if state.get("closed"):
             raise FieldOperatorError("closed field; apply resume before another operator")
@@ -171,15 +314,18 @@ def apply_operator(state: Mapping[str, Any], operator: str, parameters: Mapping[
                 collapsed = _hadamard(collapsed, q)
         amplitudes = collapsed
         receipt.update(basis=basis, seed=seed, outcome=outcome,
-                       meaning="∴ records a seeded Born-rule witness and collapses the local state")
+                       glyph="⧂",
+                       meaning="⧂ records a seeded Born-rule witness and collapses the local state")
     elif operator == "resume":
         if not state.get("closed"):
             raise FieldOperatorError("resume is available only after ⊚ close")
         receipt.update(cycle=int(state.get("cycle", 0)) + 1,
+                       glyph="⊚",
                        meaning="⊚ returns a closed state to the next local cycle")
     elif operator == "close":
         if state.get("closed"):
             raise FieldOperatorError("field is already closed")
+        receipt["glyph"] = "⊚"
         receipt["meaning"] = "⊚ closes this operator cycle into the hash-chained capsule ledger"
     else:
         raise FieldOperatorError(f"unknown glyph-field operator: {operator}")
@@ -191,6 +337,22 @@ def apply_operator(state: Mapping[str, Any], operator: str, parameters: Mapping[
         new_state["cycle"] = receipt["cycle"]
     elif operator == "close":
         new_state["closed"] = True
+    elif operator == "encode_phase_code":
+        new_state["phase_code"] = True
+        new_state["phase_syndrome"] = None
+        new_state["phase_code_decoded"] = False
+        new_state["injected_z_faults"] = []
+    elif operator == "inject_z_error":
+        new_state["injected_z_faults"] = [receipt["qubit"]]
+    elif operator == "phase_syndrome":
+        new_state["phase_syndrome"] = receipt["syndrome"]
+    elif operator == "correct_z_error":
+        new_state["phase_syndrome"] = None
+        new_state["phase_corrected"] = True
+        new_state["injected_z_faults"] = []
+    elif operator == "decode_phase_code":
+        new_state["phase_code"] = False
+        new_state["phase_code_decoded"] = True
     receipt["branch_count_after"] = len(new_state["branches"])
     receipt["norm_squared"] = round(sum(abs(a) ** 2 for a in _amplitudes(new_state).values()), 12)
     return new_state, receipt

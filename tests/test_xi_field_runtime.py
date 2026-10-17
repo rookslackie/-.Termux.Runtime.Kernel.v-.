@@ -7,6 +7,8 @@ from pathlib import Path
 from xi_field import FieldOperatorError, bootstrap_field
 from xi_field.runtime import FIELD_ACTOR_ID
 from xi_field.demo import run as run_demo
+from xi_field.phase_code_demo import run as run_phase_code_demo
+from xi_field.operators import apply_operator, initial_state
 from xi_field.topology import chip_topology
 from xi_world.kernel import WorldError
 
@@ -93,6 +95,59 @@ class GlyphFieldRuntimeTests(unittest.TestCase):
         self.assertAlmostEqual((amp1 / amp0).real, 2**-0.5)
         self.assertAlmostEqual((amp1 / amp0).imag, 2**-0.5)
         self.assertIn("non-Clifford", state["last_operator_receipt"]["meaning"])
+
+    def test_phase_flip_code_corrects_each_single_z_fault(self):
+        expected_syndromes = {
+            0: [-1, 1],
+            1: [-1, -1],
+            2: [1, -1],
+        }
+        for faulty_qubit in range(3):
+            with self.subTest(faulty_qubit=faulty_qubit):
+                state = initial_state(3)
+                for operator, parameters in [
+                    ("hadamard", {"qubit": 0}),
+                    ("t", {"qubit": 0}),
+                    ("encode_phase_code", {}),
+                    ("inject_z_error", {"qubit": faulty_qubit}),
+                    ("phase_syndrome", {"seed": 20261017}),
+                ]:
+                    state, receipt = apply_operator(state, operator, parameters)
+                self.assertEqual(receipt["syndrome"], expected_syndromes[faulty_qubit])
+                state, correction = apply_operator(state, "correct_z_error")
+                self.assertEqual(correction["corrected_qubit"], faulty_qubit)
+                state, _ = apply_operator(state, "decode_phase_code")
+
+                ideal = initial_state(3)
+                ideal, _ = apply_operator(ideal, "hadamard", {"qubit": 0})
+                ideal, _ = apply_operator(ideal, "t", {"qubit": 0})
+                self.assertEqual(state["branches"], ideal["branches"])
+                self.assertTrue(state["phase_code_decoded"])
+
+    def test_phase_code_persists_recovery_across_restart_and_replay(self):
+        db = Path(self.temp.name) / "phase-code.sqlite3"
+        first = run_phase_code_demo(db, world_id="persistent-phase-code")
+        second = run_phase_code_demo(db, world_id="persistent-phase-code")
+        self.assertEqual(first["event_count"], 10)
+        self.assertEqual(first["syndrome"], [-1, -1])
+        self.assertEqual(first["corrected_qubit"], 1)
+        self.assertEqual(first["recovered_state_fidelity"], 1.0)
+        self.assertTrue(first["state_after_restart"])
+        self.assertTrue(first["integrity"]["ok"])
+        self.assertEqual(second["event_count"], first["event_count"])
+        self.assertEqual(second["integrity"]["head_hash"], first["integrity"]["head_hash"])
+
+    def test_phase_code_rejects_a_second_injected_fault(self):
+        state = initial_state(3)
+        for operator, parameters in [
+            ("hadamard", {"qubit": 0}),
+            ("t", {"qubit": 0}),
+            ("encode_phase_code", {}),
+            ("inject_z_error", {"qubit": 0}),
+        ]:
+            state, _ = apply_operator(state, operator, parameters)
+        with self.assertRaisesRegex(FieldOperatorError, "exactly one injected Z fault"):
+            apply_operator(state, "inject_z_error", {"qubit": 2})
 
     def test_demo_replays_completed_cycle_without_duplicate_capsules(self):
         db = Path(self.temp.name) / "demo.sqlite3"
