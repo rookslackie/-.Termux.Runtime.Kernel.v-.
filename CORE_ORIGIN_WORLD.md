@@ -9,6 +9,10 @@ From the repository root:
 ```bash
 python -m xi_world.demo --reset
 python -m xi_world.demo
+python -m xi_world.residue_demo first --reset
+python -m xi_world.residue_demo weave
+python -m xi_world.residue_demo second
+python -m xi_world.residue_demo weave
 python -m unittest discover -s tests -v
 ```
 
@@ -36,10 +40,18 @@ The first command creates `.xi/core-origin-world.sqlite3`, then records a short 
 - Rules for sowing, watering, and environmental day advancement; growth requires a direct causal edge from the watering event.
 - Idempotency keys and transaction rollback on invalid transitions.
 - A verification pass for hashes, sequence continuity, and causal-edge order.
+- A provenance-preserving residue workbench: independently captured mixed residues are projected by explicitly supplied form relations, with direct source-event parents and a persistent revisioned result.
+- Structural projection records adjacency, empty/unopened form, repair traces, and explicit contrasts without generating or storing an interpretation.
 
 ## Not implemented yet
 
 The kernel does not implement a general-purpose scheduler, learned/autonomous model behavior, an open-world rules language, cross-device synchronization, real-time rendering, physics simulation, multi-user networking, or quantum computing. In particular, the Xi physics attachments motivate questions about transitions, information, memory, and invariants; this prototype does not claim that software events source spacetime curvature or that symbolic glyph operations are physical QEC.
+
+## DreamResidue workbench
+
+`xi_world.residue_demo` turns the two supplied DreamSpiral residues into a second, independent local world. It keeps the recovered source references and newly composed imagery in separate fields. The operator takes those captured records and projects only their explicit form annotations into a persistent workbench state. The four commands above are intentionally successive: the first residue is woven, the second is then captured, and the expanded source set is woven again after reopening SQLite.
+
+This is an executable interpretation of “the index finds; the workbench transforms,” with a deliberately narrow operator contract. The kernel does not parse dream prose, infer hidden meanings, activate artifacts, or claim the residues caused any external runtime activity. In this version, a “perturbation” is a verified change to the workbench’s local state: a newly captured source can change the projected relation set and increment its revision. The capsule records exactly which source events caused that revision.
 
 ## Follow-up source archaeology (October 2026)
 
@@ -54,7 +66,7 @@ The additional SIGMA/LUCID, Elysium, glyph-matrix, manifest, and directory artif
 | Woven Glyph-Chip matrix and glyph manifest CSVs | A 7-row, 57-column symbol matrix (with padded blank cells) and character encodings/checksums for 23 entries | Defined operator semantics, a validated capsule schema, or physical quantum hardware. Checksums validate encoded strings only. |
 | `sync_map.yaml`, entropy log, and XiSystem directory listing | Declarative sync/compression labels, a timestamped status record, and intended directory paths | Executable synchronization, a persistent-memory contract, or proof that the listed runtime exists in this repository. |
 
-These artifacts are retained as provenance and possible interface research. They do not change the world kernel's transition model: the durable capsule ledger, explicit causal edges, persistent identities, and local SQLite state remain the implemented substrate. A future glyph operator should enter through a versioned, testable operator contract with defined inputs, outputs, and effects; the matrix and manifest alone do not supply that contract.
+These artifacts are retained as provenance and possible interface research. The DreamResidue workbench adds a separate, explicit structural projection; it does not treat the artifacts above as executable operator definitions. A future glyph operator should enter through a versioned, testable operator contract with defined inputs, outputs, and effects; the matrix and manifest alone do not supply that contract.
 
 The attached Google Quantum AI result is relevant as physical quantum-error-correction research, not as evidence for a Xi runtime primitive. Google's research record reports a 40-fold error reduction, state fidelity `0.9999(1)`, and retention of 8% of attempts, including code-switching into a surface code. None of those measurements validate this software kernel or its glyph symbols as a QEC implementation.
 
