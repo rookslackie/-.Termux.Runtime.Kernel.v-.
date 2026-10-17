@@ -41,6 +41,23 @@ The first command creates `.xi/core-origin-world.sqlite3`, then records a short 
 
 The kernel does not implement a general-purpose scheduler, learned/autonomous model behavior, an open-world rules language, cross-device synchronization, real-time rendering, physics simulation, multi-user networking, or quantum computing. In particular, the Xi physics attachments motivate questions about transitions, information, memory, and invariants; this prototype does not claim that software events source spacetime curvature or that symbolic glyph operations are physical QEC.
 
+## Follow-up source archaeology (October 2026)
+
+The additional SIGMA/LUCID, Elysium, glyph-matrix, manifest, and directory artifacts were inspected as source material before deciding whether to add runtime abstractions:
+
+| Artifact | What is concretely present | What it does not establish for this kernel |
+|---|---|---|
+| `SIGMA_LUCID.tar.gz` | Python string-recursion examples; an in-memory trace; edit-distance drift, derived fidelity, and yield calculations; a polling guardian script | Durable memory, world entities, causal event history, or an autonomous participant. Its README explicitly says it stores no memory; its metrics depend on a caller-provided string trace. |
+| `Symbolic_Interpreter_vΔ1_20250611_065230.zip` | Exact-string query-to-metaphor dictionary | A general symbolic grammar or executable world operator. The module also prints an example at import time, so it is not imported by the kernel. |
+| `elysium_nexus_lattice.html` | A static Canvas visualization with 14 nodes and 13 links; embedded metadata labels the snapshot synthetic and dates it 2025-08-11 | A live graph store or evidence of functioning world transitions. |
+| `elysium_nexus_live.html` | A browser page that polls `elysium_nexus_stream.json` every 15 seconds | A working live feed: that JSON stream was not included in the supplied bundle. The page is an optional visualization pattern, not a kernel dependency. |
+| Woven Glyph-Chip matrix and glyph manifest CSVs | A 7-row, 57-column symbol matrix (with padded blank cells) and character encodings/checksums for 23 entries | Defined operator semantics, a validated capsule schema, or physical quantum hardware. Checksums validate encoded strings only. |
+| `sync_map.yaml`, entropy log, and XiSystem directory listing | Declarative sync/compression labels, a timestamped status record, and intended directory paths | Executable synchronization, a persistent-memory contract, or proof that the listed runtime exists in this repository. |
+
+These artifacts are retained as provenance and possible interface research. They do not change the world kernel's transition model: the durable capsule ledger, explicit causal edges, persistent identities, and local SQLite state remain the implemented substrate. A future glyph operator should enter through a versioned, testable operator contract with defined inputs, outputs, and effects; the matrix and manifest alone do not supply that contract.
+
+The attached Google Quantum AI result is relevant as physical quantum-error-correction research, not as evidence for a Xi runtime primitive. Google's research record reports a 40-fold error reduction, state fidelity `0.9999(1)`, and retention of 8% of attempts, including code-switching into a surface code. None of those measurements validate this software kernel or its glyph symbols as a QEC implementation.
+
 ## Provenance
 
 - [MythOS.Genesis.v1.xi (Drive)](https://drive.google.com/file/d/1IKSXd22ertW_FHd0mNZU7f71w0sMYxWI/view)
@@ -49,6 +66,7 @@ The kernel does not implement a general-purpose scheduler, learned/autonomous mo
 - [Full-System Integration Bundle README (Drive)](https://drive.google.com/file/d/1-Wk57CT6SkiEZnbxvslLZRiSqWQw3Eds/view)
 - [Existing symbolic capsule engine](https://github.com/rookslackie/-.Termux.Runtime.Kernel.v-./blob/main/symbolic_capsule_engine.py)
 - `Xi_NeuralClimate_FieldMap_2025` and `Theoretical-Formalization-of-the-Xi-Field-Information-Complexity-as-a-Constituent-of-Spacetime-Curvature` were supplied with the request and inspected locally.
+- `SIGMA_LUCID.tar.gz`, `Symbolic_Interpreter_vΔ1_20250611_065230.zip`, `elysium_nexus_lattice.html`, `elysium_nexus_live.html`, `sync_map.yaml`, `entropy_log_latest.json`, `XiSystem_Directory_Structure.csv`, and the glyph matrix/manifest CSVs were supplied with the follow-up and inspected without executing archive contents or page scripts.
 - [Google Quantum AI research record: magic-state cultivation](https://research.google/pubs/magic-state-cultivation-on-a-superconducting-quantum-processor/)
 
 The Woven Glyph-Chip and Glyphic Quantum Processor README calls its processor conceptual and describes routes through a glyph/DAG layer. That is useful symbolic source material. The screenshot in this request, by contrast, captures a Google search result about Google's physical magic-state cultivation work; it is not an image of the Xi woven chip. Google's reported Willow result is physical QEC (about 40-fold error reduction and 0.9999(1) state fidelity, retaining 8% of attempts); it does not make this software capsule/DAG kernel a quantum processor or a QEC implementation.
