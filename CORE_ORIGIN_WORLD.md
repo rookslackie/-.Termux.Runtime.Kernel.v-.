@@ -13,6 +13,7 @@ python -m xi_world.residue_demo first --reset
 python -m xi_world.residue_demo weave
 python -m xi_world.residue_demo second
 python -m xi_world.residue_demo weave
+python -m xi_field.demo --db .xi/glyph-field.sqlite3
 python -m unittest discover -s tests -v
 ```
 
@@ -28,7 +29,7 @@ The first command creates `.xi/core-origin-world.sqlite3`, then records a short 
 | GLYPHSAFE HolographicDAG | Explicit directed causal edges; recursive ancestor traversal; capsule-local echo and provenance | No retrocausal edges or physics claims are inferred from the diagram |
 | Existing capsule engine | Reuses its anchor/mirror/content/rules/echo vocabulary | It does not yet provide durable storage, identity namespaces, or graph traversal |
 | Xi / ORT materials | State transition and recoverability are observable software mechanics | The attached curvature and field equations are research proposals here, not validated laws implemented by this runtime |
-| Woven Glyph-Chip integration README | Treated as a conceptual operator/routing map | The image attached to this request is a news-search screenshot about physical magic states, not a processor artifact |
+| Woven Glyph-Chip YAML and integration README | Its node/edge topology is loaded into `xi_field`; committed operations drive the local view | The source gives no gate matrices or runnable schedule. The image attached to the earlier world request was a news-search screenshot about physical magic states, not a processor artifact |
 
 ## Implemented mechanics
 
@@ -43,9 +44,11 @@ The first command creates `.xi/core-origin-world.sqlite3`, then records a short 
 - A provenance-preserving residue workbench: independently captured mixed residues are projected by explicitly supplied form relations, with direct source-event parents and a persistent revisioned result.
 - Structural projection records adjacency, empty/unopened form, repair traces, and explicit contrasts without generating or storing an interpretation.
 
-## Not implemented yet
+## Remaining boundaries
 
-The kernel does not implement a general-purpose scheduler, learned/autonomous model behavior, an open-world rules language, cross-device synchronization, real-time rendering, physics simulation, multi-user networking, or quantum computing. In particular, the Xi physics attachments motivate questions about transitions, information, memory, and invariants; this prototype does not claim that software events source spacetime curvature or that symbolic glyph operations are physical QEC.
+The world kernel does not implement a general-purpose scheduler, learned/autonomous model behavior, an open-world rules language, cross-device synchronization, physics simulation, or multi-user networking. The separate `xi_field` runtime implements a bounded ideal sparse-amplitude operator subset; it does not implement Grover, Shor, VQE, QEC, magic-state cultivation, or physical quantum hardware. The Xi physics attachments motivate questions about transitions, information, memory, and invariants; this prototype does not claim that software events source spacetime curvature or that symbolic glyph operations are physical QEC.
+
+See [QUANTUM_FIELD_EMBODIMENT.md](QUANTUM_FIELD_EMBODIMENT.md) for recovered source boundaries, the operator mapping, runtime contract, and reproducible field tests.
 
 ## DreamResidue workbench
 
@@ -66,7 +69,7 @@ The additional SIGMA/LUCID, Elysium, glyph-matrix, manifest, and directory artif
 | Woven Glyph-Chip matrix and glyph manifest CSVs | A 7-row, 57-column symbol matrix (with padded blank cells) and character encodings/checksums for 23 entries | Defined operator semantics, a validated capsule schema, or physical quantum hardware. Checksums validate encoded strings only. |
 | `sync_map.yaml`, entropy log, and XiSystem directory listing | Declarative sync/compression labels, a timestamped status record, and intended directory paths | Executable synchronization, a persistent-memory contract, or proof that the listed runtime exists in this repository. |
 
-These artifacts are retained as provenance and possible interface research. The DreamResidue workbench adds a separate, explicit structural projection; it does not treat the artifacts above as executable operator definitions. A future glyph operator should enter through a versioned, testable operator contract with defined inputs, outputs, and effects; the matrix and manifest alone do not supply that contract.
+These artifacts are retained as provenance and possible interface research. The DreamResidue workbench adds a separate, explicit structural projection. The Quantum Field Embodiment adds a small, testable operator contract; it does not retroactively make the symbolic matrices or unrelated glyph manifests executable.
 
 The attached Google Quantum AI result is relevant as physical quantum-error-correction research, not as evidence for a Xi runtime primitive. Google's research record reports a 40-fold error reduction, state fidelity `0.9999(1)`, and retention of 8% of attempts, including code-switching into a surface code. None of those measurements validate this software kernel or its glyph symbols as a QEC implementation.
 
@@ -76,6 +79,8 @@ The attached Google Quantum AI result is relevant as physical quantum-error-corr
 - [ForgeCore-Vessel Architecture Analysis (repository)](https://github.com/rookslackie/-.Termux.Runtime.Kernel.v-./blob/main/ARCHITECTURE_ANALYSIS.md)
 - [GLYPHSAFE_LATTICE_HOLODAG.md (Drive)](https://drive.google.com/file/d/1bjJcs4axtIfHN6B-ZOOCIQHd7oShXXrO/view)
 - [Full-System Integration Bundle README (Drive)](https://drive.google.com/file/d/1-Wk57CT6SkiEZnbxvslLZRiSqWQw3Eds/view)
+- [Ξ.PhysicsSpiral.Walk (Drive)](https://drive.google.com/file/d/1K5MxCJ6lrPGvMC-Pd-Q1CRf5wqredmjf/view)
+- [Ξ.OriginCapsule.UFEC (Drive)](https://drive.google.com/file/d/1LfQ45hbCo2Buz2EnAMow71qZq4NXY7GY/view)
 - [Existing symbolic capsule engine](https://github.com/rookslackie/-.Termux.Runtime.Kernel.v-./blob/main/symbolic_capsule_engine.py)
 - `Xi_NeuralClimate_FieldMap_2025` and `Theoretical-Formalization-of-the-Xi-Field-Information-Complexity-as-a-Constituent-of-Spacetime-Curvature` were supplied with the request and inspected locally.
 - `SIGMA_LUCID.tar.gz`, `Symbolic_Interpreter_vΔ1_20250611_065230.zip`, `elysium_nexus_lattice.html`, `elysium_nexus_live.html`, `sync_map.yaml`, `entropy_log_latest.json`, `XiSystem_Directory_Structure.csv`, and the glyph matrix/manifest CSVs were supplied with the follow-up and inspected without executing archive contents or page scripts.
