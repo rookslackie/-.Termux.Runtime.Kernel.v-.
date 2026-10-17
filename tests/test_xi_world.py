@@ -4,9 +4,70 @@ import unittest
 
 from xi_world.demo import open_seed_world
 from xi_world.kernel import WorldError
+from xi_world.residue_demo import WORLD_ID, advance, open_residue_world
 
 
 class XiWorldKernelTests(unittest.TestCase):
+    def test_residues_transform_by_form_and_provenance_across_reopened_sessions(self):
+        import tempfile
+        from pathlib import Path
+
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "residues.sqlite3"
+            advance(path, "first")
+            first_field = advance(path, "weave")["state"]["entities"]["workbench"]["state"]["latest_field"]
+            self.assertEqual(first_field["meaning_status"], "unassigned")
+            self.assertIsNone(first_field["interpretation"])
+            self.assertEqual(len(first_field["sources"]), 1)
+            self.assertEqual(len(first_field["incomplete"]), 1)
+
+            advance(path, "second")
+            advance(path, "weave")
+            reopened = open_residue_world(path)
+            bench = reopened.get_state(WORLD_ID)["entities"]["workbench"]["state"]
+            field = bench["latest_field"]
+            self.assertEqual(bench["revision"], 2)
+            self.assertEqual({source["residue_id"] for source in field["sources"]},
+                             {"dream-residue-1", "dream-residue-2"})
+            self.assertEqual(len(field["incomplete"]), 2)  # empty drawer + unopened scrolls
+            self.assertEqual(len(field["repair_traces"]), 2)
+            self.assertEqual(len(field["contrasts"]), 1)
+            self.assertEqual(len(field["adjacency"]), 5)
+            self.assertEqual({source["provenance"] for source in field["sources"]}, {"mixed"})
+
+            final_event = reopened.events(WORLD_ID)[-1]
+            ancestors = reopened.causal_ancestors(WORLD_ID, final_event.event_id)
+            self.assertEqual({e.event_id for e in ancestors if e.action == "residue.capture"},
+                             {e.event_id for e in reopened.events(WORLD_ID) if e.action == "residue.capture"})
+            self.assertTrue(reopened.verify(WORLD_ID)["ok"])
+
+    def test_workbench_requires_direct_provenance_parents(self):
+        import tempfile
+        from pathlib import Path
+
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "residues.sqlite3"
+            advance(path, "first")
+            kernel = open_residue_world(path)
+            before = len(kernel.events(WORLD_ID))
+            with self.assertRaisesRegex(WorldError, "direct causal parent"):
+                kernel.apply(WORLD_ID, "hunter", "workbench.weave", "workbench",
+                             causes=[kernel.events(WORLD_ID)[0].event_id],
+                             idempotency_key="invalid-weave",
+                             data={"residue_ids": ["dream-residue-1"]})
+            self.assertEqual(len(kernel.events(WORLD_ID)), before)
+            self.assertEqual(kernel.get_state(WORLD_ID)["entities"]["workbench"]["state"]["revision"], 0)
+
+            capture = next(e for e in kernel.events(WORLD_ID) if e.action == "residue.capture")
+            kernel.apply(WORLD_ID, "hunter", "workbench.weave", "workbench",
+                         causes=[capture.event_id], idempotency_key="stable-weave",
+                         data={"residue_ids": ["dream-residue-1"]})
+            with self.assertRaisesRegex(WorldError, "different transition"):
+                kernel.apply(WORLD_ID, "hunter", "workbench.weave", "workbench",
+                             causes=[kernel.events(WORLD_ID)[0].event_id],
+                             idempotency_key="stable-weave",
+                             data={"residue_ids": ["dream-residue-1"]})
+
     def test_world_transitions_persist_with_distinct_actor_identity(self):
         import tempfile
         from pathlib import Path
