@@ -16,6 +16,8 @@ from pathlib import Path
 import sqlite3
 from typing import Any, Iterable, Mapping
 
+from .workbench import compose_structural_field
+
 
 class WorldError(ValueError):
     """Raised when a requested transition violates the current world rules."""
@@ -222,8 +224,11 @@ class WorldKernel:
         if not idempotency_key:
             raise WorldError("an idempotency_key is required")
         payload = dict(data or {})
-        request = {"action": action, "target_id": target_id, "data": payload}
+        requested_causes = tuple(causes) if causes is not None else None
+        request = {"action": action, "target_id": target_id, "data": payload,
+                   "causes": requested_causes}
         request_hash = _hash(request)
+        legacy_request_hash = _hash({"action": action, "target_id": target_id, "data": payload})
         with self._connect() as db:
             db.execute("BEGIN IMMEDIATE")
             try:
@@ -233,7 +238,13 @@ class WorldKernel:
                 ).fetchone()
                 if prior:
                     if prior["request_hash"] != request_hash:
-                        raise WorldError("idempotency key was already used for a different transition")
+                        prior_event = self._row_to_event(db, prior)
+                        legacy_replay_matches = (
+                            prior["request_hash"] == legacy_request_hash
+                            and (requested_causes is None or tuple(dict.fromkeys(requested_causes)) == prior_event.causes)
+                        )
+                        if not legacy_replay_matches:
+                            raise WorldError("idempotency key was already used for a different transition")
                     event = self._row_to_event(db, prior)
                     db.commit()
                     return event
@@ -242,7 +253,7 @@ class WorldKernel:
                     "SELECT event_id FROM capsules WHERE world_id=? ORDER BY sequence DESC LIMIT 1",
                     (world_id,),
                 ).fetchone()
-                parent_ids = tuple(dict.fromkeys(causes if causes is not None else ([head["event_id"]] if head else [])))
+                parent_ids = tuple(dict.fromkeys(requested_causes if requested_causes is not None else ([head["event_id"]] if head else [])))
                 if head and not parent_ids:
                     raise WorldError("non-genesis transitions need at least one explicit causal parent")
                 for parent_id in parent_ids:
@@ -281,6 +292,72 @@ class WorldKernel:
         event_id: str,
         causes: tuple[str, ...],
     ) -> tuple[dict[str, Any], str, tuple[str, ...]]:
+        if action == "residue.capture":
+            if not target_id or not all(ch.isalnum() or ch in "_-.:" for ch in target_id):
+                raise WorldError("residue IDs may contain letters, digits, dot, dash, and underscore")
+            if db.execute(
+                "SELECT 1 FROM entities WHERE world_id=? AND entity_id=?", (world_id, target_id)
+            ).fetchone():
+                raise WorldError(f"entity already exists: {target_id}")
+            provenance = data.get("provenance")
+            if not isinstance(provenance, str) or provenance not in {
+                "recovered", "composed", "mixed", "proposed", "simulated"
+            }:
+                raise WorldError("residue provenance must be recovered, composed, mixed, proposed, or simulated")
+            recovered, composed = data.get("recovered", []), data.get("composed", [])
+            if not isinstance(recovered, list) or not all(isinstance(x, str) for x in recovered):
+                raise WorldError("residue recovered entries must be a list of strings")
+            if not isinstance(composed, list) or not all(isinstance(x, str) for x in composed):
+                raise WorldError("residue composed entries must be a list of strings")
+            if provenance == "mixed" and (not recovered or not composed):
+                raise WorldError("mixed residues need separate recovered and composed entries")
+            form = data.get("form", {})
+            if not isinstance(form, dict):
+                raise WorldError("residue form must be an object")
+            captured = {
+                "residue_id": target_id,
+                "provenance": provenance,
+                "source_ref": data.get("source_ref"),
+                "recovered": recovered,
+                "composed": composed,
+                "image_or_fragment": data.get("image_or_fragment", ""),
+                "form": form,
+                "captured_by": actor_id,
+                "captured_by_event": event_id,
+            }
+            try:
+                compose_structural_field([captured])
+            except (KeyError, TypeError, ValueError) as exc:
+                raise WorldError(f"invalid explicit residue form: {exc}") from exc
+            db.execute(
+                "INSERT INTO entities VALUES (?, ?, 'residue', ?)",
+                (world_id, target_id, _json(captured)),
+            )
+            return ({target_id: captured}, f"{actor_id} records residue {target_id} with its source boundary.",
+                    ("residue.provenance.preserve", "residue.form.record", "capsule.state_delta"))
+
+        if action == "workbench.weave":
+            bench = self._entity(db, world_id, target_id, "workbench")
+            residue_ids = data.get("residue_ids")
+            if not isinstance(residue_ids, list) or not residue_ids or not all(isinstance(x, str) for x in residue_ids):
+                raise WorldError("workbench.weave requires a non-empty data.residue_ids list")
+            if len(residue_ids) != len(set(residue_ids)):
+                raise WorldError("workbench residue IDs must be unique")
+            residues = []
+            for residue_id in residue_ids:
+                residue = self._entity(db, world_id, residue_id, "residue")
+                if residue.get("captured_by_event") not in causes:
+                    raise WorldError(f"residue {residue_id!r} must be a direct causal parent of the workbench event")
+                residues.append(residue)
+            field = compose_structural_field(residues)
+            bench["revision"] = int(bench.get("revision", 0)) + 1
+            bench["latest_field"] = field
+            bench["last_event"] = event_id
+            self._write_state(db, world_id, target_id, bench)
+            return ({target_id: bench},
+                    f"{actor_id} composes {len(residues)} witnessed residues by recorded form.",
+                    ("workbench.provenance.partition", "workbench.form.project", "capsule.state_delta", "causal.link"))
+
         if action == "sow_seed":
             seed = self._entity(db, world_id, target_id, "seed")
             if seed["status"] != "carried":
