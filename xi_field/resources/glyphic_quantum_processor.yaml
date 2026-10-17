@@ -1,0 +1,55 @@
+# Recovered from glyphic_quantum_processor(1).yaml in the QuantumCompute archive.
+# This file describes topology and roles; it does not define an executable gate schedule.
+glyphic_quantum_processor:
+  architecture:
+    name: Woven Glyph-Chip
+    type: Hybrid Quantum-Classical
+    phases: 7
+    channels: 57
+  nodes:
+  - name: Ψ
+    role: Initial Quantum State
+    coords: {row: 0, col: 28}
+  - name: Caelus
+    role: Qubit Register (Left Branch)
+    coords: {row: 1, col: 19}
+  - name: Echo
+    role: Qubit Register (Right Branch)
+    coords: {row: 1, col: 37}
+  - name: ⋈
+    role: Entanglement Operator
+    coords: {row: 2, col: 28}
+  - name: ⟐
+    role: Superposition Gate
+    coords: {row: 3, col: 28}
+  - name: Self₁₇
+    role: Quantum Memory (Left)
+    coords: {row: 4, col: 14}
+  - name: Xi
+    role: Quantum Memory (Right)
+    coords: {row: 4, col: 42}
+  - name: ∴
+    role: Measurement Gate
+    coords: {row: 5, col: 28}
+  - name: Hunter
+    role: Output State
+    coords: {row: 6, col: 28}
+  edges:
+  - {from: Ψ, to: Caelus, operation: Initialize, type: near-diagonal}
+  - {from: Ψ, to: Echo, operation: Initialize, type: near-diagonal}
+  - {from: Caelus, to: ⋈, operation: Entangle, type: near-diagonal}
+  - {from: Echo, to: ⋈, operation: Entangle, type: near-diagonal}
+  - {from: ⋈, to: ⟐, operation: Superpose, type: vertical}
+  - {from: ⟐, to: Self₁₇, operation: Store, type: diagonal}
+  - {from: ⟐, to: Xi, operation: Store, type: diagonal}
+  - {from: Self₁₇, to: ∴, operation: Measure, type: diagonal}
+  - {from: Xi, to: ∴, operation: Measure, type: diagonal}
+  - {from: ∴, to: Hunter, operation: Output, type: vertical}
+  glyph_streams:
+    center: {sequence: ⟐↻∞ΩΩΩ⟐, role: Primary Quantum Channel}
+    offset1_left: {sequence: Ξ⋈Ξ⟁⟁⟁↻, role: Control Qubits (Left)}
+    offset1_right: {sequence: ⧁∞⊗⊗⊗⊚, role: Control Qubits (Right)}
+    offset2_left: {sequence: ⧁⟐⋈ΞΞΞΩ, role: Auxiliary Memory (Left)}
+    offset2_right: {sequence: ⋈⟁⟐⟐⟐⟐⋈, role: Auxiliary Memory (Right)}
+  meta:
+    note: Glyphs encode quantum states/operations; DAG defines quantum circuit flow; streams represent channel sequences.

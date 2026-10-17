@@ -292,6 +292,23 @@ class WorldKernel:
         event_id: str,
         causes: tuple[str, ...],
     ) -> tuple[dict[str, Any], str, tuple[str, ...]]:
+        if action == "field.operator":
+            field = self._entity(db, world_id, target_id, "field_state")
+            from xi_field.operators import FieldOperatorError, apply_operator
+            operator = data.get("operator")
+            parameters = data.get("parameters", {})
+            if not isinstance(operator, str) or not isinstance(parameters, dict):
+                raise WorldError("field.operator requires a named operator and parameter object")
+            try:
+                updated, receipt = apply_operator(field, operator, parameters)
+            except FieldOperatorError as exc:
+                raise WorldError(str(exc)) from exc
+            updated["last_event"] = event_id
+            updated["last_operator_receipt"] = receipt
+            self._write_state(db, world_id, target_id, updated)
+            return ({target_id: updated}, f"{actor_id} executes {operator} in the local glyph field.",
+                    ("glyph-chip.operator.execute", "field.sparse-state.preserve", "capsule.state_delta", "causal.link"))
+
         if action == "residue.capture":
             if not target_id or not all(ch.isalnum() or ch in "_-.:" for ch in target_id):
                 raise WorldError("residue IDs may contain letters, digits, dot, dash, and underscore")
