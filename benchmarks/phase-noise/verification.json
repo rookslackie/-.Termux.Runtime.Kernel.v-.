@@ -1,0 +1,30 @@
+{
+  "run_id": "b4c36c933eb86c87fbd6",
+  "source_commit": "a3bc060d8d4dad44973a45be5adc4aa85b5042f4",
+  "results_sha256": "3d2c49e864193d9994f6cf3edac942be7671467b3e7a16700c92ae21262c3725",
+  "ledger_sha256": "ac79207afe2ecb0b6a095913bd3c0f8e3cd8331635399b479e817946e62b47c5",
+  "ledger_gzip_sha256": "4adeec4d820028b6a6ad4ce24d73ad096b4574c327c4de6cbffd996f34026a4b",
+  "scientific_payload_sha256": "8cc6d370533a042ef731b93b961cad43a2c9e9b476c29821c6e65d23abaf087f",
+  "full_replay_trials": 520000,
+  "scientific_results_match": true,
+  "persistent_trace_heads_and_counts_match": true,
+  "verified_worlds": 52,
+  "verified_capsules": 416,
+  "verified_causal_edges": 364,
+  "sqlite_integrity_check": "ok",
+  "github_actions": {
+    "url": "https://github.com/rookslackie/-.Termux.Runtime.Kernel.v-./actions/runs/39146122190",
+    "source_commit": "a3bc060d8d4dad44973a45be5adc4aa85b5042f4",
+    "conclusion": "success",
+    "benchmark_artifact_id": 12143322979
+  },
+  "local_checks": {
+    "pytest": "28 passed",
+    "flake8_E9_F63_F7_F82": "0 findings",
+    "compileall": "passed",
+    "locked_dependency_compatibility": "passed (46 packages)",
+    "http_health_capsules_quantum_field_smoke": "passed",
+    "git_diff_check": "passed"
+  },
+  "replay_note": "Counts, masks, fidelities, intervals and existing SQLite trace hashes match exactly. Host costs differ."
+}
