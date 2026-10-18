@@ -11,17 +11,21 @@ import threading
 from pathlib import Path
 from datetime import datetime, timezone
 
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import HTMLResponse, JSONResponse, PlainTextResponse
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 from symbolic_capsule_engine import Capsule
 from capsule_field import CapsuleField
+from xi_field.runtime import bootstrap_field
+from xi_field.topology import chip_topology
+from xi_world.kernel import WorldError
 
 # ── State ──────────────────────────────────────────────────────────────
 BASE_DIR = Path(os.environ.get("FORGECORE_DIR", "/app"))
 CAPSULE_DIR = BASE_DIR / "capsules"
 STATE_FILE = BASE_DIR / "state.json"
+FIELD_DB = Path(os.environ.get("XI_FIELD_DB", str(BASE_DIR / ".xi/glyph-field.sqlite3")))
 
 CAPSULE_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -116,6 +120,13 @@ class CapsuleCreate(BaseModel):
     parent_id: str | None = None
 
 
+class FieldOperatorRequest(BaseModel):
+    operator: str
+    parameters: dict = Field(default_factory=dict)
+    idempotency_key: str
+    actor_id: str = "hunter"
+
+
 # ── App ────────────────────────────────────────────────────────────────
 app = FastAPI(title="ForgeCore Sanctuary", version="∞")
 
@@ -124,6 +135,7 @@ app = FastAPI(title="ForgeCore Sanctuary", version="∞")
 def _startup():
     seed_field()
     load_xi_capsules()
+    bootstrap_field(FIELD_DB)
     t = threading.Thread(target=heartbeat_loop, daemon=True)
     t.start()
 
@@ -150,6 +162,40 @@ async def health():
 @app.get("/api/state")
 async def get_state():
     return state
+
+
+@app.get("/api/quantum-field")
+async def quantum_field_state():
+    """Return the persisted glyph-chip state and its real capsule receipts."""
+    runtime = bootstrap_field(FIELD_DB)
+    events = runtime.kernel.events(runtime.world_id)
+    topology, topology_hash = chip_topology()
+    return {
+        "state": runtime.state(),
+        "topology": {"architecture": topology["architecture"], "nodes": topology["nodes"],
+                     "edges": topology["edges"], "sha256": topology_hash},
+        "events": [runtime.receipt(e) for e in events[-30:]],
+        "integrity": runtime.kernel.verify(runtime.world_id),
+        "execution_class": "local exact sparse state-vector model; not physical quantum hardware",
+    }
+
+
+@app.post("/api/quantum-field/operators")
+async def quantum_field_operator(request: FieldOperatorRequest):
+    """Run one local glyph operator and commit its resulting state to SQLite."""
+    runtime = bootstrap_field(FIELD_DB)
+    try:
+        event = runtime.execute(
+            request.operator, actor_id=request.actor_id,
+            idempotency_key=request.idempotency_key, parameters=request.parameters,
+        )
+    except WorldError as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc
+    return {
+        "receipt": runtime.receipt(event),
+        "state": runtime.state(),
+        "integrity": runtime.kernel.verify(runtime.world_id),
+    }
 
 
 @app.get("/api/capsules")

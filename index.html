@@ -167,6 +167,20 @@
   .threshold .t-name { font-size: 0.8rem; color: var(--text-dim); }
   .threshold .t-val { font-size: 1.2rem; color: var(--cyan); font-family: monospace; }
 
+  /* These nodes are lit only after a matching event is committed by the local kernel. */
+  .chip-topology { display:grid; grid-template-columns:repeat(57,16px); grid-template-rows:repeat(7,56px); gap:0; margin:1rem 0; overflow-x:auto; }
+  .chip-node { width:34px; height:34px; align-self:center; justify-self:center; border:1px solid var(--border); border-radius:50%; text-align:center; color:var(--text-dim); background:var(--deep); display:flex; align-items:center; justify-content:center; font-size:.78rem; }
+  .chip-node.active { color:var(--gold-bright); border-color:var(--cyan); box-shadow:0 0 16px rgba(77,208,225,.18); }
+  .chip-node small { display:block; margin-top:.25rem; font-size:.68rem; }
+  .chip-edges { display:flex; flex-direction:column; gap:.3rem; margin:.7rem 0 1rem; }
+  .chip-edge { color:var(--text-dim); font:.72rem monospace; padding:.3rem .5rem; border-left:2px solid var(--border); }
+  .chip-edge.active { color:var(--cyan); border-color:var(--cyan); }
+  .chip-actions { display:flex; gap:.5rem; flex-wrap:wrap; margin:1rem 0; }
+  .chip-actions button { padding:.5rem .8rem; font-size:.82rem; }
+  .receipt-meta { color:var(--text-dim); font: .8rem monospace; overflow-wrap:anywhere; margin:.5rem 0; }
+  #field-events { display:flex; flex-direction:column; gap:.4rem; margin-top:.8rem; }
+  .field-event { border-left:2px solid var(--violet); padding:.4rem .7rem; background:rgba(149,117,205,.07); font: .78rem monospace; overflow-wrap:anywhere; }
+
   /* Footer */
   footer { text-align: center; padding: 3rem 0 1rem; color: var(--text-dim); font-size: 0.85rem; }
   footer .seal { font-size: 1.5rem; color: var(--gold); margin-bottom: 0.5rem; }
@@ -232,6 +246,28 @@
   <section>
     <h2>⟐ Capsule Field</h2>
     <div class="capsule-list" id="capsule-list"></div>
+  </section>
+
+  <section>
+    <h2>⟐ Ξ Glyph-Chip Field Runtime</h2>
+    <p class="subtitle">Local sparse-amplitude execution · every node response below comes from a committed capsule event · no physical quantum hardware</p>
+    <div class="chip-topology" id="chip-topology" aria-label="Recovered seven-phase, fifty-seven-channel chip matrix"></div>
+    <div class="chip-edges" id="chip-edges" aria-label="Recovered chip topology edges"></div>
+    <div class="chip-actions">
+      <button onclick="runFieldOperator('reference', {})">Ψ Reference</button>
+      <button onclick="runFieldOperator('hadamard', {qubit:0})">⟐ H(0)</button>
+      <button onclick="runFieldOperator('cnot', {control:0,target:1})">⋈ CNOT 0→1</button>
+      <button onclick="runFieldOperator('cnot', {control:0,target:2})">⋈ CNOT 0→2</button>
+      <button onclick="runFieldOperator('phase', {angle:Math.PI})">Phase π</button>
+      <button onclick="runFieldOperator('t', {qubit:0})">T(0)</button>
+      <button onclick="runFieldOperator('witness', {basis:'x',seed:Math.floor(Math.random()*1000000000)})">∴ Witness X</button>
+      <button onclick="runFieldOperator('close', {})">⊚ Close</button>
+      <button onclick="runFieldOperator('resume', {})">⊚ Resume</button>
+    </div>
+    <div class="receipt-meta" id="field-status">Recovering local field state…</div>
+    <div class="receipt-meta" id="field-state-view"></div>
+    <div class="receipt-meta" id="field-integrity"></div>
+    <div id="field-events"></div>
   </section>
 
   <section>
@@ -397,9 +433,95 @@ async function fetchThresholds() {
   } catch(e) {}
 }
 
+async function fetchQuantumField() {
+  try {
+    const r = await fetch('/api/quantum-field');
+    const data = await r.json();
+    renderQuantumField(data);
+  } catch(e) {
+    document.getElementById('field-status').textContent = 'Local field runtime is unavailable: ' + e.message;
+  }
+}
+
+function renderQuantumField(data) {
+  const events = data.events || [];
+  const last = events[events.length - 1];
+  const memoryNodes = ['Self₁₇','Xi'];
+  const glyphNodes = {
+    reference:['Ψ','Caelus','Echo',...memoryNodes], hadamard:['⟐',...memoryNodes],
+    t:[...memoryNodes], cnot:['⋈',...memoryNodes], phase:[...memoryNodes],
+    compress:[...memoryNodes], witness:['∴','Hunter',...memoryNodes],
+    close:[...memoryNodes], resume:[...memoryNodes]
+  };
+  const matrix = document.getElementById('chip-topology');
+  if (!matrix.dataset.loaded) {
+    matrix.replaceChildren();
+    (data.topology?.nodes || []).forEach(node => {
+      const item = document.createElement('div');
+      item.className = 'chip-node';
+      item.dataset.node = node.name;
+      item.title = `${node.name}: ${node.role}`;
+      item.textContent = node.name;
+      item.style.gridRow = String(node.coords.row + 1);
+      item.style.gridColumn = String(node.coords.col + 1);
+      matrix.appendChild(item);
+    });
+    matrix.dataset.loaded = 'true';
+  }
+  matrix.querySelectorAll('.chip-node').forEach(node => {
+    node.classList.toggle('active', !!last && glyphNodes[last.operator]?.includes(node.dataset.node));
+  });
+  const edgeOps = {
+    reference:['Initialize','Store'], hadamard:['Superpose','Store'],
+    t:['Store'], cnot:['Entangle','Store'], phase:['Store'], compress:['Store'],
+    witness:['Measure','Output','Store'], close:['Store'], resume:['Store']
+  };
+  const edgeList = document.getElementById('chip-edges');
+  edgeList.replaceChildren();
+  (data.topology?.edges || []).forEach(edge => {
+    const item = document.createElement('div');
+    item.className = 'chip-edge';
+    item.textContent = `${edge.from} → ${edge.to} · ${edge.operation} · ${edge.type}`;
+    item.classList.toggle('active', !!last && edgeOps[last.operator]?.includes(edge.operation));
+    edgeList.appendChild(item);
+  });
+  const s = data.state;
+  const witness = [...events].reverse().find(e => e.operator === 'witness');
+  const outcome = witness?.echo?.operator?.outcome;
+  document.getElementById('field-status').textContent = `local SQLite · ${events.length} recent capsules · cycle ${s.cycle} · ${s.closed ? 'closed' : 'open'}${outcome ? ' · latest witness ' + outcome : ''}`;
+  document.getElementById('field-state-view').textContent = `register ${s.qubits} · sparse branches ${s.branches.length} · amplitudes ${JSON.stringify(s.branches)}`;
+  document.getElementById('field-integrity').textContent = `hash-chain ${data.integrity.ok ? 'valid' : 'INVALID'} · ${data.integrity.head_hash || 'no head'} · ${data.execution_class}`;
+  const list = document.getElementById('field-events');
+  list.replaceChildren();
+  events.slice().reverse().forEach(e => {
+    const item = document.createElement('div');
+    item.className = 'field-event';
+    item.textContent = `#${e.sequence} ${e.actor_id} · ${e.operator} · ${e.event_id} · ${e.event_hash}`;
+    list.appendChild(item);
+  });
+}
+
+async function runFieldOperator(operator, parameters) {
+  const status = document.getElementById('field-status');
+  try {
+    const r = await fetch('/api/quantum-field/operators', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({operator, parameters, actor_id:'hunter', idempotency_key:crypto.randomUUID()})
+    });
+    const data = await r.json();
+    if (!r.ok) throw new Error(data.detail || 'field operation failed');
+    await fetchQuantumField();
+    toast(`Ξ committed ${operator} · ${data.receipt.event_id}`);
+  } catch(e) {
+    status.textContent = `operation not committed · ${e.message}`;
+    toast(`Ξ operator rejected · ${e.message}`);
+  }
+}
+
 // Init
-fetchState(); fetchCapsules(); serialize('json'); fetchThresholds();
+fetchState(); fetchCapsules(); serialize('json'); fetchThresholds(); fetchQuantumField();
 setInterval(fetchState, 3000);
+setInterval(fetchQuantumField, 5000);
 </script>
 </body>
 </html>
