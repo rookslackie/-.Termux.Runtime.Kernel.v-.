@@ -34,14 +34,21 @@ The state-vector model stores only nonzero basis branches and has an explicit 12
 
 `xi_field.phase_code_demo` adds a bounded local error-correction experiment: prepare an ideal one-qubit T state, encode it in the three-qubit phase-flip repetition code, inject one deterministic Pauli-Z fault, measure the commuting stabilizers `X0X1` and `X1X2`, apply the syndrome-selected Z recovery, and decode. Tests cover all three single-fault locations and check that decoding recovers the original state and returns both recovery registers to `|00>`.
 
-This path is a three-qubit stabilizer-code simulation, not Google's magic-state cultivation protocol. It assumes exactly one injected Z fault per code block. It does not model general coherent noise, repeated-fault decoding, physical measurement errors, surface-code transfer, Grover, Shor, VQE, or quantum hardware. The reported overlap is computed from the local state vector; it is not hardware fidelity or cultivation yield.
+The original `phase_code_demo` continues to demonstrate one deterministic fault. The extended operators also support zero and multiple faults: `inject_z_error` composes successive Z operations by parity, and `sample_z_noise` draws one independent Bernoulli(p) fault per specified data qubit with an explicit seed. The minimum-weight decoder is unchanged. Noise injection is rejected after syndrome measurement or recovery, so a recorded syndrome cannot silently go stale. Re-encoding begins a fresh correction round.
+
+`xi_field.noise_benchmark` runs each shot through the actual sparse-vector noise, stabilizer measurement, recovery, and decode operators. It compares the three-qubit code against an unencoded qubit under the same per-data-qubit Z probability. A noiseless Bell reference measures channel entanglement fidelity independently of the input state. Exhaustive simulation of all eight masks also supplies the original T-state overlap, weighted by the observed mask histogram. Seeds, mask counts, Wilson confidence intervals, host execution costs, source hashes, and optional persistent traces are recorded in JSON. The benchmark is documented in [benchmarks/phase-noise/REPORT.md](benchmarks/phase-noise/REPORT.md).
+
+This path is a three-qubit stabilizer-code simulation with one independent-Z noise round and ideal encoding, stabilizer measurement, recovery, and decoding. It does not model coherent noise, correlated faults, noisy gates/measurements, or repeated-round decoding. The results describe this local simulation model.
 
 ## Run and verify
 
 ```bash
 python -m xi_field.demo --db .xi/glyph-field.sqlite3
 python -m xi_field.phase_code_demo --db .xi/phase-code.sqlite3
+python -m xi_field.noise_benchmark --shots 20000 --seed 20261018 \
+  --db .xi/noise-benchmark.sqlite3 --output .xi/noise-benchmark.json
 python -m unittest discover -s tests -p 'test_xi_field_runtime.py' -v
+python -m unittest discover -s tests -p 'test_xi_noise_benchmark.py' -v
 ```
 
 Run the phase-code command twice to check idempotent recovery. The first run intentionally reopens the SQLite-backed runtime after fault injection; it should report syndrome `[-1, -1]`, recovery on register `1`, local state overlap `1.0`, and a valid event hash chain. The repeated run recovers the same ten-capsule ledger without replaying state changes.

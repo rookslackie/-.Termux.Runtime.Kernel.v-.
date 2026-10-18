@@ -219,15 +219,47 @@ def apply_operator(state: Mapping[str, Any], operator: str, parameters: Mapping[
             raise FieldOperatorError("closed field; apply resume before another operator")
         if not state.get("phase_code"):
             raise FieldOperatorError("phase-fault injection requires an encoded phase-flip code")
-        if state.get("injected_z_faults"):
-            raise FieldOperatorError("this local recovery path models exactly one injected Z fault")
+        if state.get("phase_syndrome") is not None or state.get("phase_corrected"):
+            raise FieldOperatorError("inject phase faults before syndrome measurement and recovery")
         q = _qubit(params.get("qubit"), 3, "data qubit")
         amplitudes = _pauli_z(amplitudes, q)
         receipt.update(
             qubit=q,
-            error_model="one deterministic Pauli-Z fault",
-            fault_model_limit="one fault per code block",
+            error_model="deterministic Pauli-Z fault; repeated injections compose by parity",
             meaning="injects a controlled software fault for the local correction experiment",
+        )
+    elif operator == "sample_z_noise":
+        if state.get("closed"):
+            raise FieldOperatorError("closed field; apply resume before another operator")
+        if state.get("phase_code") and (
+            state.get("phase_syndrome") is not None or state.get("phase_corrected")
+        ):
+            raise FieldOperatorError("sample phase faults before syndrome measurement and recovery")
+        probability = params.get("p")
+        if (not isinstance(probability, (int, float)) or isinstance(probability, bool)
+                or not math.isfinite(probability) or not 0 <= probability <= 1):
+            raise FieldOperatorError("noise p must be a finite probability from 0 to 1")
+        seed = params.get("seed")
+        if not isinstance(seed, int) or isinstance(seed, bool):
+            raise FieldOperatorError("noise sampling requires an integer seed")
+        targets = params.get("qubits", list(range(3 if state.get("phase_code") else count)))
+        if not isinstance(targets, list) or not targets:
+            raise FieldOperatorError("noise qubits must be a non-empty list of distinct indices")
+        targets = [_qubit(q, 3 if state.get("phase_code") else count) for q in targets]
+        if len(targets) != len(set(targets)):
+            raise FieldOperatorError("noise qubits must be distinct")
+        # One independent Bernoulli draw per named physical qubit, even at p=0/1.
+        rng = random.Random(seed)
+        draws = [rng.random() for _ in targets]
+        faults = [q for q, draw in zip(targets, draws) if draw < probability]
+        for q in faults:
+            amplitudes = _pauli_z(amplitudes, q)
+        receipt.update(
+            p=float(probability), seed=seed, qubits=targets, draws=draws,
+            fault_qubits=faults, fault_count=len(faults),
+            rng="python.random.Random/MT19937; random() < p in qubits order",
+            error_model="independent Bernoulli Pauli-Z; one noise round",
+            meaning="samples zero, single, or multiple software phase faults with a replayable seed",
         )
     elif operator == "phase_syndrome":
         if state.get("closed"):
@@ -273,8 +305,9 @@ def apply_operator(state: Mapping[str, Any], operator: str, parameters: Mapping[
             syndrome=syndrome,
             corrected_qubit=corrected_qubit,
             glyph="⋈",
-            meaning=("applies the single-phase-fault recovery table; guarantees apply only to this "
-                     "three-qubit code under the one-Z-error model"),
+            decoder="minimum-weight; choose zero or one Z from the measured syndrome",
+            meaning=("applies the phase-code recovery table; two or three Z faults can produce "
+                     "an undetected logical error after recovery"),
         )
     elif operator == "decode_phase_code":
         if state.get("closed"):
@@ -342,8 +375,13 @@ def apply_operator(state: Mapping[str, Any], operator: str, parameters: Mapping[
         new_state["phase_syndrome"] = None
         new_state["phase_code_decoded"] = False
         new_state["injected_z_faults"] = []
+        new_state["phase_corrected"] = False
     elif operator == "inject_z_error":
-        new_state["injected_z_faults"] = [receipt["qubit"]]
+        new_state["injected_z_faults"] = list(state.get("injected_z_faults", [])) + [receipt["qubit"]]
+    elif operator == "sample_z_noise":
+        new_state["last_noise_receipt"] = dict(receipt)
+        if state.get("phase_code"):
+            new_state["injected_z_faults"] = list(state.get("injected_z_faults", [])) + receipt["fault_qubits"]
     elif operator == "phase_syndrome":
         new_state["phase_syndrome"] = receipt["syndrome"]
     elif operator == "correct_z_error":

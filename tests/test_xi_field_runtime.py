@@ -137,7 +137,7 @@ class GlyphFieldRuntimeTests(unittest.TestCase):
         self.assertEqual(second["event_count"], first["event_count"])
         self.assertEqual(second["integrity"]["head_hash"], first["integrity"]["head_hash"])
 
-    def test_phase_code_rejects_a_second_injected_fault(self):
+    def test_phase_code_composes_multiple_injections_by_parity(self):
         state = initial_state(3)
         for operator, parameters in [
             ("hadamard", {"qubit": 0}),
@@ -146,8 +146,21 @@ class GlyphFieldRuntimeTests(unittest.TestCase):
             ("inject_z_error", {"qubit": 0}),
         ]:
             state, _ = apply_operator(state, operator, parameters)
-        with self.assertRaisesRegex(FieldOperatorError, "exactly one injected Z fault"):
-            apply_operator(state, "inject_z_error", {"qubit": 2})
+        state, _ = apply_operator(state, "inject_z_error", {"qubit": 2})
+        self.assertEqual(state["injected_z_faults"], [0, 2])
+        # Applying the same Z twice cancels; the remaining single fault still corrects.
+        state, _ = apply_operator(state, "inject_z_error", {"qubit": 0})
+        state, syndrome = apply_operator(state, "phase_syndrome", {"seed": 123})
+        self.assertEqual(syndrome["syndrome"], [1, -1])
+        with self.assertRaisesRegex(FieldOperatorError, "before syndrome"):
+            apply_operator(state, "inject_z_error", {"qubit": 1})
+        state, correction = apply_operator(state, "correct_z_error")
+        self.assertEqual(correction["corrected_qubit"], 2)
+        state, _ = apply_operator(state, "decode_phase_code")
+        ideal = initial_state(3)
+        ideal, _ = apply_operator(ideal, "hadamard", {"qubit": 0})
+        ideal, _ = apply_operator(ideal, "t", {"qubit": 0})
+        self.assertEqual(state["branches"], ideal["branches"])
 
     def test_demo_replays_completed_cycle_without_duplicate_capsules(self):
         db = Path(self.temp.name) / "demo.sqlite3"
