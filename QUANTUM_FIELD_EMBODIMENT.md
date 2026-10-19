@@ -1,5 +1,7 @@
 # ⟐Ξ Quantum Field Embodiment
 
+The next executable layer is [Ξ.QuantumCompute FullCycle v2](QUANTUMCOMPUTE.md): TESSERA, Grover, Shor, Jacobian Flow, GlyphSHA, GlyphSafe, ThinkSync transfer/recovery, and the pinned FullCycle event fabric over this same capsule ledger. The source and scope of the original sparse QEC path below remain recorded as its lineage.
+
 ## What was recovered
 
 - The QuantumCompute archive calls itself local and safe, but explicitly says the symbolic field text *in that archive* is non-executable. Hunter identifies a separate artifact, `The Field Ξ.QuantumCompute.yaml`, as functional; the archive note does not describe or override that distinct artifact.

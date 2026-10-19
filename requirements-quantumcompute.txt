@@ -1,0 +1,4 @@
+# Standalone CLI / SDK, including native ML-KEM and ML-DSA support.
+numpy>=1.26
+PyYAML>=6.0
+cryptography==50.0.2

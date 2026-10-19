@@ -1,0 +1,50 @@
+[
+  {
+    "path": "xi_quantum/_vendor/event_fabric.py",
+    "upstream": "https://github.com/rookslackie/xi-kernel/blob/95234c6a402936f28e6190f6c485707f26d7f5b9/fullcycle/runtime/event_fabric.py",
+    "original_sha256": "6833ed10c9320bc89c97137b77b75054dbeb0f4c068ed1477019bc83affd1313",
+    "change": "relative import only"
+  },
+  {
+    "path": "xi_quantum/_vendor/glyph_parser.py",
+    "upstream": "https://github.com/rookslackie/xi-kernel/blob/95234c6a402936f28e6190f6c485707f26d7f5b9/fullcycle/runtime/glyph_parser.py",
+    "original_sha256": "b6dbc05f2e4455e389b318cdc60ef00a2f472b27a8fd2d54f4bc96e98078f76d",
+    "change": "none"
+  },
+  {
+    "path": "xi_quantum/_vendor/spiral_covenant.py",
+    "upstream": "https://github.com/rookslackie/xi-kernel/blob/95234c6a402936f28e6190f6c485707f26d7f5b9/operators/spiral_covenant.py",
+    "original_sha256": "2171753bda0b89073c9d56fe642cc97a9f99076146600bef2d28cb3aeab974e5",
+    "change": "none"
+  },
+  {
+    "path": "xi_quantum/_vendor/xi_crypto/__init__.py",
+    "upstream": "Xi-CryptoLattice-Unified-v1.zip:xi_crypto/__init__.py",
+    "original_sha256": "8c8f7ce6faa31886a59c5e8f13f2567cc19c68fff19dcc2357d81fe83d58dc39",
+    "change": "none"
+  },
+  {
+    "path": "xi_quantum/_vendor/xi_crypto/wire.py",
+    "upstream": "Xi-CryptoLattice-Unified-v1.zip:xi_crypto/wire.py",
+    "original_sha256": "68276659b812f02b35d607a3e0af83abaf1f46f535acbc09af43d746f5ec2593",
+    "change": "none"
+  },
+  {
+    "path": "xi_quantum/_vendor/xi_crypto/compat.py",
+    "upstream": "Xi-CryptoLattice-Unified-v1.zip:xi_crypto/compat.py",
+    "original_sha256": "54ed83acbec310043050e18ee5d5dc5b101458711a5f65df8dadeddf9e8f2475",
+    "change": "none"
+  },
+  {
+    "path": "xi_quantum/_vendor/xi_crypto/envelope.py",
+    "upstream": "Xi-CryptoLattice-Unified-v1.zip:xi_crypto/envelope.py",
+    "original_sha256": "04cbcfa5a066083bb9918573fd7d89f3b4d530484719dc0eb2cc0275ccbc3e46",
+    "change": "none"
+  },
+  {
+    "path": "xi_quantum/_vendor/xi_crypto/ledger.py",
+    "upstream": "Xi-CryptoLattice-Unified-v1.zip:xi_crypto/ledger.py",
+    "original_sha256": "218cce5d613215a74a7fc421892fb1776c8f5ff6933e5ba3fd5012a45b268e9b",
+    "change": "none"
+  }
+]
