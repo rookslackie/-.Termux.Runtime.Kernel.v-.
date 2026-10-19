@@ -1,0 +1,28 @@
+{
+  "date": "2026-10-19",
+  "scope": "Local Xi regression and boundary checks on a partial source snapshot at 6276be76fe5a4243676691db8e51a63281888763; no host deployment",
+  "python": "3.12.14",
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.39",
+  "checks": [
+    {
+      "name": "xi_regression_and_boundary",
+      "command": "python -m pytest tests test_symbolic_capsule_engine.py -q",
+      "exit_code": 0,
+      "seconds": 6.491,
+      "stdout": "....................................                                     [100%]\n36 passed in 6.25s\n",
+      "stderr": ""
+    },
+    {
+      "name": "xi_compile",
+      "command": "python -m compileall -q xi_world xi_field tests/test_xi_authority_boundaries.py",
+      "exit_code": 0,
+      "seconds": 0.104,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "os_isolation": "NOT_TESTED",
+  "power_loss": "NOT_DEMONSTRATED",
+  "production_admission": "CLOSED",
+  "model_calls": 0
+}
