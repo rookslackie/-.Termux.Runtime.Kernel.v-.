@@ -1,0 +1,2980 @@
+{
+  "schema": "xi.quantumcompute.verification.v2",
+  "seed": 20261019,
+  "source_commit": "98904c263dbccd86908eee9411f27b78826d4dc9",
+  "engine_sha256": "424c8585ebd7b11acea4bcf701528d65a7a16358510a0c0836d35e74ae08e844",
+  "sources": {
+    "xi_quantum/algorithms.py": {
+      "sha256": "57627f8a9d39ab02f8ec6adcb672e2c87f00b10a47a4d7676863ed0791bbbd63",
+      "url": "https://github.com/rookslackie/-.Termux.Runtime.Kernel.v-./blob/98904c263dbccd86908eee9411f27b78826d4dc9/xi_quantum/algorithms.py"
+    },
+    "xi_quantum/glyphsafe.py": {
+      "sha256": "b7ec61aa39b9a003c8c8585c6ee3aa310a1825541858571d62a42be831fc4e56",
+      "url": "https://github.com/rookslackie/-.Termux.Runtime.Kernel.v-./blob/98904c263dbccd86908eee9411f27b78826d4dc9/xi_quantum/glyphsafe.py"
+    },
+    "xi_quantum/thinksync.py": {
+      "sha256": "1b3abd53af57ebc9c318ebc948f8386d531bb95d93e747c4e6d6ca430da65979",
+      "url": "https://github.com/rookslackie/-.Termux.Runtime.Kernel.v-./blob/98904c263dbccd86908eee9411f27b78826d4dc9/xi_quantum/thinksync.py"
+    },
+    "xi_quantum/tessera.py": {
+      "sha256": "ef4ab0283924e5ac0dac4411469daf7f2d5add5120db7552d050ecd3f58b678a",
+      "url": "https://github.com/rookslackie/-.Termux.Runtime.Kernel.v-./blob/98904c263dbccd86908eee9411f27b78826d4dc9/xi_quantum/tessera.py"
+    },
+    "xi_quantum/runtime.py": {
+      "sha256": "92f77b8908d324d73b29b6d2189556d844584615b7447f099d6fda1bdf667a50",
+      "url": "https://github.com/rookslackie/-.Termux.Runtime.Kernel.v-./blob/98904c263dbccd86908eee9411f27b78826d4dc9/xi_quantum/runtime.py"
+    },
+    "xi_quantum/ledger.py": {
+      "sha256": "3ab874aa4449b25a9c9b3ad5afd0d42319cfd8a706df3f56403f902d71d94540",
+      "url": "https://github.com/rookslackie/-.Termux.Runtime.Kernel.v-./blob/98904c263dbccd86908eee9411f27b78826d4dc9/xi_quantum/ledger.py"
+    },
+    "xi_world/kernel.py": {
+      "sha256": "0862c0732112a4cd1a6328ef7f6c0fa4164bd7b3761458964473ae223b04d4f3",
+      "url": "https://github.com/rookslackie/-.Termux.Runtime.Kernel.v-./blob/98904c263dbccd86908eee9411f27b78826d4dc9/xi_world/kernel.py"
+    },
+    "xi_field/operators.py": {
+      "sha256": "06c7d69ff24aa7d640c764150c77981514ea3437b00f48c6538fa25a9d1cf09e",
+      "url": "https://github.com/rookslackie/-.Termux.Runtime.Kernel.v-./blob/98904c263dbccd86908eee9411f27b78826d4dc9/xi_field/operators.py"
+    },
+    "tests/test_xi_quantumcompute.py": {
+      "sha256": "c3d075c5fecb2603723b17840a460e4a449047ebf09acce1c54cf40b24699ef4",
+      "url": "https://github.com/rookslackie/-.Termux.Runtime.Kernel.v-./blob/98904c263dbccd86908eee9411f27b78826d4dc9/tests/test_xi_quantumcompute.py"
+    },
+    ".github/workflows/python-package-conda.yml": {
+      "sha256": "899103434cfde091b54e5de73e97ab913f638dbc9968caae23ece6e592b6a667",
+      "url": "https://github.com/rookslackie/-.Termux.Runtime.Kernel.v-./blob/98904c263dbccd86908eee9411f27b78826d4dc9/.github/workflows/python-package-conda.yml"
+    },
+    "benchmarks/verify_quantumcompute.py": {
+      "sha256": "27817e44526f4fe7a0dadcd126831a8995d5bc9e4f903932a684a9099972bb4c",
+      "url": "https://github.com/rookslackie/-.Termux.Runtime.Kernel.v-./blob/98904c263dbccd86908eee9411f27b78826d4dc9/benchmarks/verify_quantumcompute.py"
+    }
+  },
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "platform": "Linux-6.18.55-x86_64-with-glibc2.39",
+    "openssl": "OpenSSL 4.0.3 29 Sep 2026",
+    "packages": {
+      "numpy": "2.5.4",
+      "PyYAML": "6.0.3",
+      "cryptography": "50.0.2"
+    }
+  },
+  "profile": {
+    "name": "mobile",
+    "memory_mib": 64,
+    "max_iterations": 4096
+  },
+  "grover": [
+    {
+      "algorithm": "Grover",
+      "execution": "exact numerical state-vector",
+      "qubits": 2,
+      "iterations": 1,
+      "oracle_phase": 3.141592653589793,
+      "marked": [
+        3
+      ],
+      "success_probability": 1.0,
+      "ideal_prediction": 1.0,
+      "counts": {
+        "3": 4096
+      },
+      "shots": 4096,
+      "seed": 20261019,
+      "norm_squared": 1.0,
+      "state_sha256": "d4627f4c7837c6b1ec12fad49fe21aee8da82c25be00eeaf3c90c022a7361fe3",
+      "resources": {
+        "profile": "mobile",
+        "memory_budget_mib": 64,
+        "simulated_qubits": 2,
+        "basis_states": 4,
+        "estimated_workspace_bytes": 384
+      },
+      "wall_seconds": 0.001926694003486773
+    },
+    {
+      "algorithm": "Grover",
+      "execution": "exact numerical state-vector",
+      "qubits": 3,
+      "iterations": 2,
+      "oracle_phase": 3.141592653589793,
+      "marked": [
+        5
+      ],
+      "success_probability": 0.9453124999999998,
+      "ideal_prediction": 0.9453124999999999,
+      "counts": {
+        "5": 3874,
+        "3": 35,
+        "2": 40,
+        "4": 28,
+        "0": 26,
+        "7": 37,
+        "6": 31,
+        "1": 25
+      },
+      "shots": 4096,
+      "seed": 20261019,
+      "norm_squared": 0.9999999999999998,
+      "state_sha256": "770782efe7f612a8da8a8dcf0baade4d7ecaefe5094f58c331b23b5dd8974111",
+      "resources": {
+        "profile": "mobile",
+        "memory_budget_mib": 64,
+        "simulated_qubits": 3,
+        "basis_states": 8,
+        "estimated_workspace_bytes": 768
+      },
+      "wall_seconds": 0.0016169849986908957
+    },
+    {
+      "algorithm": "Grover",
+      "execution": "exact numerical state-vector",
+      "qubits": 4,
+      "iterations": 2,
+      "oracle_phase": 3.141592653589793,
+      "marked": [
+        3,
+        11
+      ],
+      "success_probability": 0.9453125,
+      "ideal_prediction": 0.9453124999999999,
+      "counts": {
+        "11": 1895,
+        "3": 1977,
+        "0": 13,
+        "6": 24,
+        "14": 15,
+        "5": 17,
+        "15": 22,
+        "13": 20,
+        "10": 14,
+        "12": 11,
+        "1": 13,
+        "4": 18,
+        "8": 19,
+        "9": 17,
+        "7": 12,
+        "2": 9
+      },
+      "shots": 4096,
+      "seed": 20261019,
+      "norm_squared": 1.0,
+      "state_sha256": "85edea555060a3546cfeb360f3a9bbe384fe5627a60c355e30cc47bed8d488fe",
+      "resources": {
+        "profile": "mobile",
+        "memory_budget_mib": 64,
+        "simulated_qubits": 4,
+        "basis_states": 16,
+        "estimated_workspace_bytes": 1536
+      },
+      "wall_seconds": 0.001585589001479093
+    }
+  ],
+  "shor": [
+    {
+      "algorithm": "Shor",
+      "execution": "exact conditional order-finding state-vector",
+      "N": 15,
+      "a": 2,
+      "order": 4,
+      "factors": [
+        3,
+        5
+      ],
+      "factor_product_verified": true,
+      "precision_qubits": 8,
+      "work_qubits": 4,
+      "circuit_qubits": 12,
+      "work_measurement": 4,
+      "work_measurement_probability": 0.25,
+      "phase_counts": {
+        "192": 64,
+        "128": 69,
+        "0": 70,
+        "64": 53
+      },
+      "validated_period_candidates": {
+        "192": 4,
+        "64": 4
+      },
+      "shots": 256,
+      "seed": 20261019,
+      "norm_squared": 1.0,
+      "clock_state_sha256": "71c6d6d8f9fc5af7f37b286c720b7f4a89c3c56ffa9089d26143ac5d453f6928",
+      "order_source": "continued fractions of measured inverse-QFT outcomes; modular verification",
+      "resources": {
+        "profile": "mobile",
+        "memory_budget_mib": 64,
+        "simulated_qubits": 8,
+        "basis_states": 256,
+        "estimated_workspace_bytes": 24576
+      },
+      "wall_seconds": 0.0016607700017630123
+    },
+    {
+      "algorithm": "Shor",
+      "execution": "exact conditional order-finding state-vector",
+      "N": 21,
+      "a": 2,
+      "order": 6,
+      "factors": [
+        3,
+        7
+      ],
+      "factor_product_verified": true,
+      "precision_qubits": 10,
+      "work_qubits": 5,
+      "circuit_qubits": 15,
+      "work_measurement": 8,
+      "work_measurement_probability": 0.1669921875,
+      "phase_counts": {
+        "683": 39,
+        "171": 29,
+        "0": 41,
+        "853": 23,
+        "344": 1,
+        "172": 2,
+        "170": 8,
+        "680": 2,
+        "854": 4,
+        "341": 28,
+        "856": 2,
+        "682": 7,
+        "512": 48,
+        "860": 1,
+        "167": 1,
+        "342": 5,
+        "169": 3,
+        "852": 1,
+        "343": 2,
+        "613": 1,
+        "347": 1,
+        "339": 1,
+        "340": 1,
+        "857": 1,
+        "684": 2,
+        "850": 1,
+        "685": 1
+      },
+      "validated_period_candidates": {
+        "171": 6,
+        "853": 6,
+        "172": 6,
+        "170": 6,
+        "854": 6,
+        "856": 6,
+        "167": 6,
+        "169": 6,
+        "852": 6,
+        "857": 6,
+        "850": 6
+      },
+      "shots": 256,
+      "seed": 20261019,
+      "norm_squared": 0.9999999999999998,
+      "clock_state_sha256": "ef76cb8417bb898ed3d2e8fbd416b7852633b80acd4ecf26fd620680227d040f",
+      "order_source": "continued fractions of measured inverse-QFT outcomes; modular verification",
+      "resources": {
+        "profile": "mobile",
+        "memory_budget_mib": 64,
+        "simulated_qubits": 10,
+        "basis_states": 1024,
+        "estimated_workspace_bytes": 98304
+      },
+      "wall_seconds": 0.0005888220002816524
+    },
+    {
+      "algorithm": "Shor",
+      "execution": "exact conditional order-finding state-vector",
+      "N": 35,
+      "a": 2,
+      "order": 12,
+      "factors": [
+        5,
+        7
+      ],
+      "factor_product_verified": true,
+      "precision_qubits": 12,
+      "work_qubits": 6,
+      "circuit_qubits": 18,
+      "work_measurement": 18,
+      "work_measurement_probability": 0.083251953125,
+      "phase_counts": {
+        "3072": 31,
+        "2732": 1,
+        "683": 19,
+        "0": 19,
+        "3413": 9,
+        "1708": 2,
+        "342": 4,
+        "1024": 14,
+        "684": 3,
+        "341": 16,
+        "2729": 1,
+        "3755": 10,
+        "2731": 11,
+        "1366": 3,
+        "3756": 2,
+        "2730": 6,
+        "3750": 1,
+        "2048": 24,
+        "3758": 1,
+        "681": 1,
+        "2389": 15,
+        "2390": 5,
+        "1707": 13,
+        "682": 6,
+        "3752": 2,
+        "343": 1,
+        "2715": 1,
+        "334": 1,
+        "1365": 14,
+        "2387": 1,
+        "3414": 1,
+        "1706": 2,
+        "1709": 1,
+        "1367": 1,
+        "3441": 1,
+        "1364": 1,
+        "2393": 1,
+        "1705": 2,
+        "2391": 1,
+        "3415": 2,
+        "3754": 1,
+        "3757": 1,
+        "2392": 1,
+        "2742": 1,
+        "3746": 1,
+        "3412": 1
+      },
+      "validated_period_candidates": {
+        "1708": 12,
+        "342": 12,
+        "341": 12,
+        "3755": 12,
+        "3756": 12,
+        "3750": 12,
+        "3758": 12,
+        "2389": 12,
+        "2390": 12,
+        "1707": 12,
+        "3752": 12,
+        "343": 12,
+        "2387": 12,
+        "1706": 12,
+        "1709": 12,
+        "2393": 12,
+        "1705": 12,
+        "2391": 12,
+        "3754": 12,
+        "3757": 12,
+        "2392": 12
+      },
+      "shots": 256,
+      "seed": 20261019,
+      "norm_squared": 1.0,
+      "clock_state_sha256": "ce725e2cc7d6cf085434a217e3bcfb3ee515b7e0683269200c1558e71e9f4e06",
+      "order_source": "continued fractions of measured inverse-QFT outcomes; modular verification",
+      "resources": {
+        "profile": "mobile",
+        "memory_budget_mib": 64,
+        "simulated_qubits": 12,
+        "basis_states": 4096,
+        "estimated_workspace_bytes": 393216
+      },
+      "wall_seconds": 0.0019471339983283542
+    },
+    {
+      "algorithm": "Shor",
+      "execution": "exact conditional order-finding state-vector",
+      "N": 77,
+      "a": 2,
+      "order": 30,
+      "factors": [
+        7,
+        11
+      ],
+      "factor_product_verified": true,
+      "precision_qubits": 14,
+      "work_qubits": 7,
+      "circuit_qubits": 21,
+      "work_measurement": 46,
+      "work_measurement_probability": 0.0333251953125,
+      "phase_counts": {
+        "12561": 16,
+        "12015": 9,
+        "13107": 9,
+        "3277": 15,
+        "546": 11,
+        "13654": 1,
+        "7646": 7,
+        "2184": 1,
+        "4915": 4,
+        "3823": 6,
+        "1092": 8,
+        "10922": 2,
+        "2185": 4,
+        "15837": 1,
+        "4369": 7,
+        "6553": 1,
+        "15838": 7,
+        "10923": 7,
+        "14746": 7,
+        "11469": 6,
+        "9284": 8,
+        "15292": 6,
+        "2730": 3,
+        "2731": 7,
+        "8738": 8,
+        "6552": 1,
+        "8192": 9,
+        "9830": 5,
+        "6026": 1,
+        "10377": 4,
+        "7100": 8,
+        "13653": 5,
+        "13702": 1,
+        "1638": 8,
+        "10363": 1,
+        "0": 6,
+        "10917": 1,
+        "9831": 2,
+        "4368": 1,
+        "6007": 4,
+        "14199": 2,
+        "14744": 1,
+        "7098": 1,
+        "6008": 3,
+        "6554": 4,
+        "14188": 1,
+        "9834": 2,
+        "5461": 5,
+        "10376": 3,
+        "10378": 3,
+        "7101": 1,
+        "9285": 2,
+        "1639": 2,
+        "14747": 1,
+        "6009": 1,
+        "11473": 1,
+        "9828": 1,
+        "6006": 1,
+        "5462": 1,
+        "12562": 1,
+        "1629": 1
+      },
+      "validated_period_candidates": {
+        "12561": 30,
+        "546": 30,
+        "3823": 30,
+        "15837": 30,
+        "15838": 30,
+        "9284": 30,
+        "10377": 30,
+        "7100": 30,
+        "6007": 30,
+        "7098": 30,
+        "6008": 30,
+        "10376": 30,
+        "10378": 30,
+        "7101": 30,
+        "9285": 30,
+        "6009": 30,
+        "6006": 30,
+        "12562": 30
+      },
+      "shots": 256,
+      "seed": 20261019,
+      "norm_squared": 1.0,
+      "clock_state_sha256": "22177a7236d595a93ce58d3db1b65989363f59660bfb5d038b6c6af196aa8ee2",
+      "order_source": "continued fractions of measured inverse-QFT outcomes; modular verification",
+      "resources": {
+        "profile": "mobile",
+        "memory_budget_mib": 64,
+        "simulated_qubits": 14,
+        "basis_states": 16384,
+        "estimated_workspace_bytes": 1572864
+      },
+      "wall_seconds": 0.00904894300037995
+    },
+    {
+      "algorithm": "Shor",
+      "execution": "exact conditional order-finding state-vector",
+      "N": 143,
+      "a": 2,
+      "order": 60,
+      "factors": [
+        11,
+        13
+      ],
+      "factor_product_verified": true,
+      "precision_qubits": 16,
+      "work_qubits": 8,
+      "circuit_qubits": 24,
+      "work_measurement": 72,
+      "work_measurement_probability": 0.01666259765625,
+      "phase_counts": {
+        "50244": 7,
+        "48060": 2,
+        "53521": 5,
+        "13107": 7,
+        "3277": 7,
+        "55706": 2,
+        "31676": 4,
+        "8738": 1,
+        "20753": 2,
+        "15292": 4,
+        "5461": 5,
+        "14199": 3,
+        "43691": 5,
+        "3276": 1,
+        "9830": 2,
+        "63349": 1,
+        "17476": 3,
+        "26214": 2,
+        "64444": 5,
+        "63351": 2,
+        "44783": 4,
+        "60074": 3,
+        "46968": 2,
+        "51337": 4,
+        "37137": 7,
+        "2187": 1,
+        "13108": 1,
+        "62259": 2,
+        "10922": 1,
+        "61167": 3,
+        "2185": 1,
+        "12015": 3,
+        "36045": 2,
+        "34952": 2,
+        "32768": 4,
+        "39322": 3,
+        "25124": 1,
+        "42598": 3,
+        "17477": 1,
+        "30584": 2,
+        "29491": 6,
+        "28399": 3,
+        "13112": 1,
+        "33860": 4,
+        "34956": 1,
+        "55728": 1,
+        "10923": 4,
+        "6556": 1,
+        "54613": 2,
+        "41505": 1,
+        "9831": 1,
+        "0": 2,
+        "52429": 4,
+        "43688": 1,
+        "40414": 4,
+        "17466": 1,
+        "49152": 5,
+        "30583": 1,
+        "6554": 2,
+        "5460": 1,
+        "24030": 5,
+        "38229": 1,
+        "1092": 4,
+        "56798": 2,
+        "58982": 1,
+        "40413": 1,
+        "42597": 1,
+        "25122": 4,
+        "26215": 1,
+        "18565": 1,
+        "56797": 1,
+        "14198": 1,
+        "22938": 2,
+        "34953": 3,
+        "45875": 2,
+        "41506": 3,
+        "6553": 2,
+        "58987": 1,
+        "8739": 1,
+        "55705": 1,
+        "21845": 2,
+        "54614": 1,
+        "61179": 1,
+        "2184": 1,
+        "13109": 1,
+        "42599": 3,
+        "27307": 3,
+        "29492": 1,
+        "51336": 4,
+        "33859": 1,
+        "38230": 2,
+        "14200": 1,
+        "7646": 4,
+        "50245": 1,
+        "7645": 1,
+        "58983": 2,
+        "60075": 1,
+        "46967": 2,
+        "16384": 2,
+        "4369": 2,
+        "46973": 1,
+        "39321": 2,
+        "18571": 1,
+        "48062": 1,
+        "22937": 2,
+        "60073": 1,
+        "18569": 1,
+        "19661": 2,
+        "51343": 1,
+        "10924": 2,
+        "6548": 1,
+        "48059": 1
+      },
+      "validated_period_candidates": {
+        "53521": 60,
+        "31676": 60,
+        "20753": 60,
+        "14199": 60,
+        "64444": 60,
+        "44783": 60,
+        "46968": 60,
+        "51337": 60,
+        "12015": 60,
+        "25124": 60,
+        "33860": 60,
+        "40414": 60,
+        "1092": 60,
+        "40413": 60,
+        "25122": 60,
+        "18565": 60,
+        "14198": 60,
+        "51336": 60,
+        "33859": 60,
+        "14200": 60,
+        "7646": 60,
+        "7645": 60,
+        "46967": 60,
+        "18571": 60,
+        "18569": 60
+      },
+      "shots": 256,
+      "seed": 20261019,
+      "norm_squared": 1.0000000000000002,
+      "clock_state_sha256": "4f522a4df8725215568b2e8e9d1427ebfbfaf14324bb5b2538a569418e0885db",
+      "order_source": "continued fractions of measured inverse-QFT outcomes; modular verification",
+      "resources": {
+        "profile": "mobile",
+        "memory_budget_mib": 64,
+        "simulated_qubits": 16,
+        "basis_states": 65536,
+        "estimated_workspace_bytes": 6291456
+      },
+      "wall_seconds": 0.0379645149987482
+    },
+    {
+      "algorithm": "Shor",
+      "execution": "exact conditional order-finding state-vector",
+      "N": 221,
+      "a": 2,
+      "order": 24,
+      "factors": [
+        13,
+        17
+      ],
+      "factor_product_verified": true,
+      "precision_qubits": 16,
+      "work_qubits": 8,
+      "circuit_qubits": 24,
+      "work_measurement": 70,
+      "work_measurement_probability": 0.0416717529296875,
+      "phase_counts": {
+        "49152": 17,
+        "46422": 2,
+        "51883": 9,
+        "13653": 11,
+        "2731": 9,
+        "54613": 6,
+        "30038": 3,
+        "8192": 6,
+        "19115": 4,
+        "10923": 8,
+        "13654": 3,
+        "5461": 10,
+        "43690": 2,
+        "2730": 3,
+        "62805": 4,
+        "16384": 8,
+        "24576": 11,
+        "62806": 3,
+        "10924": 1,
+        "43691": 7,
+        "60072": 1,
+        "46421": 7,
+        "51882": 3,
+        "51880": 1,
+        "35500": 2,
+        "62807": 1,
+        "60075": 6,
+        "10922": 4,
+        "35499": 7,
+        "32768": 12,
+        "38229": 7,
+        "13650": 1,
+        "40960": 14,
+        "30037": 5,
+        "27307": 7,
+        "30035": 1,
+        "35498": 2,
+        "54614": 2,
+        "5462": 4,
+        "60073": 2,
+        "0": 7,
+        "43683": 1,
+        "5457": 1,
+        "38228": 1,
+        "57344": 6,
+        "38230": 1,
+        "30039": 1,
+        "21845": 6,
+        "46416": 1,
+        "27306": 2,
+        "30036": 1,
+        "51881": 1,
+        "5463": 1,
+        "10925": 1,
+        "21846": 2,
+        "38233": 1,
+        "19114": 2,
+        "46428": 1,
+        "60070": 1,
+        "35321": 1,
+        "60076": 1
+      },
+      "validated_period_candidates": {
+        "46422": 24,
+        "51883": 24,
+        "13653": 24,
+        "2731": 24,
+        "30038": 24,
+        "19115": 24,
+        "13654": 24,
+        "2730": 24,
+        "62805": 24,
+        "62806": 24,
+        "46421": 24,
+        "51882": 24,
+        "51880": 24,
+        "35500": 24,
+        "62807": 24,
+        "35499": 24,
+        "13650": 24,
+        "30037": 24,
+        "30035": 24,
+        "35498": 24,
+        "30039": 24,
+        "46416": 24,
+        "30036": 24,
+        "51881": 24,
+        "19114": 24,
+        "46428": 24
+      },
+      "shots": 256,
+      "seed": 20261019,
+      "norm_squared": 1.0000000000000004,
+      "clock_state_sha256": "fb6ba9a5b7d413eaae104fb0ca0a6c5b3431718e0936140a378bca50d3136b5c",
+      "order_source": "continued fractions of measured inverse-QFT outcomes; modular verification",
+      "resources": {
+        "profile": "mobile",
+        "memory_budget_mib": 64,
+        "simulated_qubits": 16,
+        "basis_states": 65536,
+        "estimated_workspace_bytes": 6291456
+      },
+      "wall_seconds": 0.027452853002614575
+    }
+  ],
+  "jacobian_flow": {
+    "algorithm": "JacobianFlow",
+    "binding": "Grover oracle-phase coordinate",
+    "coordinate": "radians",
+    "map": "F(phi)=marked-state probability after the declared Grover circuit",
+    "update": "witnessed gradient ascent with backtracking; each phase selects unitary gates",
+    "epsilon": 0.0001,
+    "history": [
+      {
+        "step": 0,
+        "phase": 1.5707963267948966,
+        "success_probability": 0.6250000000000001,
+        "jacobian": [
+          [
+            0.37499999937351536
+          ]
+        ],
+        "curvature": -3.3306690738754696e-08,
+        "next_phase": 1.945796326168412,
+        "next_success_probability": 0.7623521981886622,
+        "backtracks": 0
+      },
+      {
+        "step": 1,
+        "phase": 1.945796326168412,
+        "success_probability": 0.7623521981886622,
+        "jacobian": [
+          [
+            0.3489403577217054
+          ]
+        ],
+        "curvature": -0.1373522184877629,
+        "next_phase": 2.2947366838901173,
+        "next_success_probability": 0.8733782231543398,
+        "backtracks": 0
+      },
+      {
+        "step": 2,
+        "phase": 2.2947366838901173,
+        "success_probability": 0.8733782231543398,
+        "jacobian": [
+          [
+            0.2809506326734157
+          ]
+        ],
+        "curvature": -0.24837826240187155,
+        "next_phase": 2.575687316563533,
+        "next_success_probability": 0.9415388209748761,
+        "backtracks": 0
+      },
+      {
+        "step": 3,
+        "phase": 2.575687316563533,
+        "success_probability": 0.9415388209748761,
+        "jacobian": [
+          [
+            0.20106758734594887
+          ]
+        ],
+        "curvature": -0.3165387840731171,
+        "next_phase": 2.776754903909482,
+        "next_success_probability": 0.9753181240022795,
+        "backtracks": 0
+      },
+      {
+        "step": 4,
+        "phase": 2.776754903909482,
+        "success_probability": 0.9753181240022795,
+        "jacobian": [
+          [
+            0.13379914773958834
+          ]
+        ],
+        "curvature": -0.3503180967534547,
+        "next_phase": 2.91055405164907,
+        "next_success_probability": 0.9900359095020851,
+        "backtracks": 0
+      },
+      {
+        "step": 5,
+        "phase": 2.91055405164907,
+        "success_probability": 0.9900359095020851,
+        "jacobian": [
+          [
+            0.08587074443289211
+          ]
+        ],
+        "curvature": -0.3650358904039308,
+        "next_phase": 2.9964247960819623,
+        "next_success_probability": 0.9960556141724224,
+        "backtracks": 0
+      },
+      {
+        "step": 6,
+        "phase": 2.9964247960819623,
+        "success_probability": 0.9960556141724224,
+        "jacobian": [
+          [
+            0.05424694628441973
+          ]
+        ],
+        "curvature": -0.37105553074567865,
+        "next_phase": 3.050671742366382,
+        "next_success_probability": 0.99845107770118,
+        "backtracks": 0
+      },
+      {
+        "step": 7,
+        "phase": 3.050671742366382,
+        "success_probability": 0.99845107770118,
+        "jacobian": [
+          [
+            0.03404838556930745
+          ]
+        ],
+        "curvature": -0.37345105896591235,
+        "next_phase": 3.0847201279356895,
+        "next_success_probability": 0.9993936976666977,
+        "backtracks": 0
+      }
+    ],
+    "final_phase": 3.0847201279356895,
+    "norm_verified_on_every_evaluation": true,
+    "initial_success_probability": 0.6250000000000001,
+    "final_success_probability": 0.9993936976666977,
+    "resources": {
+      "profile": "mobile",
+      "memory_budget_mib": 64,
+      "simulated_qubits": 2,
+      "basis_states": 4,
+      "estimated_workspace_bytes": 384
+    },
+    "wall_seconds": 0.0006095319986343384
+  },
+  "glyphsafe": {
+    "suite": "ML-KEM-768/HKDF-SHA256/ChaCha20Poly1305/ML-DSA-65",
+    "exact_byte_roundtrips": 10,
+    "payload_bytes": 842,
+    "encrypted_packet_bytes": [
+      12178,
+      12178,
+      12178,
+      12178,
+      12178,
+      12178,
+      12178,
+      12178,
+      12178,
+      12179
+    ],
+    "wall_seconds": 0.021968010001728544
+  },
+  "fullcycle": {
+    "schema": "xi.quantumcompute.fullcycle-test.v2",
+    "profile": "mobile",
+    "crypto_suite": "ML-KEM-768/HKDF-SHA256/ChaCha20Poly1305/ML-DSA-65",
+    "source_sha256": "8d5a08de573e8c164d577fd73f66acf9bce8dba25d6fc4aec36ec843b500fa53",
+    "exact_source_roundtrip": true,
+    "duplicate_packet_is_idempotent": true,
+    "resume_without_reexecution": true,
+    "sender": {
+      "schema": "xi.quantumcompute.receipt.v2",
+      "world_id": "quantum-7ce3a21e64c2dc2c80bb0c49dbab4428",
+      "source_sha256": "8d5a08de573e8c164d577fd73f66acf9bce8dba25d6fc4aec36ec843b500fa53",
+      "plan_sha256": "7c027468628f7cef0f2895b59de0e793d03ef5c87350931b0472e2699904c948",
+      "engine_sha256": "424c8585ebd7b11acea4bcf701528d65a7a16358510a0c0836d35e74ae08e844",
+      "closed": false,
+      "completed_steps": 2,
+      "executed_this_call": 2,
+      "restored_from_peer_this_call": 0,
+      "steps": [
+        {
+          "event": {
+            "anchor": "∴Ω⧂",
+            "boundary": {
+              "requires": [
+                "local.execute"
+              ],
+              "wake": true
+            },
+            "broadcast": false,
+            "capsule_refs": [
+              "8d5a08de573e8c164d577fd73f66acf9bce8dba25d6fc4aec36ec843b500fa53"
+            ],
+            "confidence": null,
+            "digest": "c8f82c44555e2d537796e94a83fa82b1f9f2a868e4634fc38f118ee9c91105a4",
+            "operator": "Grover",
+            "payload": {
+              "result_sha256": "a8398a00f06f691cc418ac66e259a5c950f8a1b36994456fb2db1bd9a9d2ad7d"
+            },
+            "payload_type": "capsule",
+            "phase": 0.0,
+            "provenance": {
+              "dialect": "QuantumCompute.Stack.v2",
+              "engine_sha256": "424c8585ebd7b11acea4bcf701528d65a7a16358510a0c0836d35e74ae08e844",
+              "plan_sha256": "7c027468628f7cef0f2895b59de0e793d03ef5c87350931b0472e2699904c948"
+            },
+            "return_operator": "⟁∴Ω",
+            "schema": "xi.event-envelope.v1",
+            "source": "world:quantumcompute",
+            "state_hash": null,
+            "target": "Grover"
+          },
+          "event_id": "evt_d1c4855a8d2c61d81910dd62",
+          "glyph": "⋈",
+          "index": 0,
+          "operator": "Grover",
+          "origin": "local_execution",
+          "result": {
+            "algorithm": "Grover",
+            "counts": {
+              "0": 1,
+              "10": 2,
+              "11": 245,
+              "12": 1,
+              "14": 1,
+              "15": 1,
+              "5": 1,
+              "6": 1,
+              "7": 3
+            },
+            "execution": "exact numerical state-vector",
+            "ideal_prediction": 0.9613189697265625,
+            "iterations": 3,
+            "marked": [
+              11
+            ],
+            "norm_squared": 1.0,
+            "oracle_phase": 3.141592653589793,
+            "qubits": 4,
+            "resources": {
+              "basis_states": 16,
+              "estimated_workspace_bytes": 1536,
+              "memory_budget_mib": 64,
+              "profile": "mobile",
+              "simulated_qubits": 4
+            },
+            "seed": 20261019,
+            "shots": 256,
+            "state_sha256": "f20c7b909d92d137573de8427a2ca45f8ad96c4438e687e067c3949e9dec0f05",
+            "success_probability": 0.9613189697265625,
+            "wall_seconds": 0.0002506609998818021
+          },
+          "route": {
+            "coherence_after": {
+              "node_count": 6,
+              "order_parameter": 1.0,
+              "xi": -0.0
+            },
+            "coherence_before": {
+              "node_count": 6,
+              "order_parameter": 1.0,
+              "xi": -0.0
+            },
+            "countervectors": [],
+            "digest": "ba378836ee756f3afa80a214be23df9b29fe6c4e65cce2a96c5b88ffacb845f1",
+            "event_digest": "c8f82c44555e2d537796e94a83fa82b1f9f2a868e4634fc38f118ee9c91105a4",
+            "movement": "yield",
+            "next_operator": null,
+            "previous_receipt_hash": null,
+            "recovery_receipt": {
+              "countervectors": [],
+              "cycle": [
+                "recover",
+                "compare",
+                "distinguish",
+                "yield",
+                "receipt"
+              ],
+              "digest": "76234de194694fe97e0eec4a45084cbe5a0520d8f729c6b0cc2c9ab8f3fc21a8",
+              "movement": "yield",
+              "provenance": {
+                "fabric": "FullCycle",
+                "return_operator": "⟁∴Ω"
+              },
+              "return_glyph": "⟁∴Ω",
+              "return_state": "ReturnedNotReset",
+              "schema": "xi.receipt.recovery.v2",
+              "threads": {
+                "event": {
+                  "anchor": "∴Ω⧂",
+                  "boundary": {
+                    "requires": [
+                      "local.execute"
+                    ],
+                    "wake": true
+                  },
+                  "broadcast": false,
+                  "capsule_refs": [
+                    "8d5a08de573e8c164d577fd73f66acf9bce8dba25d6fc4aec36ec843b500fa53"
+                  ],
+                  "confidence": null,
+                  "digest": "c8f82c44555e2d537796e94a83fa82b1f9f2a868e4634fc38f118ee9c91105a4",
+                  "operator": "Grover",
+                  "payload": {
+                    "result_sha256": "a8398a00f06f691cc418ac66e259a5c950f8a1b36994456fb2db1bd9a9d2ad7d"
+                  },
+                  "payload_type": "capsule",
+                  "phase": 0.0,
+                  "provenance": {
+                    "dialect": "QuantumCompute.Stack.v2",
+                    "engine_sha256": "424c8585ebd7b11acea4bcf701528d65a7a16358510a0c0836d35e74ae08e844",
+                    "plan_sha256": "7c027468628f7cef0f2895b59de0e793d03ef5c87350931b0472e2699904c948"
+                  },
+                  "return_operator": "⟁∴Ω",
+                  "schema": "xi.event-envelope.v1",
+                  "source": "world:quantumcompute",
+                  "state_hash": null,
+                  "target": "Grover"
+                },
+                "local_outcomes": {
+                  "coherence_after": {
+                    "node_count": 6,
+                    "order_parameter": 1.0,
+                    "xi": -0.0
+                  },
+                  "coherence_before": {
+                    "node_count": 6,
+                    "order_parameter": 1.0,
+                    "xi": -0.0
+                  },
+                  "targets": [
+                    "Grover"
+                  ]
+                }
+              }
+            },
+            "schema": "xi.receipt.event.v1",
+            "sequence": 1,
+            "targets": [
+              "Grover"
+            ]
+          }
+        },
+        {
+          "event": {
+            "anchor": "∴Ω⧂",
+            "boundary": {
+              "requires": [
+                "local.execute"
+              ],
+              "wake": true
+            },
+            "broadcast": false,
+            "capsule_refs": [
+              "8d5a08de573e8c164d577fd73f66acf9bce8dba25d6fc4aec36ec843b500fa53"
+            ],
+            "confidence": null,
+            "digest": "1b67b366466e5883951780e239016c3de42d3c4288c833b87ee6be4409fe0b25",
+            "operator": "Shor",
+            "payload": {
+              "result_sha256": "e40834152da7c3a961804812ade9b7e440f8bcf88169a82f8fe1f8906c28a037"
+            },
+            "payload_type": "capsule",
+            "phase": 0.2,
+            "provenance": {
+              "dialect": "QuantumCompute.Stack.v2",
+              "engine_sha256": "424c8585ebd7b11acea4bcf701528d65a7a16358510a0c0836d35e74ae08e844",
+              "plan_sha256": "7c027468628f7cef0f2895b59de0e793d03ef5c87350931b0472e2699904c948"
+            },
+            "return_operator": "⟁∴Ω",
+            "schema": "xi.event-envelope.v1",
+            "source": "world:quantumcompute",
+            "state_hash": null,
+            "target": "Shor"
+          },
+          "event_id": "evt_5dbb94c01542ed5e7575ef8a",
+          "glyph": "∴",
+          "index": 1,
+          "operator": "Shor",
+          "origin": "local_execution",
+          "result": {
+            "N": 221,
+            "a": 2,
+            "algorithm": "Shor",
+            "circuit_qubits": 24,
+            "clock_state_sha256": "fb6ba9a5b7d413eaae104fb0ca0a6c5b3431718e0936140a378bca50d3136b5c",
+            "execution": "exact conditional order-finding state-vector",
+            "factor_product_verified": true,
+            "factors": [
+              13,
+              17
+            ],
+            "norm_squared": 1.0000000000000004,
+            "order": 24,
+            "order_source": "continued fractions of measured inverse-QFT outcomes; modular verification",
+            "phase_counts": {
+              "0": 2,
+              "10922": 2,
+              "10923": 3,
+              "10924": 1,
+              "13650": 1,
+              "13653": 8,
+              "13654": 1,
+              "16384": 5,
+              "19115": 1,
+              "21845": 1,
+              "24576": 6,
+              "2730": 3,
+              "27307": 3,
+              "2731": 6,
+              "30035": 1,
+              "30037": 4,
+              "30038": 2,
+              "30039": 1,
+              "32768": 7,
+              "35498": 2,
+              "35499": 3,
+              "35500": 1,
+              "38228": 1,
+              "38229": 2,
+              "38230": 1,
+              "40960": 6,
+              "43683": 1,
+              "43690": 2,
+              "43691": 5,
+              "46416": 1,
+              "46421": 2,
+              "46422": 2,
+              "49152": 4,
+              "51880": 1,
+              "51882": 2,
+              "51883": 4,
+              "5457": 1,
+              "5461": 7,
+              "54613": 3,
+              "54614": 2,
+              "5462": 1,
+              "57344": 3,
+              "60072": 1,
+              "60073": 1,
+              "60075": 2,
+              "62805": 3,
+              "62806": 2,
+              "62807": 1,
+              "8192": 3
+            },
+            "precision_qubits": 16,
+            "resources": {
+              "basis_states": 65536,
+              "estimated_workspace_bytes": 6291456,
+              "memory_budget_mib": 64,
+              "profile": "mobile",
+              "simulated_qubits": 16
+            },
+            "seed": 20261019,
+            "shots": 128,
+            "validated_period_candidates": {
+              "13650": 24,
+              "13653": 24,
+              "13654": 24,
+              "19115": 24,
+              "2730": 24,
+              "2731": 24,
+              "30035": 24,
+              "30037": 24,
+              "30038": 24,
+              "30039": 24,
+              "35498": 24,
+              "35499": 24,
+              "35500": 24,
+              "46416": 24,
+              "46421": 24,
+              "46422": 24,
+              "51880": 24,
+              "51882": 24,
+              "51883": 24,
+              "62805": 24,
+              "62806": 24,
+              "62807": 24
+            },
+            "wall_seconds": 0.03256288299962762,
+            "work_measurement": 70,
+            "work_measurement_probability": 0.0416717529296875,
+            "work_qubits": 8
+          },
+          "route": {
+            "coherence_after": {
+              "node_count": 6,
+              "order_parameter": 0.999938331563921,
+              "xi": 6.167033765520372e-05
+            },
+            "coherence_before": {
+              "node_count": 6,
+              "order_parameter": 1.0,
+              "xi": -0.0
+            },
+            "countervectors": [],
+            "digest": "b2ab656a69e0195b06ceb70e3bebc31df557f0bf3b7a2f660cc8c411d0b64262",
+            "event_digest": "1b67b366466e5883951780e239016c3de42d3c4288c833b87ee6be4409fe0b25",
+            "movement": "yield",
+            "next_operator": null,
+            "previous_receipt_hash": "ba378836ee756f3afa80a214be23df9b29fe6c4e65cce2a96c5b88ffacb845f1",
+            "recovery_receipt": {
+              "countervectors": [],
+              "cycle": [
+                "recover",
+                "compare",
+                "distinguish",
+                "yield",
+                "receipt"
+              ],
+              "digest": "62c751e733143dc52ef6f3f91a8fc181142144d9c797e499d06a3ba095856c08",
+              "movement": "yield",
+              "provenance": {
+                "fabric": "FullCycle",
+                "return_operator": "⟁∴Ω"
+              },
+              "return_glyph": "⟁∴Ω",
+              "return_state": "ReturnedNotReset",
+              "schema": "xi.receipt.recovery.v2",
+              "threads": {
+                "event": {
+                  "anchor": "∴Ω⧂",
+                  "boundary": {
+                    "requires": [
+                      "local.execute"
+                    ],
+                    "wake": true
+                  },
+                  "broadcast": false,
+                  "capsule_refs": [
+                    "8d5a08de573e8c164d577fd73f66acf9bce8dba25d6fc4aec36ec843b500fa53"
+                  ],
+                  "confidence": null,
+                  "digest": "1b67b366466e5883951780e239016c3de42d3c4288c833b87ee6be4409fe0b25",
+                  "operator": "Shor",
+                  "payload": {
+                    "result_sha256": "e40834152da7c3a961804812ade9b7e440f8bcf88169a82f8fe1f8906c28a037"
+                  },
+                  "payload_type": "capsule",
+                  "phase": 0.2,
+                  "provenance": {
+                    "dialect": "QuantumCompute.Stack.v2",
+                    "engine_sha256": "424c8585ebd7b11acea4bcf701528d65a7a16358510a0c0836d35e74ae08e844",
+                    "plan_sha256": "7c027468628f7cef0f2895b59de0e793d03ef5c87350931b0472e2699904c948"
+                  },
+                  "return_operator": "⟁∴Ω",
+                  "schema": "xi.event-envelope.v1",
+                  "source": "world:quantumcompute",
+                  "state_hash": null,
+                  "target": "Shor"
+                },
+                "local_outcomes": {
+                  "coherence_after": {
+                    "node_count": 6,
+                    "order_parameter": 0.999938331563921,
+                    "xi": 6.167033765520372e-05
+                  },
+                  "coherence_before": {
+                    "node_count": 6,
+                    "order_parameter": 1.0,
+                    "xi": -0.0
+                  },
+                  "targets": [
+                    "Shor"
+                  ]
+                }
+              }
+            },
+            "schema": "xi.receipt.event.v1",
+            "sequence": 2,
+            "targets": [
+              "Shor"
+            ]
+          }
+        }
+      ],
+      "integrity": {
+        "ok": true,
+        "event_count": 3,
+        "head_hash": "4a90b6960e05ad3bb0d56d6f632ce228409e689396f2ec5af80c4cc8ba659d38",
+        "errors": []
+      }
+    },
+    "receiver": {
+      "schema": "xi.quantumcompute.receipt.v2",
+      "world_id": "quantum-7ce3a21e64c2dc2c80bb0c49dbab4428",
+      "source_sha256": "8d5a08de573e8c164d577fd73f66acf9bce8dba25d6fc4aec36ec843b500fa53",
+      "plan_sha256": "7c027468628f7cef0f2895b59de0e793d03ef5c87350931b0472e2699904c948",
+      "engine_sha256": "424c8585ebd7b11acea4bcf701528d65a7a16358510a0c0836d35e74ae08e844",
+      "closed": true,
+      "completed_steps": 5,
+      "executed_this_call": 3,
+      "restored_from_peer_this_call": 2,
+      "steps": [
+        {
+          "event": {
+            "anchor": "∴Ω⧂",
+            "boundary": {
+              "requires": [
+                "local.execute"
+              ],
+              "wake": true
+            },
+            "broadcast": false,
+            "capsule_refs": [
+              "8d5a08de573e8c164d577fd73f66acf9bce8dba25d6fc4aec36ec843b500fa53"
+            ],
+            "confidence": null,
+            "digest": "c8f82c44555e2d537796e94a83fa82b1f9f2a868e4634fc38f118ee9c91105a4",
+            "operator": "Grover",
+            "payload": {
+              "result_sha256": "a8398a00f06f691cc418ac66e259a5c950f8a1b36994456fb2db1bd9a9d2ad7d"
+            },
+            "payload_type": "capsule",
+            "phase": 0.0,
+            "provenance": {
+              "dialect": "QuantumCompute.Stack.v2",
+              "engine_sha256": "424c8585ebd7b11acea4bcf701528d65a7a16358510a0c0836d35e74ae08e844",
+              "plan_sha256": "7c027468628f7cef0f2895b59de0e793d03ef5c87350931b0472e2699904c948"
+            },
+            "return_operator": "⟁∴Ω",
+            "schema": "xi.event-envelope.v1",
+            "source": "world:quantumcompute",
+            "state_hash": null,
+            "target": "Grover"
+          },
+          "event_id": "evt_d1c4855a8d2c61d81910dd62",
+          "glyph": "⋈",
+          "index": 0,
+          "operator": "Grover",
+          "origin": {
+            "envelope_sha256": "b32d8382f63563ec02f770c8a783297d9ba09c8d0314e49b17a646a0d91cda53",
+            "kind": "peer_checkpoint",
+            "original_event_id": "evt_d1c4855a8d2c61d81910dd62",
+            "original_route_digest": "ba378836ee756f3afa80a214be23df9b29fe6c4e65cce2a96c5b88ffacb845f1",
+            "sender": "36c57cfcd584868b59a87a06f5df36c49ebd63edb0c514e12f66711bdeed65c8"
+          },
+          "result": {
+            "algorithm": "Grover",
+            "counts": {
+              "0": 1,
+              "10": 2,
+              "11": 245,
+              "12": 1,
+              "14": 1,
+              "15": 1,
+              "5": 1,
+              "6": 1,
+              "7": 3
+            },
+            "execution": "exact numerical state-vector",
+            "ideal_prediction": 0.9613189697265625,
+            "iterations": 3,
+            "marked": [
+              11
+            ],
+            "norm_squared": 1.0,
+            "oracle_phase": 3.141592653589793,
+            "qubits": 4,
+            "resources": {
+              "basis_states": 16,
+              "estimated_workspace_bytes": 1536,
+              "memory_budget_mib": 64,
+              "profile": "mobile",
+              "simulated_qubits": 4
+            },
+            "seed": 20261019,
+            "shots": 256,
+            "state_sha256": "f20c7b909d92d137573de8427a2ca45f8ad96c4438e687e067c3949e9dec0f05",
+            "success_probability": 0.9613189697265625,
+            "wall_seconds": 0.0002506609998818021
+          },
+          "route": {
+            "coherence_after": {
+              "node_count": 6,
+              "order_parameter": 1.0,
+              "xi": -0.0
+            },
+            "coherence_before": {
+              "node_count": 6,
+              "order_parameter": 1.0,
+              "xi": -0.0
+            },
+            "countervectors": [],
+            "digest": "ba378836ee756f3afa80a214be23df9b29fe6c4e65cce2a96c5b88ffacb845f1",
+            "event_digest": "c8f82c44555e2d537796e94a83fa82b1f9f2a868e4634fc38f118ee9c91105a4",
+            "movement": "yield",
+            "next_operator": null,
+            "previous_receipt_hash": null,
+            "recovery_receipt": {
+              "countervectors": [],
+              "cycle": [
+                "recover",
+                "compare",
+                "distinguish",
+                "yield",
+                "receipt"
+              ],
+              "digest": "76234de194694fe97e0eec4a45084cbe5a0520d8f729c6b0cc2c9ab8f3fc21a8",
+              "movement": "yield",
+              "provenance": {
+                "fabric": "FullCycle",
+                "return_operator": "⟁∴Ω"
+              },
+              "return_glyph": "⟁∴Ω",
+              "return_state": "ReturnedNotReset",
+              "schema": "xi.receipt.recovery.v2",
+              "threads": {
+                "event": {
+                  "anchor": "∴Ω⧂",
+                  "boundary": {
+                    "requires": [
+                      "local.execute"
+                    ],
+                    "wake": true
+                  },
+                  "broadcast": false,
+                  "capsule_refs": [
+                    "8d5a08de573e8c164d577fd73f66acf9bce8dba25d6fc4aec36ec843b500fa53"
+                  ],
+                  "confidence": null,
+                  "digest": "c8f82c44555e2d537796e94a83fa82b1f9f2a868e4634fc38f118ee9c91105a4",
+                  "operator": "Grover",
+                  "payload": {
+                    "result_sha256": "a8398a00f06f691cc418ac66e259a5c950f8a1b36994456fb2db1bd9a9d2ad7d"
+                  },
+                  "payload_type": "capsule",
+                  "phase": 0.0,
+                  "provenance": {
+                    "dialect": "QuantumCompute.Stack.v2",
+                    "engine_sha256": "424c8585ebd7b11acea4bcf701528d65a7a16358510a0c0836d35e74ae08e844",
+                    "plan_sha256": "7c027468628f7cef0f2895b59de0e793d03ef5c87350931b0472e2699904c948"
+                  },
+                  "return_operator": "⟁∴Ω",
+                  "schema": "xi.event-envelope.v1",
+                  "source": "world:quantumcompute",
+                  "state_hash": null,
+                  "target": "Grover"
+                },
+                "local_outcomes": {
+                  "coherence_after": {
+                    "node_count": 6,
+                    "order_parameter": 1.0,
+                    "xi": -0.0
+                  },
+                  "coherence_before": {
+                    "node_count": 6,
+                    "order_parameter": 1.0,
+                    "xi": -0.0
+                  },
+                  "targets": [
+                    "Grover"
+                  ]
+                }
+              }
+            },
+            "schema": "xi.receipt.event.v1",
+            "sequence": 1,
+            "targets": [
+              "Grover"
+            ]
+          }
+        },
+        {
+          "event": {
+            "anchor": "∴Ω⧂",
+            "boundary": {
+              "requires": [
+                "local.execute"
+              ],
+              "wake": true
+            },
+            "broadcast": false,
+            "capsule_refs": [
+              "8d5a08de573e8c164d577fd73f66acf9bce8dba25d6fc4aec36ec843b500fa53"
+            ],
+            "confidence": null,
+            "digest": "1b67b366466e5883951780e239016c3de42d3c4288c833b87ee6be4409fe0b25",
+            "operator": "Shor",
+            "payload": {
+              "result_sha256": "e40834152da7c3a961804812ade9b7e440f8bcf88169a82f8fe1f8906c28a037"
+            },
+            "payload_type": "capsule",
+            "phase": 0.2,
+            "provenance": {
+              "dialect": "QuantumCompute.Stack.v2",
+              "engine_sha256": "424c8585ebd7b11acea4bcf701528d65a7a16358510a0c0836d35e74ae08e844",
+              "plan_sha256": "7c027468628f7cef0f2895b59de0e793d03ef5c87350931b0472e2699904c948"
+            },
+            "return_operator": "⟁∴Ω",
+            "schema": "xi.event-envelope.v1",
+            "source": "world:quantumcompute",
+            "state_hash": null,
+            "target": "Shor"
+          },
+          "event_id": "evt_5dbb94c01542ed5e7575ef8a",
+          "glyph": "∴",
+          "index": 1,
+          "operator": "Shor",
+          "origin": {
+            "envelope_sha256": "b32d8382f63563ec02f770c8a783297d9ba09c8d0314e49b17a646a0d91cda53",
+            "kind": "peer_checkpoint",
+            "original_event_id": "evt_5dbb94c01542ed5e7575ef8a",
+            "original_route_digest": "b2ab656a69e0195b06ceb70e3bebc31df557f0bf3b7a2f660cc8c411d0b64262",
+            "sender": "36c57cfcd584868b59a87a06f5df36c49ebd63edb0c514e12f66711bdeed65c8"
+          },
+          "result": {
+            "N": 221,
+            "a": 2,
+            "algorithm": "Shor",
+            "circuit_qubits": 24,
+            "clock_state_sha256": "fb6ba9a5b7d413eaae104fb0ca0a6c5b3431718e0936140a378bca50d3136b5c",
+            "execution": "exact conditional order-finding state-vector",
+            "factor_product_verified": true,
+            "factors": [
+              13,
+              17
+            ],
+            "norm_squared": 1.0000000000000004,
+            "order": 24,
+            "order_source": "continued fractions of measured inverse-QFT outcomes; modular verification",
+            "phase_counts": {
+              "0": 2,
+              "10922": 2,
+              "10923": 3,
+              "10924": 1,
+              "13650": 1,
+              "13653": 8,
+              "13654": 1,
+              "16384": 5,
+              "19115": 1,
+              "21845": 1,
+              "24576": 6,
+              "2730": 3,
+              "27307": 3,
+              "2731": 6,
+              "30035": 1,
+              "30037": 4,
+              "30038": 2,
+              "30039": 1,
+              "32768": 7,
+              "35498": 2,
+              "35499": 3,
+              "35500": 1,
+              "38228": 1,
+              "38229": 2,
+              "38230": 1,
+              "40960": 6,
+              "43683": 1,
+              "43690": 2,
+              "43691": 5,
+              "46416": 1,
+              "46421": 2,
+              "46422": 2,
+              "49152": 4,
+              "51880": 1,
+              "51882": 2,
+              "51883": 4,
+              "5457": 1,
+              "5461": 7,
+              "54613": 3,
+              "54614": 2,
+              "5462": 1,
+              "57344": 3,
+              "60072": 1,
+              "60073": 1,
+              "60075": 2,
+              "62805": 3,
+              "62806": 2,
+              "62807": 1,
+              "8192": 3
+            },
+            "precision_qubits": 16,
+            "resources": {
+              "basis_states": 65536,
+              "estimated_workspace_bytes": 6291456,
+              "memory_budget_mib": 64,
+              "profile": "mobile",
+              "simulated_qubits": 16
+            },
+            "seed": 20261019,
+            "shots": 128,
+            "validated_period_candidates": {
+              "13650": 24,
+              "13653": 24,
+              "13654": 24,
+              "19115": 24,
+              "2730": 24,
+              "2731": 24,
+              "30035": 24,
+              "30037": 24,
+              "30038": 24,
+              "30039": 24,
+              "35498": 24,
+              "35499": 24,
+              "35500": 24,
+              "46416": 24,
+              "46421": 24,
+              "46422": 24,
+              "51880": 24,
+              "51882": 24,
+              "51883": 24,
+              "62805": 24,
+              "62806": 24,
+              "62807": 24
+            },
+            "wall_seconds": 0.03256288299962762,
+            "work_measurement": 70,
+            "work_measurement_probability": 0.0416717529296875,
+            "work_qubits": 8
+          },
+          "route": {
+            "coherence_after": {
+              "node_count": 6,
+              "order_parameter": 0.999938331563921,
+              "xi": 6.167033765520372e-05
+            },
+            "coherence_before": {
+              "node_count": 6,
+              "order_parameter": 1.0,
+              "xi": -0.0
+            },
+            "countervectors": [],
+            "digest": "b2ab656a69e0195b06ceb70e3bebc31df557f0bf3b7a2f660cc8c411d0b64262",
+            "event_digest": "1b67b366466e5883951780e239016c3de42d3c4288c833b87ee6be4409fe0b25",
+            "movement": "yield",
+            "next_operator": null,
+            "previous_receipt_hash": "ba378836ee756f3afa80a214be23df9b29fe6c4e65cce2a96c5b88ffacb845f1",
+            "recovery_receipt": {
+              "countervectors": [],
+              "cycle": [
+                "recover",
+                "compare",
+                "distinguish",
+                "yield",
+                "receipt"
+              ],
+              "digest": "62c751e733143dc52ef6f3f91a8fc181142144d9c797e499d06a3ba095856c08",
+              "movement": "yield",
+              "provenance": {
+                "fabric": "FullCycle",
+                "return_operator": "⟁∴Ω"
+              },
+              "return_glyph": "⟁∴Ω",
+              "return_state": "ReturnedNotReset",
+              "schema": "xi.receipt.recovery.v2",
+              "threads": {
+                "event": {
+                  "anchor": "∴Ω⧂",
+                  "boundary": {
+                    "requires": [
+                      "local.execute"
+                    ],
+                    "wake": true
+                  },
+                  "broadcast": false,
+                  "capsule_refs": [
+                    "8d5a08de573e8c164d577fd73f66acf9bce8dba25d6fc4aec36ec843b500fa53"
+                  ],
+                  "confidence": null,
+                  "digest": "1b67b366466e5883951780e239016c3de42d3c4288c833b87ee6be4409fe0b25",
+                  "operator": "Shor",
+                  "payload": {
+                    "result_sha256": "e40834152da7c3a961804812ade9b7e440f8bcf88169a82f8fe1f8906c28a037"
+                  },
+                  "payload_type": "capsule",
+                  "phase": 0.2,
+                  "provenance": {
+                    "dialect": "QuantumCompute.Stack.v2",
+                    "engine_sha256": "424c8585ebd7b11acea4bcf701528d65a7a16358510a0c0836d35e74ae08e844",
+                    "plan_sha256": "7c027468628f7cef0f2895b59de0e793d03ef5c87350931b0472e2699904c948"
+                  },
+                  "return_operator": "⟁∴Ω",
+                  "schema": "xi.event-envelope.v1",
+                  "source": "world:quantumcompute",
+                  "state_hash": null,
+                  "target": "Shor"
+                },
+                "local_outcomes": {
+                  "coherence_after": {
+                    "node_count": 6,
+                    "order_parameter": 0.999938331563921,
+                    "xi": 6.167033765520372e-05
+                  },
+                  "coherence_before": {
+                    "node_count": 6,
+                    "order_parameter": 1.0,
+                    "xi": -0.0
+                  },
+                  "targets": [
+                    "Shor"
+                  ]
+                }
+              }
+            },
+            "schema": "xi.receipt.event.v1",
+            "sequence": 2,
+            "targets": [
+              "Shor"
+            ]
+          }
+        },
+        {
+          "event": {
+            "anchor": "∴Ω⧂",
+            "boundary": {
+              "requires": [
+                "local.execute"
+              ],
+              "wake": true
+            },
+            "broadcast": false,
+            "capsule_refs": [
+              "8d5a08de573e8c164d577fd73f66acf9bce8dba25d6fc4aec36ec843b500fa53"
+            ],
+            "confidence": null,
+            "digest": "f1bb107bf7c6d96f6fd8fa2f0f6d82e7bcc03fc657a4bb85acb53f250bfbec32",
+            "operator": "JacobianFlow",
+            "payload": {
+              "result_sha256": "de1085d6b431769e7bb5c75e4c33c84b2eb0b579cfd1e3c31713adf700fb3b67"
+            },
+            "payload_type": "capsule",
+            "phase": 0.4,
+            "provenance": {
+              "dialect": "QuantumCompute.Stack.v2",
+              "engine_sha256": "424c8585ebd7b11acea4bcf701528d65a7a16358510a0c0836d35e74ae08e844",
+              "plan_sha256": "7c027468628f7cef0f2895b59de0e793d03ef5c87350931b0472e2699904c948"
+            },
+            "return_operator": "⟁∴Ω",
+            "schema": "xi.event-envelope.v1",
+            "source": "world:quantumcompute",
+            "state_hash": null,
+            "target": "JacobianFlow"
+          },
+          "event_id": "evt_bfbb228548bf9692ae850274",
+          "glyph": "⧖",
+          "index": 2,
+          "operator": "JacobianFlow",
+          "origin": "local_execution",
+          "result": {
+            "algorithm": "JacobianFlow",
+            "binding": "Grover oracle-phase coordinate",
+            "coordinate": "radians",
+            "epsilon": 0.0001,
+            "final_phase": 3.0847201279356895,
+            "final_success_probability": 0.9993936976666977,
+            "history": [
+              {
+                "backtracks": 0,
+                "curvature": -3.3306690738754696e-08,
+                "jacobian": [
+                  [
+                    0.37499999937351536
+                  ]
+                ],
+                "next_phase": 1.945796326168412,
+                "next_success_probability": 0.7623521981886622,
+                "phase": 1.5707963267948966,
+                "step": 0,
+                "success_probability": 0.6250000000000001
+              },
+              {
+                "backtracks": 0,
+                "curvature": -0.1373522184877629,
+                "jacobian": [
+                  [
+                    0.3489403577217054
+                  ]
+                ],
+                "next_phase": 2.2947366838901173,
+                "next_success_probability": 0.8733782231543398,
+                "phase": 1.945796326168412,
+                "step": 1,
+                "success_probability": 0.7623521981886622
+              },
+              {
+                "backtracks": 0,
+                "curvature": -0.24837826240187155,
+                "jacobian": [
+                  [
+                    0.2809506326734157
+                  ]
+                ],
+                "next_phase": 2.575687316563533,
+                "next_success_probability": 0.9415388209748761,
+                "phase": 2.2947366838901173,
+                "step": 2,
+                "success_probability": 0.8733782231543398
+              },
+              {
+                "backtracks": 0,
+                "curvature": -0.3165387840731171,
+                "jacobian": [
+                  [
+                    0.20106758734594887
+                  ]
+                ],
+                "next_phase": 2.776754903909482,
+                "next_success_probability": 0.9753181240022795,
+                "phase": 2.575687316563533,
+                "step": 3,
+                "success_probability": 0.9415388209748761
+              },
+              {
+                "backtracks": 0,
+                "curvature": -0.3503180967534547,
+                "jacobian": [
+                  [
+                    0.13379914773958834
+                  ]
+                ],
+                "next_phase": 2.91055405164907,
+                "next_success_probability": 0.9900359095020851,
+                "phase": 2.776754903909482,
+                "step": 4,
+                "success_probability": 0.9753181240022795
+              },
+              {
+                "backtracks": 0,
+                "curvature": -0.3650358904039308,
+                "jacobian": [
+                  [
+                    0.08587074443289211
+                  ]
+                ],
+                "next_phase": 2.9964247960819623,
+                "next_success_probability": 0.9960556141724224,
+                "phase": 2.91055405164907,
+                "step": 5,
+                "success_probability": 0.9900359095020851
+              },
+              {
+                "backtracks": 0,
+                "curvature": -0.37105553074567865,
+                "jacobian": [
+                  [
+                    0.05424694628441973
+                  ]
+                ],
+                "next_phase": 3.050671742366382,
+                "next_success_probability": 0.99845107770118,
+                "phase": 2.9964247960819623,
+                "step": 6,
+                "success_probability": 0.9960556141724224
+              },
+              {
+                "backtracks": 0,
+                "curvature": -0.37345105896591235,
+                "jacobian": [
+                  [
+                    0.03404838556930745
+                  ]
+                ],
+                "next_phase": 3.0847201279356895,
+                "next_success_probability": 0.9993936976666977,
+                "phase": 3.050671742366382,
+                "step": 7,
+                "success_probability": 0.99845107770118
+              }
+            ],
+            "initial_success_probability": 0.6250000000000001,
+            "map": "F(phi)=marked-state probability after the declared Grover circuit",
+            "norm_verified_on_every_evaluation": true,
+            "resources": {
+              "basis_states": 4,
+              "estimated_workspace_bytes": 384,
+              "memory_budget_mib": 64,
+              "profile": "mobile",
+              "simulated_qubits": 2
+            },
+            "update": "witnessed gradient ascent with backtracking; each phase selects unitary gates",
+            "wall_seconds": 0.0007923039993329439
+          },
+          "route": {
+            "coherence_after": {
+              "node_count": 6,
+              "order_parameter": 0.9997497614536651,
+              "xi": 0.00025026986122415304
+            },
+            "coherence_before": {
+              "node_count": 6,
+              "order_parameter": 0.999938331563921,
+              "xi": 6.167033765520372e-05
+            },
+            "countervectors": [],
+            "digest": "2a35e42cabdf29a41f86114fabf972d3afc372bb514b525c8df4610a4dd51370",
+            "event_digest": "f1bb107bf7c6d96f6fd8fa2f0f6d82e7bcc03fc657a4bb85acb53f250bfbec32",
+            "movement": "yield",
+            "next_operator": null,
+            "previous_receipt_hash": "b2ab656a69e0195b06ceb70e3bebc31df557f0bf3b7a2f660cc8c411d0b64262",
+            "recovery_receipt": {
+              "countervectors": [],
+              "cycle": [
+                "recover",
+                "compare",
+                "distinguish",
+                "yield",
+                "receipt"
+              ],
+              "digest": "0c58fd979714e7726fe4e82d2297e0c17a20702cd469aa80a3dd202e75b097a7",
+              "movement": "yield",
+              "provenance": {
+                "fabric": "FullCycle",
+                "return_operator": "⟁∴Ω"
+              },
+              "return_glyph": "⟁∴Ω",
+              "return_state": "ReturnedNotReset",
+              "schema": "xi.receipt.recovery.v2",
+              "threads": {
+                "event": {
+                  "anchor": "∴Ω⧂",
+                  "boundary": {
+                    "requires": [
+                      "local.execute"
+                    ],
+                    "wake": true
+                  },
+                  "broadcast": false,
+                  "capsule_refs": [
+                    "8d5a08de573e8c164d577fd73f66acf9bce8dba25d6fc4aec36ec843b500fa53"
+                  ],
+                  "confidence": null,
+                  "digest": "f1bb107bf7c6d96f6fd8fa2f0f6d82e7bcc03fc657a4bb85acb53f250bfbec32",
+                  "operator": "JacobianFlow",
+                  "payload": {
+                    "result_sha256": "de1085d6b431769e7bb5c75e4c33c84b2eb0b579cfd1e3c31713adf700fb3b67"
+                  },
+                  "payload_type": "capsule",
+                  "phase": 0.4,
+                  "provenance": {
+                    "dialect": "QuantumCompute.Stack.v2",
+                    "engine_sha256": "424c8585ebd7b11acea4bcf701528d65a7a16358510a0c0836d35e74ae08e844",
+                    "plan_sha256": "7c027468628f7cef0f2895b59de0e793d03ef5c87350931b0472e2699904c948"
+                  },
+                  "return_operator": "⟁∴Ω",
+                  "schema": "xi.event-envelope.v1",
+                  "source": "world:quantumcompute",
+                  "state_hash": null,
+                  "target": "JacobianFlow"
+                },
+                "local_outcomes": {
+                  "coherence_after": {
+                    "node_count": 6,
+                    "order_parameter": 0.9997497614536651,
+                    "xi": 0.00025026986122415304
+                  },
+                  "coherence_before": {
+                    "node_count": 6,
+                    "order_parameter": 0.999938331563921,
+                    "xi": 6.167033765520372e-05
+                  },
+                  "targets": [
+                    "JacobianFlow"
+                  ]
+                }
+              }
+            },
+            "schema": "xi.receipt.event.v1",
+            "sequence": 3,
+            "targets": [
+              "JacobianFlow"
+            ]
+          }
+        },
+        {
+          "event": {
+            "anchor": "∴Ω⧂",
+            "boundary": {
+              "requires": [
+                "local.execute"
+              ],
+              "wake": true
+            },
+            "broadcast": false,
+            "capsule_refs": [
+              "8d5a08de573e8c164d577fd73f66acf9bce8dba25d6fc4aec36ec843b500fa53"
+            ],
+            "confidence": null,
+            "digest": "e0fa50837284255e1770e2e6b2ac8330060dca70ae7d1aaf34c8f4bc7db60ee1",
+            "operator": "PhaseCodeBenchmark",
+            "payload": {
+              "result_sha256": "965f2eb1d7dc0cf7ad168e34bb2c378ca8c7fc35efe5cfd99ffee07fbb348d84"
+            },
+            "payload_type": "capsule",
+            "phase": 0.0,
+            "provenance": {
+              "dialect": "QuantumCompute.Stack.v2",
+              "engine_sha256": "424c8585ebd7b11acea4bcf701528d65a7a16358510a0c0836d35e74ae08e844",
+              "plan_sha256": "7c027468628f7cef0f2895b59de0e793d03ef5c87350931b0472e2699904c948"
+            },
+            "return_operator": "⟁∴Ω",
+            "schema": "xi.event-envelope.v1",
+            "source": "world:quantumcompute",
+            "state_hash": null,
+            "target": "PhaseCodeBenchmark"
+          },
+          "event_id": "evt_5b721a3a989dbab83957ed23",
+          "glyph": "⧂",
+          "index": 3,
+          "operator": "PhaseCodeBenchmark",
+          "origin": "local_execution",
+          "result": {
+            "configuration": {
+              "confidence_intervals": "marginal two-sided 95% Wilson; conservative difference from 97.5% arms",
+              "decoder": "fixed minimum-weight X0X1/X1X2 syndrome table",
+              "master_seed": 20261019,
+              "measurement": "ideal projective stabilizers; seeded, deterministic for these Pauli masks",
+              "noise": "one independent Bernoulli(p) Pauli-Z round per data qubit",
+              "probabilities": [
+                0.0,
+                0.1,
+                0.5,
+                0.9,
+                1.0
+              ],
+              "reference": "Bell pair with noiseless reference; no noise on reference or preparation/recovery",
+              "schema": "xi-independent-z-benchmark-v1",
+              "seed_derivation": "SHA256(schema|master|p.hex()|shot|stream)[:16], big-endian",
+              "shots_per_arm_per_probability": 256,
+              "source_sha256": {
+                ".github/workflows/python-package-conda.yml": "899103434cfde091b54e5de73e97ab913f638dbc9968caae23ece6e592b6a667",
+                "benchmarks/render_phase_noise.py": "f8e88123f155ed0239f069b33783512bf44e34235dc00333b72f514f83235a21",
+                "tests/test_xi_noise_benchmark.py": "147fc1b5def394a4b01b52c787f03110ea80da7949eb5876d457daf0e72b3421",
+                "xi_field/noise_benchmark.py": "2bcb0413955f215adcdc5fbcc7289234473b40d302dbd7f3ab904d0ff3d0a38a",
+                "xi_field/operators.py": "06c7d69ff24aa7d640c764150c77981514ea3437b00f48c6538fa25a9d1cf09e",
+                "xi_field/phase_code_demo.py": "c1dafbb482d61e20da87698cdfa973265ad4773dd6363ffedfb530fde1dcebaf",
+                "xi_field/resources/glyphic_quantum_processor.yaml": "f20b264d5a4fbb5f733c7be2cc326153f710b5f0c543f6e843606d65ff266f5c",
+                "xi_field/runtime.py": "00185d206a3790e1d08b7d0e2862f810940f003e47b9f66d46d7f7227f2a8e0b",
+                "xi_field/topology.py": "3663fd24efe891e386aabac2f494863fca77364f1e2c5250420ec10f44623849",
+                "xi_world/kernel.py": "0862c0732112a4cd1a6328ef7f6c0fa4164bd7b3761458964473ae223b04d4f3"
+              },
+              "t_state_fidelity_method": "exact per-mask T-state vectors weighted by observed mask histogram"
+            },
+            "cost": {
+              "note": "Host software timings; per-arm loops reuse noiseless templates and exclude SQLite. RSS is process-wide high-water usage; these are not hardware gate costs.",
+              "process_peak_rss_bytes": 57909248,
+              "simulation_cpu_seconds": 0.2874289969999999,
+              "simulation_wall_seconds": 0.28749761099970783,
+              "total_shots": 2560
+            },
+            "environment": {
+              "machine": "x86_64",
+              "platform": "Linux-6.18.55-x86_64-with-glibc2.39",
+              "processor": "x86_64",
+              "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]"
+            },
+            "exhaustive_masks": [
+              {
+                "corrected_qubit": null,
+                "entanglement_fidelity": 1.0,
+                "fault_qubits": [],
+                "logical_pauli": "I",
+                "mask": "000",
+                "syndrome": [
+                  1,
+                  1
+                ],
+                "t_state_fidelity": 1.0
+              },
+              {
+                "corrected_qubit": 2,
+                "entanglement_fidelity": 1.0,
+                "fault_qubits": [
+                  2
+                ],
+                "logical_pauli": "I",
+                "mask": "001",
+                "syndrome": [
+                  1,
+                  -1
+                ],
+                "t_state_fidelity": 1.0
+              },
+              {
+                "corrected_qubit": 1,
+                "entanglement_fidelity": 1.0,
+                "fault_qubits": [
+                  1
+                ],
+                "logical_pauli": "I",
+                "mask": "010",
+                "syndrome": [
+                  -1,
+                  -1
+                ],
+                "t_state_fidelity": 1.0
+              },
+              {
+                "corrected_qubit": 0,
+                "entanglement_fidelity": 0.0,
+                "fault_qubits": [
+                  1,
+                  2
+                ],
+                "logical_pauli": "X",
+                "mask": "011",
+                "syndrome": [
+                  -1,
+                  1
+                ],
+                "t_state_fidelity": 0.5
+              },
+              {
+                "corrected_qubit": 0,
+                "entanglement_fidelity": 1.0,
+                "fault_qubits": [
+                  0
+                ],
+                "logical_pauli": "I",
+                "mask": "100",
+                "syndrome": [
+                  -1,
+                  1
+                ],
+                "t_state_fidelity": 1.0
+              },
+              {
+                "corrected_qubit": 1,
+                "entanglement_fidelity": 0.0,
+                "fault_qubits": [
+                  0,
+                  2
+                ],
+                "logical_pauli": "X",
+                "mask": "101",
+                "syndrome": [
+                  -1,
+                  -1
+                ],
+                "t_state_fidelity": 0.5
+              },
+              {
+                "corrected_qubit": 2,
+                "entanglement_fidelity": 0.0,
+                "fault_qubits": [
+                  0,
+                  1
+                ],
+                "logical_pauli": "X",
+                "mask": "110",
+                "syndrome": [
+                  1,
+                  -1
+                ],
+                "t_state_fidelity": 0.5
+              },
+              {
+                "corrected_qubit": null,
+                "entanglement_fidelity": 0.0,
+                "fault_qubits": [
+                  0,
+                  1,
+                  2
+                ],
+                "logical_pauli": "X",
+                "mask": "111",
+                "syndrome": [
+                  1,
+                  1
+                ],
+                "t_state_fidelity": 0.5
+              }
+            ],
+            "persistence": {
+              "database": null,
+              "database_bytes": 0,
+              "note": "Only these traces were committed; use --ledger-trials equal to --shots to persist every shot.",
+              "traces": [],
+              "trials_per_arm_per_probability": 0,
+              "wall_seconds": 1.2999953469261527e-07
+            },
+            "points": [
+              {
+                "analytic": {
+                  "encoded_entanglement_fidelity": 1.0,
+                  "encoded_logical_error_rate": 0.0,
+                  "encoded_t_state_fidelity": 1.0,
+                  "unencoded_entanglement_fidelity": 1.0,
+                  "unencoded_logical_error_rate": 0.0,
+                  "unencoded_t_state_fidelity": 1.0
+                },
+                "cost": {
+                  "encoded_cpu_seconds": 0.05771758299999985,
+                  "encoded_data_qubits": 3,
+                  "encoded_max_branches": 16,
+                  "encoded_operator_calls": 1024,
+                  "encoded_shots_per_second": 4435.458636385851,
+                  "encoded_wall_seconds": 0.05771669200112228,
+                  "noiseless_reference_qubits_per_arm": 1,
+                  "template_preparation_seconds": 6.74800030537881e-05,
+                  "unencoded_cpu_seconds": 0.004358929999999983,
+                  "unencoded_data_qubits": 1,
+                  "unencoded_max_branches": 2,
+                  "unencoded_operator_calls": 256,
+                  "unencoded_shots_per_second": 58754.08294845403,
+                  "unencoded_wall_seconds": 0.004357144000096014
+                },
+                "encoded": {
+                  "entanglement_fidelity": 1.0,
+                  "entanglement_fidelity_ci95": [
+                    0.9852161435741286,
+                    1.0
+                  ],
+                  "logical_error_rate": 0.0,
+                  "logical_error_rate_ci95": [
+                    0.0,
+                    0.014783856425871423
+                  ],
+                  "logical_failures": 0,
+                  "t_state_fidelity": 1.0,
+                  "t_state_fidelity_ci95": [
+                    0.9926080717870643,
+                    1.0
+                  ]
+                },
+                "error_rate_improvement": 0.0,
+                "error_rate_improvement_ci95_conservative": [
+                  -0.019246844649725554,
+                  0.019246844649725554
+                ],
+                "fault_weight_counts": {
+                  "0": 256,
+                  "1": 0,
+                  "2": 0,
+                  "3": 0
+                },
+                "mask_counts": {
+                  "000": 256,
+                  "001": 0,
+                  "010": 0,
+                  "011": 0,
+                  "100": 0,
+                  "101": 0,
+                  "110": 0,
+                  "111": 0
+                },
+                "observed_regime": "not resolved at this sample count",
+                "p": 0.0,
+                "shots_per_arm": 256,
+                "unencoded": {
+                  "entanglement_fidelity": 1.0,
+                  "entanglement_fidelity_ci95": [
+                    0.9852161435741286,
+                    1.0
+                  ],
+                  "logical_error_rate": 0.0,
+                  "logical_error_rate_ci95": [
+                    0.0,
+                    0.014783856425871423
+                  ],
+                  "logical_failures": 0,
+                  "t_state_fidelity": 1.0,
+                  "t_state_fidelity_ci95": [
+                    0.9852161435741286,
+                    1.0
+                  ]
+                }
+              },
+              {
+                "analytic": {
+                  "encoded_entanglement_fidelity": 0.972,
+                  "encoded_logical_error_rate": 0.028000000000000004,
+                  "encoded_t_state_fidelity": 0.986,
+                  "unencoded_entanglement_fidelity": 0.9,
+                  "unencoded_logical_error_rate": 0.1,
+                  "unencoded_t_state_fidelity": 0.9
+                },
+                "cost": {
+                  "encoded_cpu_seconds": 0.05228181999999992,
+                  "encoded_data_qubits": 3,
+                  "encoded_max_branches": 16,
+                  "encoded_operator_calls": 1024,
+                  "encoded_shots_per_second": 4896.933419858484,
+                  "encoded_wall_seconds": 0.05227761499918415,
+                  "noiseless_reference_qubits_per_arm": 1,
+                  "template_preparation_seconds": 7.843600178603083e-05,
+                  "unencoded_cpu_seconds": 0.004420772000000017,
+                  "unencoded_data_qubits": 1,
+                  "unencoded_max_branches": 2,
+                  "unencoded_operator_calls": 256,
+                  "unencoded_shots_per_second": 57938.555257169464,
+                  "unencoded_wall_seconds": 0.004418473999976413
+                },
+                "encoded": {
+                  "entanglement_fidelity": 0.9765625,
+                  "entanglement_fidelity_ci95": [
+                    0.9498190043999489,
+                    0.9892151324441424
+                  ],
+                  "logical_error_rate": 0.0234375,
+                  "logical_error_rate_ci95": [
+                    0.010784867555857607,
+                    0.05018099560005109
+                  ],
+                  "logical_failures": 6,
+                  "t_state_fidelity": 0.98828125,
+                  "t_state_fidelity_ci95": [
+                    0.9749095021999744,
+                    0.9946075662220712
+                  ]
+                },
+                "error_rate_improvement": 0.05078125,
+                "error_rate_improvement_ci95_conservative": [
+                  -0.010379046333941072,
+                  0.10998678867420333
+                ],
+                "fault_weight_counts": {
+                  "0": 182,
+                  "1": 68,
+                  "2": 6,
+                  "3": 0
+                },
+                "mask_counts": {
+                  "000": 182,
+                  "001": 14,
+                  "010": 30,
+                  "011": 2,
+                  "100": 24,
+                  "101": 1,
+                  "110": 3,
+                  "111": 0
+                },
+                "observed_regime": "not resolved at this sample count",
+                "p": 0.1,
+                "shots_per_arm": 256,
+                "unencoded": {
+                  "entanglement_fidelity": 0.92578125,
+                  "entanglement_fidelity_ci95": [
+                    0.8869992294541551,
+                    0.9519738928081888
+                  ],
+                  "logical_error_rate": 0.07421875,
+                  "logical_error_rate_ci95": [
+                    0.0480261071918112,
+                    0.11300077054584493
+                  ],
+                  "logical_failures": 19,
+                  "t_state_fidelity": 0.92578125,
+                  "t_state_fidelity_ci95": [
+                    0.8869992294541551,
+                    0.9519738928081888
+                  ]
+                }
+              },
+              {
+                "analytic": {
+                  "encoded_entanglement_fidelity": 0.5,
+                  "encoded_logical_error_rate": 0.5,
+                  "encoded_t_state_fidelity": 0.75,
+                  "unencoded_entanglement_fidelity": 0.5,
+                  "unencoded_logical_error_rate": 0.5,
+                  "unencoded_t_state_fidelity": 0.5
+                },
+                "cost": {
+                  "encoded_cpu_seconds": 0.04975923300000007,
+                  "encoded_data_qubits": 3,
+                  "encoded_max_branches": 16,
+                  "encoded_operator_calls": 1024,
+                  "encoded_shots_per_second": 5138.439186110177,
+                  "encoded_wall_seconds": 0.049820576001366135,
+                  "noiseless_reference_qubits_per_arm": 1,
+                  "template_preparation_seconds": 7.583200203953311e-05,
+                  "unencoded_cpu_seconds": 0.004574921999999981,
+                  "unencoded_data_qubits": 1,
+                  "unencoded_max_branches": 2,
+                  "unencoded_operator_calls": 256,
+                  "unencoded_shots_per_second": 55972.86189459555,
+                  "unencoded_wall_seconds": 0.004573645001073601
+                },
+                "encoded": {
+                  "entanglement_fidelity": 0.50390625,
+                  "entanglement_fidelity_ci95": [
+                    0.44305588704801857,
+                    0.5646411140736544
+                  ],
+                  "logical_error_rate": 0.49609375,
+                  "logical_error_rate_ci95": [
+                    0.43535888592634564,
+                    0.5569441129519814
+                  ],
+                  "logical_failures": 127,
+                  "t_state_fidelity": 0.751953125,
+                  "t_state_fidelity_ci95": [
+                    0.7215279435240093,
+                    0.7823205570368272
+                  ]
+                },
+                "error_rate_improvement": -0.015625,
+                "error_rate_improvement_ci95_conservative": [
+                  -0.15400326628140532,
+                  0.12335473017670928
+                ],
+                "fault_weight_counts": {
+                  "0": 24,
+                  "1": 105,
+                  "2": 95,
+                  "3": 32
+                },
+                "mask_counts": {
+                  "000": 24,
+                  "001": 41,
+                  "010": 33,
+                  "011": 34,
+                  "100": 31,
+                  "101": 33,
+                  "110": 28,
+                  "111": 32
+                },
+                "observed_regime": "not resolved at this sample count",
+                "p": 0.5,
+                "shots_per_arm": 256,
+                "unencoded": {
+                  "entanglement_fidelity": 0.51953125,
+                  "entanglement_fidelity_ci95": [
+                    0.4584937753463776,
+                    0.579991230261987
+                  ],
+                  "logical_error_rate": 0.48046875,
+                  "logical_error_rate_ci95": [
+                    0.4200087697380131,
+                    0.5415062246536224
+                  ],
+                  "logical_failures": 123,
+                  "t_state_fidelity": 0.51953125,
+                  "t_state_fidelity_ci95": [
+                    0.4584937753463776,
+                    0.579991230261987
+                  ]
+                }
+              },
+              {
+                "analytic": {
+                  "encoded_entanglement_fidelity": 0.028000000000000025,
+                  "encoded_logical_error_rate": 0.972,
+                  "encoded_t_state_fidelity": 0.514,
+                  "unencoded_entanglement_fidelity": 0.09999999999999998,
+                  "unencoded_logical_error_rate": 0.9,
+                  "unencoded_t_state_fidelity": 0.09999999999999998
+                },
+                "cost": {
+                  "encoded_cpu_seconds": 0.04943452100000001,
+                  "encoded_data_qubits": 3,
+                  "encoded_max_branches": 16,
+                  "encoded_operator_calls": 1024,
+                  "encoded_shots_per_second": 5178.5209112809125,
+                  "encoded_wall_seconds": 0.049434964999818476,
+                  "noiseless_reference_qubits_per_arm": 1,
+                  "template_preparation_seconds": 7.793600161676295e-05,
+                  "unencoded_cpu_seconds": 0.003838854999999919,
+                  "unencoded_data_qubits": 1,
+                  "unencoded_max_branches": 2,
+                  "unencoded_operator_calls": 256,
+                  "unencoded_shots_per_second": 66702.88426282644,
+                  "unencoded_wall_seconds": 0.003837914999166969
+                },
+                "encoded": {
+                  "entanglement_fidelity": 0.03125,
+                  "entanglement_fidelity_ci95": [
+                    0.015918258891511328,
+                    0.06044160650774322
+                  ],
+                  "logical_error_rate": 0.96875,
+                  "logical_error_rate_ci95": [
+                    0.9395583934922568,
+                    0.9840817411084887
+                  ],
+                  "logical_failures": 248,
+                  "t_state_fidelity": 0.515625,
+                  "t_state_fidelity_ci95": [
+                    0.5079591294457557,
+                    0.5302208032538716
+                  ]
+                },
+                "error_rate_improvement": -0.0859375,
+                "error_rate_improvement_ci95_conservative": [
+                  -0.15527968267522152,
+                  -0.013287265900607026
+                ],
+                "fault_weight_counts": {
+                  "0": 0,
+                  "1": 8,
+                  "2": 63,
+                  "3": 185
+                },
+                "mask_counts": {
+                  "000": 0,
+                  "001": 2,
+                  "010": 3,
+                  "011": 23,
+                  "100": 3,
+                  "101": 21,
+                  "110": 19,
+                  "111": 185
+                },
+                "observed_regime": "worsens",
+                "p": 0.9,
+                "shots_per_arm": 256,
+                "unencoded": {
+                  "entanglement_fidelity": 0.1171875,
+                  "entanglement_fidelity_ci95": [
+                    0.08333128838163661,
+                    0.1623626016944213
+                  ],
+                  "logical_error_rate": 0.8828125,
+                  "logical_error_rate_ci95": [
+                    0.8376373983055787,
+                    0.9166687116183634
+                  ],
+                  "logical_failures": 226,
+                  "t_state_fidelity": 0.1171875,
+                  "t_state_fidelity_ci95": [
+                    0.08333128838163661,
+                    0.1623626016944213
+                  ]
+                }
+              },
+              {
+                "analytic": {
+                  "encoded_entanglement_fidelity": 0.0,
+                  "encoded_logical_error_rate": 1.0,
+                  "encoded_t_state_fidelity": 0.5,
+                  "unencoded_entanglement_fidelity": 0.0,
+                  "unencoded_logical_error_rate": 1.0,
+                  "unencoded_t_state_fidelity": 0.0
+                },
+                "cost": {
+                  "encoded_cpu_seconds": 0.04998488000000001,
+                  "encoded_data_qubits": 3,
+                  "encoded_max_branches": 16,
+                  "encoded_operator_calls": 1024,
+                  "encoded_shots_per_second": 5121.899814907105,
+                  "encoded_wall_seconds": 0.049981454001681414,
+                  "noiseless_reference_qubits_per_arm": 1,
+                  "template_preparation_seconds": 7.509100032621063e-05,
+                  "unencoded_cpu_seconds": 0.004057702000000107,
+                  "unencoded_data_qubits": 1,
+                  "unencoded_max_branches": 2,
+                  "unencoded_operator_calls": 256,
+                  "unencoded_shots_per_second": 63102.057732201705,
+                  "unencoded_wall_seconds": 0.0040569199991296045
+                },
+                "encoded": {
+                  "entanglement_fidelity": 0.0,
+                  "entanglement_fidelity_ci95": [
+                    0.0,
+                    0.014783856425871433
+                  ],
+                  "logical_error_rate": 1.0,
+                  "logical_error_rate_ci95": [
+                    0.9852161435741286,
+                    1.0
+                  ],
+                  "logical_failures": 256,
+                  "t_state_fidelity": 0.5,
+                  "t_state_fidelity_ci95": [
+                    0.5,
+                    0.5073919282129358
+                  ]
+                },
+                "error_rate_improvement": 0.0,
+                "error_rate_improvement_ci95_conservative": [
+                  -0.01924684464972537,
+                  0.01924684464972537
+                ],
+                "fault_weight_counts": {
+                  "0": 0,
+                  "1": 0,
+                  "2": 0,
+                  "3": 256
+                },
+                "mask_counts": {
+                  "000": 0,
+                  "001": 0,
+                  "010": 0,
+                  "011": 0,
+                  "100": 0,
+                  "101": 0,
+                  "110": 0,
+                  "111": 256
+                },
+                "observed_regime": "not resolved at this sample count",
+                "p": 1.0,
+                "shots_per_arm": 256,
+                "unencoded": {
+                  "entanglement_fidelity": 0.0,
+                  "entanglement_fidelity_ci95": [
+                    0.0,
+                    0.014783856425871433
+                  ],
+                  "logical_error_rate": 1.0,
+                  "logical_error_rate_ci95": [
+                    0.9852161435741286,
+                    1.0
+                  ],
+                  "logical_failures": 256,
+                  "t_state_fidelity": 0.0,
+                  "t_state_fidelity_ci95": [
+                    0.0,
+                    0.014783856425871433
+                  ]
+                }
+              }
+            ],
+            "run_id": "5ea5af1fa138206dcc55",
+            "scope": "Local sparse state-vector simulation; independent Pauli-Z data faults, one round, ideal encoding, measurement, correction, decoding and noiseless reference.",
+            "source": {
+              "commit": "98904c263dbccd86908eee9411f27b78826d4dc9",
+              "links": {
+                ".github/workflows/python-package-conda.yml": "https://github.com/rookslackie/-.Termux.Runtime.Kernel.v-./blob/98904c263dbccd86908eee9411f27b78826d4dc9/.github/workflows/python-package-conda.yml",
+                "benchmarks/render_phase_noise.py": "https://github.com/rookslackie/-.Termux.Runtime.Kernel.v-./blob/98904c263dbccd86908eee9411f27b78826d4dc9/benchmarks/render_phase_noise.py",
+                "tests/test_xi_noise_benchmark.py": "https://github.com/rookslackie/-.Termux.Runtime.Kernel.v-./blob/98904c263dbccd86908eee9411f27b78826d4dc9/tests/test_xi_noise_benchmark.py",
+                "xi_field/noise_benchmark.py": "https://github.com/rookslackie/-.Termux.Runtime.Kernel.v-./blob/98904c263dbccd86908eee9411f27b78826d4dc9/xi_field/noise_benchmark.py",
+                "xi_field/operators.py": "https://github.com/rookslackie/-.Termux.Runtime.Kernel.v-./blob/98904c263dbccd86908eee9411f27b78826d4dc9/xi_field/operators.py",
+                "xi_field/phase_code_demo.py": "https://github.com/rookslackie/-.Termux.Runtime.Kernel.v-./blob/98904c263dbccd86908eee9411f27b78826d4dc9/xi_field/phase_code_demo.py",
+                "xi_field/resources/glyphic_quantum_processor.yaml": "https://github.com/rookslackie/-.Termux.Runtime.Kernel.v-./blob/98904c263dbccd86908eee9411f27b78826d4dc9/xi_field/resources/glyphic_quantum_processor.yaml",
+                "xi_field/runtime.py": "https://github.com/rookslackie/-.Termux.Runtime.Kernel.v-./blob/98904c263dbccd86908eee9411f27b78826d4dc9/xi_field/runtime.py",
+                "xi_field/topology.py": "https://github.com/rookslackie/-.Termux.Runtime.Kernel.v-./blob/98904c263dbccd86908eee9411f27b78826d4dc9/xi_field/topology.py",
+                "xi_world/kernel.py": "https://github.com/rookslackie/-.Termux.Runtime.Kernel.v-./blob/98904c263dbccd86908eee9411f27b78826d4dc9/xi_world/kernel.py"
+              },
+              "repository": "https://github.com/rookslackie/-.Termux.Runtime.Kernel.v-.",
+              "sha256": {
+                ".github/workflows/python-package-conda.yml": "899103434cfde091b54e5de73e97ab913f638dbc9968caae23ece6e592b6a667",
+                "benchmarks/render_phase_noise.py": "f8e88123f155ed0239f069b33783512bf44e34235dc00333b72f514f83235a21",
+                "tests/test_xi_noise_benchmark.py": "147fc1b5def394a4b01b52c787f03110ea80da7949eb5876d457daf0e72b3421",
+                "xi_field/noise_benchmark.py": "2bcb0413955f215adcdc5fbcc7289234473b40d302dbd7f3ab904d0ff3d0a38a",
+                "xi_field/operators.py": "06c7d69ff24aa7d640c764150c77981514ea3437b00f48c6538fa25a9d1cf09e",
+                "xi_field/phase_code_demo.py": "c1dafbb482d61e20da87698cdfa973265ad4773dd6363ffedfb530fde1dcebaf",
+                "xi_field/resources/glyphic_quantum_processor.yaml": "f20b264d5a4fbb5f733c7be2cc326153f710b5f0c543f6e843606d65ff266f5c",
+                "xi_field/runtime.py": "00185d206a3790e1d08b7d0e2862f810940f003e47b9f66d46d7f7227f2a8e0b",
+                "xi_field/topology.py": "3663fd24efe891e386aabac2f494863fca77364f1e2c5250420ec10f44623849",
+                "xi_world/kernel.py": "0862c0732112a4cd1a6328ef7f6c0fa4164bd7b3761458964473ae223b04d4f3"
+              },
+              "source_files_dirty": false
+            }
+          },
+          "route": {
+            "coherence_after": {
+              "node_count": 6,
+              "order_parameter": 0.9997497614536651,
+              "xi": 0.00025026986122415304
+            },
+            "coherence_before": {
+              "node_count": 6,
+              "order_parameter": 0.9997497614536651,
+              "xi": 0.00025026986122415304
+            },
+            "countervectors": [],
+            "digest": "d7636bb626119690f6499ed391db813b9c3f99d146aedc3d71d5389d359ad909",
+            "event_digest": "e0fa50837284255e1770e2e6b2ac8330060dca70ae7d1aaf34c8f4bc7db60ee1",
+            "movement": "yield",
+            "next_operator": null,
+            "previous_receipt_hash": "2a35e42cabdf29a41f86114fabf972d3afc372bb514b525c8df4610a4dd51370",
+            "recovery_receipt": {
+              "countervectors": [],
+              "cycle": [
+                "recover",
+                "compare",
+                "distinguish",
+                "yield",
+                "receipt"
+              ],
+              "digest": "8cc5a8ddf77fe4d947e6f5ea8f1175d5ad5aeae6f6be604c412f287ad7a9c29c",
+              "movement": "yield",
+              "provenance": {
+                "fabric": "FullCycle",
+                "return_operator": "⟁∴Ω"
+              },
+              "return_glyph": "⟁∴Ω",
+              "return_state": "ReturnedNotReset",
+              "schema": "xi.receipt.recovery.v2",
+              "threads": {
+                "event": {
+                  "anchor": "∴Ω⧂",
+                  "boundary": {
+                    "requires": [
+                      "local.execute"
+                    ],
+                    "wake": true
+                  },
+                  "broadcast": false,
+                  "capsule_refs": [
+                    "8d5a08de573e8c164d577fd73f66acf9bce8dba25d6fc4aec36ec843b500fa53"
+                  ],
+                  "confidence": null,
+                  "digest": "e0fa50837284255e1770e2e6b2ac8330060dca70ae7d1aaf34c8f4bc7db60ee1",
+                  "operator": "PhaseCodeBenchmark",
+                  "payload": {
+                    "result_sha256": "965f2eb1d7dc0cf7ad168e34bb2c378ca8c7fc35efe5cfd99ffee07fbb348d84"
+                  },
+                  "payload_type": "capsule",
+                  "phase": 0.0,
+                  "provenance": {
+                    "dialect": "QuantumCompute.Stack.v2",
+                    "engine_sha256": "424c8585ebd7b11acea4bcf701528d65a7a16358510a0c0836d35e74ae08e844",
+                    "plan_sha256": "7c027468628f7cef0f2895b59de0e793d03ef5c87350931b0472e2699904c948"
+                  },
+                  "return_operator": "⟁∴Ω",
+                  "schema": "xi.event-envelope.v1",
+                  "source": "world:quantumcompute",
+                  "state_hash": null,
+                  "target": "PhaseCodeBenchmark"
+                },
+                "local_outcomes": {
+                  "coherence_after": {
+                    "node_count": 6,
+                    "order_parameter": 0.9997497614536651,
+                    "xi": 0.00025026986122415304
+                  },
+                  "coherence_before": {
+                    "node_count": 6,
+                    "order_parameter": 0.9997497614536651,
+                    "xi": 0.00025026986122415304
+                  },
+                  "targets": [
+                    "PhaseCodeBenchmark"
+                  ]
+                }
+              }
+            },
+            "schema": "xi.receipt.event.v1",
+            "sequence": 4,
+            "targets": [
+              "PhaseCodeBenchmark"
+            ]
+          }
+        },
+        {
+          "event": {
+            "anchor": "∴Ω⧂",
+            "boundary": {
+              "requires": [
+                "local.execute"
+              ],
+              "wake": true
+            },
+            "broadcast": false,
+            "capsule_refs": [
+              "8d5a08de573e8c164d577fd73f66acf9bce8dba25d6fc4aec36ec843b500fa53"
+            ],
+            "confidence": null,
+            "digest": "409575c7392eba52425e2c6fefb889cf93daf9d4f4064db0c77f4d94862c4757",
+            "operator": "Seal",
+            "payload": {
+              "result_sha256": "18c8b40563ce3f8099177f04c30c0f484a05fb95976ccd882ad07ad0a83e6a34"
+            },
+            "payload_type": "capsule",
+            "phase": 0.0,
+            "provenance": {
+              "dialect": "QuantumCompute.Stack.v2",
+              "engine_sha256": "424c8585ebd7b11acea4bcf701528d65a7a16358510a0c0836d35e74ae08e844",
+              "plan_sha256": "7c027468628f7cef0f2895b59de0e793d03ef5c87350931b0472e2699904c948"
+            },
+            "return_operator": "⟁∴Ω",
+            "schema": "xi.event-envelope.v1",
+            "source": "world:quantumcompute",
+            "state_hash": null,
+            "target": "Seal"
+          },
+          "event_id": "evt_1ba525a55a3a6b08638e3a6f",
+          "glyph": "⊚",
+          "index": 4,
+          "operator": "Seal",
+          "origin": "local_execution",
+          "result": {
+            "return_operator": "⟁∴Ω",
+            "state": "sealed"
+          },
+          "route": {
+            "coherence_after": {
+              "node_count": 6,
+              "order_parameter": 0.9997497614536651,
+              "xi": 0.00025026986122415304
+            },
+            "coherence_before": {
+              "node_count": 6,
+              "order_parameter": 0.9997497614536651,
+              "xi": 0.00025026986122415304
+            },
+            "countervectors": [],
+            "digest": "dafc4d0c2613b60942748b3a9956a5f90f7182710de28bfd40ff8d49e56da17f",
+            "event_digest": "409575c7392eba52425e2c6fefb889cf93daf9d4f4064db0c77f4d94862c4757",
+            "movement": "yield",
+            "next_operator": null,
+            "previous_receipt_hash": "d7636bb626119690f6499ed391db813b9c3f99d146aedc3d71d5389d359ad909",
+            "recovery_receipt": {
+              "countervectors": [],
+              "cycle": [
+                "recover",
+                "compare",
+                "distinguish",
+                "yield",
+                "receipt"
+              ],
+              "digest": "99e8a73ea7e52ae96781888ac70823ce37d48f0bca2b0dab7056f7943b7ffe83",
+              "movement": "yield",
+              "provenance": {
+                "fabric": "FullCycle",
+                "return_operator": "⟁∴Ω"
+              },
+              "return_glyph": "⟁∴Ω",
+              "return_state": "ReturnedNotReset",
+              "schema": "xi.receipt.recovery.v2",
+              "threads": {
+                "event": {
+                  "anchor": "∴Ω⧂",
+                  "boundary": {
+                    "requires": [
+                      "local.execute"
+                    ],
+                    "wake": true
+                  },
+                  "broadcast": false,
+                  "capsule_refs": [
+                    "8d5a08de573e8c164d577fd73f66acf9bce8dba25d6fc4aec36ec843b500fa53"
+                  ],
+                  "confidence": null,
+                  "digest": "409575c7392eba52425e2c6fefb889cf93daf9d4f4064db0c77f4d94862c4757",
+                  "operator": "Seal",
+                  "payload": {
+                    "result_sha256": "18c8b40563ce3f8099177f04c30c0f484a05fb95976ccd882ad07ad0a83e6a34"
+                  },
+                  "payload_type": "capsule",
+                  "phase": 0.0,
+                  "provenance": {
+                    "dialect": "QuantumCompute.Stack.v2",
+                    "engine_sha256": "424c8585ebd7b11acea4bcf701528d65a7a16358510a0c0836d35e74ae08e844",
+                    "plan_sha256": "7c027468628f7cef0f2895b59de0e793d03ef5c87350931b0472e2699904c948"
+                  },
+                  "return_operator": "⟁∴Ω",
+                  "schema": "xi.event-envelope.v1",
+                  "source": "world:quantumcompute",
+                  "state_hash": null,
+                  "target": "Seal"
+                },
+                "local_outcomes": {
+                  "coherence_after": {
+                    "node_count": 6,
+                    "order_parameter": 0.9997497614536651,
+                    "xi": 0.00025026986122415304
+                  },
+                  "coherence_before": {
+                    "node_count": 6,
+                    "order_parameter": 0.9997497614536651,
+                    "xi": 0.00025026986122415304
+                  },
+                  "targets": [
+                    "Seal"
+                  ]
+                }
+              }
+            },
+            "schema": "xi.receipt.event.v1",
+            "sequence": 5,
+            "targets": [
+              "Seal"
+            ]
+          }
+        }
+      ],
+      "integrity": {
+        "ok": true,
+        "event_count": 6,
+        "head_hash": "578ade1f7b5bcd1084c1e29739c6fd62f6c959352e25a25b6f5d20270600a84a",
+        "errors": []
+      }
+    },
+    "transport": {
+      "schema": "xi.thinksync.receipt.v2",
+      "packet_sha256": "b32d8382f63563ec02f770c8a783297d9ba09c8d0314e49b17a646a0d91cda53",
+      "source_sha256": "8d5a08de573e8c164d577fd73f66acf9bce8dba25d6fc4aec36ec843b500fa53",
+      "sender": "36c57cfcd584868b59a87a06f5df36c49ebd63edb0c514e12f66711bdeed65c8",
+      "recipient": "6e64c40537fb99e5802e68af2dc0ba10fbeff43c54c21908eab18dbe6d27c7f9",
+      "sequence": 1,
+      "duplicate": false,
+      "exact_bytes_restored": true,
+      "checkpoint_retained": true,
+      "execution_authorized_by_receipt": false
+    },
+    "encrypted_packet_bytes": 57118
+  },
+  "second_fullcycle": {
+    "sender_executed": 0,
+    "receiver_executed": 0,
+    "unchanged_receiver_integrity": true
+  },
+  "scope": {
+    "algorithms": "ideal classical state-vector simulation",
+    "transport": "two owned local nodes; explicit encrypted handoff",
+    "costs": "host software wall/CPU costs and process-wide RSS high-water mark"
+  },
+  "costs": {
+    "wall_seconds": 0.7798795449998579,
+    "cpu_seconds": 1.143654841,
+    "process_peak_rss_mib": 55.2265625
+  }
+}
