@@ -219,6 +219,7 @@ class WorldKernel:
         causes: Iterable[str] | None = None,
         idempotency_key: str,
         data: Mapping[str, Any] | None = None,
+        expected_head_hash: str | None = None,
     ) -> Event:
         """Apply one lawful transition and persist its capsule and causal edges."""
         if not idempotency_key:
@@ -227,6 +228,10 @@ class WorldKernel:
         requested_causes = tuple(causes) if causes is not None else None
         request = {"action": action, "target_id": target_id, "data": payload,
                    "causes": requested_causes}
+        if expected_head_hash is not None:
+            if not isinstance(expected_head_hash, str) or not expected_head_hash:
+                raise WorldError("expected_head_hash must be a non-empty hash")
+            request["expected_head_hash"] = expected_head_hash
         request_hash = _hash(request)
         legacy_request_hash = _hash({"action": action, "target_id": target_id, "data": payload})
         with self._connect() as db:
@@ -240,7 +245,8 @@ class WorldKernel:
                     if prior["request_hash"] != request_hash:
                         prior_event = self._row_to_event(db, prior)
                         legacy_replay_matches = (
-                            prior["request_hash"] == legacy_request_hash
+                            expected_head_hash is None
+                            and prior["request_hash"] == legacy_request_hash
                             and (requested_causes is None or tuple(dict.fromkeys(requested_causes)) == prior_event.causes)
                         )
                         if not legacy_replay_matches:
@@ -250,9 +256,11 @@ class WorldKernel:
                     return event
                 self._require_participant(db, world_id, actor_id)
                 head = db.execute(
-                    "SELECT event_id FROM capsules WHERE world_id=? ORDER BY sequence DESC LIMIT 1",
+                    "SELECT event_id, event_hash FROM capsules WHERE world_id=? ORDER BY sequence DESC LIMIT 1",
                     (world_id,),
                 ).fetchone()
+                if expected_head_hash is not None and (not head or head["event_hash"] != expected_head_hash):
+                    raise WorldError("stale decision: expected head no longer matches the ledger")
                 parent_ids = tuple(dict.fromkeys(requested_causes if requested_causes is not None else ([head["event_id"]] if head else [])))
                 if head and not parent_ids:
                     raise WorldError("non-genesis transitions need at least one explicit causal parent")
@@ -511,32 +519,56 @@ class WorldKernel:
             return [self._row_to_event(db, row) for row in rows]
 
     def verify(self, world_id: str) -> dict[str, Any]:
-        """Verify event hash chain, event sequence, and backward-only causal edges."""
-        events = self.events(world_id)
+        """Check history and its materialized entity projection in one snapshot.
+
+        This verifies consistency. Unkeyed hashes and SQLite triggers do not
+        authenticate an OS user or resist a writer who can replace the DB.
+        """
         errors: list[str] = []
         expected_previous: str | None = None
-        by_id = {event.event_id: event for event in events}
-        for position, event in enumerate(events, start=1):
-            if event.sequence != position:
-                errors.append(f"sequence gap at {event.event_id}: got {event.sequence}, expected {position}")
-            if event.previous_hash != expected_previous:
-                errors.append(f"hash-chain predecessor mismatch at {event.event_id}")
-            material = self._event_material(event)
-            if _hash(material) != event.event_hash:
-                errors.append(f"event hash mismatch at {event.event_id}")
-            for cause in event.causes:
-                parent = by_id.get(cause)
-                if not parent or parent.sequence >= event.sequence:
-                    errors.append(f"invalid causal edge {cause} -> {event.event_id}")
-            with self._connect() as db:
-                stored_causes = tuple(r[0] for r in db.execute(
-                    "SELECT parent_event_id FROM causal_edges WHERE world_id=? AND child_event_id=? ORDER BY parent_event_id",
-                    (world_id, event.event_id),
-                ).fetchall())
-            if set(stored_causes) != set(event.causes):
-                errors.append(f"causal edge record mismatch at {event.event_id}")
-            expected_previous = event.event_hash
-        return {"ok": not errors, "event_count": len(events), "head_hash": expected_previous, "errors": errors}
+        with self._connect() as db:
+            db.execute("BEGIN")
+            rows = db.execute(
+                "SELECT * FROM capsules WHERE world_id=? ORDER BY sequence", (world_id,)
+            ).fetchall()
+            if not rows:
+                errors.append("world has no genesis capsule")
+            try:
+                events = [self._row_to_event(db, row) for row in rows]
+                by_id = {event.event_id: event for event in events}
+                projection: dict[str, Any] = {}
+                for position, (row, event) in enumerate(zip(rows, events), start=1):
+                    if event.sequence != position:
+                        errors.append(f"sequence gap at {event.event_id}: got {event.sequence}, expected {position}")
+                    if event.previous_hash != expected_previous:
+                        errors.append(f"hash-chain predecessor mismatch at {event.event_id}")
+                    if _hash(self._event_material(event)) != event.event_hash:
+                        errors.append(f"event hash mismatch at {event.event_id}")
+                    stored = json.loads(row["event_json"])
+                    if stored["action"] != event.action or stored["target_id"] != event.target_id:
+                        errors.append(f"event header mismatch at {event.event_id}")
+                    for cause in event.causes:
+                        parent = by_id.get(cause)
+                        if not parent or parent.sequence >= event.sequence:
+                            errors.append(f"invalid causal edge {cause} -> {event.event_id}")
+                    stored_causes = tuple(r[0] for r in db.execute(
+                        "SELECT parent_event_id FROM causal_edges WHERE world_id=? AND child_event_id=?",
+                        (world_id, event.event_id),
+                    ).fetchall())
+                    if set(stored_causes) != set(event.causes):
+                        errors.append(f"causal edge record mismatch at {event.event_id}")
+                    projection.update(event.echo)
+                    expected_previous = event.event_hash
+                actual = {row["entity_id"]: json.loads(row["state_json"]) for row in db.execute(
+                    "SELECT entity_id, state_json FROM entities WHERE world_id=?", (world_id,)
+                ).fetchall()}
+                for entity_id in sorted(projection.keys() | actual.keys()):
+                    if entity_id not in projection or entity_id not in actual or _json(projection[entity_id]) != _json(actual[entity_id]):
+                        errors.append(f"materialized entity mismatch at {entity_id}")
+            except (KeyError, TypeError, ValueError) as exc:
+                errors.append(f"malformed persisted record: {type(exc).__name__}")
+            db.rollback()
+        return {"ok": not errors, "event_count": len(rows), "head_hash": expected_previous, "errors": errors}
 
     def _commit_event(
         self, db: sqlite3.Connection, *, world_id: str, actor_id: str, action: str,
