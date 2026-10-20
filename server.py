@@ -129,6 +129,8 @@ class FieldOperatorRequest(BaseModel):
 
 # ── App ────────────────────────────────────────────────────────────────
 app = FastAPI(title="ForgeCore Sanctuary", version="∞")
+from xi_quantum.api import router as quantumcompute_router
+app.include_router(quantumcompute_router)
 
 
 @app.on_event("startup")

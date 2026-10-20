@@ -178,6 +178,12 @@
   .chip-actions { display:flex; gap:.5rem; flex-wrap:wrap; margin:1rem 0; }
   .chip-actions button { padding:.5rem .8rem; font-size:.82rem; }
   .receipt-meta { color:var(--text-dim); font: .8rem monospace; overflow-wrap:anywhere; margin:.5rem 0; }
+  .quantum-console { background:var(--card); border:1px solid var(--border); border-radius:12px; padding:1.2rem; }
+  .quantum-console textarea { min-height:240px; line-height:1.5; margin-bottom:1rem; }
+  .quantum-console .form-actions { flex-wrap:wrap; }
+  .quantum-step { padding:.8rem 0; border-bottom:1px solid var(--border); overflow-wrap:anywhere; }
+  .quantum-step strong { color:var(--cyan); font-weight:400; }
+  .quantum-console button:disabled { opacity:.5; cursor:wait; }
   #field-events { display:flex; flex-direction:column; gap:.4rem; margin-top:.8rem; }
   .field-event { border-left:2px solid var(--violet); padding:.4rem .7rem; background:rgba(149,117,205,.07); font: .78rem monospace; overflow-wrap:anywhere; }
 
@@ -268,6 +274,27 @@
     <div class="receipt-meta" id="field-state-view"></div>
     <div class="receipt-meta" id="field-integrity"></div>
     <div id="field-events"></div>
+  </section>
+
+  <section id="quantumcompute">
+    <h2>∴Ω⧂ Ξ.QuantumCompute · FullCycle</h2>
+    <div class="quantum-console">
+      <p class="subtitle">Grover · Shor · Jacobian Flow · independent-Z benchmark</p>
+      <p class="receipt-meta">TESSERA binds the glyph steps. FullCycle preserves their receipts in SQLite. GlyphSafe and ThinkSync carry exact source and checkpoints between pinned peers through the CLI.</p>
+      <label for="quantum-token">Local owner token</label>
+      <input id="quantum-token" type="password" autocomplete="off" placeholder="Token configured on this Vessel">
+      <label for="quantum-source" style="margin-top:1rem">Executable glyph program · QuantumCompute.Stack.v2</label>
+      <textarea id="quantum-source" spellcheck="false" aria-label="QuantumCompute source"></textarea>
+      <div class="form-actions">
+        <button onclick="loadQuantumExample()">Load FullCycle</button>
+        <button onclick="loadQuantumExample('observer')">Load Observer Experiment</button>
+        <button class="quantum-submit" onclick="submitQuantum('compile')">TESSERA · Inspect</button>
+        <button class="quantum-submit" onclick="submitQuantum('run')">⊚ Execute / Resume</button>
+      </div>
+      <p id="quantum-status" class="receipt-meta" role="status" aria-live="polite">Ready for a local glyph program.</p>
+      <div id="quantum-steps"></div>
+      <details style="margin-top:1rem"><summary>Plan and capsule receipts</summary><pre id="quantum-receipt">Awaiting a committed result.</pre></details>
+    </div>
   </section>
 
   <section>
@@ -515,6 +542,67 @@ async function runFieldOperator(operator, parameters) {
   } catch(e) {
     status.textContent = `operation not committed · ${e.message}`;
     toast(`Ξ operator rejected · ${e.message}`);
+  }
+}
+
+async function loadQuantumExample(name = 'fullcycle') {
+  try {
+    const response = await fetch('/api/quantumcompute/example?name=' + encodeURIComponent(name));
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.detail || 'Example unavailable');
+    document.getElementById('quantum-source').value = data.source;
+    document.getElementById('quantum-status').textContent = `${name === 'observer' ? 'Observer experiment' : 'FullCycle'} loaded · inspect the plan or execute with your local owner token.`;
+  } catch (error) {
+    document.getElementById('quantum-status').textContent = error.message;
+  }
+}
+
+async function submitQuantum(action) {
+  const status = document.getElementById('quantum-status');
+  const buttons = document.querySelectorAll('.quantum-submit');
+  const token = document.getElementById('quantum-token').value;
+  if (!token) { status.textContent = 'Enter the owner token configured on this Vessel.'; return; }
+  buttons.forEach(button => { button.disabled = true; });
+  status.textContent = action === 'compile' ? 'TESSERA is compiling the declared glyph steps…' : 'Executing locally and committing capsule receipts…';
+  document.getElementById('quantum-steps').replaceChildren();
+  try {
+    const response = await fetch('/api/quantumcompute/' + action, {
+      method:'POST', headers:{'Content-Type':'application/json', 'X-Xi-Quantum-Token':token},
+      body:JSON.stringify({source:document.getElementById('quantum-source').value})
+    });
+    const data = await response.json();
+    if (!response.ok) throw new Error(typeof data.detail === 'string' ? data.detail : JSON.stringify(data.detail));
+    document.getElementById('quantum-receipt').textContent = JSON.stringify(data, null, 2);
+    if (action === 'compile') {
+      status.textContent = `TESSERA · ${data.steps.length} declared steps · source ${data.program_sha256}`;
+      return;
+    }
+    status.textContent = `${data.closed ? '⊚ Sealed' : 'Continuation preserved'} · ${data.executed_this_call} executed · ${data.restored_from_peer_this_call} restored · ledger ${data.integrity.ok ? 'verified' : 'invalid'}`;
+    for (const step of data.steps) {
+      const item = document.createElement('div');
+      item.className = 'quantum-step';
+      const name = document.createElement('strong');
+      name.textContent = `${step.glyph} ${step.operator} · committed`;
+      const detail = document.createElement('p');
+      detail.className = 'receipt-meta';
+      const result = step.result;
+      if (step.operator === 'Grover') detail.textContent = `Marked-state probability ${(100 * result.success_probability).toFixed(3)}% · ${result.shots} samples · seed ${result.seed}`;
+      else if (step.operator === 'Shor') detail.textContent = `${result.N} → ${result.factors.join(' × ') || 'no factors witnessed'} · ${result.execution}`;
+      else if (step.operator === 'JacobianFlow') detail.textContent = `Declared objective ${result.initial_success_probability.toFixed(6)} → ${result.final_success_probability.toFixed(6)} · ${result.history.length} witnessed updates`;
+      else if (step.operator === 'PhaseCodeBenchmark') detail.textContent = `${result.points.length} noise probabilities · logical errors, confidence intervals and fidelity in the receipt`;
+      else if (step.operator === 'ObserverBenchmark') detail.textContent = `${result.points.length} observer budgets · access, memory, prediction error and uncertainty in the receipt`;
+      else detail.textContent = result.return_operator || result.state;
+      const proof = document.createElement('p');
+      proof.className = 'receipt-meta';
+      proof.textContent = `${step.route.movement} · ${step.event_id} · ${step.route.digest}`;
+      item.append(name, detail, proof);
+      document.getElementById('quantum-steps').appendChild(item);
+    }
+  } catch (error) {
+    status.textContent = `QuantumCompute · ${error.message}`;
+    document.getElementById('quantum-receipt').textContent = error.message;
+  } finally {
+    buttons.forEach(button => { button.disabled = false; });
   }
 }
 

@@ -25,8 +25,68 @@ jobs:
         python -m pip check
     - name: Check Python syntax and undefined names
       run: python -m flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-    - name: Test capsule engine, Xi World, and glyph runtime
+    - name: Test capsule engine, Xi World, glyph runtime, and QuantumCompute stack
       run: python -m pytest -v
+    - name: Verify PQ backend, FullCycle transfer, and checkpoint replay
+      env:
+        XI_QUANTUM_TEST_HOME: ${{ runner.temp }}/xi-quantumcompute-home
+        XI_QUANTUM_RESULTS: ${{ runner.temp }}/xi-quantumcompute-results
+      run: |
+        mkdir -p "$XI_QUANTUM_RESULTS"
+        python -m xi_quantum doctor > "$XI_QUANTUM_RESULTS/doctor.json"
+        python -m xi_quantum --home "$XI_QUANTUM_TEST_HOME" fullcycle Ξ.QuantumCompute.yaml \
+          --output "$XI_QUANTUM_RESULTS/fullcycle.json"
+        python - <<'PY'
+        import json
+        import os
+        from pathlib import Path
+        from xi_quantum.__main__ import fullcycle_demo
+        from xi_quantum.common import PROFILES
+
+        folder = Path(os.environ['XI_QUANTUM_RESULTS'])
+        first = json.loads((folder / 'fullcycle.json').read_text())
+        replay = fullcycle_demo(Path('Ξ.QuantumCompute.yaml').read_bytes(), PROFILES['mobile'],
+                                os.environ['XI_QUANTUM_TEST_HOME'])
+        assert first['exact_source_roundtrip'] and first['duplicate_packet_is_idempotent']
+        assert first['receiver']['restored_from_peer_this_call'] == 2
+        assert first['receiver']['executed_this_call'] == 3
+        assert replay['sender']['executed_this_call'] == replay['receiver']['executed_this_call'] == 0
+        assert first['receiver']['integrity'] == replay['receiver']['integrity']
+        print('Encrypted FullCycle transfer, persistent resume and exact replay verified.')
+        PY
+    - uses: actions/upload-artifact@v4
+      with:
+        name: xi-quantumcompute-fullcycle
+        path: ${{ runner.temp }}/xi-quantumcompute-results/
+        if-no-files-found: error
+    - name: Verify observer access, bounded memory, QR recovery and transfer replay
+      env:
+        XI_OBSERVER_HOME: ${{ runner.temp }}/xi-observer-home
+        XI_OBSERVER_RESULTS: ${{ runner.temp }}/xi-observer-results
+      run: |
+        python benchmarks/verify_observer.py --home "$XI_OBSERVER_HOME" --output "$XI_OBSERVER_RESULTS/results.json"
+        python - <<'PY'
+        import json
+        import os
+        from pathlib import Path
+        from benchmarks.verify_observer import verify
+
+        first = json.loads((Path(os.environ['XI_OBSERVER_RESULTS']) / 'results.json').read_text())['execution']
+        replay = verify(os.environ['XI_OBSERVER_HOME'], Path('examples/QuantumCompute.Observer.v1.xi').read_bytes())
+        assert first['receiver']['restored_from_peer_this_call'] == 1
+        assert replay['sender']['executed_this_call'] == replay['receiver']['executed_this_call'] == 0
+        assert first['receiver']['integrity'] == replay['receiver']['integrity']
+        assert first['kernel_recovery']['exact_encrypted_roundtrip']
+        assert first['kernel_recovery']['dialect_preserved_as_opaque']
+        cases = [s['result'] for s in first['receiver']['steps'] if s['operator'] == 'ObserverBenchmark']
+        assert cases[0]['points'][-1]['after_precision_resolved_count'] == 256
+        assert cases[1]['points'][-1]['after_precision_resolved_count'] == 0
+        PY
+    - uses: actions/upload-artifact@v4
+      with:
+        name: xi-observer-access
+        path: ${{ runner.temp }}/xi-observer-results/
+        if-no-files-found: error
     - name: Benchmark independent Z noise and verify persistent replay
       env:
         XI_NOISE_DIR: ${{ runner.temp }}/xi-noise-benchmark
@@ -65,7 +125,7 @@ jobs:
         from server import app
 
         with TestClient(app) as client:
-            for path in ('/health', '/api/capsules', '/api/quantum-field'):
+            for path in ('/health', '/api/capsules', '/api/quantum-field', '/api/quantumcompute', '/api/quantumcompute/example'):
                 response = client.get(path)
                 assert response.status_code == 200, (path, response.text)
             assert client.get('/health').json()['ok'] is True

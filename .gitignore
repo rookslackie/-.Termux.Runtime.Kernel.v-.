@@ -1,1 +1,6 @@
 __pycache__/
+.pytest_cache/
+.venv/
+.xi/
+*.sqlite3-shm
+*.sqlite3-wal

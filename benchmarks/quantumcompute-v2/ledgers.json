@@ -1,0 +1,18 @@
+[
+  {
+    "node": "node-a",
+    "database_bytes": 143360,
+    "sha256": "499d98c658256a537c9b0d1ba551322bbefbc633d88546a805532442efd0e79e",
+    "gzip_bytes": 8248,
+    "gzip_sha256": "8fc2971f3f920fb359b717efc0472d9f37dad5654c93c7657f859d6012625d0c",
+    "content": "WorldKernel events, state and exact sources; local transport tables empty"
+  },
+  {
+    "node": "node-b",
+    "database_bytes": 282624,
+    "sha256": "cf817978d86eac20bff845dad21f0a5e4434f5e1c2509f4139a3c2b9f91cab6e",
+    "gzip_bytes": 27961,
+    "gzip_sha256": "19aba774865c61611791ae550118616b073e4dcfcdfb7a854ea3d88bf4ceada8",
+    "content": "WorldKernel events, state and exact sources; local transport tables empty"
+  }
+]

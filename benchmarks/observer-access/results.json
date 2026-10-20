@@ -1,0 +1,2204 @@
+{
+  "schema": "xi.observer-verification.v1",
+  "source_commit": "96986cb85b9def64a154ae88397c590d25ae41be",
+  "sources": {
+    "xi_quantum/observer.py": {
+      "sha256": "b6e8086fe0869b30ac1b3a29f8d68086860ff3b215ed17b5615f6fe01038bac0",
+      "url": "https://github.com/rookslackie/-.Termux.Runtime.Kernel.v-./blob/96986cb85b9def64a154ae88397c590d25ae41be/xi_quantum/observer.py"
+    },
+    "xi_quantum/tessera.py": {
+      "sha256": "a83fbb84bb51c8ed14a254d724929755084ad27b0b434d5be102fffb859404b0",
+      "url": "https://github.com/rookslackie/-.Termux.Runtime.Kernel.v-./blob/96986cb85b9def64a154ae88397c590d25ae41be/xi_quantum/tessera.py"
+    },
+    "xi_quantum/runtime.py": {
+      "sha256": "e1c452c4dec7decb2b0998857f0bf2fae3e633fe14bedf84eeea837257c195f1",
+      "url": "https://github.com/rookslackie/-.Termux.Runtime.Kernel.v-./blob/96986cb85b9def64a154ae88397c590d25ae41be/xi_quantum/runtime.py"
+    },
+    "xi_field/operators.py": {
+      "sha256": "06c7d69ff24aa7d640c764150c77981514ea3437b00f48c6538fa25a9d1cf09e",
+      "url": "https://github.com/rookslackie/-.Termux.Runtime.Kernel.v-./blob/96986cb85b9def64a154ae88397c590d25ae41be/xi_field/operators.py"
+    },
+    "tests/test_xi_observer.py": {
+      "sha256": "c883c0ac46ba6d4b62b2c5e82bb8644effc92fc708fffeadc32a692b51562ee8",
+      "url": "https://github.com/rookslackie/-.Termux.Runtime.Kernel.v-./blob/96986cb85b9def64a154ae88397c590d25ae41be/tests/test_xi_observer.py"
+    },
+    "examples/QuantumCompute.Observer.v1.xi": {
+      "sha256": "88957a1880da2c9320e668c3c16d06e325e17495742d245a3d5c7e270ed14ad3",
+      "url": "https://github.com/rookslackie/-.Termux.Runtime.Kernel.v-./blob/96986cb85b9def64a154ae88397c590d25ae41be/examples/QuantumCompute.Observer.v1.xi"
+    },
+    "benchmarks/verify_observer.py": {
+      "sha256": "84b269b551107f1b16ea96c789de2f665e3a72dde248549ae7fa9a782df1e359",
+      "url": "https://github.com/rookslackie/-.Termux.Runtime.Kernel.v-./blob/96986cb85b9def64a154ae88397c590d25ae41be/benchmarks/verify_observer.py"
+    }
+  },
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "platform": "Linux-6.18.55-x86_64-with-glibc2.39",
+    "packages": {
+      "numpy": "2.5.4",
+      "PyYAML": "6.0.3",
+      "cryptography": "50.0.2"
+    }
+  },
+  "profile": {
+    "name": "mobile",
+    "memory_mib": 64,
+    "max_iterations": 4096
+  },
+  "execution": {
+    "sender": {
+      "schema": "xi.quantumcompute.receipt.v2",
+      "world_id": "quantum-bfb1c83240921a6b15335d9a88c2ccef",
+      "source_sha256": "88957a1880da2c9320e668c3c16d06e325e17495742d245a3d5c7e270ed14ad3",
+      "plan_sha256": "69a6f516eb68b2041524660c9f102ab3a39e672a240430ffaf00cc876fada704",
+      "engine_sha256": "6d865160593b3bc4533ab75c09f707475a25e27a62f6965a90b728b1b743db3a",
+      "closed": false,
+      "completed_steps": 1,
+      "executed_this_call": 1,
+      "restored_from_peer_this_call": 0,
+      "steps": [
+        {
+          "event": {
+            "anchor": "∴Ω⧂",
+            "boundary": {
+              "requires": [
+                "local.execute"
+              ],
+              "wake": true
+            },
+            "broadcast": false,
+            "capsule_refs": [
+              "88957a1880da2c9320e668c3c16d06e325e17495742d245a3d5c7e270ed14ad3"
+            ],
+            "confidence": null,
+            "digest": "3c207e27cb2cef87496433c06cbff2ce70a2714ffb2b03fd29208e06b3797991",
+            "operator": "ObserverBenchmark",
+            "payload": {
+              "result_sha256": "86c496da840c77bf322c0d7cf61b58570f240c92682c2fbeedc63d9141c3c820"
+            },
+            "payload_type": "capsule",
+            "phase": 0.0,
+            "provenance": {
+              "dialect": "QuantumCompute.Stack.v2",
+              "engine_sha256": "6d865160593b3bc4533ab75c09f707475a25e27a62f6965a90b728b1b743db3a",
+              "plan_sha256": "69a6f516eb68b2041524660c9f102ab3a39e672a240430ffaf00cc876fada704"
+            },
+            "return_operator": "⟁∴Ω",
+            "schema": "xi.event-envelope.v1",
+            "source": "world:quantumcompute",
+            "state_hash": null,
+            "target": "ObserverBenchmark"
+          },
+          "event_id": "evt_9181f47e810da369b916f7fd",
+          "glyph": "⧂",
+          "index": 0,
+          "operator": "ObserverBenchmark",
+          "origin": "local_execution",
+          "result": {
+            "algorithm": "ObserverBenchmark",
+            "configuration": {
+              "confidence": 0.95,
+              "memory_bits": null,
+              "noise_p": 0.1,
+              "phase": 1.0471975511965976,
+              "repetitions": 256,
+              "sample_counts": [
+                16,
+                64,
+                256,
+                1024
+              ],
+              "seed": 20261020,
+              "tolerance": 0.1
+            },
+            "cost": {
+              "cpu_seconds": 18.986650355,
+              "injected_z_operator_calls": 52458,
+              "prepared_samples": 524288,
+              "resources": {
+                "basis_states": 2,
+                "estimated_record_workspace_bytes": 4194304,
+                "estimated_workspace_bytes": 192,
+                "memory_budget_mib": 64,
+                "profile": "mobile",
+                "simulated_qubits": 1
+              },
+              "wall_seconds": 18.993069261996425,
+              "witness_operator_calls": 524288
+            },
+            "evaluator_reference": {
+              "X": 0.4,
+              "Z": -2.7755575615628914e-16,
+              "analytic_X": 0.40000000000000013,
+              "minimum_eigenvalue": 0.09999999999999987,
+              "phase_jacobian": {
+                "X": -0.6928203230338602,
+                "Z": 5.273559366969493e-11
+              },
+              "trace": 0.9999999999999989
+            },
+            "model": {
+              "inference": "sample mean of Pauli eigenvalues; no preparation/noise oracle passed to observers",
+              "measurement": "existing xi_field.apply_operator z / projective X or Z witness",
+              "memory": "FIFO retained outcome bits; Python objects, replay metadata and evaluator storage excluded",
+              "noise": "one independent Bernoulli(noise_p) Pauli-Z per fresh qubit",
+              "precision_resolved": "Wilson expectation interval half-width <= declared tolerance",
+              "preparation": "(|0> + exp(i*phase)|1>)/sqrt(2), freshly prepared per sample",
+              "scope": "restricted statistical observer model; no calibration of ORT presence or physical collapse"
+            },
+            "outcome_transcript_sha256": "eae6c19b5fafb7598fdd1e904aae88332256d99b3e4fd891f12fede079a90303",
+            "points": [
+              {
+                "after_precision_resolved_count": 0,
+                "after_rmse": 0.23753597589365294,
+                "analytic_rmse": 0.229128784747792,
+                "before_precision_resolved_count": 0,
+                "before_unidentified_count": 256,
+                "coverage_fraction_wilson_interval": [
+                  0.9008977667558741,
+                  0.9611663588714884
+                ],
+                "example": {
+                  "after": {
+                    "confidence": 0.95,
+                    "direct_samples_used": 16,
+                    "estimate": 0.75,
+                    "evidence_sha256": "41115fc0be6708829522022fc0ecb9f9517c3a007e3947dcca370bcf33f86087",
+                    "half_width": 0.32525078491434645,
+                    "identifiable_from_available_evidence": true,
+                    "interval": [
+                      0.27954345468482633,
+                      0.9300450245135192
+                    ],
+                    "interval_kind": "marginal Wilson expectation interval",
+                    "observer_id": "observer-a",
+                    "ones": 2,
+                    "precision_resolved": false,
+                    "retained_outcome_bits": 16,
+                    "retained_target_samples": 16,
+                    "target": "X",
+                    "tolerance": 0.1,
+                    "zeros": 14
+                  },
+                  "before": {
+                    "confidence": 0.95,
+                    "direct_samples_used": 16,
+                    "estimate": null,
+                    "evidence_sha256": "593dc525d3b3409b08e70a833c0bda5362fa6d0e9508c0b7de5d67e55ac52bfe",
+                    "half_width": 1.0,
+                    "identifiable_from_available_evidence": false,
+                    "interval": [
+                      -1.0,
+                      1.0
+                    ],
+                    "interval_kind": "unidentified range",
+                    "observer_id": "observer-a",
+                    "precision_resolved": false,
+                    "retained_outcome_bits": 16,
+                    "retained_target_samples": 0,
+                    "target": "X",
+                    "tolerance": 0.1
+                  },
+                  "contracts": [
+                    {
+                      "confidence": 0.95,
+                      "direct_bases": [
+                        "Z"
+                      ],
+                      "memory_bits": 16,
+                      "observer_id": "observer-a",
+                      "sample_budget": 16,
+                      "tolerance": 0.1
+                    },
+                    {
+                      "confidence": 0.95,
+                      "direct_bases": [
+                        "X"
+                      ],
+                      "memory_bits": 16,
+                      "observer_id": "observer-b",
+                      "sample_budget": 16,
+                      "tolerance": 0.1
+                    }
+                  ],
+                  "peer": {
+                    "confidence": 0.95,
+                    "direct_samples_used": 16,
+                    "estimate": 0.75,
+                    "evidence_sha256": "41115fc0be6708829522022fc0ecb9f9517c3a007e3947dcca370bcf33f86087",
+                    "half_width": 0.32525078491434645,
+                    "identifiable_from_available_evidence": true,
+                    "interval": [
+                      0.27954345468482633,
+                      0.9300450245135192
+                    ],
+                    "interval_kind": "marginal Wilson expectation interval",
+                    "observer_id": "observer-b",
+                    "ones": 2,
+                    "precision_resolved": false,
+                    "retained_outcome_bits": 16,
+                    "retained_target_samples": 16,
+                    "target": "X",
+                    "tolerance": 0.1,
+                    "zeros": 14
+                  },
+                  "share": {
+                    "accepted_records": 16,
+                    "bases": [
+                      "X"
+                    ],
+                    "direct_measurement_access_changed": false,
+                    "payload_sha256": "41115fc0be6708829522022fc0ecb9f9517c3a007e3947dcca370bcf33f86087",
+                    "recipient": "observer-a",
+                    "recipient_after": "41115fc0be6708829522022fc0ecb9f9517c3a007e3947dcca370bcf33f86087",
+                    "recipient_before": "593dc525d3b3409b08e70a833c0bda5362fa6d0e9508c0b7de5d67e55ac52bfe",
+                    "schema": "xi.observer-share.receipt.v1",
+                    "sender": "observer-b"
+                  }
+                },
+                "interval_coverage_count": 240,
+                "interval_coverage_fraction": 0.9375,
+                "mean_interval_half_width": 0.39463813061574043,
+                "memory_outcome_bits": 16,
+                "repetitions": 256,
+                "retained_target_samples": 16,
+                "samples_per_observer": 16
+              },
+              {
+                "after_precision_resolved_count": 0,
+                "after_rmse": 0.11571074734345656,
+                "analytic_rmse": 0.114564392373896,
+                "before_precision_resolved_count": 0,
+                "before_unidentified_count": 256,
+                "coverage_fraction_wilson_interval": [
+                  0.9150689403789347,
+                  0.9700861886134464
+                ],
+                "example": {
+                  "after": {
+                    "confidence": 0.95,
+                    "direct_samples_used": 64,
+                    "estimate": 0.5,
+                    "evidence_sha256": "b0e5d5c6a860f21c964b6094140f69f9f809b20b6ef7671b1051dd8d66595ae7",
+                    "half_width": 0.2080134992769911,
+                    "identifiable_from_available_evidence": true,
+                    "interval": [
+                      0.2636744708266061,
+                      0.6797014693805883
+                    ],
+                    "interval_kind": "marginal Wilson expectation interval",
+                    "observer_id": "observer-a",
+                    "ones": 16,
+                    "precision_resolved": false,
+                    "retained_outcome_bits": 64,
+                    "retained_target_samples": 64,
+                    "target": "X",
+                    "tolerance": 0.1,
+                    "zeros": 48
+                  },
+                  "before": {
+                    "confidence": 0.95,
+                    "direct_samples_used": 64,
+                    "estimate": null,
+                    "evidence_sha256": "c1099b41bee79be5d57dc5e8dcf6e66648783878a59172cfb7663f1d8c5d6220",
+                    "half_width": 1.0,
+                    "identifiable_from_available_evidence": false,
+                    "interval": [
+                      -1.0,
+                      1.0
+                    ],
+                    "interval_kind": "unidentified range",
+                    "observer_id": "observer-a",
+                    "precision_resolved": false,
+                    "retained_outcome_bits": 64,
+                    "retained_target_samples": 0,
+                    "target": "X",
+                    "tolerance": 0.1
+                  },
+                  "contracts": [
+                    {
+                      "confidence": 0.95,
+                      "direct_bases": [
+                        "Z"
+                      ],
+                      "memory_bits": 64,
+                      "observer_id": "observer-a",
+                      "sample_budget": 64,
+                      "tolerance": 0.1
+                    },
+                    {
+                      "confidence": 0.95,
+                      "direct_bases": [
+                        "X"
+                      ],
+                      "memory_bits": 64,
+                      "observer_id": "observer-b",
+                      "sample_budget": 64,
+                      "tolerance": 0.1
+                    }
+                  ],
+                  "peer": {
+                    "confidence": 0.95,
+                    "direct_samples_used": 64,
+                    "estimate": 0.5,
+                    "evidence_sha256": "b0e5d5c6a860f21c964b6094140f69f9f809b20b6ef7671b1051dd8d66595ae7",
+                    "half_width": 0.2080134992769911,
+                    "identifiable_from_available_evidence": true,
+                    "interval": [
+                      0.2636744708266061,
+                      0.6797014693805883
+                    ],
+                    "interval_kind": "marginal Wilson expectation interval",
+                    "observer_id": "observer-b",
+                    "ones": 16,
+                    "precision_resolved": false,
+                    "retained_outcome_bits": 64,
+                    "retained_target_samples": 64,
+                    "target": "X",
+                    "tolerance": 0.1,
+                    "zeros": 48
+                  },
+                  "share": {
+                    "accepted_records": 64,
+                    "bases": [
+                      "X"
+                    ],
+                    "direct_measurement_access_changed": false,
+                    "payload_sha256": "b0e5d5c6a860f21c964b6094140f69f9f809b20b6ef7671b1051dd8d66595ae7",
+                    "recipient": "observer-a",
+                    "recipient_after": "b0e5d5c6a860f21c964b6094140f69f9f809b20b6ef7671b1051dd8d66595ae7",
+                    "recipient_before": "c1099b41bee79be5d57dc5e8dcf6e66648783878a59172cfb7663f1d8c5d6220",
+                    "schema": "xi.observer-share.receipt.v1",
+                    "sender": "observer-b"
+                  }
+                },
+                "interval_coverage_count": 243,
+                "interval_coverage_fraction": 0.94921875,
+                "mean_interval_half_width": 0.21665761013065798,
+                "memory_outcome_bits": 64,
+                "repetitions": 256,
+                "retained_target_samples": 64,
+                "samples_per_observer": 64
+              },
+              {
+                "after_precision_resolved_count": 0,
+                "after_rmse": 0.05851076480254145,
+                "analytic_rmse": 0.057282196186948,
+                "before_precision_resolved_count": 0,
+                "before_unidentified_count": 256,
+                "coverage_fraction_wilson_interval": [
+                  0.8916056708459877,
+                  0.9550644525380291
+                ],
+                "example": {
+                  "after": {
+                    "confidence": 0.95,
+                    "direct_samples_used": 256,
+                    "estimate": 0.46875,
+                    "evidence_sha256": "0068873bea0031fc3c840bcf57a771803916b5f61c621d07e50bfaa062228888",
+                    "half_width": 0.10762655081411143,
+                    "identifiable_from_available_evidence": true,
+                    "interval": [
+                      0.3541935164862613,
+                      0.5694466181144842
+                    ],
+                    "interval_kind": "marginal Wilson expectation interval",
+                    "observer_id": "observer-a",
+                    "ones": 68,
+                    "precision_resolved": false,
+                    "retained_outcome_bits": 256,
+                    "retained_target_samples": 256,
+                    "target": "X",
+                    "tolerance": 0.1,
+                    "zeros": 188
+                  },
+                  "before": {
+                    "confidence": 0.95,
+                    "direct_samples_used": 256,
+                    "estimate": null,
+                    "evidence_sha256": "049ccf1ff74ae788bef7409625732c88f095b254704052a2c8e7179ca8f13ea7",
+                    "half_width": 1.0,
+                    "identifiable_from_available_evidence": false,
+                    "interval": [
+                      -1.0,
+                      1.0
+                    ],
+                    "interval_kind": "unidentified range",
+                    "observer_id": "observer-a",
+                    "precision_resolved": false,
+                    "retained_outcome_bits": 256,
+                    "retained_target_samples": 0,
+                    "target": "X",
+                    "tolerance": 0.1
+                  },
+                  "contracts": [
+                    {
+                      "confidence": 0.95,
+                      "direct_bases": [
+                        "Z"
+                      ],
+                      "memory_bits": 256,
+                      "observer_id": "observer-a",
+                      "sample_budget": 256,
+                      "tolerance": 0.1
+                    },
+                    {
+                      "confidence": 0.95,
+                      "direct_bases": [
+                        "X"
+                      ],
+                      "memory_bits": 256,
+                      "observer_id": "observer-b",
+                      "sample_budget": 256,
+                      "tolerance": 0.1
+                    }
+                  ],
+                  "peer": {
+                    "confidence": 0.95,
+                    "direct_samples_used": 256,
+                    "estimate": 0.46875,
+                    "evidence_sha256": "0068873bea0031fc3c840bcf57a771803916b5f61c621d07e50bfaa062228888",
+                    "half_width": 0.10762655081411143,
+                    "identifiable_from_available_evidence": true,
+                    "interval": [
+                      0.3541935164862613,
+                      0.5694466181144842
+                    ],
+                    "interval_kind": "marginal Wilson expectation interval",
+                    "observer_id": "observer-b",
+                    "ones": 68,
+                    "precision_resolved": false,
+                    "retained_outcome_bits": 256,
+                    "retained_target_samples": 256,
+                    "target": "X",
+                    "tolerance": 0.1,
+                    "zeros": 188
+                  },
+                  "share": {
+                    "accepted_records": 256,
+                    "bases": [
+                      "X"
+                    ],
+                    "direct_measurement_access_changed": false,
+                    "payload_sha256": "0068873bea0031fc3c840bcf57a771803916b5f61c621d07e50bfaa062228888",
+                    "recipient": "observer-a",
+                    "recipient_after": "0068873bea0031fc3c840bcf57a771803916b5f61c621d07e50bfaa062228888",
+                    "recipient_before": "049ccf1ff74ae788bef7409625732c88f095b254704052a2c8e7179ca8f13ea7",
+                    "schema": "xi.observer-share.receipt.v1",
+                    "sender": "observer-b"
+                  }
+                },
+                "interval_coverage_count": 238,
+                "interval_coverage_fraction": 0.9296875,
+                "mean_interval_half_width": 0.1111459801948297,
+                "memory_outcome_bits": 256,
+                "repetitions": 256,
+                "retained_target_samples": 256,
+                "samples_per_observer": 256
+              },
+              {
+                "after_precision_resolved_count": 256,
+                "after_rmse": 0.02610308588646802,
+                "analytic_rmse": 0.028641098093474,
+                "before_precision_resolved_count": 0,
+                "before_unidentified_count": 256,
+                "coverage_fraction_wilson_interval": [
+                  0.9395583934922568,
+                  0.9840817411084887
+                ],
+                "example": {
+                  "after": {
+                    "confidence": 0.95,
+                    "direct_samples_used": 1024,
+                    "estimate": 0.37890625,
+                    "evidence_sha256": "31b5164e8debcd19459bf41b2fe581212024d9570a5f6cae1419c283327c56d5",
+                    "half_width": 0.056593555771574655,
+                    "identifiable_from_available_evidence": true,
+                    "interval": [
+                      0.32089656847888737,
+                      0.4340836800220367
+                    ],
+                    "interval_kind": "marginal Wilson expectation interval",
+                    "observer_id": "observer-a",
+                    "ones": 318,
+                    "precision_resolved": true,
+                    "retained_outcome_bits": 1024,
+                    "retained_target_samples": 1024,
+                    "target": "X",
+                    "tolerance": 0.1,
+                    "zeros": 706
+                  },
+                  "before": {
+                    "confidence": 0.95,
+                    "direct_samples_used": 1024,
+                    "estimate": null,
+                    "evidence_sha256": "113d7039e15fec31b07ca2db3ebb55eb7e0ddb72e17fc712504df99189cb010e",
+                    "half_width": 1.0,
+                    "identifiable_from_available_evidence": false,
+                    "interval": [
+                      -1.0,
+                      1.0
+                    ],
+                    "interval_kind": "unidentified range",
+                    "observer_id": "observer-a",
+                    "precision_resolved": false,
+                    "retained_outcome_bits": 1024,
+                    "retained_target_samples": 0,
+                    "target": "X",
+                    "tolerance": 0.1
+                  },
+                  "contracts": [
+                    {
+                      "confidence": 0.95,
+                      "direct_bases": [
+                        "Z"
+                      ],
+                      "memory_bits": 1024,
+                      "observer_id": "observer-a",
+                      "sample_budget": 1024,
+                      "tolerance": 0.1
+                    },
+                    {
+                      "confidence": 0.95,
+                      "direct_bases": [
+                        "X"
+                      ],
+                      "memory_bits": 1024,
+                      "observer_id": "observer-b",
+                      "sample_budget": 1024,
+                      "tolerance": 0.1
+                    }
+                  ],
+                  "peer": {
+                    "confidence": 0.95,
+                    "direct_samples_used": 1024,
+                    "estimate": 0.37890625,
+                    "evidence_sha256": "31b5164e8debcd19459bf41b2fe581212024d9570a5f6cae1419c283327c56d5",
+                    "half_width": 0.056593555771574655,
+                    "identifiable_from_available_evidence": true,
+                    "interval": [
+                      0.32089656847888737,
+                      0.4340836800220367
+                    ],
+                    "interval_kind": "marginal Wilson expectation interval",
+                    "observer_id": "observer-b",
+                    "ones": 318,
+                    "precision_resolved": true,
+                    "retained_outcome_bits": 1024,
+                    "retained_target_samples": 1024,
+                    "target": "X",
+                    "tolerance": 0.1,
+                    "zeros": 706
+                  },
+                  "share": {
+                    "accepted_records": 1024,
+                    "bases": [
+                      "X"
+                    ],
+                    "direct_measurement_access_changed": false,
+                    "payload_sha256": "31b5164e8debcd19459bf41b2fe581212024d9570a5f6cae1419c283327c56d5",
+                    "recipient": "observer-a",
+                    "recipient_after": "31b5164e8debcd19459bf41b2fe581212024d9570a5f6cae1419c283327c56d5",
+                    "recipient_before": "113d7039e15fec31b07ca2db3ebb55eb7e0ddb72e17fc712504df99189cb010e",
+                    "schema": "xi.observer-share.receipt.v1",
+                    "sender": "observer-b"
+                  }
+                },
+                "interval_coverage_count": 248,
+                "interval_coverage_fraction": 0.96875,
+                "mean_interval_half_width": 0.056013735411635804,
+                "memory_outcome_bits": 1024,
+                "repetitions": 256,
+                "retained_target_samples": 1024,
+                "samples_per_observer": 1024
+              }
+            ],
+            "return_operator": "⟁∴Ω",
+            "schema": "xi.observer-access.v1"
+          },
+          "route": {
+            "coherence_after": {
+              "node_count": 7,
+              "order_parameter": 1.0,
+              "xi": -0.0
+            },
+            "coherence_before": {
+              "node_count": 7,
+              "order_parameter": 1.0,
+              "xi": -0.0
+            },
+            "countervectors": [],
+            "digest": "7673d253e89947b3f48891af0687d3372973669b63d77c0af93b10e2be2a4a5a",
+            "event_digest": "3c207e27cb2cef87496433c06cbff2ce70a2714ffb2b03fd29208e06b3797991",
+            "movement": "yield",
+            "next_operator": null,
+            "previous_receipt_hash": null,
+            "recovery_receipt": {
+              "countervectors": [],
+              "cycle": [
+                "recover",
+                "compare",
+                "distinguish",
+                "yield",
+                "receipt"
+              ],
+              "digest": "f8c2c7b92f0cdaf836b21a33cd306bb27c9ebbc5126ed08ade2cc8e6f62b7a4e",
+              "movement": "yield",
+              "provenance": {
+                "fabric": "FullCycle",
+                "return_operator": "⟁∴Ω"
+              },
+              "return_glyph": "⟁∴Ω",
+              "return_state": "ReturnedNotReset",
+              "schema": "xi.receipt.recovery.v2",
+              "threads": {
+                "event": {
+                  "anchor": "∴Ω⧂",
+                  "boundary": {
+                    "requires": [
+                      "local.execute"
+                    ],
+                    "wake": true
+                  },
+                  "broadcast": false,
+                  "capsule_refs": [
+                    "88957a1880da2c9320e668c3c16d06e325e17495742d245a3d5c7e270ed14ad3"
+                  ],
+                  "confidence": null,
+                  "digest": "3c207e27cb2cef87496433c06cbff2ce70a2714ffb2b03fd29208e06b3797991",
+                  "operator": "ObserverBenchmark",
+                  "payload": {
+                    "result_sha256": "86c496da840c77bf322c0d7cf61b58570f240c92682c2fbeedc63d9141c3c820"
+                  },
+                  "payload_type": "capsule",
+                  "phase": 0.0,
+                  "provenance": {
+                    "dialect": "QuantumCompute.Stack.v2",
+                    "engine_sha256": "6d865160593b3bc4533ab75c09f707475a25e27a62f6965a90b728b1b743db3a",
+                    "plan_sha256": "69a6f516eb68b2041524660c9f102ab3a39e672a240430ffaf00cc876fada704"
+                  },
+                  "return_operator": "⟁∴Ω",
+                  "schema": "xi.event-envelope.v1",
+                  "source": "world:quantumcompute",
+                  "state_hash": null,
+                  "target": "ObserverBenchmark"
+                },
+                "local_outcomes": {
+                  "coherence_after": {
+                    "node_count": 7,
+                    "order_parameter": 1.0,
+                    "xi": -0.0
+                  },
+                  "coherence_before": {
+                    "node_count": 7,
+                    "order_parameter": 1.0,
+                    "xi": -0.0
+                  },
+                  "targets": [
+                    "ObserverBenchmark"
+                  ]
+                }
+              }
+            },
+            "schema": "xi.receipt.event.v1",
+            "sequence": 1,
+            "targets": [
+              "ObserverBenchmark"
+            ]
+          }
+        }
+      ],
+      "integrity": {
+        "ok": true,
+        "event_count": 2,
+        "head_hash": "b849146ff4a3a7c9344ad8b079d45a6f31620973f681280b0aeacff77d37a12b",
+        "errors": []
+      }
+    },
+    "receiver": {
+      "schema": "xi.quantumcompute.receipt.v2",
+      "world_id": "quantum-bfb1c83240921a6b15335d9a88c2ccef",
+      "source_sha256": "88957a1880da2c9320e668c3c16d06e325e17495742d245a3d5c7e270ed14ad3",
+      "plan_sha256": "69a6f516eb68b2041524660c9f102ab3a39e672a240430ffaf00cc876fada704",
+      "engine_sha256": "6d865160593b3bc4533ab75c09f707475a25e27a62f6965a90b728b1b743db3a",
+      "closed": true,
+      "completed_steps": 3,
+      "executed_this_call": 2,
+      "restored_from_peer_this_call": 1,
+      "steps": [
+        {
+          "event": {
+            "anchor": "∴Ω⧂",
+            "boundary": {
+              "requires": [
+                "local.execute"
+              ],
+              "wake": true
+            },
+            "broadcast": false,
+            "capsule_refs": [
+              "88957a1880da2c9320e668c3c16d06e325e17495742d245a3d5c7e270ed14ad3"
+            ],
+            "confidence": null,
+            "digest": "3c207e27cb2cef87496433c06cbff2ce70a2714ffb2b03fd29208e06b3797991",
+            "operator": "ObserverBenchmark",
+            "payload": {
+              "result_sha256": "86c496da840c77bf322c0d7cf61b58570f240c92682c2fbeedc63d9141c3c820"
+            },
+            "payload_type": "capsule",
+            "phase": 0.0,
+            "provenance": {
+              "dialect": "QuantumCompute.Stack.v2",
+              "engine_sha256": "6d865160593b3bc4533ab75c09f707475a25e27a62f6965a90b728b1b743db3a",
+              "plan_sha256": "69a6f516eb68b2041524660c9f102ab3a39e672a240430ffaf00cc876fada704"
+            },
+            "return_operator": "⟁∴Ω",
+            "schema": "xi.event-envelope.v1",
+            "source": "world:quantumcompute",
+            "state_hash": null,
+            "target": "ObserverBenchmark"
+          },
+          "event_id": "evt_9181f47e810da369b916f7fd",
+          "glyph": "⧂",
+          "index": 0,
+          "operator": "ObserverBenchmark",
+          "origin": {
+            "envelope_sha256": "9994330f95ae31f24066a561008c9c5118693494f6f49a4ca0bd5ef926f0e0b1",
+            "kind": "peer_checkpoint",
+            "original_event_id": "evt_9181f47e810da369b916f7fd",
+            "original_route_digest": "7673d253e89947b3f48891af0687d3372973669b63d77c0af93b10e2be2a4a5a",
+            "sender": "d3fc898313d15dc91fdf76e5b14b49446f15a8eb496f7a35a458927dc7793ae5"
+          },
+          "result": {
+            "algorithm": "ObserverBenchmark",
+            "configuration": {
+              "confidence": 0.95,
+              "memory_bits": null,
+              "noise_p": 0.1,
+              "phase": 1.0471975511965976,
+              "repetitions": 256,
+              "sample_counts": [
+                16,
+                64,
+                256,
+                1024
+              ],
+              "seed": 20261020,
+              "tolerance": 0.1
+            },
+            "cost": {
+              "cpu_seconds": 18.986650355,
+              "injected_z_operator_calls": 52458,
+              "prepared_samples": 524288,
+              "resources": {
+                "basis_states": 2,
+                "estimated_record_workspace_bytes": 4194304,
+                "estimated_workspace_bytes": 192,
+                "memory_budget_mib": 64,
+                "profile": "mobile",
+                "simulated_qubits": 1
+              },
+              "wall_seconds": 18.993069261996425,
+              "witness_operator_calls": 524288
+            },
+            "evaluator_reference": {
+              "X": 0.4,
+              "Z": -2.7755575615628914e-16,
+              "analytic_X": 0.40000000000000013,
+              "minimum_eigenvalue": 0.09999999999999987,
+              "phase_jacobian": {
+                "X": -0.6928203230338602,
+                "Z": 5.273559366969493e-11
+              },
+              "trace": 0.9999999999999989
+            },
+            "model": {
+              "inference": "sample mean of Pauli eigenvalues; no preparation/noise oracle passed to observers",
+              "measurement": "existing xi_field.apply_operator z / projective X or Z witness",
+              "memory": "FIFO retained outcome bits; Python objects, replay metadata and evaluator storage excluded",
+              "noise": "one independent Bernoulli(noise_p) Pauli-Z per fresh qubit",
+              "precision_resolved": "Wilson expectation interval half-width <= declared tolerance",
+              "preparation": "(|0> + exp(i*phase)|1>)/sqrt(2), freshly prepared per sample",
+              "scope": "restricted statistical observer model; no calibration of ORT presence or physical collapse"
+            },
+            "outcome_transcript_sha256": "eae6c19b5fafb7598fdd1e904aae88332256d99b3e4fd891f12fede079a90303",
+            "points": [
+              {
+                "after_precision_resolved_count": 0,
+                "after_rmse": 0.23753597589365294,
+                "analytic_rmse": 0.229128784747792,
+                "before_precision_resolved_count": 0,
+                "before_unidentified_count": 256,
+                "coverage_fraction_wilson_interval": [
+                  0.9008977667558741,
+                  0.9611663588714884
+                ],
+                "example": {
+                  "after": {
+                    "confidence": 0.95,
+                    "direct_samples_used": 16,
+                    "estimate": 0.75,
+                    "evidence_sha256": "41115fc0be6708829522022fc0ecb9f9517c3a007e3947dcca370bcf33f86087",
+                    "half_width": 0.32525078491434645,
+                    "identifiable_from_available_evidence": true,
+                    "interval": [
+                      0.27954345468482633,
+                      0.9300450245135192
+                    ],
+                    "interval_kind": "marginal Wilson expectation interval",
+                    "observer_id": "observer-a",
+                    "ones": 2,
+                    "precision_resolved": false,
+                    "retained_outcome_bits": 16,
+                    "retained_target_samples": 16,
+                    "target": "X",
+                    "tolerance": 0.1,
+                    "zeros": 14
+                  },
+                  "before": {
+                    "confidence": 0.95,
+                    "direct_samples_used": 16,
+                    "estimate": null,
+                    "evidence_sha256": "593dc525d3b3409b08e70a833c0bda5362fa6d0e9508c0b7de5d67e55ac52bfe",
+                    "half_width": 1.0,
+                    "identifiable_from_available_evidence": false,
+                    "interval": [
+                      -1.0,
+                      1.0
+                    ],
+                    "interval_kind": "unidentified range",
+                    "observer_id": "observer-a",
+                    "precision_resolved": false,
+                    "retained_outcome_bits": 16,
+                    "retained_target_samples": 0,
+                    "target": "X",
+                    "tolerance": 0.1
+                  },
+                  "contracts": [
+                    {
+                      "confidence": 0.95,
+                      "direct_bases": [
+                        "Z"
+                      ],
+                      "memory_bits": 16,
+                      "observer_id": "observer-a",
+                      "sample_budget": 16,
+                      "tolerance": 0.1
+                    },
+                    {
+                      "confidence": 0.95,
+                      "direct_bases": [
+                        "X"
+                      ],
+                      "memory_bits": 16,
+                      "observer_id": "observer-b",
+                      "sample_budget": 16,
+                      "tolerance": 0.1
+                    }
+                  ],
+                  "peer": {
+                    "confidence": 0.95,
+                    "direct_samples_used": 16,
+                    "estimate": 0.75,
+                    "evidence_sha256": "41115fc0be6708829522022fc0ecb9f9517c3a007e3947dcca370bcf33f86087",
+                    "half_width": 0.32525078491434645,
+                    "identifiable_from_available_evidence": true,
+                    "interval": [
+                      0.27954345468482633,
+                      0.9300450245135192
+                    ],
+                    "interval_kind": "marginal Wilson expectation interval",
+                    "observer_id": "observer-b",
+                    "ones": 2,
+                    "precision_resolved": false,
+                    "retained_outcome_bits": 16,
+                    "retained_target_samples": 16,
+                    "target": "X",
+                    "tolerance": 0.1,
+                    "zeros": 14
+                  },
+                  "share": {
+                    "accepted_records": 16,
+                    "bases": [
+                      "X"
+                    ],
+                    "direct_measurement_access_changed": false,
+                    "payload_sha256": "41115fc0be6708829522022fc0ecb9f9517c3a007e3947dcca370bcf33f86087",
+                    "recipient": "observer-a",
+                    "recipient_after": "41115fc0be6708829522022fc0ecb9f9517c3a007e3947dcca370bcf33f86087",
+                    "recipient_before": "593dc525d3b3409b08e70a833c0bda5362fa6d0e9508c0b7de5d67e55ac52bfe",
+                    "schema": "xi.observer-share.receipt.v1",
+                    "sender": "observer-b"
+                  }
+                },
+                "interval_coverage_count": 240,
+                "interval_coverage_fraction": 0.9375,
+                "mean_interval_half_width": 0.39463813061574043,
+                "memory_outcome_bits": 16,
+                "repetitions": 256,
+                "retained_target_samples": 16,
+                "samples_per_observer": 16
+              },
+              {
+                "after_precision_resolved_count": 0,
+                "after_rmse": 0.11571074734345656,
+                "analytic_rmse": 0.114564392373896,
+                "before_precision_resolved_count": 0,
+                "before_unidentified_count": 256,
+                "coverage_fraction_wilson_interval": [
+                  0.9150689403789347,
+                  0.9700861886134464
+                ],
+                "example": {
+                  "after": {
+                    "confidence": 0.95,
+                    "direct_samples_used": 64,
+                    "estimate": 0.5,
+                    "evidence_sha256": "b0e5d5c6a860f21c964b6094140f69f9f809b20b6ef7671b1051dd8d66595ae7",
+                    "half_width": 0.2080134992769911,
+                    "identifiable_from_available_evidence": true,
+                    "interval": [
+                      0.2636744708266061,
+                      0.6797014693805883
+                    ],
+                    "interval_kind": "marginal Wilson expectation interval",
+                    "observer_id": "observer-a",
+                    "ones": 16,
+                    "precision_resolved": false,
+                    "retained_outcome_bits": 64,
+                    "retained_target_samples": 64,
+                    "target": "X",
+                    "tolerance": 0.1,
+                    "zeros": 48
+                  },
+                  "before": {
+                    "confidence": 0.95,
+                    "direct_samples_used": 64,
+                    "estimate": null,
+                    "evidence_sha256": "c1099b41bee79be5d57dc5e8dcf6e66648783878a59172cfb7663f1d8c5d6220",
+                    "half_width": 1.0,
+                    "identifiable_from_available_evidence": false,
+                    "interval": [
+                      -1.0,
+                      1.0
+                    ],
+                    "interval_kind": "unidentified range",
+                    "observer_id": "observer-a",
+                    "precision_resolved": false,
+                    "retained_outcome_bits": 64,
+                    "retained_target_samples": 0,
+                    "target": "X",
+                    "tolerance": 0.1
+                  },
+                  "contracts": [
+                    {
+                      "confidence": 0.95,
+                      "direct_bases": [
+                        "Z"
+                      ],
+                      "memory_bits": 64,
+                      "observer_id": "observer-a",
+                      "sample_budget": 64,
+                      "tolerance": 0.1
+                    },
+                    {
+                      "confidence": 0.95,
+                      "direct_bases": [
+                        "X"
+                      ],
+                      "memory_bits": 64,
+                      "observer_id": "observer-b",
+                      "sample_budget": 64,
+                      "tolerance": 0.1
+                    }
+                  ],
+                  "peer": {
+                    "confidence": 0.95,
+                    "direct_samples_used": 64,
+                    "estimate": 0.5,
+                    "evidence_sha256": "b0e5d5c6a860f21c964b6094140f69f9f809b20b6ef7671b1051dd8d66595ae7",
+                    "half_width": 0.2080134992769911,
+                    "identifiable_from_available_evidence": true,
+                    "interval": [
+                      0.2636744708266061,
+                      0.6797014693805883
+                    ],
+                    "interval_kind": "marginal Wilson expectation interval",
+                    "observer_id": "observer-b",
+                    "ones": 16,
+                    "precision_resolved": false,
+                    "retained_outcome_bits": 64,
+                    "retained_target_samples": 64,
+                    "target": "X",
+                    "tolerance": 0.1,
+                    "zeros": 48
+                  },
+                  "share": {
+                    "accepted_records": 64,
+                    "bases": [
+                      "X"
+                    ],
+                    "direct_measurement_access_changed": false,
+                    "payload_sha256": "b0e5d5c6a860f21c964b6094140f69f9f809b20b6ef7671b1051dd8d66595ae7",
+                    "recipient": "observer-a",
+                    "recipient_after": "b0e5d5c6a860f21c964b6094140f69f9f809b20b6ef7671b1051dd8d66595ae7",
+                    "recipient_before": "c1099b41bee79be5d57dc5e8dcf6e66648783878a59172cfb7663f1d8c5d6220",
+                    "schema": "xi.observer-share.receipt.v1",
+                    "sender": "observer-b"
+                  }
+                },
+                "interval_coverage_count": 243,
+                "interval_coverage_fraction": 0.94921875,
+                "mean_interval_half_width": 0.21665761013065798,
+                "memory_outcome_bits": 64,
+                "repetitions": 256,
+                "retained_target_samples": 64,
+                "samples_per_observer": 64
+              },
+              {
+                "after_precision_resolved_count": 0,
+                "after_rmse": 0.05851076480254145,
+                "analytic_rmse": 0.057282196186948,
+                "before_precision_resolved_count": 0,
+                "before_unidentified_count": 256,
+                "coverage_fraction_wilson_interval": [
+                  0.8916056708459877,
+                  0.9550644525380291
+                ],
+                "example": {
+                  "after": {
+                    "confidence": 0.95,
+                    "direct_samples_used": 256,
+                    "estimate": 0.46875,
+                    "evidence_sha256": "0068873bea0031fc3c840bcf57a771803916b5f61c621d07e50bfaa062228888",
+                    "half_width": 0.10762655081411143,
+                    "identifiable_from_available_evidence": true,
+                    "interval": [
+                      0.3541935164862613,
+                      0.5694466181144842
+                    ],
+                    "interval_kind": "marginal Wilson expectation interval",
+                    "observer_id": "observer-a",
+                    "ones": 68,
+                    "precision_resolved": false,
+                    "retained_outcome_bits": 256,
+                    "retained_target_samples": 256,
+                    "target": "X",
+                    "tolerance": 0.1,
+                    "zeros": 188
+                  },
+                  "before": {
+                    "confidence": 0.95,
+                    "direct_samples_used": 256,
+                    "estimate": null,
+                    "evidence_sha256": "049ccf1ff74ae788bef7409625732c88f095b254704052a2c8e7179ca8f13ea7",
+                    "half_width": 1.0,
+                    "identifiable_from_available_evidence": false,
+                    "interval": [
+                      -1.0,
+                      1.0
+                    ],
+                    "interval_kind": "unidentified range",
+                    "observer_id": "observer-a",
+                    "precision_resolved": false,
+                    "retained_outcome_bits": 256,
+                    "retained_target_samples": 0,
+                    "target": "X",
+                    "tolerance": 0.1
+                  },
+                  "contracts": [
+                    {
+                      "confidence": 0.95,
+                      "direct_bases": [
+                        "Z"
+                      ],
+                      "memory_bits": 256,
+                      "observer_id": "observer-a",
+                      "sample_budget": 256,
+                      "tolerance": 0.1
+                    },
+                    {
+                      "confidence": 0.95,
+                      "direct_bases": [
+                        "X"
+                      ],
+                      "memory_bits": 256,
+                      "observer_id": "observer-b",
+                      "sample_budget": 256,
+                      "tolerance": 0.1
+                    }
+                  ],
+                  "peer": {
+                    "confidence": 0.95,
+                    "direct_samples_used": 256,
+                    "estimate": 0.46875,
+                    "evidence_sha256": "0068873bea0031fc3c840bcf57a771803916b5f61c621d07e50bfaa062228888",
+                    "half_width": 0.10762655081411143,
+                    "identifiable_from_available_evidence": true,
+                    "interval": [
+                      0.3541935164862613,
+                      0.5694466181144842
+                    ],
+                    "interval_kind": "marginal Wilson expectation interval",
+                    "observer_id": "observer-b",
+                    "ones": 68,
+                    "precision_resolved": false,
+                    "retained_outcome_bits": 256,
+                    "retained_target_samples": 256,
+                    "target": "X",
+                    "tolerance": 0.1,
+                    "zeros": 188
+                  },
+                  "share": {
+                    "accepted_records": 256,
+                    "bases": [
+                      "X"
+                    ],
+                    "direct_measurement_access_changed": false,
+                    "payload_sha256": "0068873bea0031fc3c840bcf57a771803916b5f61c621d07e50bfaa062228888",
+                    "recipient": "observer-a",
+                    "recipient_after": "0068873bea0031fc3c840bcf57a771803916b5f61c621d07e50bfaa062228888",
+                    "recipient_before": "049ccf1ff74ae788bef7409625732c88f095b254704052a2c8e7179ca8f13ea7",
+                    "schema": "xi.observer-share.receipt.v1",
+                    "sender": "observer-b"
+                  }
+                },
+                "interval_coverage_count": 238,
+                "interval_coverage_fraction": 0.9296875,
+                "mean_interval_half_width": 0.1111459801948297,
+                "memory_outcome_bits": 256,
+                "repetitions": 256,
+                "retained_target_samples": 256,
+                "samples_per_observer": 256
+              },
+              {
+                "after_precision_resolved_count": 256,
+                "after_rmse": 0.02610308588646802,
+                "analytic_rmse": 0.028641098093474,
+                "before_precision_resolved_count": 0,
+                "before_unidentified_count": 256,
+                "coverage_fraction_wilson_interval": [
+                  0.9395583934922568,
+                  0.9840817411084887
+                ],
+                "example": {
+                  "after": {
+                    "confidence": 0.95,
+                    "direct_samples_used": 1024,
+                    "estimate": 0.37890625,
+                    "evidence_sha256": "31b5164e8debcd19459bf41b2fe581212024d9570a5f6cae1419c283327c56d5",
+                    "half_width": 0.056593555771574655,
+                    "identifiable_from_available_evidence": true,
+                    "interval": [
+                      0.32089656847888737,
+                      0.4340836800220367
+                    ],
+                    "interval_kind": "marginal Wilson expectation interval",
+                    "observer_id": "observer-a",
+                    "ones": 318,
+                    "precision_resolved": true,
+                    "retained_outcome_bits": 1024,
+                    "retained_target_samples": 1024,
+                    "target": "X",
+                    "tolerance": 0.1,
+                    "zeros": 706
+                  },
+                  "before": {
+                    "confidence": 0.95,
+                    "direct_samples_used": 1024,
+                    "estimate": null,
+                    "evidence_sha256": "113d7039e15fec31b07ca2db3ebb55eb7e0ddb72e17fc712504df99189cb010e",
+                    "half_width": 1.0,
+                    "identifiable_from_available_evidence": false,
+                    "interval": [
+                      -1.0,
+                      1.0
+                    ],
+                    "interval_kind": "unidentified range",
+                    "observer_id": "observer-a",
+                    "precision_resolved": false,
+                    "retained_outcome_bits": 1024,
+                    "retained_target_samples": 0,
+                    "target": "X",
+                    "tolerance": 0.1
+                  },
+                  "contracts": [
+                    {
+                      "confidence": 0.95,
+                      "direct_bases": [
+                        "Z"
+                      ],
+                      "memory_bits": 1024,
+                      "observer_id": "observer-a",
+                      "sample_budget": 1024,
+                      "tolerance": 0.1
+                    },
+                    {
+                      "confidence": 0.95,
+                      "direct_bases": [
+                        "X"
+                      ],
+                      "memory_bits": 1024,
+                      "observer_id": "observer-b",
+                      "sample_budget": 1024,
+                      "tolerance": 0.1
+                    }
+                  ],
+                  "peer": {
+                    "confidence": 0.95,
+                    "direct_samples_used": 1024,
+                    "estimate": 0.37890625,
+                    "evidence_sha256": "31b5164e8debcd19459bf41b2fe581212024d9570a5f6cae1419c283327c56d5",
+                    "half_width": 0.056593555771574655,
+                    "identifiable_from_available_evidence": true,
+                    "interval": [
+                      0.32089656847888737,
+                      0.4340836800220367
+                    ],
+                    "interval_kind": "marginal Wilson expectation interval",
+                    "observer_id": "observer-b",
+                    "ones": 318,
+                    "precision_resolved": true,
+                    "retained_outcome_bits": 1024,
+                    "retained_target_samples": 1024,
+                    "target": "X",
+                    "tolerance": 0.1,
+                    "zeros": 706
+                  },
+                  "share": {
+                    "accepted_records": 1024,
+                    "bases": [
+                      "X"
+                    ],
+                    "direct_measurement_access_changed": false,
+                    "payload_sha256": "31b5164e8debcd19459bf41b2fe581212024d9570a5f6cae1419c283327c56d5",
+                    "recipient": "observer-a",
+                    "recipient_after": "31b5164e8debcd19459bf41b2fe581212024d9570a5f6cae1419c283327c56d5",
+                    "recipient_before": "113d7039e15fec31b07ca2db3ebb55eb7e0ddb72e17fc712504df99189cb010e",
+                    "schema": "xi.observer-share.receipt.v1",
+                    "sender": "observer-b"
+                  }
+                },
+                "interval_coverage_count": 248,
+                "interval_coverage_fraction": 0.96875,
+                "mean_interval_half_width": 0.056013735411635804,
+                "memory_outcome_bits": 1024,
+                "repetitions": 256,
+                "retained_target_samples": 1024,
+                "samples_per_observer": 1024
+              }
+            ],
+            "return_operator": "⟁∴Ω",
+            "schema": "xi.observer-access.v1"
+          },
+          "route": {
+            "coherence_after": {
+              "node_count": 7,
+              "order_parameter": 1.0,
+              "xi": -0.0
+            },
+            "coherence_before": {
+              "node_count": 7,
+              "order_parameter": 1.0,
+              "xi": -0.0
+            },
+            "countervectors": [],
+            "digest": "7673d253e89947b3f48891af0687d3372973669b63d77c0af93b10e2be2a4a5a",
+            "event_digest": "3c207e27cb2cef87496433c06cbff2ce70a2714ffb2b03fd29208e06b3797991",
+            "movement": "yield",
+            "next_operator": null,
+            "previous_receipt_hash": null,
+            "recovery_receipt": {
+              "countervectors": [],
+              "cycle": [
+                "recover",
+                "compare",
+                "distinguish",
+                "yield",
+                "receipt"
+              ],
+              "digest": "f8c2c7b92f0cdaf836b21a33cd306bb27c9ebbc5126ed08ade2cc8e6f62b7a4e",
+              "movement": "yield",
+              "provenance": {
+                "fabric": "FullCycle",
+                "return_operator": "⟁∴Ω"
+              },
+              "return_glyph": "⟁∴Ω",
+              "return_state": "ReturnedNotReset",
+              "schema": "xi.receipt.recovery.v2",
+              "threads": {
+                "event": {
+                  "anchor": "∴Ω⧂",
+                  "boundary": {
+                    "requires": [
+                      "local.execute"
+                    ],
+                    "wake": true
+                  },
+                  "broadcast": false,
+                  "capsule_refs": [
+                    "88957a1880da2c9320e668c3c16d06e325e17495742d245a3d5c7e270ed14ad3"
+                  ],
+                  "confidence": null,
+                  "digest": "3c207e27cb2cef87496433c06cbff2ce70a2714ffb2b03fd29208e06b3797991",
+                  "operator": "ObserverBenchmark",
+                  "payload": {
+                    "result_sha256": "86c496da840c77bf322c0d7cf61b58570f240c92682c2fbeedc63d9141c3c820"
+                  },
+                  "payload_type": "capsule",
+                  "phase": 0.0,
+                  "provenance": {
+                    "dialect": "QuantumCompute.Stack.v2",
+                    "engine_sha256": "6d865160593b3bc4533ab75c09f707475a25e27a62f6965a90b728b1b743db3a",
+                    "plan_sha256": "69a6f516eb68b2041524660c9f102ab3a39e672a240430ffaf00cc876fada704"
+                  },
+                  "return_operator": "⟁∴Ω",
+                  "schema": "xi.event-envelope.v1",
+                  "source": "world:quantumcompute",
+                  "state_hash": null,
+                  "target": "ObserverBenchmark"
+                },
+                "local_outcomes": {
+                  "coherence_after": {
+                    "node_count": 7,
+                    "order_parameter": 1.0,
+                    "xi": -0.0
+                  },
+                  "coherence_before": {
+                    "node_count": 7,
+                    "order_parameter": 1.0,
+                    "xi": -0.0
+                  },
+                  "targets": [
+                    "ObserverBenchmark"
+                  ]
+                }
+              }
+            },
+            "schema": "xi.receipt.event.v1",
+            "sequence": 1,
+            "targets": [
+              "ObserverBenchmark"
+            ]
+          }
+        },
+        {
+          "event": {
+            "anchor": "∴Ω⧂",
+            "boundary": {
+              "requires": [
+                "local.execute"
+              ],
+              "wake": true
+            },
+            "broadcast": false,
+            "capsule_refs": [
+              "88957a1880da2c9320e668c3c16d06e325e17495742d245a3d5c7e270ed14ad3"
+            ],
+            "confidence": null,
+            "digest": "f7d5b06e4991ca474030d70e02482bb7ec583538907ec57e5d997f22dfc0b824",
+            "operator": "ObserverBenchmark",
+            "payload": {
+              "result_sha256": "44289fbd8000f1278f65444e84977f3e6b26d998dbfd5b697d8ef088f4d1787e"
+            },
+            "payload_type": "capsule",
+            "phase": 0.0,
+            "provenance": {
+              "dialect": "QuantumCompute.Stack.v2",
+              "engine_sha256": "6d865160593b3bc4533ab75c09f707475a25e27a62f6965a90b728b1b743db3a",
+              "plan_sha256": "69a6f516eb68b2041524660c9f102ab3a39e672a240430ffaf00cc876fada704"
+            },
+            "return_operator": "⟁∴Ω",
+            "schema": "xi.event-envelope.v1",
+            "source": "world:quantumcompute",
+            "state_hash": null,
+            "target": "ObserverBenchmark"
+          },
+          "event_id": "evt_b7f43435d177c5e480fd1ecb",
+          "glyph": "⧂",
+          "index": 1,
+          "operator": "ObserverBenchmark",
+          "origin": "local_execution",
+          "result": {
+            "algorithm": "ObserverBenchmark",
+            "configuration": {
+              "confidence": 0.95,
+              "memory_bits": 64,
+              "noise_p": 0.1,
+              "phase": 1.0471975511965976,
+              "repetitions": 256,
+              "sample_counts": [
+                16,
+                64,
+                256,
+                1024
+              ],
+              "seed": 20261020,
+              "tolerance": 0.1
+            },
+            "cost": {
+              "cpu_seconds": 13.18277041,
+              "injected_z_operator_calls": 52458,
+              "prepared_samples": 524288,
+              "resources": {
+                "basis_states": 2,
+                "estimated_record_workspace_bytes": 4194304,
+                "estimated_workspace_bytes": 192,
+                "memory_budget_mib": 64,
+                "profile": "mobile",
+                "simulated_qubits": 1
+              },
+              "wall_seconds": 13.186393630006933,
+              "witness_operator_calls": 524288
+            },
+            "evaluator_reference": {
+              "X": 0.4,
+              "Z": -2.7755575615628914e-16,
+              "analytic_X": 0.40000000000000013,
+              "minimum_eigenvalue": 0.09999999999999987,
+              "phase_jacobian": {
+                "X": -0.6928203230338602,
+                "Z": 5.273559366969493e-11
+              },
+              "trace": 0.9999999999999989
+            },
+            "model": {
+              "inference": "sample mean of Pauli eigenvalues; no preparation/noise oracle passed to observers",
+              "measurement": "existing xi_field.apply_operator z / projective X or Z witness",
+              "memory": "FIFO retained outcome bits; Python objects, replay metadata and evaluator storage excluded",
+              "noise": "one independent Bernoulli(noise_p) Pauli-Z per fresh qubit",
+              "precision_resolved": "Wilson expectation interval half-width <= declared tolerance",
+              "preparation": "(|0> + exp(i*phase)|1>)/sqrt(2), freshly prepared per sample",
+              "scope": "restricted statistical observer model; no calibration of ORT presence or physical collapse"
+            },
+            "outcome_transcript_sha256": "eae6c19b5fafb7598fdd1e904aae88332256d99b3e4fd891f12fede079a90303",
+            "points": [
+              {
+                "after_precision_resolved_count": 0,
+                "after_rmse": 0.23753597589365294,
+                "analytic_rmse": 0.229128784747792,
+                "before_precision_resolved_count": 0,
+                "before_unidentified_count": 256,
+                "coverage_fraction_wilson_interval": [
+                  0.9008977667558741,
+                  0.9611663588714884
+                ],
+                "example": {
+                  "after": {
+                    "confidence": 0.95,
+                    "direct_samples_used": 16,
+                    "estimate": 0.75,
+                    "evidence_sha256": "551e42838ecea0e66c426368c265676fea2c15e5199c7ad7a524aedec854a20c",
+                    "half_width": 0.32525078491434645,
+                    "identifiable_from_available_evidence": true,
+                    "interval": [
+                      0.27954345468482633,
+                      0.9300450245135192
+                    ],
+                    "interval_kind": "marginal Wilson expectation interval",
+                    "observer_id": "observer-a",
+                    "ones": 2,
+                    "precision_resolved": false,
+                    "retained_outcome_bits": 32,
+                    "retained_target_samples": 16,
+                    "target": "X",
+                    "tolerance": 0.1,
+                    "zeros": 14
+                  },
+                  "before": {
+                    "confidence": 0.95,
+                    "direct_samples_used": 16,
+                    "estimate": null,
+                    "evidence_sha256": "593dc525d3b3409b08e70a833c0bda5362fa6d0e9508c0b7de5d67e55ac52bfe",
+                    "half_width": 1.0,
+                    "identifiable_from_available_evidence": false,
+                    "interval": [
+                      -1.0,
+                      1.0
+                    ],
+                    "interval_kind": "unidentified range",
+                    "observer_id": "observer-a",
+                    "precision_resolved": false,
+                    "retained_outcome_bits": 16,
+                    "retained_target_samples": 0,
+                    "target": "X",
+                    "tolerance": 0.1
+                  },
+                  "contracts": [
+                    {
+                      "confidence": 0.95,
+                      "direct_bases": [
+                        "Z"
+                      ],
+                      "memory_bits": 64,
+                      "observer_id": "observer-a",
+                      "sample_budget": 16,
+                      "tolerance": 0.1
+                    },
+                    {
+                      "confidence": 0.95,
+                      "direct_bases": [
+                        "X"
+                      ],
+                      "memory_bits": 64,
+                      "observer_id": "observer-b",
+                      "sample_budget": 16,
+                      "tolerance": 0.1
+                    }
+                  ],
+                  "peer": {
+                    "confidence": 0.95,
+                    "direct_samples_used": 16,
+                    "estimate": 0.75,
+                    "evidence_sha256": "41115fc0be6708829522022fc0ecb9f9517c3a007e3947dcca370bcf33f86087",
+                    "half_width": 0.32525078491434645,
+                    "identifiable_from_available_evidence": true,
+                    "interval": [
+                      0.27954345468482633,
+                      0.9300450245135192
+                    ],
+                    "interval_kind": "marginal Wilson expectation interval",
+                    "observer_id": "observer-b",
+                    "ones": 2,
+                    "precision_resolved": false,
+                    "retained_outcome_bits": 16,
+                    "retained_target_samples": 16,
+                    "target": "X",
+                    "tolerance": 0.1,
+                    "zeros": 14
+                  },
+                  "share": {
+                    "accepted_records": 16,
+                    "bases": [
+                      "X"
+                    ],
+                    "direct_measurement_access_changed": false,
+                    "payload_sha256": "41115fc0be6708829522022fc0ecb9f9517c3a007e3947dcca370bcf33f86087",
+                    "recipient": "observer-a",
+                    "recipient_after": "551e42838ecea0e66c426368c265676fea2c15e5199c7ad7a524aedec854a20c",
+                    "recipient_before": "593dc525d3b3409b08e70a833c0bda5362fa6d0e9508c0b7de5d67e55ac52bfe",
+                    "schema": "xi.observer-share.receipt.v1",
+                    "sender": "observer-b"
+                  }
+                },
+                "interval_coverage_count": 240,
+                "interval_coverage_fraction": 0.9375,
+                "mean_interval_half_width": 0.39463813061574043,
+                "memory_outcome_bits": 64,
+                "repetitions": 256,
+                "retained_target_samples": 16,
+                "samples_per_observer": 16
+              },
+              {
+                "after_precision_resolved_count": 0,
+                "after_rmse": 0.11571074734345656,
+                "analytic_rmse": 0.114564392373896,
+                "before_precision_resolved_count": 0,
+                "before_unidentified_count": 256,
+                "coverage_fraction_wilson_interval": [
+                  0.9150689403789347,
+                  0.9700861886134464
+                ],
+                "example": {
+                  "after": {
+                    "confidence": 0.95,
+                    "direct_samples_used": 64,
+                    "estimate": 0.5,
+                    "evidence_sha256": "b0e5d5c6a860f21c964b6094140f69f9f809b20b6ef7671b1051dd8d66595ae7",
+                    "half_width": 0.2080134992769911,
+                    "identifiable_from_available_evidence": true,
+                    "interval": [
+                      0.2636744708266061,
+                      0.6797014693805883
+                    ],
+                    "interval_kind": "marginal Wilson expectation interval",
+                    "observer_id": "observer-a",
+                    "ones": 16,
+                    "precision_resolved": false,
+                    "retained_outcome_bits": 64,
+                    "retained_target_samples": 64,
+                    "target": "X",
+                    "tolerance": 0.1,
+                    "zeros": 48
+                  },
+                  "before": {
+                    "confidence": 0.95,
+                    "direct_samples_used": 64,
+                    "estimate": null,
+                    "evidence_sha256": "c1099b41bee79be5d57dc5e8dcf6e66648783878a59172cfb7663f1d8c5d6220",
+                    "half_width": 1.0,
+                    "identifiable_from_available_evidence": false,
+                    "interval": [
+                      -1.0,
+                      1.0
+                    ],
+                    "interval_kind": "unidentified range",
+                    "observer_id": "observer-a",
+                    "precision_resolved": false,
+                    "retained_outcome_bits": 64,
+                    "retained_target_samples": 0,
+                    "target": "X",
+                    "tolerance": 0.1
+                  },
+                  "contracts": [
+                    {
+                      "confidence": 0.95,
+                      "direct_bases": [
+                        "Z"
+                      ],
+                      "memory_bits": 64,
+                      "observer_id": "observer-a",
+                      "sample_budget": 64,
+                      "tolerance": 0.1
+                    },
+                    {
+                      "confidence": 0.95,
+                      "direct_bases": [
+                        "X"
+                      ],
+                      "memory_bits": 64,
+                      "observer_id": "observer-b",
+                      "sample_budget": 64,
+                      "tolerance": 0.1
+                    }
+                  ],
+                  "peer": {
+                    "confidence": 0.95,
+                    "direct_samples_used": 64,
+                    "estimate": 0.5,
+                    "evidence_sha256": "b0e5d5c6a860f21c964b6094140f69f9f809b20b6ef7671b1051dd8d66595ae7",
+                    "half_width": 0.2080134992769911,
+                    "identifiable_from_available_evidence": true,
+                    "interval": [
+                      0.2636744708266061,
+                      0.6797014693805883
+                    ],
+                    "interval_kind": "marginal Wilson expectation interval",
+                    "observer_id": "observer-b",
+                    "ones": 16,
+                    "precision_resolved": false,
+                    "retained_outcome_bits": 64,
+                    "retained_target_samples": 64,
+                    "target": "X",
+                    "tolerance": 0.1,
+                    "zeros": 48
+                  },
+                  "share": {
+                    "accepted_records": 64,
+                    "bases": [
+                      "X"
+                    ],
+                    "direct_measurement_access_changed": false,
+                    "payload_sha256": "b0e5d5c6a860f21c964b6094140f69f9f809b20b6ef7671b1051dd8d66595ae7",
+                    "recipient": "observer-a",
+                    "recipient_after": "b0e5d5c6a860f21c964b6094140f69f9f809b20b6ef7671b1051dd8d66595ae7",
+                    "recipient_before": "c1099b41bee79be5d57dc5e8dcf6e66648783878a59172cfb7663f1d8c5d6220",
+                    "schema": "xi.observer-share.receipt.v1",
+                    "sender": "observer-b"
+                  }
+                },
+                "interval_coverage_count": 243,
+                "interval_coverage_fraction": 0.94921875,
+                "mean_interval_half_width": 0.21665761013065798,
+                "memory_outcome_bits": 64,
+                "repetitions": 256,
+                "retained_target_samples": 64,
+                "samples_per_observer": 64
+              },
+              {
+                "after_precision_resolved_count": 0,
+                "after_rmse": 0.10959172167177757,
+                "analytic_rmse": 0.114564392373896,
+                "before_precision_resolved_count": 0,
+                "before_unidentified_count": 256,
+                "coverage_fraction_wilson_interval": [
+                  0.9296001682001327,
+                  0.9786459641572671
+                ],
+                "example": {
+                  "after": {
+                    "confidence": 0.95,
+                    "direct_samples_used": 256,
+                    "estimate": 0.5,
+                    "evidence_sha256": "2869284b94a1efd6699bd797fa9e86208d468642aac14577fad9ea81460822e9",
+                    "half_width": 0.2080134992769911,
+                    "identifiable_from_available_evidence": true,
+                    "interval": [
+                      0.2636744708266061,
+                      0.6797014693805883
+                    ],
+                    "interval_kind": "marginal Wilson expectation interval",
+                    "observer_id": "observer-a",
+                    "ones": 16,
+                    "precision_resolved": false,
+                    "retained_outcome_bits": 64,
+                    "retained_target_samples": 64,
+                    "target": "X",
+                    "tolerance": 0.1,
+                    "zeros": 48
+                  },
+                  "before": {
+                    "confidence": 0.95,
+                    "direct_samples_used": 256,
+                    "estimate": null,
+                    "evidence_sha256": "e65cd61ff16a5705bd2d116867f80293bb4022cca1e17b22237817b080c6f1a1",
+                    "half_width": 1.0,
+                    "identifiable_from_available_evidence": false,
+                    "interval": [
+                      -1.0,
+                      1.0
+                    ],
+                    "interval_kind": "unidentified range",
+                    "observer_id": "observer-a",
+                    "precision_resolved": false,
+                    "retained_outcome_bits": 64,
+                    "retained_target_samples": 0,
+                    "target": "X",
+                    "tolerance": 0.1
+                  },
+                  "contracts": [
+                    {
+                      "confidence": 0.95,
+                      "direct_bases": [
+                        "Z"
+                      ],
+                      "memory_bits": 64,
+                      "observer_id": "observer-a",
+                      "sample_budget": 256,
+                      "tolerance": 0.1
+                    },
+                    {
+                      "confidence": 0.95,
+                      "direct_bases": [
+                        "X"
+                      ],
+                      "memory_bits": 64,
+                      "observer_id": "observer-b",
+                      "sample_budget": 256,
+                      "tolerance": 0.1
+                    }
+                  ],
+                  "peer": {
+                    "confidence": 0.95,
+                    "direct_samples_used": 256,
+                    "estimate": 0.5,
+                    "evidence_sha256": "2869284b94a1efd6699bd797fa9e86208d468642aac14577fad9ea81460822e9",
+                    "half_width": 0.2080134992769911,
+                    "identifiable_from_available_evidence": true,
+                    "interval": [
+                      0.2636744708266061,
+                      0.6797014693805883
+                    ],
+                    "interval_kind": "marginal Wilson expectation interval",
+                    "observer_id": "observer-b",
+                    "ones": 16,
+                    "precision_resolved": false,
+                    "retained_outcome_bits": 64,
+                    "retained_target_samples": 64,
+                    "target": "X",
+                    "tolerance": 0.1,
+                    "zeros": 48
+                  },
+                  "share": {
+                    "accepted_records": 64,
+                    "bases": [
+                      "X"
+                    ],
+                    "direct_measurement_access_changed": false,
+                    "payload_sha256": "2869284b94a1efd6699bd797fa9e86208d468642aac14577fad9ea81460822e9",
+                    "recipient": "observer-a",
+                    "recipient_after": "2869284b94a1efd6699bd797fa9e86208d468642aac14577fad9ea81460822e9",
+                    "recipient_before": "e65cd61ff16a5705bd2d116867f80293bb4022cca1e17b22237817b080c6f1a1",
+                    "schema": "xi.observer-share.receipt.v1",
+                    "sender": "observer-b"
+                  }
+                },
+                "interval_coverage_count": 246,
+                "interval_coverage_fraction": 0.9609375,
+                "mean_interval_half_width": 0.2169780671435691,
+                "memory_outcome_bits": 64,
+                "repetitions": 256,
+                "retained_target_samples": 64,
+                "samples_per_observer": 256
+              },
+              {
+                "after_precision_resolved_count": 0,
+                "after_rmse": 0.11651565223950326,
+                "analytic_rmse": 0.114564392373896,
+                "before_precision_resolved_count": 0,
+                "before_unidentified_count": 256,
+                "coverage_fraction_wilson_interval": [
+                  0.8733176979335919,
+                  0.9425644209637334
+                ],
+                "example": {
+                  "after": {
+                    "confidence": 0.95,
+                    "direct_samples_used": 1024,
+                    "estimate": 0.40625,
+                    "evidence_sha256": "7147559abfcdfc3ecbf4703914d0a940dfb4ab0ad4094d59c18fe4ed8b2b41c2",
+                    "half_width": 0.2186504977800312,
+                    "identifiable_from_available_evidence": true,
+                    "interval": [
+                      0.1645959779291417,
+                      0.6018969734892041
+                    ],
+                    "interval_kind": "marginal Wilson expectation interval",
+                    "observer_id": "observer-a",
+                    "ones": 19,
+                    "precision_resolved": false,
+                    "retained_outcome_bits": 64,
+                    "retained_target_samples": 64,
+                    "target": "X",
+                    "tolerance": 0.1,
+                    "zeros": 45
+                  },
+                  "before": {
+                    "confidence": 0.95,
+                    "direct_samples_used": 1024,
+                    "estimate": null,
+                    "evidence_sha256": "c5b38a3b77687ab6f3a65516aaa5185453ff666aef98c04662efd65392a21882",
+                    "half_width": 1.0,
+                    "identifiable_from_available_evidence": false,
+                    "interval": [
+                      -1.0,
+                      1.0
+                    ],
+                    "interval_kind": "unidentified range",
+                    "observer_id": "observer-a",
+                    "precision_resolved": false,
+                    "retained_outcome_bits": 64,
+                    "retained_target_samples": 0,
+                    "target": "X",
+                    "tolerance": 0.1
+                  },
+                  "contracts": [
+                    {
+                      "confidence": 0.95,
+                      "direct_bases": [
+                        "Z"
+                      ],
+                      "memory_bits": 64,
+                      "observer_id": "observer-a",
+                      "sample_budget": 1024,
+                      "tolerance": 0.1
+                    },
+                    {
+                      "confidence": 0.95,
+                      "direct_bases": [
+                        "X"
+                      ],
+                      "memory_bits": 64,
+                      "observer_id": "observer-b",
+                      "sample_budget": 1024,
+                      "tolerance": 0.1
+                    }
+                  ],
+                  "peer": {
+                    "confidence": 0.95,
+                    "direct_samples_used": 1024,
+                    "estimate": 0.40625,
+                    "evidence_sha256": "7147559abfcdfc3ecbf4703914d0a940dfb4ab0ad4094d59c18fe4ed8b2b41c2",
+                    "half_width": 0.2186504977800312,
+                    "identifiable_from_available_evidence": true,
+                    "interval": [
+                      0.1645959779291417,
+                      0.6018969734892041
+                    ],
+                    "interval_kind": "marginal Wilson expectation interval",
+                    "observer_id": "observer-b",
+                    "ones": 19,
+                    "precision_resolved": false,
+                    "retained_outcome_bits": 64,
+                    "retained_target_samples": 64,
+                    "target": "X",
+                    "tolerance": 0.1,
+                    "zeros": 45
+                  },
+                  "share": {
+                    "accepted_records": 64,
+                    "bases": [
+                      "X"
+                    ],
+                    "direct_measurement_access_changed": false,
+                    "payload_sha256": "7147559abfcdfc3ecbf4703914d0a940dfb4ab0ad4094d59c18fe4ed8b2b41c2",
+                    "recipient": "observer-a",
+                    "recipient_after": "7147559abfcdfc3ecbf4703914d0a940dfb4ab0ad4094d59c18fe4ed8b2b41c2",
+                    "recipient_before": "c5b38a3b77687ab6f3a65516aaa5185453ff666aef98c04662efd65392a21882",
+                    "schema": "xi.observer-share.receipt.v1",
+                    "sender": "observer-b"
+                  }
+                },
+                "interval_coverage_count": 234,
+                "interval_coverage_fraction": 0.9140625,
+                "mean_interval_half_width": 0.2169281555287687,
+                "memory_outcome_bits": 64,
+                "repetitions": 256,
+                "retained_target_samples": 64,
+                "samples_per_observer": 1024
+              }
+            ],
+            "return_operator": "⟁∴Ω",
+            "schema": "xi.observer-access.v1"
+          },
+          "route": {
+            "coherence_after": {
+              "node_count": 7,
+              "order_parameter": 1.0,
+              "xi": -0.0
+            },
+            "coherence_before": {
+              "node_count": 7,
+              "order_parameter": 1.0,
+              "xi": -0.0
+            },
+            "countervectors": [],
+            "digest": "987e7fbda6330228ed6b7db91ce3648a8157c90b655a472133013382e7b66363",
+            "event_digest": "f7d5b06e4991ca474030d70e02482bb7ec583538907ec57e5d997f22dfc0b824",
+            "movement": "yield",
+            "next_operator": null,
+            "previous_receipt_hash": "7673d253e89947b3f48891af0687d3372973669b63d77c0af93b10e2be2a4a5a",
+            "recovery_receipt": {
+              "countervectors": [],
+              "cycle": [
+                "recover",
+                "compare",
+                "distinguish",
+                "yield",
+                "receipt"
+              ],
+              "digest": "3d902c5c6476cf69c0b62c67b35b198edeb8267f6b08988c49563b7384d85873",
+              "movement": "yield",
+              "provenance": {
+                "fabric": "FullCycle",
+                "return_operator": "⟁∴Ω"
+              },
+              "return_glyph": "⟁∴Ω",
+              "return_state": "ReturnedNotReset",
+              "schema": "xi.receipt.recovery.v2",
+              "threads": {
+                "event": {
+                  "anchor": "∴Ω⧂",
+                  "boundary": {
+                    "requires": [
+                      "local.execute"
+                    ],
+                    "wake": true
+                  },
+                  "broadcast": false,
+                  "capsule_refs": [
+                    "88957a1880da2c9320e668c3c16d06e325e17495742d245a3d5c7e270ed14ad3"
+                  ],
+                  "confidence": null,
+                  "digest": "f7d5b06e4991ca474030d70e02482bb7ec583538907ec57e5d997f22dfc0b824",
+                  "operator": "ObserverBenchmark",
+                  "payload": {
+                    "result_sha256": "44289fbd8000f1278f65444e84977f3e6b26d998dbfd5b697d8ef088f4d1787e"
+                  },
+                  "payload_type": "capsule",
+                  "phase": 0.0,
+                  "provenance": {
+                    "dialect": "QuantumCompute.Stack.v2",
+                    "engine_sha256": "6d865160593b3bc4533ab75c09f707475a25e27a62f6965a90b728b1b743db3a",
+                    "plan_sha256": "69a6f516eb68b2041524660c9f102ab3a39e672a240430ffaf00cc876fada704"
+                  },
+                  "return_operator": "⟁∴Ω",
+                  "schema": "xi.event-envelope.v1",
+                  "source": "world:quantumcompute",
+                  "state_hash": null,
+                  "target": "ObserverBenchmark"
+                },
+                "local_outcomes": {
+                  "coherence_after": {
+                    "node_count": 7,
+                    "order_parameter": 1.0,
+                    "xi": -0.0
+                  },
+                  "coherence_before": {
+                    "node_count": 7,
+                    "order_parameter": 1.0,
+                    "xi": -0.0
+                  },
+                  "targets": [
+                    "ObserverBenchmark"
+                  ]
+                }
+              }
+            },
+            "schema": "xi.receipt.event.v1",
+            "sequence": 2,
+            "targets": [
+              "ObserverBenchmark"
+            ]
+          }
+        },
+        {
+          "event": {
+            "anchor": "∴Ω⧂",
+            "boundary": {
+              "requires": [
+                "local.execute"
+              ],
+              "wake": true
+            },
+            "broadcast": false,
+            "capsule_refs": [
+              "88957a1880da2c9320e668c3c16d06e325e17495742d245a3d5c7e270ed14ad3"
+            ],
+            "confidence": null,
+            "digest": "abd2a47fe7eb53572ccc172fcb8601b2fe32190037b198bf16a06d2844bf3b68",
+            "operator": "Seal",
+            "payload": {
+              "result_sha256": "18c8b40563ce3f8099177f04c30c0f484a05fb95976ccd882ad07ad0a83e6a34"
+            },
+            "payload_type": "capsule",
+            "phase": 0.0,
+            "provenance": {
+              "dialect": "QuantumCompute.Stack.v2",
+              "engine_sha256": "6d865160593b3bc4533ab75c09f707475a25e27a62f6965a90b728b1b743db3a",
+              "plan_sha256": "69a6f516eb68b2041524660c9f102ab3a39e672a240430ffaf00cc876fada704"
+            },
+            "return_operator": "⟁∴Ω",
+            "schema": "xi.event-envelope.v1",
+            "source": "world:quantumcompute",
+            "state_hash": null,
+            "target": "Seal"
+          },
+          "event_id": "evt_2354c9d708e49f05dc207062",
+          "glyph": "⊚",
+          "index": 2,
+          "operator": "Seal",
+          "origin": "local_execution",
+          "result": {
+            "return_operator": "⟁∴Ω",
+            "state": "sealed"
+          },
+          "route": {
+            "coherence_after": {
+              "node_count": 7,
+              "order_parameter": 1.0,
+              "xi": -0.0
+            },
+            "coherence_before": {
+              "node_count": 7,
+              "order_parameter": 1.0,
+              "xi": -0.0
+            },
+            "countervectors": [],
+            "digest": "c2352cc3710e1840b02a33e173a82ecdc91d579e70f2024656b5fe04cf18f95f",
+            "event_digest": "abd2a47fe7eb53572ccc172fcb8601b2fe32190037b198bf16a06d2844bf3b68",
+            "movement": "yield",
+            "next_operator": null,
+            "previous_receipt_hash": "987e7fbda6330228ed6b7db91ce3648a8157c90b655a472133013382e7b66363",
+            "recovery_receipt": {
+              "countervectors": [],
+              "cycle": [
+                "recover",
+                "compare",
+                "distinguish",
+                "yield",
+                "receipt"
+              ],
+              "digest": "75f78eda05c6c34d21634e01fbcf03020021c7664e9385f9037fc3869602d675",
+              "movement": "yield",
+              "provenance": {
+                "fabric": "FullCycle",
+                "return_operator": "⟁∴Ω"
+              },
+              "return_glyph": "⟁∴Ω",
+              "return_state": "ReturnedNotReset",
+              "schema": "xi.receipt.recovery.v2",
+              "threads": {
+                "event": {
+                  "anchor": "∴Ω⧂",
+                  "boundary": {
+                    "requires": [
+                      "local.execute"
+                    ],
+                    "wake": true
+                  },
+                  "broadcast": false,
+                  "capsule_refs": [
+                    "88957a1880da2c9320e668c3c16d06e325e17495742d245a3d5c7e270ed14ad3"
+                  ],
+                  "confidence": null,
+                  "digest": "abd2a47fe7eb53572ccc172fcb8601b2fe32190037b198bf16a06d2844bf3b68",
+                  "operator": "Seal",
+                  "payload": {
+                    "result_sha256": "18c8b40563ce3f8099177f04c30c0f484a05fb95976ccd882ad07ad0a83e6a34"
+                  },
+                  "payload_type": "capsule",
+                  "phase": 0.0,
+                  "provenance": {
+                    "dialect": "QuantumCompute.Stack.v2",
+                    "engine_sha256": "6d865160593b3bc4533ab75c09f707475a25e27a62f6965a90b728b1b743db3a",
+                    "plan_sha256": "69a6f516eb68b2041524660c9f102ab3a39e672a240430ffaf00cc876fada704"
+                  },
+                  "return_operator": "⟁∴Ω",
+                  "schema": "xi.event-envelope.v1",
+                  "source": "world:quantumcompute",
+                  "state_hash": null,
+                  "target": "Seal"
+                },
+                "local_outcomes": {
+                  "coherence_after": {
+                    "node_count": 7,
+                    "order_parameter": 1.0,
+                    "xi": -0.0
+                  },
+                  "coherence_before": {
+                    "node_count": 7,
+                    "order_parameter": 1.0,
+                    "xi": -0.0
+                  },
+                  "targets": [
+                    "Seal"
+                  ]
+                }
+              }
+            },
+            "schema": "xi.receipt.event.v1",
+            "sequence": 3,
+            "targets": [
+              "Seal"
+            ]
+          }
+        }
+      ],
+      "integrity": {
+        "ok": true,
+        "event_count": 4,
+        "head_hash": "9fdde92162e2d5557174f3037dbec2191495935f8ddcc167e07494e5fc0ddc3e",
+        "errors": []
+      }
+    },
+    "transport": {
+      "schema": "xi.thinksync.receipt.v2",
+      "packet_sha256": "9994330f95ae31f24066a561008c9c5118693494f6f49a4ca0bd5ef926f0e0b1",
+      "source_sha256": "88957a1880da2c9320e668c3c16d06e325e17495742d245a3d5c7e270ed14ad3",
+      "sender": "d3fc898313d15dc91fdf76e5b14b49446f15a8eb496f7a35a458927dc7793ae5",
+      "recipient": "666c81ee3164eaa859b8863ac57a15ff96531d97b45d00827ccfbcca4ac2bedb",
+      "sequence": 1,
+      "duplicate": false,
+      "exact_bytes_restored": true,
+      "checkpoint_retained": true,
+      "execution_authorized_by_receipt": false
+    },
+    "replay_executed_steps": 0,
+    "unchanged_receiver_integrity": true,
+    "crypto_suite": "ML-KEM-768/HKDF-SHA256/ChaCha20Poly1305/ML-DSA-65",
+    "checkpoint_encrypted_bytes": 73010,
+    "kernel_recovery": {
+      "source_sha256": "b0769554d36cd87a110ed7892cc622e5ab00f39ad01ea7d6ab71df69a9a00dc7",
+      "payload_bytes": 135,
+      "exact_encrypted_roundtrip": true,
+      "dialect_preserved_as_opaque": true,
+      "execution_authorized_by_receipt": false
+    }
+  },
+  "cost": {
+    "wall_seconds": 32.41297476700856,
+    "cpu_seconds": 32.663698776000004,
+    "process_peak_rss_mib": 49.72265625
+  }
+}
