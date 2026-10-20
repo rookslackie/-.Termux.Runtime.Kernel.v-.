@@ -287,6 +287,7 @@
       <textarea id="quantum-source" spellcheck="false" aria-label="QuantumCompute source"></textarea>
       <div class="form-actions">
         <button onclick="loadQuantumExample()">Load FullCycle</button>
+        <button onclick="loadQuantumExample('observer')">Load Observer Experiment</button>
         <button class="quantum-submit" onclick="submitQuantum('compile')">TESSERA · Inspect</button>
         <button class="quantum-submit" onclick="submitQuantum('run')">⊚ Execute / Resume</button>
       </div>
@@ -544,13 +545,13 @@ async function runFieldOperator(operator, parameters) {
   }
 }
 
-async function loadQuantumExample() {
+async function loadQuantumExample(name = 'fullcycle') {
   try {
-    const response = await fetch('/api/quantumcompute/example');
+    const response = await fetch('/api/quantumcompute/example?name=' + encodeURIComponent(name));
     const data = await response.json();
     if (!response.ok) throw new Error(data.detail || 'Example unavailable');
     document.getElementById('quantum-source').value = data.source;
-    document.getElementById('quantum-status').textContent = 'FullCycle loaded · inspect the plan or execute with your local owner token.';
+    document.getElementById('quantum-status').textContent = `${name === 'observer' ? 'Observer experiment' : 'FullCycle'} loaded · inspect the plan or execute with your local owner token.`;
   } catch (error) {
     document.getElementById('quantum-status').textContent = error.message;
   }
@@ -589,6 +590,7 @@ async function submitQuantum(action) {
       else if (step.operator === 'Shor') detail.textContent = `${result.N} → ${result.factors.join(' × ') || 'no factors witnessed'} · ${result.execution}`;
       else if (step.operator === 'JacobianFlow') detail.textContent = `Declared objective ${result.initial_success_probability.toFixed(6)} → ${result.final_success_probability.toFixed(6)} · ${result.history.length} witnessed updates`;
       else if (step.operator === 'PhaseCodeBenchmark') detail.textContent = `${result.points.length} noise probabilities · logical errors, confidence intervals and fidelity in the receipt`;
+      else if (step.operator === 'ObserverBenchmark') detail.textContent = `${result.points.length} observer budgets · access, memory, prediction error and uncertainty in the receipt`;
       else detail.textContent = result.return_operator || result.state;
       const proof = document.createElement('p');
       proof.className = 'receipt-meta';

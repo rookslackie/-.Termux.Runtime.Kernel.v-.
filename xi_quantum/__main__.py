@@ -8,6 +8,7 @@ from pathlib import Path
 import platform
 import time
 
+from . import __version__
 from .common import PROFILES, Profile, QuantumComputeError
 from .glyphsafe import Identity, public_id, SUITE, seal, restore
 from .runtime import Runtime, ExecutionGrant
@@ -87,7 +88,7 @@ def main():
             a, b = Identity.generate(), Identity.generate()
             sample = b"Xi.QuantumCompute/doctor/v2"
             assert restore(seal(sample, a, b.public(), sequence=1), b, {a.node_id: a.public()})["raw"] == sample
-            result = {"version": "2.0.0", "python": platform.python_version(), "profile": profile.__dict__,
+            result = {"version": __version__, "python": platform.python_version(), "profile": profile.__dict__,
                       "dependencies": {p: importlib.metadata.version(p) for p in ("numpy", "PyYAML", "cryptography")},
                       "crypto_suite": SUITE, "crypto_roundtrip_verified": True,
                       "transport": "explicit encrypted packet handoff and inbox daemon",

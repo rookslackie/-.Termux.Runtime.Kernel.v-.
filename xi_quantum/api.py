@@ -8,6 +8,7 @@ from pathlib import Path
 from fastapi import APIRouter, Header, HTTPException
 from pydantic import BaseModel
 
+from . import __version__
 from .common import Profile, PROFILES
 from .glyphsafe import SUITE
 from .runtime import Runtime, ExecutionGrant
@@ -30,14 +31,17 @@ def _owner(token):
 
 @router.get("")
 def capabilities():
-    return {"version": "2.0.0", "dialect": DIALECT, "operators": ["Grover", "Shor", "JacobianFlow", "PhaseCodeBenchmark"],
+    return {"version": __version__, "dialect": DIALECT, "operators": ["Grover", "Shor", "JacobianFlow", "PhaseCodeBenchmark", "ObserverBenchmark"],
             "glyphsafe_suite": SUITE, "profiles": {name: profile.__dict__ for name, profile in PROFILES.items()},
             "return_operator": "⟁∴Ω"}
 
 
 @router.get("/example")
-def example():
-    return {"source": (Path(__file__).resolve().parents[1] / "Ξ.QuantumCompute.yaml").read_text(encoding="utf-8")}
+def example(name: str = "fullcycle"):
+    files = {"fullcycle": "Ξ.QuantumCompute.yaml", "observer": "examples/QuantumCompute.Observer.v1.xi"}
+    if name not in files:
+        raise HTTPException(400, "Unknown QuantumCompute example")
+    return {"source": (Path(__file__).resolve().parents[1] / files[name]).read_text(encoding="utf-8")}
 
 
 @router.post("/compile")

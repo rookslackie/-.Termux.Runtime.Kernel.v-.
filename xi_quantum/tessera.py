@@ -10,6 +10,7 @@ import yaml
 from yaml.tokens import AliasToken
 
 from . import algorithms
+from .observer import run as observer_benchmark
 from .common import QuantumComputeError, canonical, digest, finite
 from ._vendor.glyph_parser import parse_expression
 
@@ -17,9 +18,9 @@ from ._vendor.glyph_parser import parse_expression
 SCHEMA = "xi.quantumcompute.program.v2"
 DIALECT = "QuantumCompute.Stack.v2"
 OPERATORS = {"Grover": algorithms.grover, "Shor": algorithms.shor,
-             "JacobianFlow": algorithms.jacobian_flow}
+             "JacobianFlow": algorithms.jacobian_flow, "ObserverBenchmark": observer_benchmark}
 GLYPHS = {"Grover": "⋈", "Shor": "∴", "JacobianFlow": "⧖",
-          "PhaseCodeBenchmark": "⧂", "Seal": "⊚", "Rest": "≈∅"}
+          "PhaseCodeBenchmark": "⧂", "ObserverBenchmark": "⧂", "Seal": "⊚", "Rest": "≈∅"}
 
 
 def engine_hash():

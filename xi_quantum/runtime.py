@@ -68,6 +68,9 @@ class Runtime:
         if name == "PhaseCodeBenchmark":
             from xi_field.noise_benchmark import run
             return run(**params, database=None, ledger_trials=0)
+        if name == "ObserverBenchmark":
+            from .observer import run
+            return run(**params, profile=self.profile)
         return {"state": "sealed" if name == "Seal" else "rest", "return_operator": "⟁∴Ω"}
 
     def run(self, raw, *, grant: ExecutionGrant, stop_after=None, recovered=None):

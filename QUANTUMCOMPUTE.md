@@ -2,6 +2,8 @@
 
 The glyph program now compiles, computes, records its causal history, seals a checkpoint, transfers it to a pinned peer, restores the original bytes, resumes unfinished work, and returns through `⟁∴Ω`. Reopening the same ledger reuses committed results. The working sparse QEC engine and its independent-Z benchmark remain available.
 
+Version **2.1.0** adds the [observer-access experiment](OBSERVER_EXPERIMENT.md) and [recovered StructuralKernel / FullStack source contracts](recovered/2026-10-20/README.md). The prior v2 results below remain pinned to their original source commit.
+
 ## The embodied stack
 
 | Component | Executable responsibility | Source |
@@ -10,6 +12,7 @@ The glyph program now compiles, computes, records its causal history, seals a ch
 | Grover | Complex state vector, marked-state oracle, diffusion, seeded measurement | [algorithms](xi_quantum/algorithms.py) |
 | Shor | Modular-exponentiation evaluation, work measurement, conditional inverse QFT, continued fractions, verified factors | [algorithms](xi_quantum/algorithms.py) |
 | Jacobian Flow | Measured finite-difference Jacobian/curvature and witnessed ascent of a declared Grover phase objective | [algorithms](xi_quantum/algorithms.py) |
+| ObserverBenchmark | Explicit measurement access, sample and retained-outcome budgets, sharing grants and confidence intervals | [observer model](xi_quantum/observer.py) |
 | GlyphSHA | Exact historical 16-glyph nibble alphabet; reversible SHA-256 → 8 × 8 tile | [recovered codec](xi_quantum/_vendor/xi_crypto/compat.py) |
 | GlyphSafe | Exact-byte encrypted envelopes, recipient/scope binding, pinned signatures; recovered v1 adapters retained | [v2 envelope](xi_quantum/glyphsafe.py) |
 | ThinkSync | Persistent outbox, signed sequence handling, inbox daemon, checkpoint transfer; receive and execution are separate local actions | [bridge](xi_quantum/thinksync.py) |

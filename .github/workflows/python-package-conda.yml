@@ -59,6 +59,34 @@ jobs:
         name: xi-quantumcompute-fullcycle
         path: ${{ runner.temp }}/xi-quantumcompute-results/
         if-no-files-found: error
+    - name: Verify observer access, bounded memory, QR recovery and transfer replay
+      env:
+        XI_OBSERVER_HOME: ${{ runner.temp }}/xi-observer-home
+        XI_OBSERVER_RESULTS: ${{ runner.temp }}/xi-observer-results
+      run: |
+        python benchmarks/verify_observer.py --home "$XI_OBSERVER_HOME" --output "$XI_OBSERVER_RESULTS/results.json"
+        python - <<'PY'
+        import json
+        import os
+        from pathlib import Path
+        from benchmarks.verify_observer import verify
+
+        first = json.loads((Path(os.environ['XI_OBSERVER_RESULTS']) / 'results.json').read_text())['execution']
+        replay = verify(os.environ['XI_OBSERVER_HOME'], Path('examples/QuantumCompute.Observer.v1.xi').read_bytes())
+        assert first['receiver']['restored_from_peer_this_call'] == 1
+        assert replay['sender']['executed_this_call'] == replay['receiver']['executed_this_call'] == 0
+        assert first['receiver']['integrity'] == replay['receiver']['integrity']
+        assert first['kernel_recovery']['exact_encrypted_roundtrip']
+        assert first['kernel_recovery']['dialect_preserved_as_opaque']
+        cases = [s['result'] for s in first['receiver']['steps'] if s['operator'] == 'ObserverBenchmark']
+        assert cases[0]['points'][-1]['after_precision_resolved_count'] == 256
+        assert cases[1]['points'][-1]['after_precision_resolved_count'] == 0
+        PY
+    - uses: actions/upload-artifact@v4
+      with:
+        name: xi-observer-access
+        path: ${{ runner.temp }}/xi-observer-results/
+        if-no-files-found: error
     - name: Benchmark independent Z noise and verify persistent replay
       env:
         XI_NOISE_DIR: ${{ runner.temp }}/xi-noise-benchmark

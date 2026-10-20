@@ -371,6 +371,10 @@ class FullCycleTests(unittest.TestCase):
                 self.assertEqual(result.status_code, 200, result.text)
                 self.assertTrue(result.json()["closed"])
                 self.assertEqual(client.get("/api/quantumcompute/example").json()["source"].encode(), self.raw)
+                observer = client.get("/api/quantumcompute/example?name=observer")
+                self.assertEqual(observer.status_code, 200)
+                self.assertEqual(observer.json()["source"].encode(), (ROOT / "examples/QuantumCompute.Observer.v1.xi").read_bytes())
+                self.assertEqual(client.get("/api/quantumcompute/example?name=../../etc/passwd").status_code, 400)
                 for path in ("/health", "/api/capsules", "/api/quantum-field"):
                     self.assertEqual(client.get(path).status_code, 200)
 
