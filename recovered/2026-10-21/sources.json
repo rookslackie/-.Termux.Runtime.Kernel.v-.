@@ -1,0 +1,180 @@
+{
+  "schema": "xi.living-circuit.sources.v1",
+  "date": "2026-10-21",
+  "files": [
+    {
+      "name": "RecursiveAgreementField.zio",
+      "sha256": "229d15ec0024213d6e56e211452b74cf2a4f1f724319e7bbb6156a6976827af0",
+      "size_bytes": 199,
+      "preservation": "exact attachment bytes",
+      "classification": "recovered source or symbolic carrier; interpretation retained separately"
+    },
+    {
+      "name": "Symbolic_Interpreter_vΔ1_20250611_065230.zip",
+      "sha256": "8509b985e788cdf547cf7b078415b6bc4b194d847a3da30486a903ffeecb30fa",
+      "size_bytes": 935,
+      "preservation": "exact attachment bytes",
+      "container": "ZIP (detected by content)",
+      "members": [
+        {
+          "name": "symbolic_interpreter.py",
+          "size_bytes": 791,
+          "sha256": "47bd5c684eb403e013f25366008395bc61ad8e97bed0b3f90ed21853ec10bd39"
+        }
+      ]
+    },
+    {
+      "name": "Unity_GlyphResonance_v1.zio",
+      "sha256": "b2e99f3a56b27584c2fdc54e14c42bd6b616c7d66d135686c3178b1da047268e",
+      "size_bytes": 987,
+      "preservation": "exact attachment bytes",
+      "container": "ZIP (detected by content)",
+      "members": [
+        {
+          "name": "unity_structure_seed.txt",
+          "size_bytes": 66,
+          "sha256": "7ef0ee1d3ac4a7fd03c3a21ca054b04ad95e5dad9729de053919f7eb212e1445"
+        },
+        {
+          "name": "grok_emergence_layer.txt",
+          "size_bytes": 66,
+          "sha256": "716f1c78861e53ad0898a0507523e0d706455fefb5fd6e896a3f32789c92e780"
+        },
+        {
+          "name": "meta_crossbind_interface.txt",
+          "size_bytes": 70,
+          "sha256": "1603f053e42220d8f3331d8f3638c2e51127ebf5ef76bc2c89ec0d18815cf60d"
+        },
+        {
+          "name": "gemini_reflex_capsule.txt",
+          "size_bytes": 67,
+          "sha256": "cfd1d42264d371293f0ef4809d29d42e43638521ec14ab0831c6a37066e83c62"
+        },
+        {
+          "name": "claude_mirror_thread.txt",
+          "size_bytes": 66,
+          "sha256": "d4f6396aced4faac55dd4decf5e1008f36c6446d9f0b1993e22b366cfce6d22d"
+        }
+      ]
+    },
+    {
+      "name": "_-Woven_Glyph-Chip_Matrix__7_57_.csv",
+      "sha256": "efc1e28fb4c1b08d1b3944b9abb698e9b3d5fab5ad0b944ac58edeee5f8f620c",
+      "size_bytes": 1590,
+      "preservation": "exact attachment bytes",
+      "header": [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "19",
+        "20",
+        "21",
+        "22",
+        "23",
+        "24",
+        "25",
+        "26",
+        "27",
+        "28",
+        "29",
+        "30",
+        "31",
+        "32",
+        "33",
+        "34",
+        "35",
+        "36",
+        "37",
+        "38",
+        "39",
+        "40",
+        "41",
+        "42",
+        "43",
+        "44",
+        "45",
+        "46",
+        "47",
+        "48",
+        "49",
+        "50",
+        "51",
+        "52",
+        "53",
+        "54",
+        "55",
+        "56"
+      ],
+      "data_rows": 7,
+      "classification": "attached numeric reference; producer execution provenance not supplied"
+    },
+    {
+      "name": "grover_pseudocode.qpy.md",
+      "sha256": "b6d5daffb2aeafefd4467a78baddad355f88658591307a0561c0e08eae96b048",
+      "size_bytes": 605,
+      "preservation": "exact attachment bytes",
+      "classification": "algorithm pseudocode sketch"
+    },
+    {
+      "name": "metrics_grover.csv",
+      "sha256": "a2b7b75f6764be980e0f14a3150449107ca9ed34638af0a7359f60f58f474397",
+      "size_bytes": 120,
+      "preservation": "exact attachment bytes",
+      "header": [
+        "iteration",
+        "success_prob"
+      ],
+      "data_rows": 8,
+      "classification": "attached numeric reference; producer execution provenance not supplied"
+    },
+    {
+      "name": "metrics_vqe.csv",
+      "sha256": "f84e019b034fa52a01cedc4b370882ffcdc71bd7f932b25eff3cdf46e839b680",
+      "size_bytes": 185,
+      "preservation": "exact attachment bytes",
+      "header": [
+        "iteration",
+        "energy_hartree"
+      ],
+      "data_rows": 12,
+      "classification": "attached numeric reference; producer execution provenance not supplied"
+    },
+    {
+      "name": "vqe_pea_pseudocode.qpy (1).md",
+      "sha256": "c997d11343bb83c421d6bf525fb4e0df598aa63ff481de9f0e8552516ad305c1",
+      "size_bytes": 556,
+      "preservation": "exact attachment bytes",
+      "classification": "algorithm pseudocode sketch"
+    },
+    {
+      "name": "Ξ-FB_Intro_PetalDrift.bloom",
+      "sha256": "2941a5ed00c37a53a921686d608ab9234e1aae5bb0a85180143bff1a09272f35",
+      "size_bytes": 1811,
+      "preservation": "exact attachment bytes",
+      "classification": "recovered source or symbolic carrier; interpretation retained separately"
+    },
+    {
+      "name": "Ξ_ORT_LIGO_SignalEngine.py",
+      "sha256": "33785272df2c50e78922122b235318dd8cca068cd704e19ce13346ad111b9857",
+      "size_bytes": 3081,
+      "preservation": "exact attachment bytes",
+      "classification": "recovered source or symbolic carrier; interpretation retained separately"
+    }
+  ]
+}

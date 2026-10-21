@@ -10,6 +10,10 @@ import yaml
 from yaml.tokens import AliasToken
 
 from . import algorithms
+from .circuits import phase_code, shor_code, qft
+from .spectral import vqe, phase_estimation, vqe_pea
+from .signal_lab import signal_lab
+from .definitions import validate_definitions, expand_steps
 from .observer import run as observer_benchmark
 from .common import QuantumComputeError, canonical, digest, finite
 from ._vendor.glyph_parser import parse_expression
@@ -17,10 +21,17 @@ from ._vendor.glyph_parser import parse_expression
 
 SCHEMA = "xi.quantumcompute.program.v2"
 DIALECT = "QuantumCompute.Stack.v2"
+SCHEMA_V3 = "xi.quantumcompute.program.v3"
+DIALECT_V3 = "QuantumCompute.Stack.v3"
+LEGACY_NAMES = {"Grover", "Shor", "JacobianFlow", "PhaseCodeBenchmark", "ObserverBenchmark", "Seal", "Rest"}
 OPERATORS = {"Grover": algorithms.grover, "Shor": algorithms.shor,
-             "JacobianFlow": algorithms.jacobian_flow, "ObserverBenchmark": observer_benchmark}
+             "JacobianFlow": algorithms.jacobian_flow, "ObserverBenchmark": observer_benchmark,
+             "VQE": vqe, "QPE": phase_estimation, "PEA": phase_estimation, "VQEPEA": vqe_pea,
+             "PhaseCode": phase_code, "ShorCode": shor_code, "QFT": qft, "SignalLab": signal_lab}
 GLYPHS = {"Grover": "⋈", "Shor": "∴", "JacobianFlow": "⧖",
-          "PhaseCodeBenchmark": "⧂", "ObserverBenchmark": "⧂", "Seal": "⊚", "Rest": "≈∅"}
+          "PhaseCodeBenchmark": "⧂", "ObserverBenchmark": "⧂", "Seal": "⊚", "Rest": "≈∅",
+          "VQE": "⟠", "QPE": "Φ", "PEA": "Φ", "VQEPEA": "⟠Φ", "PhaseCode": "⟐⧂",
+          "ShorCode": "⧉", "QFT": "ℱ", "SignalLab": "Ψ"}
 
 
 def engine_hash():
@@ -56,9 +67,11 @@ class Plan:
     dialect: str
     anchor: str
     steps: tuple
+    definitions: tuple = ()
 
     def as_dict(self):
-        return {"schema": "xi.tessera.plan.v2", **self.__dict__, "steps": list(self.steps)}
+        return {"schema": "xi.tessera.plan.v2", **self.__dict__, "steps": list(self.steps),
+                "definitions": list(self.definitions)}
 
 
 def compile_program(raw: bytes) -> Plan:
@@ -71,9 +84,13 @@ def compile_program(raw: bytes) -> Plan:
         program = yaml.load(text, Loader=StrictLoader)
     except (UnicodeError, yaml.YAMLError, RecursionError) as exc:
         raise QuantumComputeError("Malformed executable capsule; original bytes can still be stored") from exc
-    if type(program) is not dict or program.get("schema") != SCHEMA or program.get("dialect") != DIALECT:
-        raise QuantumComputeError("Executable program must declare schema and QuantumCompute.Stack.v2 dialect")
-    if set(program) - {"schema", "dialect", "anchor", "identity", "steps", "provenance"}:
+    if type(program) is not dict or (program.get("schema"), program.get("dialect")) not in (
+            (SCHEMA, DIALECT), (SCHEMA_V3, DIALECT_V3)):
+        raise QuantumComputeError("Executable program must declare matching v2 or v3 schema and dialect")
+    allowed = {"schema", "dialect", "anchor", "identity", "steps", "provenance"}
+    if program["schema"] == SCHEMA_V3:
+        allowed.add("definitions")
+    if set(program) - allowed:
         raise QuantumComputeError("Unexpected program fields")
     anchor = program.get("anchor", "∴Ω⧂")
     if type(anchor) is not str or not anchor:
@@ -81,6 +98,20 @@ def compile_program(raw: bytes) -> Plan:
     steps = program.get("steps")
     if type(steps) is not list or not 1 <= len(steps) <= 1024:
         raise QuantumComputeError("TESSERA requires 1 to 1024 declared steps")
+    # Bound structured depth before recursive substitution or canonicalization.
+    pending, nodes = [(program, 0)], 0
+    while pending:
+        value, depth = pending.pop()
+        nodes += 1
+        if depth > 32 or nodes > 100000:
+            raise QuantumComputeError("TESSERA structure exceeds depth or node budget")
+        if isinstance(value, dict):
+            pending.extend((child, depth+1) for child in value.values())
+        elif isinstance(value, list):
+            pending.extend((child, depth+1) for child in value)
+    active_glyphs = GLYPHS if program["schema"] == SCHEMA_V3 else {name: GLYPHS[name] for name in LEGACY_NAMES}
+    definitions = validate_definitions(program.get("definitions", []), active_glyphs)
+    steps = expand_steps(steps, definitions, active_glyphs)
     compiled = []
     for index, step in enumerate(steps):
         if isinstance(step, str):
@@ -92,10 +123,10 @@ def compile_program(raw: bytes) -> Plan:
             if len(args) > 1 or (args and type(args[0]) is not dict):
                 raise QuantumComputeError("Use one explicit parameter object per glyph call")
             step = {"operator": name, "glyph": GLYPHS.get(name), "parameters": args[0] if args else {}}
-        if type(step) is not dict or set(step) - {"operator", "glyph", "parameters", "phase"}:
+        if type(step) is not dict or set(step) - {"operator", "glyph", "parameters", "phase", "compiled_from"}:
             raise QuantumComputeError("Unexpected step fields")
         name, glyph, parameters = step.get("operator"), step.get("glyph"), step.get("parameters", {})
-        if name not in GLYPHS or glyph != GLYPHS[name] or type(parameters) is not dict:
+        if name not in active_glyphs or glyph != active_glyphs[name] or type(parameters) is not dict:
             raise QuantumComputeError("Glyph/operator binding does not match the declared dialect")
         if "profile" in parameters:
             raise QuantumComputeError("Resource profile is chosen by the local execution caller")
@@ -114,8 +145,13 @@ def compile_program(raw: bytes) -> Plan:
             raise QuantumComputeError(f"Invalid {name} parameters: {exc}") from exc
         compiled.append({"index": index, "operator": name, "glyph": glyph,
                          "parameters": parameters, "phase": finite(step.get("phase", 0), "phase")})
+        if "compiled_from" in step:
+            compiled[-1]["compiled_from"] = step["compiled_from"]
     if any(step["operator"] == "Seal" for step in compiled[:-1]) or compiled[-1]["operator"] != "Seal":
         raise QuantumComputeError("An executable walk ends with exactly one Seal")
     code_hash = engine_hash()
-    body = {"dialect": DIALECT, "anchor": anchor, "steps": compiled, "engine_sha256": code_hash}
-    return Plan(digest(raw), digest(body), code_hash, DIALECT, anchor, tuple(compiled))
+    dialect = program["dialect"]
+    body = {"dialect": dialect, "anchor": anchor, "steps": compiled, "engine_sha256": code_hash}
+    if program["schema"] == SCHEMA_V3:
+        body["definitions_sha256"] = digest(list(definitions.values()))
+    return Plan(digest(raw), digest(body), code_hash, dialect, anchor, tuple(compiled), tuple(definitions.values()))
