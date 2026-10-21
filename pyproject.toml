@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "xi-living-circuit"
+version = "3.0.0"
+description = "Xi QuantumCompute numerical engine, executable glyph compiler, and durable local workbench"
+requires-python = ">=3.11"
+dependencies = ["numpy>=1.26", "PyYAML>=6.0", "cryptography==50.0.2"]
+
+[project.scripts]
+xi-quantum = "xi_quantum.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["xi_quantum*", "xi_field*", "xi_world*"]
+
+[tool.setuptools.package-data]
+"xi_field.resources" = ["*.yaml"]
+"xi_quantum.programs" = ["*.xi"]

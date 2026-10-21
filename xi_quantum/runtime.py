@@ -61,10 +61,9 @@ class Runtime:
 
     def _execute(self, step):
         name, params = step["operator"], step["parameters"]
-        if name in ("Grover", "Shor", "JacobianFlow"):
-            function = {"Grover": algorithms.grover, "Shor": algorithms.shor,
-                        "JacobianFlow": algorithms.jacobian_flow}[name]
-            return function(**params, profile=self.profile)
+        from .tessera import OPERATORS
+        if name in OPERATORS:
+            return OPERATORS[name](**params, profile=self.profile)
         if name == "PhaseCodeBenchmark":
             from xi_field.noise_benchmark import run
             return run(**params, database=None, ledger_trials=0)

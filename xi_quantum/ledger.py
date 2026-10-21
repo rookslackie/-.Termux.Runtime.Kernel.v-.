@@ -43,7 +43,8 @@ def transition(state, actor_id, data, event_id):
         raise WorldError("FullCycle route is inconsistent with the preserved phase state")
     updated = dict(state)
     updated["completed"] = state["completed"] + [{"index": index, "operator": step["operator"],
-        "glyph": step["glyph"], "result": result, "route": receipt, "event": envelope,
+        "glyph": step["glyph"], "parameters": step["parameters"],
+        "compiled_from": step.get("compiled_from"), "result": result, "route": receipt, "event": envelope,
         "event_id": event_id, "origin": data.get("origin", "local_execution")}]
     updated["fabric_phases"] = data.get("fabric_phases", {})
     updated["closed"] = step["operator"] == "Seal"

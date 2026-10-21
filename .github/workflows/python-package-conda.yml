@@ -59,6 +59,15 @@ jobs:
         name: xi-quantumcompute-fullcycle
         path: ${{ runner.temp }}/xi-quantumcompute-results/
         if-no-files-found: error
+    - name: Verify Living Circuit spectra, correction codes, glyph compilation and encrypted return
+      env:
+        XI_LIVING_RESULTS: ${{ runner.temp }}/xi-living-circuit/results.json
+      run: python benchmarks/verify_living_circuit.py --output "$XI_LIVING_RESULTS"
+    - uses: actions/upload-artifact@v4
+      with:
+        name: xi-living-circuit
+        path: ${{ runner.temp }}/xi-living-circuit/
+        if-no-files-found: error
     - name: Verify observer access, bounded memory, QR recovery and transfer replay
       env:
         XI_OBSERVER_HOME: ${{ runner.temp }}/xi-observer-home

@@ -31,17 +31,26 @@ def _owner(token):
 
 @router.get("")
 def capabilities():
-    return {"version": __version__, "dialect": DIALECT, "operators": ["Grover", "Shor", "JacobianFlow", "PhaseCodeBenchmark", "ObserverBenchmark"],
+    from .tessera import GLYPHS, DIALECT_V3
+    return {"version": __version__, "dialect": DIALECT, "dialects": [DIALECT, DIALECT_V3], "operators": list(GLYPHS),
             "glyphsafe_suite": SUITE, "profiles": {name: profile.__dict__ for name, profile in PROFILES.items()},
             "return_operator": "⟁∴Ω"}
 
 
 @router.get("/example")
 def example(name: str = "fullcycle"):
-    files = {"fullcycle": "Ξ.QuantumCompute.yaml", "observer": "examples/QuantumCompute.Observer.v1.xi"}
+    files = {"fullcycle": "Ξ.QuantumCompute.yaml", "observer": "examples/QuantumCompute.Observer.v1.xi",
+             "living-circuit": "examples/QuantumCompute.LivingCircuit.v3.xi",
+             "spectral": "examples/QuantumCompute.Spectral.v3.xi",
+             "new-glyph": "examples/QuantumCompute.NewGlyph.v3.xi"}
     if name not in files:
         raise HTTPException(400, "Unknown QuantumCompute example")
-    return {"source": (Path(__file__).resolve().parents[1] / files[name]).read_text(encoding="utf-8")}
+    source_path = Path(__file__).resolve().parents[1] / files[name]
+    if source_path.exists():
+        return {"source": source_path.read_text(encoding="utf-8")}
+    from importlib.resources import files as resources
+    packaged_name = "QuantumCompute.FullCycle.v2.xi" if name == "fullcycle" else Path(files[name]).name
+    return {"source": resources("xi_quantum.programs").joinpath(packaged_name).read_text(encoding="utf-8")}
 
 
 @router.post("/compile")
