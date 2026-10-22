@@ -23,6 +23,7 @@ from xi_quantum.circuits import phase_code, shor_code, qft
 from xi_quantum.common import Profile, QuantumComputeError, digest
 from xi_quantum.spectral import hamiltonian, vqe, phase_estimation, vqe_pea
 from xi_quantum.signal_lab import signal_lab
+from xi_quantum.nervous import discover_function
 from xi_quantum.tessera import compile_program, GLYPHS
 from xi_quantum.runtime import Runtime, ExecutionGrant
 from xi_quantum.workbench import Workbench
@@ -259,6 +260,41 @@ class SignalTests(unittest.TestCase):
         self.assertGreater(result["matched_filter"]["statistic"], 20)
         self.assertGreater(result["covariance"]["determinant"], 0)
         self.assertEqual(result["input_kind"], "seeded synthetic signal")
+
+
+class NervousTests(unittest.TestCase):
+    def test_discover_function_preserves_existing_unresolved_and_proposed_states(self):
+        existing = discover_function(request="Z", capabilities=["Z"])
+        self.assertEqual((existing["state"], existing["route"], existing["function_name"]),
+                         ("EXISTING", "TRANSMIT", "Z"))
+        unresolved = discover_function(request="X", capabilities=["Z"])
+        self.assertEqual((unresolved["state"], unresolved["route"], unresolved["function_name"]),
+                         ("UNRESOLVED", "REST", None))
+        proposed = discover_function(request="X", capabilities=["Z"], authorized_capabilities=["X"])
+        self.assertEqual((proposed["state"], proposed["route"], proposed["function_name"]),
+                         ("PROPOSED", "FORGE", "bridge_x"))
+        self.assertEqual(proposed["tests_executed"], 0)
+        self.assertFalse(proposed["registered"])
+
+    def test_nervous_glyph_compiles_without_authority_promotion(self):
+        raw = (ROOT/"examples/QuantumCompute.Nervous.v3.xi").read_bytes()
+        plan = compile_program(raw)
+        self.assertEqual([step["operator"] for step in plan.steps], ["DiscoverFunction", "Seal"])
+        self.assertEqual(plan.steps[0]["glyph"], "⚡⟳⏁")
+        result = discover_function(**plan.steps[0]["parameters"])
+        self.assertEqual(result["state"], "UNRESOLVED")
+        self.assertEqual(result["authorization"], "not_present")
+
+    def test_discover_function_rejects_ambiguous_or_malformed_contracts(self):
+        for kwargs in [
+            {"request": ""},
+            {"request": "X", "capabilities": ["Z", "Z"]},
+            {"request": "X", "authorized_capabilities": [1]},
+            {"request": "X", "observations": ["not-a-record"]},
+            {"request": "X", "constraints": []},
+        ]:
+            with self.subTest(kwargs=kwargs), self.assertRaises(QuantumComputeError):
+                discover_function(**kwargs)
 
 
 class WorkbenchTests(unittest.TestCase):
