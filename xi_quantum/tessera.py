@@ -13,6 +13,7 @@ from . import algorithms
 from .circuits import phase_code, shor_code, qft
 from .spectral import vqe, phase_estimation, vqe_pea
 from .signal_lab import signal_lab
+from .nervous import discover_function
 from .definitions import validate_definitions, expand_steps
 from .observer import run as observer_benchmark
 from .common import QuantumComputeError, canonical, digest, finite
@@ -27,11 +28,11 @@ LEGACY_NAMES = {"Grover", "Shor", "JacobianFlow", "PhaseCodeBenchmark", "Observe
 OPERATORS = {"Grover": algorithms.grover, "Shor": algorithms.shor,
              "JacobianFlow": algorithms.jacobian_flow, "ObserverBenchmark": observer_benchmark,
              "VQE": vqe, "QPE": phase_estimation, "PEA": phase_estimation, "VQEPEA": vqe_pea,
-             "PhaseCode": phase_code, "ShorCode": shor_code, "QFT": qft, "SignalLab": signal_lab}
+             "PhaseCode": phase_code, "ShorCode": shor_code, "QFT": qft, "SignalLab": signal_lab, "DiscoverFunction": discover_function}
 GLYPHS = {"Grover": "⋈", "Shor": "∴", "JacobianFlow": "⧖",
           "PhaseCodeBenchmark": "⧂", "ObserverBenchmark": "⧂", "Seal": "⊚", "Rest": "≈∅",
           "VQE": "⟠", "QPE": "Φ", "PEA": "Φ", "VQEPEA": "⟠Φ", "PhaseCode": "⟐⧂",
-          "ShorCode": "⧉", "QFT": "ℱ", "SignalLab": "Ψ"}
+          "ShorCode": "⧉", "QFT": "ℱ", "SignalLab": "Ψ", "DiscoverFunction": "⚡⟳⏁"}
 
 
 def engine_hash():
