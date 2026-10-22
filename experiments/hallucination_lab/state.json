@@ -1,0 +1,20 @@
+{
+  "schema": "xi.hallucination-lab.state.v1",
+  "branch": "experiment/hallucination-course",
+  "anchor_commit": "20458758270d1d3133f1ec877e46934bd03aab0b",
+  "mode": "speculation-permitted",
+  "promotion_requires_verification": true,
+  "external_side_effects_from_speculation": false,
+  "states": [
+    "OBSERVED",
+    "INFERRED",
+    "SPECULATIVE",
+    "CONTRADICTED",
+    "TESTABLE",
+    "VERIFIED",
+    "REJECTED",
+    "DORMANT"
+  ],
+  "active_threads": [],
+  "journal": []
+}
