@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "xi-living-circuit"
-version = "3.0.0"
+version = "3.1.0"
 description = "Xi QuantumCompute numerical engine, executable glyph compiler, and durable local workbench"
 requires-python = ">=3.11"
 dependencies = ["numpy>=1.26", "PyYAML>=6.0", "cryptography==50.0.2"]

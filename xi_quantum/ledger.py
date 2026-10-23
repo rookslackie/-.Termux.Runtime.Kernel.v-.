@@ -31,10 +31,10 @@ def transition(state, actor_id, data, event_id):
         raise WorldError("Unexpected FullCycle movement")
     if receipt["previous_receipt_hash"] != (state["completed"][-1]["route"]["digest"] if index else None):
         raise WorldError("FullCycle route chain is discontinuous")
-    from .tessera import GLYPHS
+    from .tessera import routing_operators
     fabric = PhaseAwareEventFabric([
         NodeState(name, phase=state.get("fabric_phases", {}).get(name, 0), accepted_operators={name},
-                  accepted_payload_types={"capsule"}, boundaries={"local.execute"}) for name in GLYPHS])
+                  accepted_payload_types={"capsule"}, boundaries={"local.execute"}) for name in routing_operators(state["steps"])])
     for item in state["completed"]:
         fabric.receipts.append(EventReceipt(**item["route"]))
     expected = fabric.submit(EventEnvelope(**envelope))
