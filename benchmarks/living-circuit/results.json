@@ -1,0 +1,4328 @@
+{
+  "schema": "xi.living-circuit.verification.v1",
+  "date": "2026-10-21",
+  "source_revision": "3ffcb260276880127307d055617ece1c361b3e75",
+  "engine_sha256": "5570dbc984d58993759eb7863d65f780b0f27e8c83910e4a81c22477f52a062a",
+  "execution": "classical numerical simulation and actual PQC byte transport",
+  "environment": {
+    "python": "3.12.14",
+    "dependencies": {
+      "numpy": "2.3.5",
+      "cryptography": "50.0.2",
+      "PyYAML": "6.0.3"
+    }
+  },
+  "recovered_sources": {
+    "files": 10,
+    "all_hashes_match": true
+  },
+  "grover_attached_curve": {
+    "rows": [
+      {
+        "iteration": 0,
+        "attached_probability": 0.015625,
+        "computed_probability": 0.015625,
+        "absolute_error": 0.0
+      },
+      {
+        "iteration": 1,
+        "attached_probability": 0.134827,
+        "computed_probability": 0.13482666015625,
+        "absolute_error": 3.3984375000239986e-07
+      },
+      {
+        "iteration": 2,
+        "attached_probability": 0.343895,
+        "computed_probability": 0.34389519691467285,
+        "absolute_error": 1.969146728453275e-07
+      },
+      {
+        "iteration": 3,
+        "attached_probability": 0.59138,
+        "computed_probability": 0.5913801500573754,
+        "absolute_error": 1.5005737541429198e-07
+      },
+      {
+        "iteration": 4,
+        "attached_probability": 0.816377,
+        "computed_probability": 0.8163770193968958,
+        "absolute_error": 1.939689575625181e-08
+      },
+      {
+        "iteration": 5,
+        "attached_probability": 0.963515,
+        "computed_probability": 0.9635154816192113,
+        "absolute_error": 4.816192112899742e-07
+      },
+      {
+        "iteration": 6,
+        "attached_probability": 0.996586,
+        "computed_probability": 0.996585680786799,
+        "absolute_error": 3.1921320098327044e-07
+      },
+      {
+        "iteration": 7,
+        "attached_probability": 0.907449,
+        "computed_probability": 0.9074492475732605,
+        "absolute_error": 2.475732605589087e-07
+      }
+    ],
+    "tolerance_for_six_decimal_csv": 5.1e-07
+  },
+  "vqe_attached_curve": {
+    "rows": 12,
+    "first_energy": -0.936,
+    "last_energy": -1.135274,
+    "status": "preserved numeric reference; producer Hamiltonian, ansatz, and energy offset were not supplied"
+  },
+  "phase_code": {
+    "cases": [
+      {
+        "state": "zero",
+        "faults": [],
+        "fidelity": 1.0
+      },
+      {
+        "state": "zero",
+        "faults": [
+          0
+        ],
+        "fidelity": 1.0
+      },
+      {
+        "state": "zero",
+        "faults": [
+          1
+        ],
+        "fidelity": 1.0
+      },
+      {
+        "state": "zero",
+        "faults": [
+          2
+        ],
+        "fidelity": 1.0
+      },
+      {
+        "state": "one",
+        "faults": [],
+        "fidelity": 1.0
+      },
+      {
+        "state": "one",
+        "faults": [
+          0
+        ],
+        "fidelity": 1.0
+      },
+      {
+        "state": "one",
+        "faults": [
+          1
+        ],
+        "fidelity": 1.0
+      },
+      {
+        "state": "one",
+        "faults": [
+          2
+        ],
+        "fidelity": 1.0
+      },
+      {
+        "state": "plus",
+        "faults": [],
+        "fidelity": 0.9999999999999987
+      },
+      {
+        "state": "plus",
+        "faults": [
+          0
+        ],
+        "fidelity": 0.9999999999999987
+      },
+      {
+        "state": "plus",
+        "faults": [
+          1
+        ],
+        "fidelity": 0.9999999999999987
+      },
+      {
+        "state": "plus",
+        "faults": [
+          2
+        ],
+        "fidelity": 0.9999999999999987
+      },
+      {
+        "state": "minus",
+        "faults": [],
+        "fidelity": 0.9999999999999987
+      },
+      {
+        "state": "minus",
+        "faults": [
+          0
+        ],
+        "fidelity": 0.9999999999999987
+      },
+      {
+        "state": "minus",
+        "faults": [
+          1
+        ],
+        "fidelity": 0.9999999999999987
+      },
+      {
+        "state": "minus",
+        "faults": [
+          2
+        ],
+        "fidelity": 0.9999999999999987
+      },
+      {
+        "state": "T",
+        "faults": [],
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "T",
+        "faults": [
+          0
+        ],
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "T",
+        "faults": [
+          1
+        ],
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "T",
+        "faults": [
+          2
+        ],
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "y_plus",
+        "faults": [],
+        "fidelity": 0.9999999999999987
+      },
+      {
+        "state": "y_plus",
+        "faults": [
+          0
+        ],
+        "fidelity": 0.9999999999999987
+      },
+      {
+        "state": "y_plus",
+        "faults": [
+          1
+        ],
+        "fidelity": 0.9999999999999987
+      },
+      {
+        "state": "y_plus",
+        "faults": [
+          2
+        ],
+        "fidelity": 0.9999999999999987
+      }
+    ],
+    "minimum_fidelity": 0.9999999999999987,
+    "two_fault_probe": 0.4999999999999996
+  },
+  "shor_code": {
+    "cases": [
+      {
+        "state": "zero",
+        "pauli": "X",
+        "qubit": 0,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "zero",
+        "pauli": "X",
+        "qubit": 1,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "zero",
+        "pauli": "X",
+        "qubit": 2,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "zero",
+        "pauli": "X",
+        "qubit": 3,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "zero",
+        "pauli": "X",
+        "qubit": 4,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "zero",
+        "pauli": "X",
+        "qubit": 5,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "zero",
+        "pauli": "X",
+        "qubit": 6,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "zero",
+        "pauli": "X",
+        "qubit": 7,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "zero",
+        "pauli": "X",
+        "qubit": 8,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "zero",
+        "pauli": "Y",
+        "qubit": 0,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "zero",
+        "pauli": "Y",
+        "qubit": 1,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "zero",
+        "pauli": "Y",
+        "qubit": 2,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "zero",
+        "pauli": "Y",
+        "qubit": 3,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "zero",
+        "pauli": "Y",
+        "qubit": 4,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "zero",
+        "pauli": "Y",
+        "qubit": 5,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "zero",
+        "pauli": "Y",
+        "qubit": 6,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "zero",
+        "pauli": "Y",
+        "qubit": 7,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "zero",
+        "pauli": "Y",
+        "qubit": 8,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "zero",
+        "pauli": "Z",
+        "qubit": 0,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "zero",
+        "pauli": "Z",
+        "qubit": 1,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "zero",
+        "pauli": "Z",
+        "qubit": 2,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "zero",
+        "pauli": "Z",
+        "qubit": 3,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "zero",
+        "pauli": "Z",
+        "qubit": 4,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "zero",
+        "pauli": "Z",
+        "qubit": 5,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "zero",
+        "pauli": "Z",
+        "qubit": 6,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "zero",
+        "pauli": "Z",
+        "qubit": 7,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "zero",
+        "pauli": "Z",
+        "qubit": 8,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "plus",
+        "pauli": "X",
+        "qubit": 0,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "plus",
+        "pauli": "X",
+        "qubit": 1,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "plus",
+        "pauli": "X",
+        "qubit": 2,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "plus",
+        "pauli": "X",
+        "qubit": 3,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "plus",
+        "pauli": "X",
+        "qubit": 4,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "plus",
+        "pauli": "X",
+        "qubit": 5,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "plus",
+        "pauli": "X",
+        "qubit": 6,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "plus",
+        "pauli": "X",
+        "qubit": 7,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "plus",
+        "pauli": "X",
+        "qubit": 8,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "plus",
+        "pauli": "Y",
+        "qubit": 0,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "plus",
+        "pauli": "Y",
+        "qubit": 1,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "plus",
+        "pauli": "Y",
+        "qubit": 2,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "plus",
+        "pauli": "Y",
+        "qubit": 3,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "plus",
+        "pauli": "Y",
+        "qubit": 4,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "plus",
+        "pauli": "Y",
+        "qubit": 5,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "plus",
+        "pauli": "Y",
+        "qubit": 6,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "plus",
+        "pauli": "Y",
+        "qubit": 7,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "plus",
+        "pauli": "Y",
+        "qubit": 8,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "plus",
+        "pauli": "Z",
+        "qubit": 0,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "plus",
+        "pauli": "Z",
+        "qubit": 1,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "plus",
+        "pauli": "Z",
+        "qubit": 2,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "plus",
+        "pauli": "Z",
+        "qubit": 3,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "plus",
+        "pauli": "Z",
+        "qubit": 4,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "plus",
+        "pauli": "Z",
+        "qubit": 5,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "plus",
+        "pauli": "Z",
+        "qubit": 6,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "plus",
+        "pauli": "Z",
+        "qubit": 7,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "plus",
+        "pauli": "Z",
+        "qubit": 8,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "T",
+        "pauli": "X",
+        "qubit": 0,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "T",
+        "pauli": "X",
+        "qubit": 1,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "T",
+        "pauli": "X",
+        "qubit": 2,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "T",
+        "pauli": "X",
+        "qubit": 3,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "T",
+        "pauli": "X",
+        "qubit": 4,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "T",
+        "pauli": "X",
+        "qubit": 5,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "T",
+        "pauli": "X",
+        "qubit": 6,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "T",
+        "pauli": "X",
+        "qubit": 7,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "T",
+        "pauli": "X",
+        "qubit": 8,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "T",
+        "pauli": "Y",
+        "qubit": 0,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "T",
+        "pauli": "Y",
+        "qubit": 1,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "T",
+        "pauli": "Y",
+        "qubit": 2,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "T",
+        "pauli": "Y",
+        "qubit": 3,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "T",
+        "pauli": "Y",
+        "qubit": 4,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "T",
+        "pauli": "Y",
+        "qubit": 5,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "T",
+        "pauli": "Y",
+        "qubit": 6,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "T",
+        "pauli": "Y",
+        "qubit": 7,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "T",
+        "pauli": "Y",
+        "qubit": 8,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "T",
+        "pauli": "Z",
+        "qubit": 0,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "T",
+        "pauli": "Z",
+        "qubit": 1,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "T",
+        "pauli": "Z",
+        "qubit": 2,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "T",
+        "pauli": "Z",
+        "qubit": 3,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "T",
+        "pauli": "Z",
+        "qubit": 4,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "T",
+        "pauli": "Z",
+        "qubit": 5,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "T",
+        "pauli": "Z",
+        "qubit": 6,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "T",
+        "pauli": "Z",
+        "qubit": 7,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "T",
+        "pauli": "Z",
+        "qubit": 8,
+        "fidelity": 0.9999999999999993
+      },
+      {
+        "state": "y_plus",
+        "pauli": "X",
+        "qubit": 0,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "y_plus",
+        "pauli": "X",
+        "qubit": 1,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "y_plus",
+        "pauli": "X",
+        "qubit": 2,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "y_plus",
+        "pauli": "X",
+        "qubit": 3,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "y_plus",
+        "pauli": "X",
+        "qubit": 4,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "y_plus",
+        "pauli": "X",
+        "qubit": 5,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "y_plus",
+        "pauli": "X",
+        "qubit": 6,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "y_plus",
+        "pauli": "X",
+        "qubit": 7,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "y_plus",
+        "pauli": "X",
+        "qubit": 8,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "y_plus",
+        "pauli": "Y",
+        "qubit": 0,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "y_plus",
+        "pauli": "Y",
+        "qubit": 1,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "y_plus",
+        "pauli": "Y",
+        "qubit": 2,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "y_plus",
+        "pauli": "Y",
+        "qubit": 3,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "y_plus",
+        "pauli": "Y",
+        "qubit": 4,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "y_plus",
+        "pauli": "Y",
+        "qubit": 5,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "y_plus",
+        "pauli": "Y",
+        "qubit": 6,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "y_plus",
+        "pauli": "Y",
+        "qubit": 7,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "y_plus",
+        "pauli": "Y",
+        "qubit": 8,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "y_plus",
+        "pauli": "Z",
+        "qubit": 0,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "y_plus",
+        "pauli": "Z",
+        "qubit": 1,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "y_plus",
+        "pauli": "Z",
+        "qubit": 2,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "y_plus",
+        "pauli": "Z",
+        "qubit": 3,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "y_plus",
+        "pauli": "Z",
+        "qubit": 4,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "y_plus",
+        "pauli": "Z",
+        "qubit": 5,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "y_plus",
+        "pauli": "Z",
+        "qubit": 6,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "y_plus",
+        "pauli": "Z",
+        "qubit": 7,
+        "fidelity": 0.9999999999999996
+      },
+      {
+        "state": "y_plus",
+        "pauli": "Z",
+        "qubit": 8,
+        "fidelity": 0.9999999999999996
+      }
+    ],
+    "minimum_fidelity": 0.9999999999999993
+  },
+  "vqe": {
+    "algorithm": "VQE",
+    "execution": "state-vector variational optimization",
+    "hamiltonian": {
+      "terms": [
+        [
+          "II",
+          -1.052373245772859
+        ],
+        [
+          "IZ",
+          0.39793742484318045
+        ],
+        [
+          "ZI",
+          -0.39793742484318045
+        ],
+        [
+          "ZZ",
+          -0.01128010425623538
+        ],
+        [
+          "XX",
+          0.18093119978423156
+        ]
+      ],
+      "qubit_order": "leftmost Pauli acts on q0",
+      "source": "https://qiskit-community.github.io/qiskit-algorithms/tutorials/02_vqe_advanced_options.html"
+    },
+    "energy_units": "hartree for the supplied H2 benchmark; caller-defined for custom terms",
+    "energy_offset": "No separate nuclear-repulsion term is added",
+    "ansatz": "h2_odd",
+    "ansatz_initial_state": "01",
+    "optimizer": "parameter-shift gradient descent with Armijo backtracking",
+    "initial_energy": -1.8369679912029844,
+    "energy": -1.85727503020238,
+    "optimized_parameters": [
+      -0.22353699792224235
+    ],
+    "exact_reference_energy": -1.8572750302023795,
+    "variational_gap": -4.440892098500626e-16,
+    "ground_state_overlap": 0.9999999999999998,
+    "converged": true,
+    "stop_reason": "gradient_tolerance",
+    "evaluations": 52,
+    "history": [
+      {
+        "iteration": 0,
+        "parameters": [
+          0.0
+        ],
+        "energy": -1.8369679912029844,
+        "gradient": [
+          0.18093119978423144
+        ],
+        "gradient_norm": 0.18093119978423144,
+        "next_energy": -1.856534353510214,
+        "accepted_step_size": 1.0,
+        "backtracks": 0
+      },
+      {
+        "iteration": 1,
+        "parameters": [
+          -0.18093119978423144
+        ],
+        "energy": -1.856534353510214,
+        "gradient": [
+          0.03476356139800718
+        ],
+        "gradient_norm": 0.03476356139800718,
+        "next_energy": -1.8572499324594074,
+        "accepted_step_size": 1.0,
+        "backtracks": 0
+      },
+      {
+        "iteration": 2,
+        "parameters": [
+          -0.21569476118223863
+        ],
+        "energy": -1.8572499324594074,
+        "gradient": [
+          0.0064006262682819726
+        ],
+        "gradient_norm": 0.0064006262682819726,
+        "next_energy": -1.8572741820908898,
+        "accepted_step_size": 1.0,
+        "backtracks": 0
+      },
+      {
+        "iteration": 3,
+        "parameters": [
+          -0.2220953874505206
+        ],
+        "energy": -1.8572741820908898,
+        "gradient": [
+          0.001176616231933214
+        ],
+        "gradient_norm": 0.001176616231933214,
+        "next_energy": -1.857275001545365,
+        "accepted_step_size": 1.0,
+        "backtracks": 0
+      },
+      {
+        "iteration": 4,
+        "parameters": [
+          -0.2232720036824538
+        ],
+        "energy": -1.857275001545365,
+        "gradient": [
+          0.00021628377851312663
+        ],
+        "gradient_norm": 0.00021628377851312663,
+        "next_energy": -1.8572750292340854,
+        "accepted_step_size": 1.0,
+        "backtracks": 0
+      },
+      {
+        "iteration": 5,
+        "parameters": [
+          -0.22348828746096694
+        ],
+        "energy": -1.8572750292340854,
+        "gradient": [
+          3.975687818980056e-05
+        ],
+        "gradient_norm": 3.975687818980056e-05,
+        "next_energy": -1.8572750301696626,
+        "accepted_step_size": 1.0,
+        "backtracks": 0
+      },
+      {
+        "iteration": 6,
+        "parameters": [
+          -0.22352804433915674
+        ],
+        "energy": -1.8572750301696626,
+        "gradient": [
+          7.308034276287678e-06
+        ],
+        "gradient_norm": 7.308034276287678e-06,
+        "next_energy": -1.8572750302012746,
+        "accepted_step_size": 1.0,
+        "backtracks": 0
+      },
+      {
+        "iteration": 7,
+        "parameters": [
+          -0.22353535237343303
+        ],
+        "energy": -1.8572750302012746,
+        "gradient": [
+          1.3433490581027385e-06
+        ],
+        "gradient_norm": 1.3433490581027385e-06,
+        "next_energy": -1.857275030202343,
+        "accepted_step_size": 1.0,
+        "backtracks": 0
+      },
+      {
+        "iteration": 8,
+        "parameters": [
+          -0.22353669572249113
+        ],
+        "energy": -1.857275030202343,
+        "gradient": [
+          2.469318867159842e-07
+        ],
+        "gradient_norm": 2.469318867159842e-07,
+        "next_energy": -1.8572750302023788,
+        "accepted_step_size": 1.0,
+        "backtracks": 0
+      },
+      {
+        "iteration": 9,
+        "parameters": [
+          -0.22353694265437785
+        ],
+        "energy": -1.8572750302023788,
+        "gradient": [
+          4.539055298291572e-08
+        ],
+        "gradient_norm": 4.539055298291572e-08,
+        "next_energy": -1.8572750302023802,
+        "accepted_step_size": 1.0,
+        "backtracks": 0
+      },
+      {
+        "iteration": 10,
+        "parameters": [
+          -0.22353698804493083
+        ],
+        "energy": -1.8572750302023802,
+        "gradient": [
+          8.343605695237954e-09
+        ],
+        "gradient_norm": 8.343605695237954e-09,
+        "next_energy": -1.8572750302023802,
+        "accepted_step_size": 1.0,
+        "backtracks": 0
+      },
+      {
+        "iteration": 11,
+        "parameters": [
+          -0.22353699638853652
+        ],
+        "energy": -1.8572750302023802,
+        "gradient": [
+          1.5337058290043615e-09
+        ],
+        "gradient_norm": 1.5337058290043615e-09,
+        "next_energy": -1.85727503020238,
+        "accepted_step_size": 1.0,
+        "backtracks": 0
+      },
+      {
+        "iteration": 12,
+        "parameters": [
+          -0.22353699792224235
+        ],
+        "energy": -1.85727503020238,
+        "gradient": [
+          2.8192292944595465e-10
+        ],
+        "gradient_norm": 2.8192292944595465e-10,
+        "next_energy": -1.85727503020238,
+        "accepted_step_size": 1.0,
+        "backtracks": 0
+      }
+    ],
+    "state": {
+      "qubits": 2,
+      "bit_order": "q0-leftmost",
+      "branches": [
+        [
+          "01",
+          [
+            0.9937604009044493,
+            0.0
+          ]
+        ],
+        [
+          "10",
+          [
+            -0.11153593857689183,
+            0.0
+          ]
+        ]
+      ],
+      "norm_squared": 0.9999999999999999,
+      "omitted_l2_norm": 0.0
+    },
+    "state_sha256": "252192ef9c05997240a501c9913e09384e0551fafc43af8b590bdc6beea4e67b",
+    "resources": {
+      "profile": "mobile",
+      "memory_budget_mib": 64,
+      "simulated_qubits": 4,
+      "basis_states": 16,
+      "estimated_workspace_bytes": 1536
+    },
+    "wall_seconds": 0.0015499860001000343
+  },
+  "vqe_pea": {
+    "algorithm": "VQEPEA",
+    "execution": "VQE-prepared state followed by controlled-evolution QPE",
+    "vqe": {
+      "algorithm": "VQE",
+      "execution": "state-vector variational optimization",
+      "hamiltonian": {
+        "terms": [
+          [
+            "II",
+            -1.052373245772859
+          ],
+          [
+            "IZ",
+            0.39793742484318045
+          ],
+          [
+            "ZI",
+            -0.39793742484318045
+          ],
+          [
+            "ZZ",
+            -0.01128010425623538
+          ],
+          [
+            "XX",
+            0.18093119978423156
+          ]
+        ],
+        "qubit_order": "leftmost Pauli acts on q0",
+        "source": "https://qiskit-community.github.io/qiskit-algorithms/tutorials/02_vqe_advanced_options.html"
+      },
+      "energy_units": "hartree for the supplied H2 benchmark; caller-defined for custom terms",
+      "energy_offset": "No separate nuclear-repulsion term is added",
+      "ansatz": "h2_odd",
+      "ansatz_initial_state": "01",
+      "optimizer": "parameter-shift gradient descent with Armijo backtracking",
+      "initial_energy": -1.8369679912029844,
+      "energy": -1.85727503020238,
+      "optimized_parameters": [
+        -0.22353699792224235
+      ],
+      "exact_reference_energy": -1.8572750302023795,
+      "variational_gap": -4.440892098500626e-16,
+      "ground_state_overlap": 0.9999999999999998,
+      "converged": true,
+      "stop_reason": "gradient_tolerance",
+      "evaluations": 52,
+      "history": [
+        {
+          "iteration": 0,
+          "parameters": [
+            0.0
+          ],
+          "energy": -1.8369679912029844,
+          "gradient": [
+            0.18093119978423144
+          ],
+          "gradient_norm": 0.18093119978423144,
+          "next_energy": -1.856534353510214,
+          "accepted_step_size": 1.0,
+          "backtracks": 0
+        },
+        {
+          "iteration": 1,
+          "parameters": [
+            -0.18093119978423144
+          ],
+          "energy": -1.856534353510214,
+          "gradient": [
+            0.03476356139800718
+          ],
+          "gradient_norm": 0.03476356139800718,
+          "next_energy": -1.8572499324594074,
+          "accepted_step_size": 1.0,
+          "backtracks": 0
+        },
+        {
+          "iteration": 2,
+          "parameters": [
+            -0.21569476118223863
+          ],
+          "energy": -1.8572499324594074,
+          "gradient": [
+            0.0064006262682819726
+          ],
+          "gradient_norm": 0.0064006262682819726,
+          "next_energy": -1.8572741820908898,
+          "accepted_step_size": 1.0,
+          "backtracks": 0
+        },
+        {
+          "iteration": 3,
+          "parameters": [
+            -0.2220953874505206
+          ],
+          "energy": -1.8572741820908898,
+          "gradient": [
+            0.001176616231933214
+          ],
+          "gradient_norm": 0.001176616231933214,
+          "next_energy": -1.857275001545365,
+          "accepted_step_size": 1.0,
+          "backtracks": 0
+        },
+        {
+          "iteration": 4,
+          "parameters": [
+            -0.2232720036824538
+          ],
+          "energy": -1.857275001545365,
+          "gradient": [
+            0.00021628377851312663
+          ],
+          "gradient_norm": 0.00021628377851312663,
+          "next_energy": -1.8572750292340854,
+          "accepted_step_size": 1.0,
+          "backtracks": 0
+        },
+        {
+          "iteration": 5,
+          "parameters": [
+            -0.22348828746096694
+          ],
+          "energy": -1.8572750292340854,
+          "gradient": [
+            3.975687818980056e-05
+          ],
+          "gradient_norm": 3.975687818980056e-05,
+          "next_energy": -1.8572750301696626,
+          "accepted_step_size": 1.0,
+          "backtracks": 0
+        },
+        {
+          "iteration": 6,
+          "parameters": [
+            -0.22352804433915674
+          ],
+          "energy": -1.8572750301696626,
+          "gradient": [
+            7.308034276287678e-06
+          ],
+          "gradient_norm": 7.308034276287678e-06,
+          "next_energy": -1.8572750302012746,
+          "accepted_step_size": 1.0,
+          "backtracks": 0
+        },
+        {
+          "iteration": 7,
+          "parameters": [
+            -0.22353535237343303
+          ],
+          "energy": -1.8572750302012746,
+          "gradient": [
+            1.3433490581027385e-06
+          ],
+          "gradient_norm": 1.3433490581027385e-06,
+          "next_energy": -1.857275030202343,
+          "accepted_step_size": 1.0,
+          "backtracks": 0
+        },
+        {
+          "iteration": 8,
+          "parameters": [
+            -0.22353669572249113
+          ],
+          "energy": -1.857275030202343,
+          "gradient": [
+            2.469318867159842e-07
+          ],
+          "gradient_norm": 2.469318867159842e-07,
+          "next_energy": -1.8572750302023788,
+          "accepted_step_size": 1.0,
+          "backtracks": 0
+        },
+        {
+          "iteration": 9,
+          "parameters": [
+            -0.22353694265437785
+          ],
+          "energy": -1.8572750302023788,
+          "gradient": [
+            4.539055298291572e-08
+          ],
+          "gradient_norm": 4.539055298291572e-08,
+          "next_energy": -1.8572750302023802,
+          "accepted_step_size": 1.0,
+          "backtracks": 0
+        },
+        {
+          "iteration": 10,
+          "parameters": [
+            -0.22353698804493083
+          ],
+          "energy": -1.8572750302023802,
+          "gradient": [
+            8.343605695237954e-09
+          ],
+          "gradient_norm": 8.343605695237954e-09,
+          "next_energy": -1.8572750302023802,
+          "accepted_step_size": 1.0,
+          "backtracks": 0
+        },
+        {
+          "iteration": 11,
+          "parameters": [
+            -0.22353699638853652
+          ],
+          "energy": -1.8572750302023802,
+          "gradient": [
+            1.5337058290043615e-09
+          ],
+          "gradient_norm": 1.5337058290043615e-09,
+          "next_energy": -1.85727503020238,
+          "accepted_step_size": 1.0,
+          "backtracks": 0
+        },
+        {
+          "iteration": 12,
+          "parameters": [
+            -0.22353699792224235
+          ],
+          "energy": -1.85727503020238,
+          "gradient": [
+            2.8192292944595465e-10
+          ],
+          "gradient_norm": 2.8192292944595465e-10,
+          "next_energy": -1.85727503020238,
+          "accepted_step_size": 1.0,
+          "backtracks": 0
+        }
+      ],
+      "state": {
+        "qubits": 2,
+        "bit_order": "q0-leftmost",
+        "branches": [
+          [
+            "01",
+            [
+              0.9937604009044493,
+              0.0
+            ]
+          ],
+          [
+            "10",
+            [
+              -0.11153593857689183,
+              0.0
+            ]
+          ]
+        ],
+        "norm_squared": 0.9999999999999999,
+        "omitted_l2_norm": 0.0
+      },
+      "state_sha256": "252192ef9c05997240a501c9913e09384e0551fafc43af8b590bdc6beea4e67b",
+      "resources": {
+        "profile": "mobile",
+        "memory_budget_mib": 64,
+        "simulated_qubits": 4,
+        "basis_states": 16,
+        "estimated_workspace_bytes": 1536
+      },
+      "wall_seconds": 0.001311264999458217
+    },
+    "pea": {
+      "precision_qubits": 9,
+      "phase_probabilities": [
+        9.974125529753323e-06,
+        9.802103597873005e-06,
+        9.63521311497567e-06,
+        9.473256107094198e-06,
+        9.316044116626507e-06,
+        9.163397659369692e-06,
+        9.015145717369585e-06,
+        8.871125264911652e-06,
+        8.731180825200477e-06,
+        8.595164055479555e-06,
+        8.462933358523753e-06,
+        8.334353518607395e-06,
+        8.209295360200992e-06,
+        8.087635427789883e-06,
+        7.969255685333357e-06,
+        7.854043234000957e-06,
+        7.741890046925948e-06,
+        7.632692719813517e-06,
+        7.5263522363308795e-06,
+        7.422773747286248e-06,
+        7.32186636267827e-06,
+        7.22354295576591e-06,
+        7.127719978372675e-06,
+        7.034317286692769e-06,
+        6.94325797692529e-06,
+        6.8544682301063445e-06,
+        6.767877165555861e-06,
+        6.683416702398219e-06,
+        6.601021428651058e-06,
+        6.520628477415516e-06,
+        6.442177409727987e-06,
+        6.365610103671313e-06,
+        6.29087064936394e-06,
+        6.217905249473496e-06,
+        6.146662124926789e-06,
+        6.077091425508344e-06,
+        6.009145145059433e-06,
+        5.942777041010575e-06,
+        5.877942557994731e-06,
+        5.81459875530937e-06,
+        5.7527042380050554e-06,
+        5.692219091396231e-06,
+        5.633104818802417e-06,
+        5.57532428233767e-06,
+        5.518841646580572e-06,
+        5.463622324965785e-06,
+        5.409632928747297e-06,
+        5.356841218395083e-06,
+        5.305216057293032e-06,
+        5.254727367614542e-06,
+        5.205346088260782e-06,
+        5.157044134751468e-06,
+        5.109794360966221e-06,
+        5.063570522640043e-06,
+        5.018347242521676e-06,
+        4.974099977108673e-06,
+        4.930804984879688e-06,
+        4.8884392959473475e-06,
+        4.846980683059375e-06,
+        4.806407633880991e-06,
+        4.76669932449487e-06,
+        4.727835594056958e-06,
+        4.689796920553969e-06,
+        4.65256439760512e-06,
+        4.616119712260066e-06,
+        4.580445123744263e-06,
+        4.545523443105237e-06,
+        4.511338013718271e-06,
+        4.477872692609573e-06,
+        4.4451118325588475e-06,
+        4.413040264945631e-06,
+        4.381643283302488e-06,
+        4.350906627545206e-06,
+        4.320816468846569e-06,
+        4.291359395125682e-06,
+        4.262522397124203e-06,
+        4.234292855043464e-06,
+        4.206658525716495e-06,
+        4.179607530292714e-06,
+        4.153128342410319e-06,
+        4.127209776837108e-06,
+        4.1018409785576e-06,
+        4.077011412288009e-06,
+        4.052710852400211e-06,
+        4.028929373237169e-06,
+        4.005657339802819e-06,
+        3.9828853988115586e-06,
+        3.960604470080438e-06,
+        3.938805738251557e-06,
+        3.9174806448297025e-06,
+        3.8966208805224165e-06,
+        3.876218377870791e-06,
+        3.856265304157637e-06,
+        3.8367540545837106e-06,
+        3.817677245699185e-06,
+        3.7990277090823917e-06,
+        3.780798485253206e-06,
+        3.7629828178146416e-06,
+        3.74557414781199e-06,
+        3.7285661083015955e-06,
+        3.7119525191209906e-06,
+        3.6957273818527845e-06,
+        3.6798848749752154e-06,
+        3.6644193491916876e-06,
+        3.6493253229330365e-06,
+        3.634597478026151e-06,
+        3.6202306555227214e-06,
+        3.6062198516820305e-06,
+        3.592560214102564e-06,
+        3.5792470379969263e-06,
+        3.5662757626054642e-06,
+        3.553641967742129e-06,
+        3.5413413704704428e-06,
+        3.5293698219031113e-06,
+        3.5177233041214858e-06,
+        3.50639792721162e-06,
+        3.4953899264120486e-06,
+        3.4846956593702295e-06,
+        3.474311603503842e-06,
+        3.4642343534636775e-06,
+        3.4544606186947832e-06,
+        3.44498722109299e-06,
+        3.435811092753703e-06,
+        3.426929273810024e-06,
+        3.418338910358361e-06,
+        3.410037252467373e-06,
+        3.40202165226974e-06,
+        3.394289562132848e-06,
+        3.38683853290715e-06,
+        3.3796662122496183e-06,
+        3.372770343020409e-06,
+        3.3661487617511823e-06,
+        3.3597993971824367e-06,
+        3.353720268869254e-06,
+        3.3479094858524677e-06,
+        3.342365245395304e-06,
+        3.3370858317826044e-06,
+        3.332069615182066e-06,
+        3.327315050565788e-06,
+        3.3228206766913096e-06,
+        3.3185851151405767e-06,
+        3.3146070694153758e-06,
+        3.31088532409032e-06,
+        3.3074187440187085e-06,
+        3.304206273593944e-06,
+        3.301246936063928e-06,
+        3.2985398328976096e-06,
+        3.2960841432037795e-06,
+        3.2938791232007312e-06,
+        3.2919241057365907e-06,
+        3.290218499859667e-06,
+        3.2887617904384207e-06,
+        3.287553537830381e-06,
+        3.2865933776002825e-06,
+        3.285881020285839e-06,
+        3.285416251212641e-06,
+        3.2851989303566056e-06,
+        3.2852289922545326e-06,
+        3.285506445961044e-06,
+        3.2860313750558935e-06,
+        3.2868039376969233e-06,
+        3.287824366720877e-06,
+        3.2890929697931394e-06,
+        3.2906101296046893e-06,
+        3.2923763041175636e-06,
+        3.294392026858886e-06,
+        3.296657907263808e-06,
+        3.2991746310674997e-06,
+        3.30194296074687e-06,
+        3.304963736012597e-06,
+        3.3082378743517845e-06,
+        3.3117663716216026e-06,
+        3.315550302695629e-06,
+        3.319590822162058e-06,
+        3.3238891650760767e-06,
+        3.328446647765787e-06,
+        3.33326466869447e-06,
+        3.3383447093776604e-06,
+        3.3436883353589793e-06,
+        3.349297197242735e-06,
+        3.3551730317874994e-06,
+        3.3613176630593623e-06,
+        3.367733003648162e-06,
+        3.3744210559463786e-06,
+        3.381383913493888e-06,
+        3.388623762388454e-06,
+        3.3961428827652035e-06,
+        3.4039436503456325e-06,
+        3.4120285380580947e-06,
+        3.4204001177333927e-06,
+        3.4290610618736154e-06,
+        3.4380141455018356e-06,
+        3.4472622480894635e-06,
+        3.456808355567577e-06,
+        3.4666555624222736e-06,
+        3.476807073878129e-06,
+        3.487266208171398e-06,
+        3.4980363989165616e-06,
+        3.5091211975684956e-06,
+        3.520524275984347e-06,
+        3.5322494290871536e-06,
+        3.5443005776354365e-06,
+        3.5566817711025196e-06,
+        3.569397190668214e-06,
+        3.5824511523281108e-06,
+        3.5958481101235577e-06,
+        3.6095926594973814e-06,
+        3.6236895407790017e-06,
+        3.6381436428044866e-06,
+        3.6529600066759996e-06,
+        3.668143829665837e-06,
+        3.683700469270385e-06,
+        3.6996354474198273e-06,
+        3.715954454849608e-06,
+        3.7326633556391025e-06,
+        3.7497681919254483e-06,
+        3.7672751887972483e-06,
+        3.7851907593773517e-06,
+        3.8035215101010023e-06,
+        3.822274246196859e-06,
+        3.841455977380423e-06,
+        3.861073923767087e-06,
+        3.881135522013921e-06,
+        3.9016484317016364e-06,
+        3.922620541962909e-06,
+        3.944059978371187e-06,
+        3.965975110098142e-06,
+        3.98837455735302e-06,
+        4.011267199114542e-06,
+        4.034662181168884e-06,
+        4.058568924466199e-06,
+        4.082997133810044e-06,
+        4.107956806894413e-06,
+        4.13345824370306e-06,
+        4.159512056287591e-06,
+        4.186129178941322e-06,
+        4.213320878786793e-06,
+        4.241098766795005e-06,
+        4.269474809256577e-06,
+        4.298461339725841e-06,
+        4.328071071458797e-06,
+        4.358317110368638e-06,
+        4.389212968522804e-06,
+        4.4207725782066976e-06,
+        4.453010306581423e-06,
+        4.485940970963983e-06,
+        4.51957985475794e-06,
+        4.553942724069623e-06,
+        4.589045845039094e-06,
+        4.624906001923629e-06,
+        4.661540515969316e-06,
+        4.698967265110912e-06,
+        4.7372047045399745e-06,
+        4.776271888186291e-06,
+        4.816188491156429e-06,
+        4.856974833181414e-06,
+        4.898651903122766e-06,
+        4.941241384591118e-06,
+        4.9847656827370855e-06,
+        5.0292479522742036e-06,
+        5.074712126798819e-06,
+        5.1211829494761715e-06,
+        5.168686005164503e-06,
+        5.217247754055774e-06,
+        5.266895566913271e-06,
+        5.317657761993943e-06,
+        5.369563643747736e-06,
+        5.422643543391662e-06,
+        5.476928861462663e-06,
+        5.5324521124599794e-06,
+        5.58924697169561e-06,
+        5.64734832447606e-06,
+        5.706792317751246e-06,
+        5.767616414370233e-06,
+        5.829859450096375e-06,
+        5.893561693542832e-06,
+        5.958764909199483e-06,
+        6.02551242373566e-06,
+        6.093849195773323e-06,
+        6.163821889340218e-06,
+        6.235478951225908e-06,
+        6.308870692478847e-06,
+        6.384049374300173e-06,
+        6.461069298606206e-06,
+        6.539986903552382e-06,
+        6.620860864330316e-06,
+        6.703752199575645e-06,
+        6.788724383740883e-06,
+        6.875843465824377e-06,
+        6.965178194865165e-06,
+        7.056800152648842e-06,
+        7.150783894101817e-06,
+        7.247207095886494e-06,
+        7.3461507137498125e-06,
+        7.447699149217719e-06,
+        7.5519404262775206e-06,
+        7.658966378734927e-06,
+        7.768872848991018e-06,
+        7.881759899039872e-06,
+        7.997732034554323e-06,
+        8.11689844299399e-06,
+        8.239373246747994e-06,
+        8.365275772408265e-06,
+        8.494730837354868e-06,
+        8.62786905494067e-06,
+        8.76482715966584e-06,
+        8.905748353852123e-06,
+        9.05078267745751e-06,
+        9.200087402812567e-06,
+        9.353827456216427e-06,
+        9.512175868501677e-06,
+        9.67531425686503e-06,
+        9.843433340466989e-06,
+        1.0016733492534441e-05,
+        1.0195425331947319e-05,
+        1.0379730357570588e-05,
+        1.0569881628898128e-05,
+        1.0766124496911866e-05,
+        1.0968717389436215e-05,
+        1.1177932655681016e-05,
+        1.1394057475124845e-05,
+        1.1617394836404041e-05,
+        1.184826459243644e-05,
+        1.2087004598641727e-05,
+        1.2333971941822132e-05,
+        1.2589544268051378e-05,
+        1.2854121218791966e-05,
+        1.3128125985445113e-05,
+        1.3412006993621598e-05,
+        1.3706239729659318e-05,
+        1.4011328723280025e-05,
+        1.4327809701832254e-05,
+        1.4656251933297312e-05,
+        1.4997260777207678e-05,
+        1.535148046482671e-05,
+        1.571959713244796e-05,
+        1.6102342134495196e-05,
+        1.65004956663141e-05,
+        1.691489073018692e-05,
+        1.7346417482239598e-05,
+        1.7796028002630302e-05,
+        1.8264741536786554e-05,
+        1.8753650261611736e-05,
+        1.926392563762463e-05,
+        1.979682541607847e-05,
+        2.0353701379395246e-05,
+        2.0936007903951884e-05,
+        2.1545311446602894e-05,
+        2.2183301070606272e-05,
+        2.285180014317123e-05,
+        2.3552779356076573e-05,
+        2.42883712431849e-05,
+        2.5060886394810345e-05,
+        2.5872831599446845e-05,
+        2.6726930179201287e-05,
+        2.7626144827413757e-05,
+        2.857370330661397e-05,
+        2.9573127423689523e-05,
+        3.0628265768756414e-05,
+        3.174333078699766e-05,
+        3.2922940851476617e-05,
+        3.4172168123045105e-05,
+        3.5496593125284077e-05,
+        3.69023671332132e-05,
+        3.839628368097385e-05,
+        3.998586074418712e-05,
+        4.167943545775542e-05,
+        4.348627360290499e-05,
+        4.541669655525544e-05,
+        4.748222895047244e-05,
+        4.969577102361219e-05,
+        5.207180044887153e-05,
+        5.4626609595264494e-05,
+        5.737858548245388e-05,
+        6.0348541450813146e-05,
+        6.356011175842525e-05,
+        6.70402231287833e-05,
+        7.081966088941768e-05,
+        7.4933752024894e-05,
+        7.942319357418323e-05,
+        8.433506282303434e-05,
+        8.972405635793856e-05,
+        9.5654019214147e-05,
+        0.00010219984441676759,
+        0.00010944984911287391,
+        0.00011750876901661741,
+        0.00012650156212483916,
+        0.0001365782816620246,
+        0.00014792037607302494,
+        0.00016074891445326485,
+        0.0001753354405275465,
+        0.00019201646089603614,
+        0.00021121302781758496,
+        0.0002334575716356178,
+        0.0002594312205502936,
+        0.0002900165678369088,
+        0.00032637365070704974,
+        0.0003700515878518706,
+        0.00042315636774418883,
+        0.0004886095464140966,
+        0.0005705588346045395,
+        0.0006750517485239966,
+        0.000811184179995565,
+        0.0009931489561066228,
+        0.0012440907783741214,
+        0.0016038468539454052,
+        0.002145790860076907,
+        0.003017440280312911,
+        0.004552584533980338,
+        0.007645748360308257,
+        0.015425268551928105,
+        0.045921000557398846,
+        0.6091485595304273,
+        0.22588429379438307,
+        0.03318693645077054,
+        0.012697825148860226,
+        0.006654084256909361,
+        0.004086443761305347,
+        0.0027622541822310107,
+        0.0019912353527750766,
+        0.0015032544653400747,
+        0.0011749965872603994,
+        0.0009436618609881824,
+        0.000774534606237899,
+        0.0006471569179620644,
+        0.0005488382242317498,
+        0.0004713675050081262,
+        0.00040924159378087583,
+        0.0003586601933508863,
+        0.00031693058085724386,
+        0.0002821016785159487,
+        0.0002527317815456077,
+        0.00022773692781075775,
+        0.00020628942937976424,
+        0.00018774845980302978,
+        0.00017161162489027508,
+        0.00015748056857043053,
+        0.00014503615069983556,
+        0.00013402026913719684,
+        0.00012422236859364986,
+        0.00011546930444877384,
+        0.00010761764083677593,
+        0.00010054773710237488,
+        9.41591633241205e-05,
+        8.836711417133535e-05,
+        8.309958015063368e-05,
+        7.829509879745785e-05,
+        7.390095380338955e-05,
+        6.987172293718205e-05,
+        6.616809963752555e-05,
+        6.275593087932125e-05,
+        5.960542711168131e-05,
+        5.669050997534746e-05,
+        5.398827100839094e-05,
+        5.147852027042621e-05,
+        4.914340821089332e-05,
+        4.6967107506622825e-05,
+        4.493554424049474e-05,
+        4.303616986605468e-05,
+        4.125776703626002e-05,
+        3.9590283668578175e-05,
+        3.802469064938665e-05,
+        3.655285940578019e-05,
+        3.516745623670906e-05,
+        3.3861850831870405e-05,
+        3.2630036842320154e-05,
+        3.14665627218664e-05,
+        3.0366471349005017e-05,
+        2.932524717806954e-05,
+        2.8338769865375275e-05,
+        2.7403273479332196e-05,
+        2.651531053911206e-05,
+        2.5671720239503938e-05,
+        2.486960031416037e-05,
+        2.4106282068780848e-05,
+        2.3379308182556e-05,
+        2.26864129325629e-05,
+        2.2025504543515772e-05,
+        2.1394649405771256e-05,
+        2.079205793896092e-05,
+        2.0216071908021862e-05,
+        1.9665153023557227e-05,
+        1.9137872680025804e-05,
+        1.8632902703791004e-05,
+        1.8149006999031907e-05,
+        1.7685033993295372e-05,
+        1.7239909796397747e-05,
+        1.6812631996721057e-05,
+        1.640226402792066e-05,
+        1.600793004688835e-05,
+        1.5628810270617004e-05,
+        1.5264136725578482e-05,
+        1.4913189368426425e-05,
+        1.45752925414125e-05,
+        1.4249811729911488e-05,
+        1.3936150592982981e-05,
+        1.3633748241007073e-05,
+        1.3342076737174153e-05,
+        1.3060638802039195e-05,
+        1.2788965702493654e-05,
+        1.2526615308416425e-05,
+        1.2273170301952229e-05,
+        1.2028236525871553e-05,
+        1.1791441458800797e-05,
+        1.1562432806308825e-05,
+        1.1340877197895012e-05,
+        1.112645898087981e-05,
+        1.0918879103048836e-05,
+        1.0717854076663453e-05,
+        1.0523115017137296e-05,
+        1.0334406750290794e-05,
+        1.015148698265029e-05
+      ],
+      "counts": {
+        "412": 1251,
+        "413": 460,
+        "404": 3,
+        "407": 6,
+        "411": 93,
+        "416": 5,
+        "405": 2,
+        "415": 37,
+        "406": 4,
+        "409": 21,
+        "414": 77,
+        "394": 1,
+        "425": 1,
+        "410": 31,
+        "401": 1,
+        "399": 1,
+        "403": 1,
+        "422": 4,
+        "419": 6,
+        "418": 9,
+        "408": 9,
+        "417": 6,
+        "400": 1,
+        "393": 2,
+        "420": 3,
+        "423": 2,
+        "500": 1,
+        "165": 1,
+        "456": 1,
+        "402": 2,
+        "22": 1,
+        "377": 1,
+        "382": 1,
+        "476": 1,
+        "380": 1,
+        "388": 1
+      },
+      "shots": 2048,
+      "seed": 20261021,
+      "peak_phase": 0.8046875,
+      "energy_ceiling": 3.040459399499687,
+      "energy_span": 6.080918798999374,
+      "energy_resolution": 0.011876794529295652,
+      "estimated_energy": -1.8527799465701218,
+      "energy_error_vs_reference": 0.0044950836322577015,
+      "unitary": "exp(-i*(H-energy_ceiling*I)*t), t=2*pi/energy_span",
+      "unitary_construction": "classical Hermitian eigendecomposition for this small simulation",
+      "input_ground_overlap": 0.9999999999999998
+    },
+    "resources": {
+      "profile": "mobile",
+      "memory_budget_mib": 64,
+      "simulated_qubits": 11,
+      "basis_states": 2048,
+      "estimated_workspace_bytes": 196608,
+      "combined_estimated_workspace_bytes": 198144
+    },
+    "wall_seconds": 0.0036074460003874265
+  },
+  "qpe": {
+    "algorithm": "QPE",
+    "aliases": [
+      "PEA"
+    ],
+    "execution": "controlled-unitary state-vector plus inverse QFT",
+    "unitary": "diag(1, exp(2*pi*i*phase))",
+    "target_eigenstate": "1",
+    "phase": 0.375,
+    "precision_qubits": 5,
+    "controlled_powers": [
+      1,
+      2,
+      4,
+      8,
+      16
+    ],
+    "estimated_phase": 0.375,
+    "phase_resolution": 0.03125,
+    "circular_phase_error": 0.0,
+    "phase_probabilities": [
+      3.3090173256643745e-33,
+      3.119995761274991e-33,
+      3.402141333482661e-33,
+      4.059564776425437e-33,
+      2.8770291969359157e-33,
+      6.0265290937049145e-33,
+      8.061013849232977e-33,
+      1.0913895949237457e-32,
+      1.8984307150647814e-32,
+      2.877988250312111e-32,
+      6.746378492085101e-32,
+      2.524215953670814e-31,
+      1.0,
+      2.524215953670814e-31,
+      6.927404485028661e-32,
+      2.877988250312111e-32,
+      1.8984307150647814e-32,
+      1.0913895949237457e-32,
+      8.810848063425756e-33,
+      6.0265290937049145e-33,
+      2.8770291969359157e-33,
+      4.059564776425437e-33,
+      4.151975547675439e-33,
+      3.119995761274991e-33,
+      3.3090173256643745e-33,
+      2.653632450275352e-33,
+      3.718733754327586e-33,
+      2.4957770545807542e-33,
+      9.053373108265858e-33,
+      2.4957770545807542e-33,
+      1.9084738248920066e-33,
+      2.653632450275352e-33
+    ],
+    "counts": {
+      "12": 1024
+    },
+    "shots": 1024,
+    "seed": 20261021,
+    "resources": {
+      "profile": "mobile",
+      "memory_budget_mib": 64,
+      "simulated_qubits": 6,
+      "basis_states": 64,
+      "estimated_workspace_bytes": 6144
+    },
+    "state_sha256": "435109fa016cc677d4c2818bf77b532dbdc15cf4c3f6199d7df2b95370c3bd2e"
+  },
+  "qft": {
+    "algorithm": "QFT",
+    "execution": "exact numerical Fourier transform",
+    "convention": "forward uses positive exponent",
+    "inverse": false,
+    "input": {
+      "qubits": 3,
+      "bit_order": "q0-leftmost",
+      "branches": [
+        [
+          "101",
+          [
+            1.0,
+            0.0
+          ]
+        ]
+      ],
+      "norm_squared": 1.0,
+      "omitted_l2_norm": 0.0
+    },
+    "output": {
+      "qubits": 3,
+      "bit_order": "q0-leftmost",
+      "branches": [
+        [
+          "000",
+          [
+            0.3535533905932738,
+            0.0
+          ]
+        ],
+        [
+          "001",
+          [
+            -0.25000000000000006,
+            -0.25000000000000006
+          ]
+        ],
+        [
+          "010",
+          [
+            0.0,
+            0.3535533905932738
+          ]
+        ],
+        [
+          "011",
+          [
+            0.25000000000000006,
+            -0.25000000000000006
+          ]
+        ],
+        [
+          "100",
+          [
+            -0.3535533905932738,
+            0.0
+          ]
+        ],
+        [
+          "101",
+          [
+            0.25000000000000006,
+            0.25000000000000006
+          ]
+        ],
+        [
+          "110",
+          [
+            0.0,
+            -0.3535533905932738
+          ]
+        ],
+        [
+          "111",
+          [
+            -0.25000000000000006,
+            0.25000000000000006
+          ]
+        ]
+      ],
+      "norm_squared": 1.0000000000000004,
+      "omitted_l2_norm": 0.0
+    },
+    "roundtrip_fidelity": 1.0000000000000004,
+    "state_sha256": "f1c4f0d1de863e844b04df844b27e26a5fcdb280dcc4f84303283f53628aa427",
+    "resources": {
+      "profile": "mobile",
+      "memory_budget_mib": 64,
+      "simulated_qubits": 3,
+      "basis_states": 8,
+      "estimated_workspace_bytes": 768
+    }
+  },
+  "signal": {
+    "input_kind": "seeded synthetic signal",
+    "fft_peaks": [
+      {
+        "hz": 50.0,
+        "amplitude": 0.9649518131156235
+      },
+      {
+        "hz": 120.0,
+        "amplitude": 0.5314972367726006
+      }
+    ]
+  },
+  "glyph_compilation": {
+    "schema": "xi.tessera.plan.v2",
+    "program_sha256": "57f6fd2e340de42e6ac8f2a5870f76021c90bc0837ce1b570573afc538a2cf8e",
+    "plan_sha256": "fa36521a08344462c6d5b585c883929e5a09aae3fd64b744c14e8aecb2acc72b",
+    "engine_sha256": "5570dbc984d58993759eb7863d65f780b0f27e8c83910e4a81c22477f52a062a",
+    "dialect": "QuantumCompute.Stack.v3",
+    "anchor": "∴Ω⧂",
+    "steps": [
+      {
+        "index": 0,
+        "operator": "Grover",
+        "glyph": "⋈",
+        "parameters": {
+          "qubits": 6,
+          "marked": [
+            "101011"
+          ],
+          "iterations": 6,
+          "shots": 512,
+          "seed": 20261021
+        },
+        "phase": 0.0,
+        "compiled_from": {
+          "source_index": 0,
+          "definitions": [
+            {
+              "name": "ReturnLight",
+              "glyph": "⟠⋈⧂",
+              "version": 1,
+              "definition_sha256": "41f9091ac53290f75493fba868593a88429ccf638a52cd4b9ba4af33f816f5cc",
+              "parameters": {
+                "target": "101011",
+                "fault": 2
+              }
+            }
+          ]
+        }
+      },
+      {
+        "index": 1,
+        "operator": "PhaseCode",
+        "glyph": "⟐⧂",
+        "parameters": {
+          "state": "T",
+          "faults": [
+            2
+          ],
+          "seed": 20261021
+        },
+        "phase": 0.0,
+        "compiled_from": {
+          "source_index": 0,
+          "definitions": [
+            {
+              "name": "ReturnLight",
+              "glyph": "⟠⋈⧂",
+              "version": 1,
+              "definition_sha256": "41f9091ac53290f75493fba868593a88429ccf638a52cd4b9ba4af33f816f5cc",
+              "parameters": {
+                "target": "101011",
+                "fault": 2
+              }
+            }
+          ]
+        }
+      },
+      {
+        "index": 2,
+        "operator": "Seal",
+        "glyph": "⊚",
+        "parameters": {},
+        "phase": 0.0
+      }
+    ],
+    "definitions": [
+      {
+        "name": "ReturnLight",
+        "version": 1,
+        "glyph": "⟠⋈⧂",
+        "meaning": "Search a declared target, then witness a correctable phase disturbance.",
+        "parameters": {
+          "target": {
+            "type": "string",
+            "default": "101011"
+          },
+          "fault": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 2,
+            "default": 1
+          }
+        },
+        "steps": [
+          {
+            "operator": "Grover",
+            "glyph": "⋈",
+            "parameters": {
+              "qubits": 6,
+              "marked": [
+                "$target"
+              ],
+              "iterations": 6,
+              "shots": 512,
+              "seed": 20261021
+            }
+          },
+          {
+            "operator": "PhaseCode",
+            "glyph": "⟐⧂",
+            "parameters": {
+              "state": "T",
+              "faults": [
+                "$fault"
+              ],
+              "seed": 20261021
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "encrypted_fullcycle": {
+    "schema": "xi.quantumcompute.fullcycle-test.v2",
+    "profile": "mobile",
+    "crypto_suite": "ML-KEM-768/HKDF-SHA256/ChaCha20Poly1305/ML-DSA-65",
+    "source_sha256": "57f6fd2e340de42e6ac8f2a5870f76021c90bc0837ce1b570573afc538a2cf8e",
+    "exact_source_roundtrip": true,
+    "duplicate_packet_is_idempotent": true,
+    "resume_without_reexecution": true,
+    "sender": {
+      "schema": "xi.quantumcompute.receipt.v2",
+      "world_id": "quantum-763dc3b93616890633e6192a622d23f9",
+      "source_sha256": "57f6fd2e340de42e6ac8f2a5870f76021c90bc0837ce1b570573afc538a2cf8e",
+      "plan_sha256": "fa36521a08344462c6d5b585c883929e5a09aae3fd64b744c14e8aecb2acc72b",
+      "engine_sha256": "5570dbc984d58993759eb7863d65f780b0f27e8c83910e4a81c22477f52a062a",
+      "closed": false,
+      "completed_steps": 2,
+      "executed_this_call": 2,
+      "restored_from_peer_this_call": 0,
+      "steps": [
+        {
+          "compiled_from": {
+            "definitions": [
+              {
+                "definition_sha256": "41f9091ac53290f75493fba868593a88429ccf638a52cd4b9ba4af33f816f5cc",
+                "glyph": "⟠⋈⧂",
+                "name": "ReturnLight",
+                "parameters": {
+                  "fault": 2,
+                  "target": "101011"
+                },
+                "version": 1
+              }
+            ],
+            "source_index": 0
+          },
+          "event": {
+            "anchor": "∴Ω⧂",
+            "boundary": {
+              "requires": [
+                "local.execute"
+              ],
+              "wake": true
+            },
+            "broadcast": false,
+            "capsule_refs": [
+              "57f6fd2e340de42e6ac8f2a5870f76021c90bc0837ce1b570573afc538a2cf8e"
+            ],
+            "confidence": null,
+            "digest": "440d7fc51781399ffb82b4f1599290d6bcde31d9531ba2512a85b3a4d3a5ccf0",
+            "operator": "Grover",
+            "payload": {
+              "result_sha256": "bcd29e82f26ee02f2dce0aed3bf71097da16b474263b1fc8ed2225b1eec31bde"
+            },
+            "payload_type": "capsule",
+            "phase": 0.0,
+            "provenance": {
+              "dialect": "QuantumCompute.Stack.v3",
+              "engine_sha256": "5570dbc984d58993759eb7863d65f780b0f27e8c83910e4a81c22477f52a062a",
+              "plan_sha256": "fa36521a08344462c6d5b585c883929e5a09aae3fd64b744c14e8aecb2acc72b"
+            },
+            "return_operator": "⟁∴Ω",
+            "schema": "xi.event-envelope.v1",
+            "source": "world:quantumcompute",
+            "state_hash": null,
+            "target": "Grover"
+          },
+          "event_id": "evt_b18e8e7c96ca23c8cc5f5727",
+          "glyph": "⋈",
+          "index": 0,
+          "operator": "Grover",
+          "origin": "local_execution",
+          "parameters": {
+            "iterations": 6,
+            "marked": [
+              "101011"
+            ],
+            "qubits": 6,
+            "seed": 20261021,
+            "shots": 512
+          },
+          "result": {
+            "algorithm": "Grover",
+            "counts": {
+              "43": 512
+            },
+            "execution": "exact numerical state-vector",
+            "ideal_prediction": 0.9965856807867991,
+            "iterations": 6,
+            "marked": [
+              43
+            ],
+            "norm_squared": 0.9999999999999998,
+            "oracle_phase": 3.141592653589793,
+            "qubits": 6,
+            "resources": {
+              "basis_states": 64,
+              "estimated_workspace_bytes": 6144,
+              "memory_budget_mib": 64,
+              "profile": "mobile",
+              "simulated_qubits": 6
+            },
+            "seed": 20261021,
+            "shots": 512,
+            "state_sha256": "a328a4805905755876aa40b4e5b4a41d72f0670d5e36089441f0b7818c37811b",
+            "success_probability": 0.996585680786799,
+            "wall_seconds": 0.00043016800009354483
+          },
+          "route": {
+            "coherence_after": {
+              "node_count": 15,
+              "order_parameter": 1.0,
+              "xi": -0.0
+            },
+            "coherence_before": {
+              "node_count": 15,
+              "order_parameter": 1.0,
+              "xi": -0.0
+            },
+            "countervectors": [],
+            "digest": "cf54e2711e2d9a68d4a1344bf1bd5c8a2b2762ac75ad480b5d3b389d321d4ced",
+            "event_digest": "440d7fc51781399ffb82b4f1599290d6bcde31d9531ba2512a85b3a4d3a5ccf0",
+            "movement": "yield",
+            "next_operator": null,
+            "previous_receipt_hash": null,
+            "recovery_receipt": {
+              "countervectors": [],
+              "cycle": [
+                "recover",
+                "compare",
+                "distinguish",
+                "yield",
+                "receipt"
+              ],
+              "digest": "e5a07dfc9a610e52288f204273275d04afd0ce63501a46268cc4d3338fd47824",
+              "movement": "yield",
+              "provenance": {
+                "fabric": "FullCycle",
+                "return_operator": "⟁∴Ω"
+              },
+              "return_glyph": "⟁∴Ω",
+              "return_state": "ReturnedNotReset",
+              "schema": "xi.receipt.recovery.v2",
+              "threads": {
+                "event": {
+                  "anchor": "∴Ω⧂",
+                  "boundary": {
+                    "requires": [
+                      "local.execute"
+                    ],
+                    "wake": true
+                  },
+                  "broadcast": false,
+                  "capsule_refs": [
+                    "57f6fd2e340de42e6ac8f2a5870f76021c90bc0837ce1b570573afc538a2cf8e"
+                  ],
+                  "confidence": null,
+                  "digest": "440d7fc51781399ffb82b4f1599290d6bcde31d9531ba2512a85b3a4d3a5ccf0",
+                  "operator": "Grover",
+                  "payload": {
+                    "result_sha256": "bcd29e82f26ee02f2dce0aed3bf71097da16b474263b1fc8ed2225b1eec31bde"
+                  },
+                  "payload_type": "capsule",
+                  "phase": 0.0,
+                  "provenance": {
+                    "dialect": "QuantumCompute.Stack.v3",
+                    "engine_sha256": "5570dbc984d58993759eb7863d65f780b0f27e8c83910e4a81c22477f52a062a",
+                    "plan_sha256": "fa36521a08344462c6d5b585c883929e5a09aae3fd64b744c14e8aecb2acc72b"
+                  },
+                  "return_operator": "⟁∴Ω",
+                  "schema": "xi.event-envelope.v1",
+                  "source": "world:quantumcompute",
+                  "state_hash": null,
+                  "target": "Grover"
+                },
+                "local_outcomes": {
+                  "coherence_after": {
+                    "node_count": 15,
+                    "order_parameter": 1.0,
+                    "xi": -0.0
+                  },
+                  "coherence_before": {
+                    "node_count": 15,
+                    "order_parameter": 1.0,
+                    "xi": -0.0
+                  },
+                  "targets": [
+                    "Grover"
+                  ]
+                }
+              }
+            },
+            "schema": "xi.receipt.event.v1",
+            "sequence": 1,
+            "targets": [
+              "Grover"
+            ]
+          }
+        },
+        {
+          "compiled_from": {
+            "definitions": [
+              {
+                "definition_sha256": "41f9091ac53290f75493fba868593a88429ccf638a52cd4b9ba4af33f816f5cc",
+                "glyph": "⟠⋈⧂",
+                "name": "ReturnLight",
+                "parameters": {
+                  "fault": 2,
+                  "target": "101011"
+                },
+                "version": 1
+              }
+            ],
+            "source_index": 0
+          },
+          "event": {
+            "anchor": "∴Ω⧂",
+            "boundary": {
+              "requires": [
+                "local.execute"
+              ],
+              "wake": true
+            },
+            "broadcast": false,
+            "capsule_refs": [
+              "57f6fd2e340de42e6ac8f2a5870f76021c90bc0837ce1b570573afc538a2cf8e"
+            ],
+            "confidence": null,
+            "digest": "1967327230fd15b7e793727adbd4d18050d3795564ceb6f92c10be19726df29f",
+            "operator": "PhaseCode",
+            "payload": {
+              "result_sha256": "b35af0aa09e7edf106bb4f30b74a26740292440ab04423ef3f0baee595021d1b"
+            },
+            "payload_type": "capsule",
+            "phase": 0.0,
+            "provenance": {
+              "dialect": "QuantumCompute.Stack.v3",
+              "engine_sha256": "5570dbc984d58993759eb7863d65f780b0f27e8c83910e4a81c22477f52a062a",
+              "plan_sha256": "fa36521a08344462c6d5b585c883929e5a09aae3fd64b744c14e8aecb2acc72b"
+            },
+            "return_operator": "⟁∴Ω",
+            "schema": "xi.event-envelope.v1",
+            "source": "world:quantumcompute",
+            "state_hash": null,
+            "target": "PhaseCode"
+          },
+          "event_id": "evt_b56163bfb412396ff9e6fbf3",
+          "glyph": "⟐⧂",
+          "index": 1,
+          "operator": "PhaseCode",
+          "origin": "local_execution",
+          "parameters": {
+            "faults": [
+              2
+            ],
+            "seed": 20261021,
+            "state": "T"
+          },
+          "result": {
+            "algorithm": "PhaseCode",
+            "code": "three-qubit phase-flip repetition",
+            "corrected_qubit": 2,
+            "execution": "exact sparse state-vector",
+            "fault_model": "declared Pauli-Z sequence",
+            "faults": [
+              2
+            ],
+            "input": {
+              "bit_order": "q0-leftmost",
+              "branches": [
+                [
+                  "0",
+                  [
+                    0.7071067811865476,
+                    0.0
+                  ]
+                ],
+                [
+                  "1",
+                  [
+                    0.5,
+                    0.5
+                  ]
+                ]
+              ],
+              "norm_squared": 1.0,
+              "omitted_l2_norm": 0.0,
+              "qubits": 1
+            },
+            "output": {
+              "branches": [
+                [
+                  "000",
+                  [
+                    0.707106781186547,
+                    0.0
+                  ]
+                ],
+                [
+                  "100",
+                  [
+                    0.5,
+                    0.5
+                  ]
+                ]
+              ],
+              "closed": false,
+              "cycle": 0,
+              "injected_z_faults": [],
+              "last_operator_receipt": {
+                "branch_count_after": 2,
+                "branch_count_before": 8,
+                "data_qubit": 0,
+                "glyph": "∴",
+                "meaning": "decodes the corrected logical state and verifies both recovery registers are |0>",
+                "norm_squared": 1.0,
+                "operator": "decode_phase_code",
+                "recovery_qubits": [
+                  1,
+                  2
+                ]
+              },
+              "phase_code": false,
+              "phase_code_decoded": true,
+              "phase_corrected": true,
+              "phase_syndrome": null,
+              "qubits": 3
+            },
+            "recovered_state_fidelity": 0.9999999999999993,
+            "resources": {
+              "basis_states": 8,
+              "estimated_workspace_bytes": 768,
+              "memory_budget_mib": 64,
+              "profile": "mobile",
+              "simulated_qubits": 3
+            },
+            "seed": 20261021,
+            "stabilizers": [
+              "XXI",
+              "IXX"
+            ],
+            "syndrome": [
+              1,
+              -1
+            ],
+            "trace": [
+              {
+                "stage": "prepare",
+                "state": {
+                  "branches": [
+                    [
+                      "000",
+                      [
+                        0.7071067811865476,
+                        0.0
+                      ]
+                    ],
+                    [
+                      "100",
+                      [
+                        0.5,
+                        0.5
+                      ]
+                    ]
+                  ],
+                  "closed": false,
+                  "cycle": 0,
+                  "qubits": 3
+                }
+              },
+              {
+                "parameters": {},
+                "receipt": {
+                  "branch_count_after": 8,
+                  "branch_count_before": 2,
+                  "code": "three-qubit phase-flip repetition code",
+                  "data_qubits": [
+                    0,
+                    1,
+                    2
+                  ],
+                  "glyph": "⋈",
+                  "meaning": "encodes the input register into the +1 eigenspace of X0X1 and X1X2",
+                  "norm_squared": 1.0,
+                  "operator": "encode_phase_code"
+                },
+                "stage": "encode_phase_code",
+                "state": {
+                  "branches": [
+                    [
+                      "000",
+                      [
+                        0.426776695296637,
+                        0.176776695296637
+                      ]
+                    ],
+                    [
+                      "001",
+                      [
+                        0.073223304703363,
+                        -0.176776695296637
+                      ]
+                    ],
+                    [
+                      "010",
+                      [
+                        0.073223304703363,
+                        -0.176776695296637
+                      ]
+                    ],
+                    [
+                      "011",
+                      [
+                        0.426776695296637,
+                        0.176776695296637
+                      ]
+                    ],
+                    [
+                      "100",
+                      [
+                        0.073223304703363,
+                        -0.176776695296637
+                      ]
+                    ],
+                    [
+                      "101",
+                      [
+                        0.426776695296637,
+                        0.176776695296637
+                      ]
+                    ],
+                    [
+                      "110",
+                      [
+                        0.426776695296637,
+                        0.176776695296637
+                      ]
+                    ],
+                    [
+                      "111",
+                      [
+                        0.073223304703363,
+                        -0.176776695296637
+                      ]
+                    ]
+                  ],
+                  "closed": false,
+                  "cycle": 0,
+                  "injected_z_faults": [],
+                  "last_operator_receipt": {
+                    "branch_count_after": 8,
+                    "branch_count_before": 2,
+                    "code": "three-qubit phase-flip repetition code",
+                    "data_qubits": [
+                      0,
+                      1,
+                      2
+                    ],
+                    "glyph": "⋈",
+                    "meaning": "encodes the input register into the +1 eigenspace of X0X1 and X1X2",
+                    "norm_squared": 1.0,
+                    "operator": "encode_phase_code"
+                  },
+                  "phase_code": true,
+                  "phase_code_decoded": false,
+                  "phase_corrected": false,
+                  "phase_syndrome": null,
+                  "qubits": 3
+                }
+              },
+              {
+                "parameters": {
+                  "qubit": 2
+                },
+                "receipt": {
+                  "branch_count_after": 8,
+                  "branch_count_before": 8,
+                  "error_model": "deterministic Pauli-Z fault; repeated injections compose by parity",
+                  "meaning": "injects a controlled software fault for the local correction experiment",
+                  "norm_squared": 1.0,
+                  "operator": "inject_z_error",
+                  "qubit": 2
+                },
+                "stage": "inject_z_error",
+                "state": {
+                  "branches": [
+                    [
+                      "000",
+                      [
+                        0.426776695296637,
+                        0.176776695296637
+                      ]
+                    ],
+                    [
+                      "001",
+                      [
+                        -0.073223304703363,
+                        0.176776695296637
+                      ]
+                    ],
+                    [
+                      "010",
+                      [
+                        0.073223304703363,
+                        -0.176776695296637
+                      ]
+                    ],
+                    [
+                      "011",
+                      [
+                        -0.426776695296637,
+                        -0.176776695296637
+                      ]
+                    ],
+                    [
+                      "100",
+                      [
+                        0.073223304703363,
+                        -0.176776695296637
+                      ]
+                    ],
+                    [
+                      "101",
+                      [
+                        -0.426776695296637,
+                        -0.176776695296637
+                      ]
+                    ],
+                    [
+                      "110",
+                      [
+                        0.426776695296637,
+                        0.176776695296637
+                      ]
+                    ],
+                    [
+                      "111",
+                      [
+                        -0.073223304703363,
+                        0.176776695296637
+                      ]
+                    ]
+                  ],
+                  "closed": false,
+                  "cycle": 0,
+                  "injected_z_faults": [
+                    2
+                  ],
+                  "last_operator_receipt": {
+                    "branch_count_after": 8,
+                    "branch_count_before": 8,
+                    "error_model": "deterministic Pauli-Z fault; repeated injections compose by parity",
+                    "meaning": "injects a controlled software fault for the local correction experiment",
+                    "norm_squared": 1.0,
+                    "operator": "inject_z_error",
+                    "qubit": 2
+                  },
+                  "phase_code": true,
+                  "phase_code_decoded": false,
+                  "phase_corrected": false,
+                  "phase_syndrome": null,
+                  "qubits": 3
+                }
+              },
+              {
+                "parameters": {
+                  "seed": 20261021
+                },
+                "receipt": {
+                  "branch_count_after": 8,
+                  "branch_count_before": 8,
+                  "glyph": "⧂",
+                  "meaning": "measures the two commuting phase-code stabilizers and records a local syndrome",
+                  "norm_squared": 1.0,
+                  "operator": "phase_syndrome",
+                  "probabilities": [
+                    1.0,
+                    1.0
+                  ],
+                  "seed": 20261021,
+                  "stabilizers": [
+                    "X0X1",
+                    "X1X2"
+                  ],
+                  "syndrome": [
+                    1,
+                    -1
+                  ]
+                },
+                "stage": "phase_syndrome",
+                "state": {
+                  "branches": [
+                    [
+                      "000",
+                      [
+                        0.426776695296637,
+                        0.176776695296637
+                      ]
+                    ],
+                    [
+                      "001",
+                      [
+                        -0.073223304703363,
+                        0.176776695296637
+                      ]
+                    ],
+                    [
+                      "010",
+                      [
+                        0.073223304703363,
+                        -0.176776695296637
+                      ]
+                    ],
+                    [
+                      "011",
+                      [
+                        -0.426776695296637,
+                        -0.176776695296637
+                      ]
+                    ],
+                    [
+                      "100",
+                      [
+                        0.073223304703363,
+                        -0.176776695296637
+                      ]
+                    ],
+                    [
+                      "101",
+                      [
+                        -0.426776695296637,
+                        -0.176776695296637
+                      ]
+                    ],
+                    [
+                      "110",
+                      [
+                        0.426776695296637,
+                        0.176776695296637
+                      ]
+                    ],
+                    [
+                      "111",
+                      [
+                        -0.073223304703363,
+                        0.176776695296637
+                      ]
+                    ]
+                  ],
+                  "closed": false,
+                  "cycle": 0,
+                  "injected_z_faults": [
+                    2
+                  ],
+                  "last_operator_receipt": {
+                    "branch_count_after": 8,
+                    "branch_count_before": 8,
+                    "glyph": "⧂",
+                    "meaning": "measures the two commuting phase-code stabilizers and records a local syndrome",
+                    "norm_squared": 1.0,
+                    "operator": "phase_syndrome",
+                    "probabilities": [
+                      1.0,
+                      1.0
+                    ],
+                    "seed": 20261021,
+                    "stabilizers": [
+                      "X0X1",
+                      "X1X2"
+                    ],
+                    "syndrome": [
+                      1,
+                      -1
+                    ]
+                  },
+                  "phase_code": true,
+                  "phase_code_decoded": false,
+                  "phase_corrected": false,
+                  "phase_syndrome": [
+                    1,
+                    -1
+                  ],
+                  "qubits": 3
+                }
+              },
+              {
+                "parameters": {},
+                "receipt": {
+                  "branch_count_after": 8,
+                  "branch_count_before": 8,
+                  "corrected_qubit": 2,
+                  "decoder": "minimum-weight; choose zero or one Z from the measured syndrome",
+                  "glyph": "⋈",
+                  "meaning": "applies the phase-code recovery table; two or three Z faults can produce an undetected logical error after recovery",
+                  "norm_squared": 1.0,
+                  "operator": "correct_z_error",
+                  "syndrome": [
+                    1,
+                    -1
+                  ]
+                },
+                "stage": "correct_z_error",
+                "state": {
+                  "branches": [
+                    [
+                      "000",
+                      [
+                        0.426776695296637,
+                        0.176776695296637
+                      ]
+                    ],
+                    [
+                      "001",
+                      [
+                        0.073223304703363,
+                        -0.176776695296637
+                      ]
+                    ],
+                    [
+                      "010",
+                      [
+                        0.073223304703363,
+                        -0.176776695296637
+                      ]
+                    ],
+                    [
+                      "011",
+                      [
+                        0.426776695296637,
+                        0.176776695296637
+                      ]
+                    ],
+                    [
+                      "100",
+                      [
+                        0.073223304703363,
+                        -0.176776695296637
+                      ]
+                    ],
+                    [
+                      "101",
+                      [
+                        0.426776695296637,
+                        0.176776695296637
+                      ]
+                    ],
+                    [
+                      "110",
+                      [
+                        0.426776695296637,
+                        0.176776695296637
+                      ]
+                    ],
+                    [
+                      "111",
+                      [
+                        0.073223304703363,
+                        -0.176776695296637
+                      ]
+                    ]
+                  ],
+                  "closed": false,
+                  "cycle": 0,
+                  "injected_z_faults": [],
+                  "last_operator_receipt": {
+                    "branch_count_after": 8,
+                    "branch_count_before": 8,
+                    "corrected_qubit": 2,
+                    "decoder": "minimum-weight; choose zero or one Z from the measured syndrome",
+                    "glyph": "⋈",
+                    "meaning": "applies the phase-code recovery table; two or three Z faults can produce an undetected logical error after recovery",
+                    "norm_squared": 1.0,
+                    "operator": "correct_z_error",
+                    "syndrome": [
+                      1,
+                      -1
+                    ]
+                  },
+                  "phase_code": true,
+                  "phase_code_decoded": false,
+                  "phase_corrected": true,
+                  "phase_syndrome": null,
+                  "qubits": 3
+                }
+              },
+              {
+                "parameters": {},
+                "receipt": {
+                  "branch_count_after": 2,
+                  "branch_count_before": 8,
+                  "data_qubit": 0,
+                  "glyph": "∴",
+                  "meaning": "decodes the corrected logical state and verifies both recovery registers are |0>",
+                  "norm_squared": 1.0,
+                  "operator": "decode_phase_code",
+                  "recovery_qubits": [
+                    1,
+                    2
+                  ]
+                },
+                "stage": "decode_phase_code",
+                "state": {
+                  "branches": [
+                    [
+                      "000",
+                      [
+                        0.707106781186547,
+                        0.0
+                      ]
+                    ],
+                    [
+                      "100",
+                      [
+                        0.5,
+                        0.5
+                      ]
+                    ]
+                  ],
+                  "closed": false,
+                  "cycle": 0,
+                  "injected_z_faults": [],
+                  "last_operator_receipt": {
+                    "branch_count_after": 2,
+                    "branch_count_before": 8,
+                    "data_qubit": 0,
+                    "glyph": "∴",
+                    "meaning": "decodes the corrected logical state and verifies both recovery registers are |0>",
+                    "norm_squared": 1.0,
+                    "operator": "decode_phase_code",
+                    "recovery_qubits": [
+                      1,
+                      2
+                    ]
+                  },
+                  "phase_code": false,
+                  "phase_code_decoded": true,
+                  "phase_corrected": true,
+                  "phase_syndrome": null,
+                  "qubits": 3
+                }
+              }
+            ],
+            "wall_seconds": 0.0003652300001704134,
+            "within_single_fault_scope": true
+          },
+          "route": {
+            "coherence_after": {
+              "node_count": 15,
+              "order_parameter": 1.0,
+              "xi": -0.0
+            },
+            "coherence_before": {
+              "node_count": 15,
+              "order_parameter": 1.0,
+              "xi": -0.0
+            },
+            "countervectors": [],
+            "digest": "31944cc0d5b763b1dc42a7ef8e7033dbb5d97a434da6ecdbd174d9196e856178",
+            "event_digest": "1967327230fd15b7e793727adbd4d18050d3795564ceb6f92c10be19726df29f",
+            "movement": "yield",
+            "next_operator": null,
+            "previous_receipt_hash": "cf54e2711e2d9a68d4a1344bf1bd5c8a2b2762ac75ad480b5d3b389d321d4ced",
+            "recovery_receipt": {
+              "countervectors": [],
+              "cycle": [
+                "recover",
+                "compare",
+                "distinguish",
+                "yield",
+                "receipt"
+              ],
+              "digest": "db00dc37146187ee41f73d2bd38703a334ce53eeada75040988ede5169d331be",
+              "movement": "yield",
+              "provenance": {
+                "fabric": "FullCycle",
+                "return_operator": "⟁∴Ω"
+              },
+              "return_glyph": "⟁∴Ω",
+              "return_state": "ReturnedNotReset",
+              "schema": "xi.receipt.recovery.v2",
+              "threads": {
+                "event": {
+                  "anchor": "∴Ω⧂",
+                  "boundary": {
+                    "requires": [
+                      "local.execute"
+                    ],
+                    "wake": true
+                  },
+                  "broadcast": false,
+                  "capsule_refs": [
+                    "57f6fd2e340de42e6ac8f2a5870f76021c90bc0837ce1b570573afc538a2cf8e"
+                  ],
+                  "confidence": null,
+                  "digest": "1967327230fd15b7e793727adbd4d18050d3795564ceb6f92c10be19726df29f",
+                  "operator": "PhaseCode",
+                  "payload": {
+                    "result_sha256": "b35af0aa09e7edf106bb4f30b74a26740292440ab04423ef3f0baee595021d1b"
+                  },
+                  "payload_type": "capsule",
+                  "phase": 0.0,
+                  "provenance": {
+                    "dialect": "QuantumCompute.Stack.v3",
+                    "engine_sha256": "5570dbc984d58993759eb7863d65f780b0f27e8c83910e4a81c22477f52a062a",
+                    "plan_sha256": "fa36521a08344462c6d5b585c883929e5a09aae3fd64b744c14e8aecb2acc72b"
+                  },
+                  "return_operator": "⟁∴Ω",
+                  "schema": "xi.event-envelope.v1",
+                  "source": "world:quantumcompute",
+                  "state_hash": null,
+                  "target": "PhaseCode"
+                },
+                "local_outcomes": {
+                  "coherence_after": {
+                    "node_count": 15,
+                    "order_parameter": 1.0,
+                    "xi": -0.0
+                  },
+                  "coherence_before": {
+                    "node_count": 15,
+                    "order_parameter": 1.0,
+                    "xi": -0.0
+                  },
+                  "targets": [
+                    "PhaseCode"
+                  ]
+                }
+              }
+            },
+            "schema": "xi.receipt.event.v1",
+            "sequence": 2,
+            "targets": [
+              "PhaseCode"
+            ]
+          }
+        }
+      ],
+      "integrity": {
+        "ok": true,
+        "event_count": 3,
+        "head_hash": "70e138a5221089342ac2424ba6a0a47f21a7fa793509c8af6bc3c4f4af35da4a",
+        "errors": []
+      }
+    },
+    "receiver": {
+      "schema": "xi.quantumcompute.receipt.v2",
+      "world_id": "quantum-763dc3b93616890633e6192a622d23f9",
+      "source_sha256": "57f6fd2e340de42e6ac8f2a5870f76021c90bc0837ce1b570573afc538a2cf8e",
+      "plan_sha256": "fa36521a08344462c6d5b585c883929e5a09aae3fd64b744c14e8aecb2acc72b",
+      "engine_sha256": "5570dbc984d58993759eb7863d65f780b0f27e8c83910e4a81c22477f52a062a",
+      "closed": true,
+      "completed_steps": 3,
+      "executed_this_call": 1,
+      "restored_from_peer_this_call": 2,
+      "steps": [
+        {
+          "compiled_from": {
+            "definitions": [
+              {
+                "definition_sha256": "41f9091ac53290f75493fba868593a88429ccf638a52cd4b9ba4af33f816f5cc",
+                "glyph": "⟠⋈⧂",
+                "name": "ReturnLight",
+                "parameters": {
+                  "fault": 2,
+                  "target": "101011"
+                },
+                "version": 1
+              }
+            ],
+            "source_index": 0
+          },
+          "event": {
+            "anchor": "∴Ω⧂",
+            "boundary": {
+              "requires": [
+                "local.execute"
+              ],
+              "wake": true
+            },
+            "broadcast": false,
+            "capsule_refs": [
+              "57f6fd2e340de42e6ac8f2a5870f76021c90bc0837ce1b570573afc538a2cf8e"
+            ],
+            "confidence": null,
+            "digest": "440d7fc51781399ffb82b4f1599290d6bcde31d9531ba2512a85b3a4d3a5ccf0",
+            "operator": "Grover",
+            "payload": {
+              "result_sha256": "bcd29e82f26ee02f2dce0aed3bf71097da16b474263b1fc8ed2225b1eec31bde"
+            },
+            "payload_type": "capsule",
+            "phase": 0.0,
+            "provenance": {
+              "dialect": "QuantumCompute.Stack.v3",
+              "engine_sha256": "5570dbc984d58993759eb7863d65f780b0f27e8c83910e4a81c22477f52a062a",
+              "plan_sha256": "fa36521a08344462c6d5b585c883929e5a09aae3fd64b744c14e8aecb2acc72b"
+            },
+            "return_operator": "⟁∴Ω",
+            "schema": "xi.event-envelope.v1",
+            "source": "world:quantumcompute",
+            "state_hash": null,
+            "target": "Grover"
+          },
+          "event_id": "evt_b18e8e7c96ca23c8cc5f5727",
+          "glyph": "⋈",
+          "index": 0,
+          "operator": "Grover",
+          "origin": {
+            "envelope_sha256": "a4203af48b5deafefc4a31ea6a8ac91bb6703e0fb40630a73aec11bc1c25698e",
+            "kind": "peer_checkpoint",
+            "original_event_id": "evt_b18e8e7c96ca23c8cc5f5727",
+            "original_route_digest": "cf54e2711e2d9a68d4a1344bf1bd5c8a2b2762ac75ad480b5d3b389d321d4ced",
+            "sender": "79ab4349111939b6bfd7aa6e6ea84dcbed8f94815beaa2d58b9ac557aba7b07b"
+          },
+          "parameters": {
+            "iterations": 6,
+            "marked": [
+              "101011"
+            ],
+            "qubits": 6,
+            "seed": 20261021,
+            "shots": 512
+          },
+          "result": {
+            "algorithm": "Grover",
+            "counts": {
+              "43": 512
+            },
+            "execution": "exact numerical state-vector",
+            "ideal_prediction": 0.9965856807867991,
+            "iterations": 6,
+            "marked": [
+              43
+            ],
+            "norm_squared": 0.9999999999999998,
+            "oracle_phase": 3.141592653589793,
+            "qubits": 6,
+            "resources": {
+              "basis_states": 64,
+              "estimated_workspace_bytes": 6144,
+              "memory_budget_mib": 64,
+              "profile": "mobile",
+              "simulated_qubits": 6
+            },
+            "seed": 20261021,
+            "shots": 512,
+            "state_sha256": "a328a4805905755876aa40b4e5b4a41d72f0670d5e36089441f0b7818c37811b",
+            "success_probability": 0.996585680786799,
+            "wall_seconds": 0.00043016800009354483
+          },
+          "route": {
+            "coherence_after": {
+              "node_count": 15,
+              "order_parameter": 1.0,
+              "xi": -0.0
+            },
+            "coherence_before": {
+              "node_count": 15,
+              "order_parameter": 1.0,
+              "xi": -0.0
+            },
+            "countervectors": [],
+            "digest": "cf54e2711e2d9a68d4a1344bf1bd5c8a2b2762ac75ad480b5d3b389d321d4ced",
+            "event_digest": "440d7fc51781399ffb82b4f1599290d6bcde31d9531ba2512a85b3a4d3a5ccf0",
+            "movement": "yield",
+            "next_operator": null,
+            "previous_receipt_hash": null,
+            "recovery_receipt": {
+              "countervectors": [],
+              "cycle": [
+                "recover",
+                "compare",
+                "distinguish",
+                "yield",
+                "receipt"
+              ],
+              "digest": "e5a07dfc9a610e52288f204273275d04afd0ce63501a46268cc4d3338fd47824",
+              "movement": "yield",
+              "provenance": {
+                "fabric": "FullCycle",
+                "return_operator": "⟁∴Ω"
+              },
+              "return_glyph": "⟁∴Ω",
+              "return_state": "ReturnedNotReset",
+              "schema": "xi.receipt.recovery.v2",
+              "threads": {
+                "event": {
+                  "anchor": "∴Ω⧂",
+                  "boundary": {
+                    "requires": [
+                      "local.execute"
+                    ],
+                    "wake": true
+                  },
+                  "broadcast": false,
+                  "capsule_refs": [
+                    "57f6fd2e340de42e6ac8f2a5870f76021c90bc0837ce1b570573afc538a2cf8e"
+                  ],
+                  "confidence": null,
+                  "digest": "440d7fc51781399ffb82b4f1599290d6bcde31d9531ba2512a85b3a4d3a5ccf0",
+                  "operator": "Grover",
+                  "payload": {
+                    "result_sha256": "bcd29e82f26ee02f2dce0aed3bf71097da16b474263b1fc8ed2225b1eec31bde"
+                  },
+                  "payload_type": "capsule",
+                  "phase": 0.0,
+                  "provenance": {
+                    "dialect": "QuantumCompute.Stack.v3",
+                    "engine_sha256": "5570dbc984d58993759eb7863d65f780b0f27e8c83910e4a81c22477f52a062a",
+                    "plan_sha256": "fa36521a08344462c6d5b585c883929e5a09aae3fd64b744c14e8aecb2acc72b"
+                  },
+                  "return_operator": "⟁∴Ω",
+                  "schema": "xi.event-envelope.v1",
+                  "source": "world:quantumcompute",
+                  "state_hash": null,
+                  "target": "Grover"
+                },
+                "local_outcomes": {
+                  "coherence_after": {
+                    "node_count": 15,
+                    "order_parameter": 1.0,
+                    "xi": -0.0
+                  },
+                  "coherence_before": {
+                    "node_count": 15,
+                    "order_parameter": 1.0,
+                    "xi": -0.0
+                  },
+                  "targets": [
+                    "Grover"
+                  ]
+                }
+              }
+            },
+            "schema": "xi.receipt.event.v1",
+            "sequence": 1,
+            "targets": [
+              "Grover"
+            ]
+          }
+        },
+        {
+          "compiled_from": {
+            "definitions": [
+              {
+                "definition_sha256": "41f9091ac53290f75493fba868593a88429ccf638a52cd4b9ba4af33f816f5cc",
+                "glyph": "⟠⋈⧂",
+                "name": "ReturnLight",
+                "parameters": {
+                  "fault": 2,
+                  "target": "101011"
+                },
+                "version": 1
+              }
+            ],
+            "source_index": 0
+          },
+          "event": {
+            "anchor": "∴Ω⧂",
+            "boundary": {
+              "requires": [
+                "local.execute"
+              ],
+              "wake": true
+            },
+            "broadcast": false,
+            "capsule_refs": [
+              "57f6fd2e340de42e6ac8f2a5870f76021c90bc0837ce1b570573afc538a2cf8e"
+            ],
+            "confidence": null,
+            "digest": "1967327230fd15b7e793727adbd4d18050d3795564ceb6f92c10be19726df29f",
+            "operator": "PhaseCode",
+            "payload": {
+              "result_sha256": "b35af0aa09e7edf106bb4f30b74a26740292440ab04423ef3f0baee595021d1b"
+            },
+            "payload_type": "capsule",
+            "phase": 0.0,
+            "provenance": {
+              "dialect": "QuantumCompute.Stack.v3",
+              "engine_sha256": "5570dbc984d58993759eb7863d65f780b0f27e8c83910e4a81c22477f52a062a",
+              "plan_sha256": "fa36521a08344462c6d5b585c883929e5a09aae3fd64b744c14e8aecb2acc72b"
+            },
+            "return_operator": "⟁∴Ω",
+            "schema": "xi.event-envelope.v1",
+            "source": "world:quantumcompute",
+            "state_hash": null,
+            "target": "PhaseCode"
+          },
+          "event_id": "evt_b56163bfb412396ff9e6fbf3",
+          "glyph": "⟐⧂",
+          "index": 1,
+          "operator": "PhaseCode",
+          "origin": {
+            "envelope_sha256": "a4203af48b5deafefc4a31ea6a8ac91bb6703e0fb40630a73aec11bc1c25698e",
+            "kind": "peer_checkpoint",
+            "original_event_id": "evt_b56163bfb412396ff9e6fbf3",
+            "original_route_digest": "31944cc0d5b763b1dc42a7ef8e7033dbb5d97a434da6ecdbd174d9196e856178",
+            "sender": "79ab4349111939b6bfd7aa6e6ea84dcbed8f94815beaa2d58b9ac557aba7b07b"
+          },
+          "parameters": {
+            "faults": [
+              2
+            ],
+            "seed": 20261021,
+            "state": "T"
+          },
+          "result": {
+            "algorithm": "PhaseCode",
+            "code": "three-qubit phase-flip repetition",
+            "corrected_qubit": 2,
+            "execution": "exact sparse state-vector",
+            "fault_model": "declared Pauli-Z sequence",
+            "faults": [
+              2
+            ],
+            "input": {
+              "bit_order": "q0-leftmost",
+              "branches": [
+                [
+                  "0",
+                  [
+                    0.7071067811865476,
+                    0.0
+                  ]
+                ],
+                [
+                  "1",
+                  [
+                    0.5,
+                    0.5
+                  ]
+                ]
+              ],
+              "norm_squared": 1.0,
+              "omitted_l2_norm": 0.0,
+              "qubits": 1
+            },
+            "output": {
+              "branches": [
+                [
+                  "000",
+                  [
+                    0.707106781186547,
+                    0.0
+                  ]
+                ],
+                [
+                  "100",
+                  [
+                    0.5,
+                    0.5
+                  ]
+                ]
+              ],
+              "closed": false,
+              "cycle": 0,
+              "injected_z_faults": [],
+              "last_operator_receipt": {
+                "branch_count_after": 2,
+                "branch_count_before": 8,
+                "data_qubit": 0,
+                "glyph": "∴",
+                "meaning": "decodes the corrected logical state and verifies both recovery registers are |0>",
+                "norm_squared": 1.0,
+                "operator": "decode_phase_code",
+                "recovery_qubits": [
+                  1,
+                  2
+                ]
+              },
+              "phase_code": false,
+              "phase_code_decoded": true,
+              "phase_corrected": true,
+              "phase_syndrome": null,
+              "qubits": 3
+            },
+            "recovered_state_fidelity": 0.9999999999999993,
+            "resources": {
+              "basis_states": 8,
+              "estimated_workspace_bytes": 768,
+              "memory_budget_mib": 64,
+              "profile": "mobile",
+              "simulated_qubits": 3
+            },
+            "seed": 20261021,
+            "stabilizers": [
+              "XXI",
+              "IXX"
+            ],
+            "syndrome": [
+              1,
+              -1
+            ],
+            "trace": [
+              {
+                "stage": "prepare",
+                "state": {
+                  "branches": [
+                    [
+                      "000",
+                      [
+                        0.7071067811865476,
+                        0.0
+                      ]
+                    ],
+                    [
+                      "100",
+                      [
+                        0.5,
+                        0.5
+                      ]
+                    ]
+                  ],
+                  "closed": false,
+                  "cycle": 0,
+                  "qubits": 3
+                }
+              },
+              {
+                "parameters": {},
+                "receipt": {
+                  "branch_count_after": 8,
+                  "branch_count_before": 2,
+                  "code": "three-qubit phase-flip repetition code",
+                  "data_qubits": [
+                    0,
+                    1,
+                    2
+                  ],
+                  "glyph": "⋈",
+                  "meaning": "encodes the input register into the +1 eigenspace of X0X1 and X1X2",
+                  "norm_squared": 1.0,
+                  "operator": "encode_phase_code"
+                },
+                "stage": "encode_phase_code",
+                "state": {
+                  "branches": [
+                    [
+                      "000",
+                      [
+                        0.426776695296637,
+                        0.176776695296637
+                      ]
+                    ],
+                    [
+                      "001",
+                      [
+                        0.073223304703363,
+                        -0.176776695296637
+                      ]
+                    ],
+                    [
+                      "010",
+                      [
+                        0.073223304703363,
+                        -0.176776695296637
+                      ]
+                    ],
+                    [
+                      "011",
+                      [
+                        0.426776695296637,
+                        0.176776695296637
+                      ]
+                    ],
+                    [
+                      "100",
+                      [
+                        0.073223304703363,
+                        -0.176776695296637
+                      ]
+                    ],
+                    [
+                      "101",
+                      [
+                        0.426776695296637,
+                        0.176776695296637
+                      ]
+                    ],
+                    [
+                      "110",
+                      [
+                        0.426776695296637,
+                        0.176776695296637
+                      ]
+                    ],
+                    [
+                      "111",
+                      [
+                        0.073223304703363,
+                        -0.176776695296637
+                      ]
+                    ]
+                  ],
+                  "closed": false,
+                  "cycle": 0,
+                  "injected_z_faults": [],
+                  "last_operator_receipt": {
+                    "branch_count_after": 8,
+                    "branch_count_before": 2,
+                    "code": "three-qubit phase-flip repetition code",
+                    "data_qubits": [
+                      0,
+                      1,
+                      2
+                    ],
+                    "glyph": "⋈",
+                    "meaning": "encodes the input register into the +1 eigenspace of X0X1 and X1X2",
+                    "norm_squared": 1.0,
+                    "operator": "encode_phase_code"
+                  },
+                  "phase_code": true,
+                  "phase_code_decoded": false,
+                  "phase_corrected": false,
+                  "phase_syndrome": null,
+                  "qubits": 3
+                }
+              },
+              {
+                "parameters": {
+                  "qubit": 2
+                },
+                "receipt": {
+                  "branch_count_after": 8,
+                  "branch_count_before": 8,
+                  "error_model": "deterministic Pauli-Z fault; repeated injections compose by parity",
+                  "meaning": "injects a controlled software fault for the local correction experiment",
+                  "norm_squared": 1.0,
+                  "operator": "inject_z_error",
+                  "qubit": 2
+                },
+                "stage": "inject_z_error",
+                "state": {
+                  "branches": [
+                    [
+                      "000",
+                      [
+                        0.426776695296637,
+                        0.176776695296637
+                      ]
+                    ],
+                    [
+                      "001",
+                      [
+                        -0.073223304703363,
+                        0.176776695296637
+                      ]
+                    ],
+                    [
+                      "010",
+                      [
+                        0.073223304703363,
+                        -0.176776695296637
+                      ]
+                    ],
+                    [
+                      "011",
+                      [
+                        -0.426776695296637,
+                        -0.176776695296637
+                      ]
+                    ],
+                    [
+                      "100",
+                      [
+                        0.073223304703363,
+                        -0.176776695296637
+                      ]
+                    ],
+                    [
+                      "101",
+                      [
+                        -0.426776695296637,
+                        -0.176776695296637
+                      ]
+                    ],
+                    [
+                      "110",
+                      [
+                        0.426776695296637,
+                        0.176776695296637
+                      ]
+                    ],
+                    [
+                      "111",
+                      [
+                        -0.073223304703363,
+                        0.176776695296637
+                      ]
+                    ]
+                  ],
+                  "closed": false,
+                  "cycle": 0,
+                  "injected_z_faults": [
+                    2
+                  ],
+                  "last_operator_receipt": {
+                    "branch_count_after": 8,
+                    "branch_count_before": 8,
+                    "error_model": "deterministic Pauli-Z fault; repeated injections compose by parity",
+                    "meaning": "injects a controlled software fault for the local correction experiment",
+                    "norm_squared": 1.0,
+                    "operator": "inject_z_error",
+                    "qubit": 2
+                  },
+                  "phase_code": true,
+                  "phase_code_decoded": false,
+                  "phase_corrected": false,
+                  "phase_syndrome": null,
+                  "qubits": 3
+                }
+              },
+              {
+                "parameters": {
+                  "seed": 20261021
+                },
+                "receipt": {
+                  "branch_count_after": 8,
+                  "branch_count_before": 8,
+                  "glyph": "⧂",
+                  "meaning": "measures the two commuting phase-code stabilizers and records a local syndrome",
+                  "norm_squared": 1.0,
+                  "operator": "phase_syndrome",
+                  "probabilities": [
+                    1.0,
+                    1.0
+                  ],
+                  "seed": 20261021,
+                  "stabilizers": [
+                    "X0X1",
+                    "X1X2"
+                  ],
+                  "syndrome": [
+                    1,
+                    -1
+                  ]
+                },
+                "stage": "phase_syndrome",
+                "state": {
+                  "branches": [
+                    [
+                      "000",
+                      [
+                        0.426776695296637,
+                        0.176776695296637
+                      ]
+                    ],
+                    [
+                      "001",
+                      [
+                        -0.073223304703363,
+                        0.176776695296637
+                      ]
+                    ],
+                    [
+                      "010",
+                      [
+                        0.073223304703363,
+                        -0.176776695296637
+                      ]
+                    ],
+                    [
+                      "011",
+                      [
+                        -0.426776695296637,
+                        -0.176776695296637
+                      ]
+                    ],
+                    [
+                      "100",
+                      [
+                        0.073223304703363,
+                        -0.176776695296637
+                      ]
+                    ],
+                    [
+                      "101",
+                      [
+                        -0.426776695296637,
+                        -0.176776695296637
+                      ]
+                    ],
+                    [
+                      "110",
+                      [
+                        0.426776695296637,
+                        0.176776695296637
+                      ]
+                    ],
+                    [
+                      "111",
+                      [
+                        -0.073223304703363,
+                        0.176776695296637
+                      ]
+                    ]
+                  ],
+                  "closed": false,
+                  "cycle": 0,
+                  "injected_z_faults": [
+                    2
+                  ],
+                  "last_operator_receipt": {
+                    "branch_count_after": 8,
+                    "branch_count_before": 8,
+                    "glyph": "⧂",
+                    "meaning": "measures the two commuting phase-code stabilizers and records a local syndrome",
+                    "norm_squared": 1.0,
+                    "operator": "phase_syndrome",
+                    "probabilities": [
+                      1.0,
+                      1.0
+                    ],
+                    "seed": 20261021,
+                    "stabilizers": [
+                      "X0X1",
+                      "X1X2"
+                    ],
+                    "syndrome": [
+                      1,
+                      -1
+                    ]
+                  },
+                  "phase_code": true,
+                  "phase_code_decoded": false,
+                  "phase_corrected": false,
+                  "phase_syndrome": [
+                    1,
+                    -1
+                  ],
+                  "qubits": 3
+                }
+              },
+              {
+                "parameters": {},
+                "receipt": {
+                  "branch_count_after": 8,
+                  "branch_count_before": 8,
+                  "corrected_qubit": 2,
+                  "decoder": "minimum-weight; choose zero or one Z from the measured syndrome",
+                  "glyph": "⋈",
+                  "meaning": "applies the phase-code recovery table; two or three Z faults can produce an undetected logical error after recovery",
+                  "norm_squared": 1.0,
+                  "operator": "correct_z_error",
+                  "syndrome": [
+                    1,
+                    -1
+                  ]
+                },
+                "stage": "correct_z_error",
+                "state": {
+                  "branches": [
+                    [
+                      "000",
+                      [
+                        0.426776695296637,
+                        0.176776695296637
+                      ]
+                    ],
+                    [
+                      "001",
+                      [
+                        0.073223304703363,
+                        -0.176776695296637
+                      ]
+                    ],
+                    [
+                      "010",
+                      [
+                        0.073223304703363,
+                        -0.176776695296637
+                      ]
+                    ],
+                    [
+                      "011",
+                      [
+                        0.426776695296637,
+                        0.176776695296637
+                      ]
+                    ],
+                    [
+                      "100",
+                      [
+                        0.073223304703363,
+                        -0.176776695296637
+                      ]
+                    ],
+                    [
+                      "101",
+                      [
+                        0.426776695296637,
+                        0.176776695296637
+                      ]
+                    ],
+                    [
+                      "110",
+                      [
+                        0.426776695296637,
+                        0.176776695296637
+                      ]
+                    ],
+                    [
+                      "111",
+                      [
+                        0.073223304703363,
+                        -0.176776695296637
+                      ]
+                    ]
+                  ],
+                  "closed": false,
+                  "cycle": 0,
+                  "injected_z_faults": [],
+                  "last_operator_receipt": {
+                    "branch_count_after": 8,
+                    "branch_count_before": 8,
+                    "corrected_qubit": 2,
+                    "decoder": "minimum-weight; choose zero or one Z from the measured syndrome",
+                    "glyph": "⋈",
+                    "meaning": "applies the phase-code recovery table; two or three Z faults can produce an undetected logical error after recovery",
+                    "norm_squared": 1.0,
+                    "operator": "correct_z_error",
+                    "syndrome": [
+                      1,
+                      -1
+                    ]
+                  },
+                  "phase_code": true,
+                  "phase_code_decoded": false,
+                  "phase_corrected": true,
+                  "phase_syndrome": null,
+                  "qubits": 3
+                }
+              },
+              {
+                "parameters": {},
+                "receipt": {
+                  "branch_count_after": 2,
+                  "branch_count_before": 8,
+                  "data_qubit": 0,
+                  "glyph": "∴",
+                  "meaning": "decodes the corrected logical state and verifies both recovery registers are |0>",
+                  "norm_squared": 1.0,
+                  "operator": "decode_phase_code",
+                  "recovery_qubits": [
+                    1,
+                    2
+                  ]
+                },
+                "stage": "decode_phase_code",
+                "state": {
+                  "branches": [
+                    [
+                      "000",
+                      [
+                        0.707106781186547,
+                        0.0
+                      ]
+                    ],
+                    [
+                      "100",
+                      [
+                        0.5,
+                        0.5
+                      ]
+                    ]
+                  ],
+                  "closed": false,
+                  "cycle": 0,
+                  "injected_z_faults": [],
+                  "last_operator_receipt": {
+                    "branch_count_after": 2,
+                    "branch_count_before": 8,
+                    "data_qubit": 0,
+                    "glyph": "∴",
+                    "meaning": "decodes the corrected logical state and verifies both recovery registers are |0>",
+                    "norm_squared": 1.0,
+                    "operator": "decode_phase_code",
+                    "recovery_qubits": [
+                      1,
+                      2
+                    ]
+                  },
+                  "phase_code": false,
+                  "phase_code_decoded": true,
+                  "phase_corrected": true,
+                  "phase_syndrome": null,
+                  "qubits": 3
+                }
+              }
+            ],
+            "wall_seconds": 0.0003652300001704134,
+            "within_single_fault_scope": true
+          },
+          "route": {
+            "coherence_after": {
+              "node_count": 15,
+              "order_parameter": 1.0,
+              "xi": -0.0
+            },
+            "coherence_before": {
+              "node_count": 15,
+              "order_parameter": 1.0,
+              "xi": -0.0
+            },
+            "countervectors": [],
+            "digest": "31944cc0d5b763b1dc42a7ef8e7033dbb5d97a434da6ecdbd174d9196e856178",
+            "event_digest": "1967327230fd15b7e793727adbd4d18050d3795564ceb6f92c10be19726df29f",
+            "movement": "yield",
+            "next_operator": null,
+            "previous_receipt_hash": "cf54e2711e2d9a68d4a1344bf1bd5c8a2b2762ac75ad480b5d3b389d321d4ced",
+            "recovery_receipt": {
+              "countervectors": [],
+              "cycle": [
+                "recover",
+                "compare",
+                "distinguish",
+                "yield",
+                "receipt"
+              ],
+              "digest": "db00dc37146187ee41f73d2bd38703a334ce53eeada75040988ede5169d331be",
+              "movement": "yield",
+              "provenance": {
+                "fabric": "FullCycle",
+                "return_operator": "⟁∴Ω"
+              },
+              "return_glyph": "⟁∴Ω",
+              "return_state": "ReturnedNotReset",
+              "schema": "xi.receipt.recovery.v2",
+              "threads": {
+                "event": {
+                  "anchor": "∴Ω⧂",
+                  "boundary": {
+                    "requires": [
+                      "local.execute"
+                    ],
+                    "wake": true
+                  },
+                  "broadcast": false,
+                  "capsule_refs": [
+                    "57f6fd2e340de42e6ac8f2a5870f76021c90bc0837ce1b570573afc538a2cf8e"
+                  ],
+                  "confidence": null,
+                  "digest": "1967327230fd15b7e793727adbd4d18050d3795564ceb6f92c10be19726df29f",
+                  "operator": "PhaseCode",
+                  "payload": {
+                    "result_sha256": "b35af0aa09e7edf106bb4f30b74a26740292440ab04423ef3f0baee595021d1b"
+                  },
+                  "payload_type": "capsule",
+                  "phase": 0.0,
+                  "provenance": {
+                    "dialect": "QuantumCompute.Stack.v3",
+                    "engine_sha256": "5570dbc984d58993759eb7863d65f780b0f27e8c83910e4a81c22477f52a062a",
+                    "plan_sha256": "fa36521a08344462c6d5b585c883929e5a09aae3fd64b744c14e8aecb2acc72b"
+                  },
+                  "return_operator": "⟁∴Ω",
+                  "schema": "xi.event-envelope.v1",
+                  "source": "world:quantumcompute",
+                  "state_hash": null,
+                  "target": "PhaseCode"
+                },
+                "local_outcomes": {
+                  "coherence_after": {
+                    "node_count": 15,
+                    "order_parameter": 1.0,
+                    "xi": -0.0
+                  },
+                  "coherence_before": {
+                    "node_count": 15,
+                    "order_parameter": 1.0,
+                    "xi": -0.0
+                  },
+                  "targets": [
+                    "PhaseCode"
+                  ]
+                }
+              }
+            },
+            "schema": "xi.receipt.event.v1",
+            "sequence": 2,
+            "targets": [
+              "PhaseCode"
+            ]
+          }
+        },
+        {
+          "compiled_from": null,
+          "event": {
+            "anchor": "∴Ω⧂",
+            "boundary": {
+              "requires": [
+                "local.execute"
+              ],
+              "wake": true
+            },
+            "broadcast": false,
+            "capsule_refs": [
+              "57f6fd2e340de42e6ac8f2a5870f76021c90bc0837ce1b570573afc538a2cf8e"
+            ],
+            "confidence": null,
+            "digest": "9b6b78d48f717c326d7bc7aec4e9d7d38033ddb02a4999848ee8c1aff961fa84",
+            "operator": "Seal",
+            "payload": {
+              "result_sha256": "18c8b40563ce3f8099177f04c30c0f484a05fb95976ccd882ad07ad0a83e6a34"
+            },
+            "payload_type": "capsule",
+            "phase": 0.0,
+            "provenance": {
+              "dialect": "QuantumCompute.Stack.v3",
+              "engine_sha256": "5570dbc984d58993759eb7863d65f780b0f27e8c83910e4a81c22477f52a062a",
+              "plan_sha256": "fa36521a08344462c6d5b585c883929e5a09aae3fd64b744c14e8aecb2acc72b"
+            },
+            "return_operator": "⟁∴Ω",
+            "schema": "xi.event-envelope.v1",
+            "source": "world:quantumcompute",
+            "state_hash": null,
+            "target": "Seal"
+          },
+          "event_id": "evt_7cc38d752b727ac84cbc52a0",
+          "glyph": "⊚",
+          "index": 2,
+          "operator": "Seal",
+          "origin": "local_execution",
+          "parameters": {},
+          "result": {
+            "return_operator": "⟁∴Ω",
+            "state": "sealed"
+          },
+          "route": {
+            "coherence_after": {
+              "node_count": 15,
+              "order_parameter": 1.0,
+              "xi": -0.0
+            },
+            "coherence_before": {
+              "node_count": 15,
+              "order_parameter": 1.0,
+              "xi": -0.0
+            },
+            "countervectors": [],
+            "digest": "a5fc34cff43095636a749562671b0f09adc1bec040b00d88867d260f0ad1b260",
+            "event_digest": "9b6b78d48f717c326d7bc7aec4e9d7d38033ddb02a4999848ee8c1aff961fa84",
+            "movement": "yield",
+            "next_operator": null,
+            "previous_receipt_hash": "31944cc0d5b763b1dc42a7ef8e7033dbb5d97a434da6ecdbd174d9196e856178",
+            "recovery_receipt": {
+              "countervectors": [],
+              "cycle": [
+                "recover",
+                "compare",
+                "distinguish",
+                "yield",
+                "receipt"
+              ],
+              "digest": "38eae7c68acd272ca625b27923fc8c3d27ca7395954c52a0867969135576b884",
+              "movement": "yield",
+              "provenance": {
+                "fabric": "FullCycle",
+                "return_operator": "⟁∴Ω"
+              },
+              "return_glyph": "⟁∴Ω",
+              "return_state": "ReturnedNotReset",
+              "schema": "xi.receipt.recovery.v2",
+              "threads": {
+                "event": {
+                  "anchor": "∴Ω⧂",
+                  "boundary": {
+                    "requires": [
+                      "local.execute"
+                    ],
+                    "wake": true
+                  },
+                  "broadcast": false,
+                  "capsule_refs": [
+                    "57f6fd2e340de42e6ac8f2a5870f76021c90bc0837ce1b570573afc538a2cf8e"
+                  ],
+                  "confidence": null,
+                  "digest": "9b6b78d48f717c326d7bc7aec4e9d7d38033ddb02a4999848ee8c1aff961fa84",
+                  "operator": "Seal",
+                  "payload": {
+                    "result_sha256": "18c8b40563ce3f8099177f04c30c0f484a05fb95976ccd882ad07ad0a83e6a34"
+                  },
+                  "payload_type": "capsule",
+                  "phase": 0.0,
+                  "provenance": {
+                    "dialect": "QuantumCompute.Stack.v3",
+                    "engine_sha256": "5570dbc984d58993759eb7863d65f780b0f27e8c83910e4a81c22477f52a062a",
+                    "plan_sha256": "fa36521a08344462c6d5b585c883929e5a09aae3fd64b744c14e8aecb2acc72b"
+                  },
+                  "return_operator": "⟁∴Ω",
+                  "schema": "xi.event-envelope.v1",
+                  "source": "world:quantumcompute",
+                  "state_hash": null,
+                  "target": "Seal"
+                },
+                "local_outcomes": {
+                  "coherence_after": {
+                    "node_count": 15,
+                    "order_parameter": 1.0,
+                    "xi": -0.0
+                  },
+                  "coherence_before": {
+                    "node_count": 15,
+                    "order_parameter": 1.0,
+                    "xi": -0.0
+                  },
+                  "targets": [
+                    "Seal"
+                  ]
+                }
+              }
+            },
+            "schema": "xi.receipt.event.v1",
+            "sequence": 3,
+            "targets": [
+              "Seal"
+            ]
+          }
+        }
+      ],
+      "integrity": {
+        "ok": true,
+        "event_count": 4,
+        "head_hash": "8c80039703a9c38224473092f4b7d2b652daaaddad3d04e8808e8016a61fdf6f",
+        "errors": []
+      }
+    },
+    "transport": {
+      "schema": "xi.thinksync.receipt.v2",
+      "packet_sha256": "a4203af48b5deafefc4a31ea6a8ac91bb6703e0fb40630a73aec11bc1c25698e",
+      "source_sha256": "57f6fd2e340de42e6ac8f2a5870f76021c90bc0837ce1b570573afc538a2cf8e",
+      "sender": "79ab4349111939b6bfd7aa6e6ea84dcbed8f94815beaa2d58b9ac557aba7b07b",
+      "recipient": "a9e1b2c3012eceb8f1352df05854680fff82aacebc74829488f6290a5c95edf6",
+      "sequence": 1,
+      "duplicate": false,
+      "exact_bytes_restored": true,
+      "checkpoint_retained": true,
+      "execution_authorized_by_receipt": false
+    },
+    "encrypted_packet_bytes": 80350
+  }
+}

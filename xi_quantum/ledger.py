@@ -31,10 +31,10 @@ def transition(state, actor_id, data, event_id):
         raise WorldError("Unexpected FullCycle movement")
     if receipt["previous_receipt_hash"] != (state["completed"][-1]["route"]["digest"] if index else None):
         raise WorldError("FullCycle route chain is discontinuous")
-    from .tessera import GLYPHS
+    from .tessera import routing_operators
     fabric = PhaseAwareEventFabric([
         NodeState(name, phase=state.get("fabric_phases", {}).get(name, 0), accepted_operators={name},
-                  accepted_payload_types={"capsule"}, boundaries={"local.execute"}) for name in GLYPHS])
+                  accepted_payload_types={"capsule"}, boundaries={"local.execute"}) for name in routing_operators(state["steps"])])
     for item in state["completed"]:
         fabric.receipts.append(EventReceipt(**item["route"]))
     expected = fabric.submit(EventEnvelope(**envelope))
@@ -43,7 +43,8 @@ def transition(state, actor_id, data, event_id):
         raise WorldError("FullCycle route is inconsistent with the preserved phase state")
     updated = dict(state)
     updated["completed"] = state["completed"] + [{"index": index, "operator": step["operator"],
-        "glyph": step["glyph"], "result": result, "route": receipt, "event": envelope,
+        "glyph": step["glyph"], "parameters": step["parameters"],
+        "compiled_from": step.get("compiled_from"), "result": result, "route": receipt, "event": envelope,
         "event_id": event_id, "origin": data.get("origin", "local_execution")}]
     updated["fabric_phases"] = data.get("fabric_phases", {})
     updated["closed"] = step["operator"] == "Seal"

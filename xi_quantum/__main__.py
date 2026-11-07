@@ -52,6 +52,11 @@ def main():
     parser.add_argument("--memory-mib", type=int)
     sub = parser.add_subparsers(dest="command", required=True)
     sub.add_parser("doctor")
+    sub.add_parser("catalog")
+    serve_parser = sub.add_parser("serve")
+    serve_parser.add_argument("--host", default="127.0.0.1")
+    serve_parser.add_argument("--port", type=int, default=7476)
+    serve_parser.add_argument("--allowed-origin")
     identity = sub.add_parser("identity")
     identity.add_argument("--output")
     plan = sub.add_parser("compile")
@@ -84,7 +89,14 @@ def main():
     profile = Profile(base.name, base.memory_mib if args.memory_mib is None else args.memory_mib, base.max_iterations)
     output = getattr(args, "output", None)
     try:
-        if args.command == "doctor":
+        if args.command == "serve":
+            from .service import serve
+            serve(args.home, profile=profile, host=args.host, port=args.port, allowed_origin=args.allowed_origin)
+            return
+        if args.command == "catalog":
+            from .workbench import capabilities
+            result = capabilities()
+        elif args.command == "doctor":
             a, b = Identity.generate(), Identity.generate()
             sample = b"Xi.QuantumCompute/doctor/v2"
             assert restore(seal(sample, a, b.public(), sequence=1), b, {a.node_id: a.public()})["raw"] == sample
