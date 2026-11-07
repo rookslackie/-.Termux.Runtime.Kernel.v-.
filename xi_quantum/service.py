@@ -11,12 +11,14 @@ from pathlib import Path
 import secrets
 from urllib.parse import parse_qs, urlsplit
 
+from . import __version__
 from .common import Profile, QuantumComputeError, canonical
 from .tessera import compile_program
 from .workbench import Workbench, capabilities
 
 
 EXAMPLES = {"living-circuit": "QuantumCompute.LivingCircuit.v3.xi",
+            "coherent-noise": "QuantumCompute.CoherentNoise.v3.xi",
             "new-glyph": "QuantumCompute.NewGlyph.v3.xi",
             "spectral": "QuantumCompute.Spectral.v3.xi",
             "fullcycle-v2": "QuantumCompute.FullCycle.v2.xi"}
@@ -90,7 +92,7 @@ def openapi():
                 operation["requestBody"] = {"required": bool(required), "content": {"application/json": {
                     "schema": {"type": "object", "properties": properties, "required": required, "additionalProperties": False}}}}
             paths[BASE+path][method] = operation
-    return {"openapi": "3.1.0", "info": {"title": "Xi Living Circuit Engine", "version": "3.0.0"},
+    return {"openapi": "3.1.0", "info": {"title": "Xi Living Circuit Engine", "version": __version__},
             "components": {"securitySchemes": {"OwnerToken": {"type": "http", "scheme": "bearer"}}}, "paths": paths}
 
 
@@ -141,7 +143,7 @@ def make_server(workbench, *, host="127.0.0.1", port=7476, token=None, allowed_o
                 parsed = urlsplit(self.path)
                 path = parsed.path
                 if method == "GET" and path == "/health":
-                    self._reply(200, {"ok": True, "engine": "Xi Living Circuit", "version": "3.0.0"})
+                    self._reply(200, {"ok": True, "engine": "Xi Living Circuit", "version": __version__})
                     return
                 if not path.startswith(BASE + "/"):
                     self._reply(404, {"error": "Unknown route"})

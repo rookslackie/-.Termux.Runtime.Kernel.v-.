@@ -42,6 +42,7 @@ jobs without requiring FastAPI.
 | QPE / PEA | Φ | Controlled powers of a unitary and an inverse QFT |
 | VQEPEA | ⟠Φ | VQE-prepared state passed into Hamiltonian phase estimation |
 | PhaseCode | ⟐⧂ | Recovered three-qubit phase code with stage-by-stage state snapshots |
+| PhaseCodeChannel | ⟐⧂ρ | Exact four-syndrome logical channel under coherent RZ or Pauli-twirled Z noise; repeated ideal recovery |
 | ShorCode | ⧉ | Nine-qubit code, eight measured stabilizers, Pauli recovery, decoding |
 | QFT | ℱ | Fourier transformation with an inspectable complex state |
 | SignalLab | Ψ | Seeded FFT, matched filter, covariance, Langevin path, Hilbert projection |

@@ -8,7 +8,7 @@ from pathlib import Path
 from xi_world.kernel import WorldError, WorldKernel
 from . import algorithms
 from .common import Profile, QuantumComputeError, VerifiedCheckpoint, digest, integer
-from .tessera import compile_program, GLYPHS
+from .tessera import compile_program, routing_operators
 from ._vendor.event_fabric import EventEnvelope, EventReceipt, NodeState, PhaseAwareEventFabric
 
 
@@ -105,9 +105,10 @@ class Runtime:
                         "steps": list(plan.steps), "completed": [], "closed": False, "fabric_phases": {},
                     }}])
             state = self.kernel.get_state(world_id)["entities"][ENTITY]["state"]
+        route_names = routing_operators(plan.steps)
         fabric = PhaseAwareEventFabric([
             NodeState(name, phase=state["fabric_phases"].get(name, 0), accepted_operators={name},
-                      accepted_payload_types={"capsule"}, boundaries={"local.execute"}) for name in GLYPHS
+                      accepted_payload_types={"capsule"}, boundaries={"local.execute"}) for name in route_names
         ])
         for item in state["completed"]:
             fabric.receipts.append(EventReceipt(**item["route"]))

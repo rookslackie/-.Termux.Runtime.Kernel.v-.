@@ -40,6 +40,7 @@ def capabilities():
 @router.get("/example")
 def example(name: str = "fullcycle"):
     files = {"fullcycle": "Ξ.QuantumCompute.yaml", "observer": "examples/QuantumCompute.Observer.v1.xi",
+             "coherent-noise": "examples/QuantumCompute.CoherentNoise.v3.xi",
              "living-circuit": "examples/QuantumCompute.LivingCircuit.v3.xi",
              "spectral": "examples/QuantumCompute.Spectral.v3.xi",
              "new-glyph": "examples/QuantumCompute.NewGlyph.v3.xi"}
