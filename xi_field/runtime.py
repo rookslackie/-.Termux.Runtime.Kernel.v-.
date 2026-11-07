@@ -53,10 +53,12 @@ class FieldRuntime:
             raise WorldError(f"field entity {FIELD_ENTITY_ID!r} is absent") from exc
 
     def execute(self, operator: str, *, actor_id: str = FIELD_ACTOR_ID, idempotency_key: str,
-                parameters: Mapping[str, Any] | None = None, causes: list[str] | None = None) -> Event:
+                parameters: Mapping[str, Any] | None = None, causes: list[str] | None = None,
+                expected_head_hash: str | None = None) -> Event:
         return self.kernel.apply(
             self.world_id, actor_id, "field.operator", FIELD_ENTITY_ID,
             idempotency_key=idempotency_key, causes=causes,
+            expected_head_hash=expected_head_hash,
             data={"operator": operator, "parameters": dict(parameters or {})},
         )
 
