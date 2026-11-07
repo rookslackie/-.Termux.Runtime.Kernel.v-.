@@ -14,6 +14,7 @@ from .circuits import phase_code, shor_code, qft
 from .coherent import phase_code_channel
 from .spectral import vqe, phase_estimation, vqe_pea
 from .signal_lab import signal_lab
+from .nervous import discover_function
 from .definitions import validate_definitions, expand_steps
 from .observer import run as observer_benchmark
 from .common import QuantumComputeError, canonical, digest, finite
@@ -29,11 +30,13 @@ OPERATORS = {"Grover": algorithms.grover, "Shor": algorithms.shor,
              "JacobianFlow": algorithms.jacobian_flow, "ObserverBenchmark": observer_benchmark,
              "VQE": vqe, "QPE": phase_estimation, "PEA": phase_estimation, "VQEPEA": vqe_pea,
              "PhaseCode": phase_code, "PhaseCodeChannel": phase_code_channel,
-             "ShorCode": shor_code, "QFT": qft, "SignalLab": signal_lab}
+             "ShorCode": shor_code, "QFT": qft, "SignalLab": signal_lab,
+             "DiscoverFunction": discover_function}
 GLYPHS = {"Grover": "⋈", "Shor": "∴", "JacobianFlow": "⧖",
           "PhaseCodeBenchmark": "⧂", "ObserverBenchmark": "⧂", "Seal": "⊚", "Rest": "≈∅",
           "VQE": "⟠", "QPE": "Φ", "PEA": "Φ", "VQEPEA": "⟠Φ", "PhaseCode": "⟐⧂",
-          "PhaseCodeChannel": "⟐⧂ρ", "ShorCode": "⧉", "QFT": "ℱ", "SignalLab": "Ψ"}
+          "PhaseCodeChannel": "⟐⧂ρ", "ShorCode": "⧉", "QFT": "ℱ", "SignalLab": "Ψ",
+          "DiscoverFunction": "⚡⟳⏁"}
 
 # Freeze the v3.0 routing cohort: inert catalogue extensions must not change
 # earlier programs' phase/coherence decisions. A plan adds its used extensions.
