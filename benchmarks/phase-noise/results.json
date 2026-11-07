@@ -1,0 +1,3271 @@
+{
+  "run_id": "b4c36c933eb86c87fbd6",
+  "configuration": {
+    "schema": "xi-independent-z-benchmark-v1",
+    "probabilities": [
+      0.0,
+      0.01,
+      0.05,
+      0.1,
+      0.25,
+      0.45,
+      0.49,
+      0.5,
+      0.51,
+      0.55,
+      0.75,
+      0.9,
+      1.0
+    ],
+    "shots_per_arm_per_probability": 20000,
+    "master_seed": 20261018,
+    "seed_derivation": "SHA256(schema|master|p.hex()|shot|stream)[:16], big-endian",
+    "noise": "one independent Bernoulli(p) Pauli-Z round per data qubit",
+    "decoder": "fixed minimum-weight X0X1/X1X2 syndrome table",
+    "measurement": "ideal projective stabilizers; seeded, deterministic for these Pauli masks",
+    "reference": "Bell pair with noiseless reference; no noise on reference or preparation/recovery",
+    "t_state_fidelity_method": "exact per-mask T-state vectors weighted by observed mask histogram",
+    "confidence_intervals": "marginal two-sided 95% Wilson; conservative difference from 97.5% arms",
+    "source_sha256": {
+      "xi_field/noise_benchmark.py": "2bcb0413955f215adcdc5fbcc7289234473b40d302dbd7f3ab904d0ff3d0a38a",
+      "xi_field/operators.py": "06c7d69ff24aa7d640c764150c77981514ea3437b00f48c6538fa25a9d1cf09e",
+      "xi_field/runtime.py": "00185d206a3790e1d08b7d0e2862f810940f003e47b9f66d46d7f7227f2a8e0b",
+      "xi_field/phase_code_demo.py": "c1dafbb482d61e20da87698cdfa973265ad4773dd6363ffedfb530fde1dcebaf",
+      "xi_world/kernel.py": "99b3e0ec1076fa2cd60a9666b4c2337f98652ac65b995de9a33fdb055abac448",
+      "xi_field/topology.py": "3663fd24efe891e386aabac2f494863fca77364f1e2c5250420ec10f44623849",
+      "xi_field/resources/glyphic_quantum_processor.yaml": "f20b264d5a4fbb5f733c7be2cc326153f710b5f0c543f6e843606d65ff266f5c",
+      "tests/test_xi_noise_benchmark.py": "147fc1b5def394a4b01b52c787f03110ea80da7949eb5876d457daf0e72b3421",
+      ".github/workflows/python-package-conda.yml": "c16891619b55e668af1767c733df2fbbdd57047d5a5b4e685264f8d00b40c6d1",
+      "benchmarks/render_phase_noise.py": "f8e88123f155ed0239f069b33783512bf44e34235dc00333b72f514f83235a21"
+    }
+  },
+  "source": {
+    "repository": "https://github.com/rookslackie/-.Termux.Runtime.Kernel.v-.",
+    "commit": "a3bc060d8d4dad44973a45be5adc4aa85b5042f4",
+    "source_files_dirty": false,
+    "sha256": {
+      "xi_field/noise_benchmark.py": "2bcb0413955f215adcdc5fbcc7289234473b40d302dbd7f3ab904d0ff3d0a38a",
+      "xi_field/operators.py": "06c7d69ff24aa7d640c764150c77981514ea3437b00f48c6538fa25a9d1cf09e",
+      "xi_field/runtime.py": "00185d206a3790e1d08b7d0e2862f810940f003e47b9f66d46d7f7227f2a8e0b",
+      "xi_field/phase_code_demo.py": "c1dafbb482d61e20da87698cdfa973265ad4773dd6363ffedfb530fde1dcebaf",
+      "xi_world/kernel.py": "99b3e0ec1076fa2cd60a9666b4c2337f98652ac65b995de9a33fdb055abac448",
+      "xi_field/topology.py": "3663fd24efe891e386aabac2f494863fca77364f1e2c5250420ec10f44623849",
+      "xi_field/resources/glyphic_quantum_processor.yaml": "f20b264d5a4fbb5f733c7be2cc326153f710b5f0c543f6e843606d65ff266f5c",
+      "tests/test_xi_noise_benchmark.py": "147fc1b5def394a4b01b52c787f03110ea80da7949eb5876d457daf0e72b3421",
+      ".github/workflows/python-package-conda.yml": "c16891619b55e668af1767c733df2fbbdd57047d5a5b4e685264f8d00b40c6d1",
+      "benchmarks/render_phase_noise.py": "f8e88123f155ed0239f069b33783512bf44e34235dc00333b72f514f83235a21"
+    },
+    "links": {
+      "xi_field/noise_benchmark.py": "https://github.com/rookslackie/-.Termux.Runtime.Kernel.v-./blob/a3bc060d8d4dad44973a45be5adc4aa85b5042f4/xi_field/noise_benchmark.py",
+      "xi_field/operators.py": "https://github.com/rookslackie/-.Termux.Runtime.Kernel.v-./blob/a3bc060d8d4dad44973a45be5adc4aa85b5042f4/xi_field/operators.py",
+      "xi_field/runtime.py": "https://github.com/rookslackie/-.Termux.Runtime.Kernel.v-./blob/a3bc060d8d4dad44973a45be5adc4aa85b5042f4/xi_field/runtime.py",
+      "xi_field/phase_code_demo.py": "https://github.com/rookslackie/-.Termux.Runtime.Kernel.v-./blob/a3bc060d8d4dad44973a45be5adc4aa85b5042f4/xi_field/phase_code_demo.py",
+      "xi_world/kernel.py": "https://github.com/rookslackie/-.Termux.Runtime.Kernel.v-./blob/a3bc060d8d4dad44973a45be5adc4aa85b5042f4/xi_world/kernel.py",
+      "xi_field/topology.py": "https://github.com/rookslackie/-.Termux.Runtime.Kernel.v-./blob/a3bc060d8d4dad44973a45be5adc4aa85b5042f4/xi_field/topology.py",
+      "xi_field/resources/glyphic_quantum_processor.yaml": "https://github.com/rookslackie/-.Termux.Runtime.Kernel.v-./blob/a3bc060d8d4dad44973a45be5adc4aa85b5042f4/xi_field/resources/glyphic_quantum_processor.yaml",
+      "tests/test_xi_noise_benchmark.py": "https://github.com/rookslackie/-.Termux.Runtime.Kernel.v-./blob/a3bc060d8d4dad44973a45be5adc4aa85b5042f4/tests/test_xi_noise_benchmark.py",
+      ".github/workflows/python-package-conda.yml": "https://github.com/rookslackie/-.Termux.Runtime.Kernel.v-./blob/a3bc060d8d4dad44973a45be5adc4aa85b5042f4/.github/workflows/python-package-conda.yml",
+      "benchmarks/render_phase_noise.py": "https://github.com/rookslackie/-.Termux.Runtime.Kernel.v-./blob/a3bc060d8d4dad44973a45be5adc4aa85b5042f4/benchmarks/render_phase_noise.py"
+    }
+  },
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:00:49) [Clang 22.1.3 ]",
+    "platform": "Linux-6.18.55-x86_64-with-glibc2.39",
+    "machine": "x86_64",
+    "processor": "x86_64"
+  },
+  "exhaustive_masks": [
+    {
+      "mask": "000",
+      "fault_qubits": [],
+      "entanglement_fidelity": 1.0,
+      "syndrome": [
+        1,
+        1
+      ],
+      "corrected_qubit": null,
+      "logical_pauli": "I",
+      "t_state_fidelity": 1.0
+    },
+    {
+      "mask": "001",
+      "fault_qubits": [
+        2
+      ],
+      "entanglement_fidelity": 1.0,
+      "syndrome": [
+        1,
+        -1
+      ],
+      "corrected_qubit": 2,
+      "logical_pauli": "I",
+      "t_state_fidelity": 1.0
+    },
+    {
+      "mask": "010",
+      "fault_qubits": [
+        1
+      ],
+      "entanglement_fidelity": 1.0,
+      "syndrome": [
+        -1,
+        -1
+      ],
+      "corrected_qubit": 1,
+      "logical_pauli": "I",
+      "t_state_fidelity": 1.0
+    },
+    {
+      "mask": "011",
+      "fault_qubits": [
+        1,
+        2
+      ],
+      "entanglement_fidelity": 0.0,
+      "syndrome": [
+        -1,
+        1
+      ],
+      "corrected_qubit": 0,
+      "logical_pauli": "X",
+      "t_state_fidelity": 0.5
+    },
+    {
+      "mask": "100",
+      "fault_qubits": [
+        0
+      ],
+      "entanglement_fidelity": 1.0,
+      "syndrome": [
+        -1,
+        1
+      ],
+      "corrected_qubit": 0,
+      "logical_pauli": "I",
+      "t_state_fidelity": 1.0
+    },
+    {
+      "mask": "101",
+      "fault_qubits": [
+        0,
+        2
+      ],
+      "entanglement_fidelity": 0.0,
+      "syndrome": [
+        -1,
+        -1
+      ],
+      "corrected_qubit": 1,
+      "logical_pauli": "X",
+      "t_state_fidelity": 0.5
+    },
+    {
+      "mask": "110",
+      "fault_qubits": [
+        0,
+        1
+      ],
+      "entanglement_fidelity": 0.0,
+      "syndrome": [
+        1,
+        -1
+      ],
+      "corrected_qubit": 2,
+      "logical_pauli": "X",
+      "t_state_fidelity": 0.5
+    },
+    {
+      "mask": "111",
+      "fault_qubits": [
+        0,
+        1,
+        2
+      ],
+      "entanglement_fidelity": 0.0,
+      "syndrome": [
+        1,
+        1
+      ],
+      "corrected_qubit": null,
+      "logical_pauli": "X",
+      "t_state_fidelity": 0.5
+    }
+  ],
+  "points": [
+    {
+      "p": 0.0,
+      "shots_per_arm": 20000,
+      "analytic": {
+        "encoded_logical_error_rate": 0.0,
+        "unencoded_logical_error_rate": 0.0,
+        "encoded_entanglement_fidelity": 1.0,
+        "unencoded_entanglement_fidelity": 1.0,
+        "encoded_t_state_fidelity": 1.0,
+        "unencoded_t_state_fidelity": 1.0
+      },
+      "encoded": {
+        "logical_failures": 0,
+        "logical_error_rate": 0.0,
+        "logical_error_rate_ci95": [
+          0.0,
+          0.00019203605610462545
+        ],
+        "entanglement_fidelity": 1.0,
+        "entanglement_fidelity_ci95": [
+          0.9998079639438954,
+          1.0
+        ],
+        "t_state_fidelity": 1.0,
+        "t_state_fidelity_ci95": [
+          0.9999039819719477,
+          1.0
+        ]
+      },
+      "unencoded": {
+        "logical_failures": 0,
+        "logical_error_rate": 0.0,
+        "logical_error_rate_ci95": [
+          0.0,
+          0.00019203605610462545
+        ],
+        "entanglement_fidelity": 1.0,
+        "entanglement_fidelity_ci95": [
+          0.9998079639438954,
+          1.0
+        ],
+        "t_state_fidelity": 1.0,
+        "t_state_fidelity_ci95": [
+          0.9998079639438954,
+          1.0
+        ]
+      },
+      "mask_counts": {
+        "000": 20000,
+        "001": 0,
+        "010": 0,
+        "011": 0,
+        "100": 0,
+        "101": 0,
+        "110": 0,
+        "111": 0
+      },
+      "fault_weight_counts": {
+        "0": 20000,
+        "1": 0,
+        "2": 0,
+        "3": 0
+      },
+      "error_rate_improvement": 0.0,
+      "error_rate_improvement_ci95_conservative": [
+        -0.000251131226630711,
+        0.000251131226630711
+      ],
+      "observed_regime": "not resolved at this sample count",
+      "cost": {
+        "template_preparation_seconds": 6.160399971122388e-05,
+        "encoded_wall_seconds": 3.5207826499990915,
+        "encoded_cpu_seconds": 3.520202788,
+        "unencoded_wall_seconds": 0.3130383999996411,
+        "unencoded_cpu_seconds": 0.313016604,
+        "encoded_shots_per_second": 5680.55514588643,
+        "unencoded_shots_per_second": 63889.92532552853,
+        "encoded_operator_calls": 80000,
+        "unencoded_operator_calls": 20000,
+        "encoded_data_qubits": 3,
+        "unencoded_data_qubits": 1,
+        "noiseless_reference_qubits_per_arm": 1,
+        "encoded_max_branches": 16,
+        "unencoded_max_branches": 2
+      }
+    },
+    {
+      "p": 0.01,
+      "shots_per_arm": 20000,
+      "analytic": {
+        "encoded_logical_error_rate": 0.000298,
+        "unencoded_logical_error_rate": 0.01,
+        "encoded_entanglement_fidelity": 0.999702,
+        "unencoded_entanglement_fidelity": 0.99,
+        "encoded_t_state_fidelity": 0.999851,
+        "unencoded_t_state_fidelity": 0.99
+      },
+      "encoded": {
+        "logical_failures": 6,
+        "logical_error_rate": 0.0003,
+        "logical_error_rate_ci95": [
+          0.00013749971371878445,
+          0.0006544211207521781
+        ],
+        "entanglement_fidelity": 0.9997,
+        "entanglement_fidelity_ci95": [
+          0.9993455788792478,
+          0.9998625002862812
+        ],
+        "t_state_fidelity": 0.99985,
+        "t_state_fidelity_ci95": [
+          0.9996727894396239,
+          0.9999312501431407
+        ]
+      },
+      "unencoded": {
+        "logical_failures": 165,
+        "logical_error_rate": 0.00825,
+        "logical_error_rate_ci95": [
+          0.007087395649118733,
+          0.009601471812060166
+        ],
+        "entanglement_fidelity": 0.99175,
+        "entanglement_fidelity_ci95": [
+          0.9903985281879398,
+          0.9929126043508812
+        ],
+        "t_state_fidelity": 0.99175,
+        "t_state_fidelity_ci95": [
+          0.9903985281879398,
+          0.9929126043508812
+        ]
+      },
+      "mask_counts": {
+        "000": 19419,
+        "001": 193,
+        "010": 186,
+        "011": 1,
+        "100": 196,
+        "101": 5,
+        "110": 0,
+        "111": 0
+      },
+      "fault_weight_counts": {
+        "0": 19419,
+        "1": 575,
+        "2": 6,
+        "3": 0
+      },
+      "error_rate_improvement": 0.00795,
+      "error_rate_improvement_ci95_conservative": [
+        0.006207488201030093,
+        0.00968851881246648
+      ],
+      "observed_regime": "improves",
+      "cost": {
+        "template_preparation_seconds": 8.520899973518681e-05,
+        "encoded_wall_seconds": 3.48912913499953,
+        "encoded_cpu_seconds": 3.4887006990000002,
+        "unencoded_wall_seconds": 0.2927664350008854,
+        "unencoded_cpu_seconds": 0.29276391299999993,
+        "encoded_shots_per_second": 5732.089362752317,
+        "unencoded_shots_per_second": 68313.84205617532,
+        "encoded_operator_calls": 80000,
+        "unencoded_operator_calls": 20000,
+        "encoded_data_qubits": 3,
+        "unencoded_data_qubits": 1,
+        "noiseless_reference_qubits_per_arm": 1,
+        "encoded_max_branches": 16,
+        "unencoded_max_branches": 2
+      }
+    },
+    {
+      "p": 0.05,
+      "shots_per_arm": 20000,
+      "analytic": {
+        "encoded_logical_error_rate": 0.007250000000000001,
+        "unencoded_logical_error_rate": 0.05,
+        "encoded_entanglement_fidelity": 0.99275,
+        "unencoded_entanglement_fidelity": 0.95,
+        "encoded_t_state_fidelity": 0.996375,
+        "unencoded_t_state_fidelity": 0.95
+      },
+      "encoded": {
+        "logical_failures": 132,
+        "logical_error_rate": 0.0066,
+        "logical_error_rate_ci95": [
+          0.005568673082089122,
+          0.007820828098074923
+        ],
+        "entanglement_fidelity": 0.9934,
+        "entanglement_fidelity_ci95": [
+          0.9921791719019251,
+          0.9944313269179109
+        ],
+        "t_state_fidelity": 0.9967,
+        "t_state_fidelity_ci95": [
+          0.9960895859509625,
+          0.9972156634589554
+        ]
+      },
+      "unencoded": {
+        "logical_failures": 1031,
+        "logical_error_rate": 0.05155,
+        "logical_error_rate_ci95": [
+          0.0485707380049604,
+          0.05470149913375983
+        ],
+        "entanglement_fidelity": 0.94845,
+        "entanglement_fidelity_ci95": [
+          0.9452985008662401,
+          0.9514292619950396
+        ],
+        "t_state_fidelity": 0.94845,
+        "t_state_fidelity_ci95": [
+          0.9452985008662401,
+          0.9514292619950396
+        ]
+      },
+      "mask_counts": {
+        "000": 17173,
+        "001": 863,
+        "010": 946,
+        "011": 38,
+        "100": 886,
+        "101": 41,
+        "110": 53,
+        "111": 0
+      },
+      "fault_weight_counts": {
+        "0": 17173,
+        "1": 2695,
+        "2": 132,
+        "3": 0
+      },
+      "error_rate_improvement": 0.04495,
+      "error_rate_improvement_ci95_conservative": [
+        0.04014369999664141,
+        0.04973372330608449
+      ],
+      "observed_regime": "improves",
+      "cost": {
+        "template_preparation_seconds": 7.966000157466624e-05,
+        "encoded_wall_seconds": 3.465850982998745,
+        "encoded_cpu_seconds": 3.4656066370000005,
+        "unencoded_wall_seconds": 0.31575171000076807,
+        "unencoded_cpu_seconds": 0.3157463889999992,
+        "encoded_shots_per_second": 5770.588550433139,
+        "unencoded_shots_per_second": 63340.90795565715,
+        "encoded_operator_calls": 80000,
+        "unencoded_operator_calls": 20000,
+        "encoded_data_qubits": 3,
+        "unencoded_data_qubits": 1,
+        "noiseless_reference_qubits_per_arm": 1,
+        "encoded_max_branches": 16,
+        "unencoded_max_branches": 2
+      }
+    },
+    {
+      "p": 0.1,
+      "shots_per_arm": 20000,
+      "analytic": {
+        "encoded_logical_error_rate": 0.028000000000000004,
+        "unencoded_logical_error_rate": 0.1,
+        "encoded_entanglement_fidelity": 0.972,
+        "unencoded_entanglement_fidelity": 0.9,
+        "encoded_t_state_fidelity": 0.986,
+        "unencoded_t_state_fidelity": 0.9
+      },
+      "encoded": {
+        "logical_failures": 604,
+        "logical_error_rate": 0.0302,
+        "logical_error_rate_ci95": [
+          0.027916933112885373,
+          0.03266350396543053
+        ],
+        "entanglement_fidelity": 0.9698,
+        "entanglement_fidelity_ci95": [
+          0.9673364960345695,
+          0.9720830668871147
+        ],
+        "t_state_fidelity": 0.9849,
+        "t_state_fidelity_ci95": [
+          0.9836682480172847,
+          0.9860415334435573
+        ]
+      },
+      "unencoded": {
+        "logical_failures": 1962,
+        "logical_error_rate": 0.0981,
+        "logical_error_rate_ci95": [
+          0.09405448434262569,
+          0.10229987423927121
+        ],
+        "entanglement_fidelity": 0.9019,
+        "entanglement_fidelity_ci95": [
+          0.8977001257607288,
+          0.9059455156573744
+        ],
+        "t_state_fidelity": 0.9019,
+        "t_state_fidelity_ci95": [
+          0.8977001257607288,
+          0.9059455156573744
+        ]
+      },
+      "mask_counts": {
+        "000": 14622,
+        "001": 1602,
+        "010": 1553,
+        "011": 177,
+        "100": 1619,
+        "101": 209,
+        "110": 198,
+        "111": 20
+      },
+      "fault_weight_counts": {
+        "0": 14622,
+        "1": 4774,
+        "2": 584,
+        "3": 20
+      },
+      "error_rate_improvement": 0.0679,
+      "error_rate_improvement_ci95_conservative": [
+        0.06045354703571099,
+        0.07531234934371257
+      ],
+      "observed_regime": "improves",
+      "cost": {
+        "template_preparation_seconds": 0.00012219500058563426,
+        "encoded_wall_seconds": 3.783853328000987,
+        "encoded_cpu_seconds": 3.7836615589999987,
+        "unencoded_wall_seconds": 0.32558609999978216,
+        "unencoded_cpu_seconds": 0.3255815059999989,
+        "encoded_shots_per_second": 5285.617138486184,
+        "unencoded_shots_per_second": 61427.68379858164,
+        "encoded_operator_calls": 80000,
+        "unencoded_operator_calls": 20000,
+        "encoded_data_qubits": 3,
+        "unencoded_data_qubits": 1,
+        "noiseless_reference_qubits_per_arm": 1,
+        "encoded_max_branches": 16,
+        "unencoded_max_branches": 2
+      }
+    },
+    {
+      "p": 0.25,
+      "shots_per_arm": 20000,
+      "analytic": {
+        "encoded_logical_error_rate": 0.15625,
+        "unencoded_logical_error_rate": 0.25,
+        "encoded_entanglement_fidelity": 0.84375,
+        "unencoded_entanglement_fidelity": 0.75,
+        "encoded_t_state_fidelity": 0.921875,
+        "unencoded_t_state_fidelity": 0.75
+      },
+      "encoded": {
+        "logical_failures": 3115,
+        "logical_error_rate": 0.15575,
+        "logical_error_rate_ci95": [
+          0.1507906170523339,
+          0.1608415997722941
+        ],
+        "entanglement_fidelity": 0.84425,
+        "entanglement_fidelity_ci95": [
+          0.8391584002277059,
+          0.8492093829476661
+        ],
+        "t_state_fidelity": 0.922125,
+        "t_state_fidelity_ci95": [
+          0.919579200113853,
+          0.9246046914738331
+        ]
+      },
+      "unencoded": {
+        "logical_failures": 5039,
+        "logical_error_rate": 0.25195,
+        "logical_error_rate_ci95": [
+          0.24598136206759244,
+          0.25801390701984106
+        ],
+        "entanglement_fidelity": 0.74805,
+        "entanglement_fidelity_ci95": [
+          0.7419860929801589,
+          0.7540186379324075
+        ],
+        "t_state_fidelity": 0.74805,
+        "t_state_fidelity_ci95": [
+          0.7419860929801589,
+          0.7540186379324075
+        ]
+      },
+      "mask_counts": {
+        "000": 8441,
+        "001": 2671,
+        "010": 2852,
+        "011": 962,
+        "100": 2921,
+        "101": 902,
+        "110": 939,
+        "111": 312
+      },
+      "fault_weight_counts": {
+        "0": 8441,
+        "1": 8444,
+        "2": 2803,
+        "3": 312
+      },
+      "error_rate_improvement": 0.09620000000000001,
+      "error_rate_improvement_ci95_conservative": [
+        0.08354870194601188,
+        0.1088029804059843
+      ],
+      "observed_regime": "improves",
+      "cost": {
+        "template_preparation_seconds": 7.863900100346655e-05,
+        "encoded_wall_seconds": 3.6089894369997637,
+        "encoded_cpu_seconds": 3.608819897,
+        "unencoded_wall_seconds": 0.2974484609985666,
+        "unencoded_cpu_seconds": 0.29744450300000125,
+        "encoded_shots_per_second": 5541.717522073564,
+        "unencoded_shots_per_second": 67238.53918375587,
+        "encoded_operator_calls": 80000,
+        "unencoded_operator_calls": 20000,
+        "encoded_data_qubits": 3,
+        "unencoded_data_qubits": 1,
+        "noiseless_reference_qubits_per_arm": 1,
+        "encoded_max_branches": 16,
+        "unencoded_max_branches": 2
+      }
+    },
+    {
+      "p": 0.45,
+      "shots_per_arm": 20000,
+      "analytic": {
+        "encoded_logical_error_rate": 0.42525,
+        "unencoded_logical_error_rate": 0.45,
+        "encoded_entanglement_fidelity": 0.57475,
+        "unencoded_entanglement_fidelity": 0.55,
+        "encoded_t_state_fidelity": 0.7873749999999999,
+        "unencoded_t_state_fidelity": 0.55
+      },
+      "encoded": {
+        "logical_failures": 8572,
+        "logical_error_rate": 0.4286,
+        "logical_error_rate_ci95": [
+          0.42175585384487335,
+          0.43547156890393834
+        ],
+        "entanglement_fidelity": 0.5714,
+        "entanglement_fidelity_ci95": [
+          0.5645284310960617,
+          0.5782441461551266
+        ],
+        "t_state_fidelity": 0.7857,
+        "t_state_fidelity_ci95": [
+          0.7822642155480308,
+          0.7891220730775633
+        ]
+      },
+      "unencoded": {
+        "logical_failures": 9027,
+        "logical_error_rate": 0.45135,
+        "logical_error_rate_ci95": [
+          0.44446335922678054,
+          0.4582553258814784
+        ],
+        "entanglement_fidelity": 0.5486500000000001,
+        "entanglement_fidelity_ci95": [
+          0.5417446741185217,
+          0.5555366407732194
+        ],
+        "t_state_fidelity": 0.5486500000000001,
+        "t_state_fidelity_ci95": [
+          0.5417446741185217,
+          0.5555366407732194
+        ]
+      },
+      "mask_counts": {
+        "000": 3251,
+        "001": 2718,
+        "010": 2689,
+        "011": 2239,
+        "100": 2770,
+        "101": 2244,
+        "110": 2257,
+        "111": 1832
+      },
+      "fault_weight_counts": {
+        "0": 3251,
+        "1": 8177,
+        "2": 6740,
+        "3": 1832
+      },
+      "error_rate_improvement": 0.022749999999999992,
+      "error_rate_improvement_ci95_conservative": [
+        0.007015936960435232,
+        0.038472636568752994
+      ],
+      "observed_regime": "improves",
+      "cost": {
+        "template_preparation_seconds": 8.218400034820661e-05,
+        "encoded_wall_seconds": 3.5268549769989477,
+        "encoded_cpu_seconds": 3.5267284409999995,
+        "unencoded_wall_seconds": 0.30384960399896954,
+        "unencoded_cpu_seconds": 0.3038333279999996,
+        "encoded_shots_per_second": 5670.7747073338105,
+        "unencoded_shots_per_second": 65822.03740528102,
+        "encoded_operator_calls": 80000,
+        "unencoded_operator_calls": 20000,
+        "encoded_data_qubits": 3,
+        "unencoded_data_qubits": 1,
+        "noiseless_reference_qubits_per_arm": 1,
+        "encoded_max_branches": 16,
+        "unencoded_max_branches": 2
+      }
+    },
+    {
+      "p": 0.49,
+      "shots_per_arm": 20000,
+      "analytic": {
+        "encoded_logical_error_rate": 0.48500199999999993,
+        "unencoded_logical_error_rate": 0.49,
+        "encoded_entanglement_fidelity": 0.5149980000000001,
+        "unencoded_entanglement_fidelity": 0.51,
+        "encoded_t_state_fidelity": 0.757499,
+        "unencoded_t_state_fidelity": 0.51
+      },
+      "encoded": {
+        "logical_failures": 9604,
+        "logical_error_rate": 0.4802,
+        "logical_error_rate_ci95": [
+          0.47328038244593296,
+          0.48712722218188886
+        ],
+        "entanglement_fidelity": 0.5198,
+        "entanglement_fidelity_ci95": [
+          0.5128727778181111,
+          0.526719617554067
+        ],
+        "t_state_fidelity": 0.7599,
+        "t_state_fidelity_ci95": [
+          0.7564363889090555,
+          0.7633598087770335
+        ]
+      },
+      "unencoded": {
+        "logical_failures": 9901,
+        "logical_error_rate": 0.49505,
+        "logical_error_rate_ci95": [
+          0.4881224363390256,
+          0.5019794648179299
+        ],
+        "entanglement_fidelity": 0.50495,
+        "entanglement_fidelity_ci95": [
+          0.4980205351820701,
+          0.5118775636609745
+        ],
+        "t_state_fidelity": 0.50495,
+        "t_state_fidelity_ci95": [
+          0.4980205351820701,
+          0.5118775636609745
+        ]
+      },
+      "mask_counts": {
+        "000": 2717,
+        "001": 2533,
+        "010": 2594,
+        "011": 2436,
+        "100": 2552,
+        "101": 2447,
+        "110": 2387,
+        "111": 2334
+      },
+      "fault_weight_counts": {
+        "0": 2717,
+        "1": 7679,
+        "2": 7270,
+        "3": 2334
+      },
+      "error_rate_improvement": 0.014849999999999974,
+      "error_rate_improvement_ci95_conservative": [
+        -0.0009942479637674584,
+        0.030686789366336453
+      ],
+      "observed_regime": "not resolved at this sample count",
+      "cost": {
+        "template_preparation_seconds": 9.898899952531792e-05,
+        "encoded_wall_seconds": 3.61452879799981,
+        "encoded_cpu_seconds": 3.6143994389999996,
+        "unencoded_wall_seconds": 0.2943093330013653,
+        "unencoded_cpu_seconds": 0.294298186999999,
+        "encoded_shots_per_second": 5533.224693372896,
+        "unencoded_shots_per_second": 67955.71107460333,
+        "encoded_operator_calls": 80000,
+        "unencoded_operator_calls": 20000,
+        "encoded_data_qubits": 3,
+        "unencoded_data_qubits": 1,
+        "noiseless_reference_qubits_per_arm": 1,
+        "encoded_max_branches": 16,
+        "unencoded_max_branches": 2
+      }
+    },
+    {
+      "p": 0.5,
+      "shots_per_arm": 20000,
+      "analytic": {
+        "encoded_logical_error_rate": 0.5,
+        "unencoded_logical_error_rate": 0.5,
+        "encoded_entanglement_fidelity": 0.5,
+        "unencoded_entanglement_fidelity": 0.5,
+        "encoded_t_state_fidelity": 0.75,
+        "unencoded_t_state_fidelity": 0.5
+      },
+      "encoded": {
+        "logical_failures": 10054,
+        "logical_error_rate": 0.5027,
+        "logical_error_rate_ci95": [
+          0.49577072877563144,
+          0.5096282342296656
+        ],
+        "entanglement_fidelity": 0.49729999999999996,
+        "entanglement_fidelity_ci95": [
+          0.49037176577033437,
+          0.5042292712243686
+        ],
+        "t_state_fidelity": 0.74865,
+        "t_state_fidelity_ci95": [
+          0.7451858828851672,
+          0.7521146356121843
+        ]
+      },
+      "unencoded": {
+        "logical_failures": 9962,
+        "logical_error_rate": 0.4981,
+        "logical_error_rate_ci95": [
+          0.4911715611543635,
+          0.5050291685826497
+        ],
+        "entanglement_fidelity": 0.5019,
+        "entanglement_fidelity_ci95": [
+          0.4949708314173503,
+          0.5088284388456366
+        ],
+        "t_state_fidelity": 0.5019,
+        "t_state_fidelity_ci95": [
+          0.4949708314173503,
+          0.5088284388456366
+        ]
+      },
+      "mask_counts": {
+        "000": 2444,
+        "001": 2466,
+        "010": 2500,
+        "011": 2516,
+        "100": 2536,
+        "101": 2513,
+        "110": 2552,
+        "111": 2473
+      },
+      "fault_weight_counts": {
+        "0": 2444,
+        "1": 7502,
+        "2": 7581,
+        "3": 2473
+      },
+      "error_rate_improvement": -0.0046000000000000485,
+      "error_rate_improvement_ci95_conservative": [
+        -0.020445792557406972,
+        0.011248102964691864
+      ],
+      "observed_regime": "not resolved at this sample count",
+      "cost": {
+        "template_preparation_seconds": 9.613499969418626e-05,
+        "encoded_wall_seconds": 3.4789187509995827,
+        "encoded_cpu_seconds": 3.478783413000002,
+        "unencoded_wall_seconds": 0.30551803699927405,
+        "unencoded_cpu_seconds": 0.3055167249999968,
+        "encoded_shots_per_second": 5748.912645417053,
+        "unencoded_shots_per_second": 65462.583474400635,
+        "encoded_operator_calls": 80000,
+        "unencoded_operator_calls": 20000,
+        "encoded_data_qubits": 3,
+        "unencoded_data_qubits": 1,
+        "noiseless_reference_qubits_per_arm": 1,
+        "encoded_max_branches": 16,
+        "unencoded_max_branches": 2
+      }
+    },
+    {
+      "p": 0.51,
+      "shots_per_arm": 20000,
+      "analytic": {
+        "encoded_logical_error_rate": 0.5149980000000001,
+        "unencoded_logical_error_rate": 0.51,
+        "encoded_entanglement_fidelity": 0.48500199999999993,
+        "unencoded_entanglement_fidelity": 0.49,
+        "encoded_t_state_fidelity": 0.742501,
+        "unencoded_t_state_fidelity": 0.49
+      },
+      "encoded": {
+        "logical_failures": 10412,
+        "logical_error_rate": 0.5206,
+        "logical_error_rate_ci95": [
+          0.5136730723503202,
+          0.5275190157641683
+        ],
+        "entanglement_fidelity": 0.47940000000000005,
+        "entanglement_fidelity_ci95": [
+          0.47248098423583174,
+          0.4863269276496798
+        ],
+        "t_state_fidelity": 0.7397,
+        "t_state_fidelity_ci95": [
+          0.7362404921179159,
+          0.7431634638248399
+        ]
+      },
+      "unencoded": {
+        "logical_failures": 10308,
+        "logical_error_rate": 0.5154,
+        "logical_error_rate_ci95": [
+          0.508471475555967,
+          0.522322609733505
+        ],
+        "entanglement_fidelity": 0.48460000000000003,
+        "entanglement_fidelity_ci95": [
+          0.47767739026649503,
+          0.49152852444403305
+        ],
+        "t_state_fidelity": 0.48460000000000003,
+        "t_state_fidelity_ci95": [
+          0.47767739026649503,
+          0.49152852444403305
+        ]
+      },
+      "mask_counts": {
+        "000": 2330,
+        "001": 2438,
+        "010": 2446,
+        "011": 2574,
+        "100": 2374,
+        "101": 2594,
+        "110": 2607,
+        "111": 2637
+      },
+      "fault_weight_counts": {
+        "0": 2330,
+        "1": 7258,
+        "2": 7775,
+        "3": 2637
+      },
+      "error_rate_improvement": -0.005199999999999982,
+      "error_rate_improvement_ci95_conservative": [
+        -0.021035330269431607,
+        0.010637942034188552
+      ],
+      "observed_regime": "not resolved at this sample count",
+      "cost": {
+        "template_preparation_seconds": 7.953999920573551e-05,
+        "encoded_wall_seconds": 3.5099321139987296,
+        "encoded_cpu_seconds": 3.509335550000003,
+        "unencoded_wall_seconds": 0.29855143500026315,
+        "unencoded_cpu_seconds": 0.29852148799999867,
+        "encoded_shots_per_second": 5698.115903790166,
+        "unencoded_shots_per_second": 66990.13186783835,
+        "encoded_operator_calls": 80000,
+        "unencoded_operator_calls": 20000,
+        "encoded_data_qubits": 3,
+        "unencoded_data_qubits": 1,
+        "noiseless_reference_qubits_per_arm": 1,
+        "encoded_max_branches": 16,
+        "unencoded_max_branches": 2
+      }
+    },
+    {
+      "p": 0.55,
+      "shots_per_arm": 20000,
+      "analytic": {
+        "encoded_logical_error_rate": 0.5747500000000001,
+        "unencoded_logical_error_rate": 0.55,
+        "encoded_entanglement_fidelity": 0.4252499999999999,
+        "unencoded_entanglement_fidelity": 0.44999999999999996,
+        "encoded_t_state_fidelity": 0.712625,
+        "unencoded_t_state_fidelity": 0.44999999999999996
+      },
+      "encoded": {
+        "logical_failures": 11463,
+        "logical_error_rate": 0.57315,
+        "logical_error_rate_ci95": [
+          0.5662816370384458,
+          0.5799902680865461
+        ],
+        "entanglement_fidelity": 0.42684999999999995,
+        "entanglement_fidelity_ci95": [
+          0.4200097319134539,
+          0.4337183629615542
+        ],
+        "t_state_fidelity": 0.713425,
+        "t_state_fidelity_ci95": [
+          0.710004865956727,
+          0.7168591814807771
+        ]
+      },
+      "unencoded": {
+        "logical_failures": 10870,
+        "logical_error_rate": 0.5435,
+        "logical_error_rate_ci95": [
+          0.5365890597004058,
+          0.5503942331627131
+        ],
+        "entanglement_fidelity": 0.4565,
+        "entanglement_fidelity_ci95": [
+          0.4496057668372869,
+          0.4634109402995942
+        ],
+        "t_state_fidelity": 0.4565,
+        "t_state_fidelity_ci95": [
+          0.4496057668372869,
+          0.4634109402995942
+        ]
+      },
+      "mask_counts": {
+        "000": 1830,
+        "001": 2251,
+        "010": 2253,
+        "011": 2728,
+        "100": 2203,
+        "101": 2689,
+        "110": 2703,
+        "111": 3343
+      },
+      "fault_weight_counts": {
+        "0": 1830,
+        "1": 6707,
+        "2": 8120,
+        "3": 3343
+      },
+      "error_rate_improvement": -0.029650000000000065,
+      "error_rate_improvement_ci95_conservative": [
+        -0.045374404449778694,
+        -0.013910703468482333
+      ],
+      "observed_regime": "worsens",
+      "cost": {
+        "template_preparation_seconds": 8.057199920585845e-05,
+        "encoded_wall_seconds": 3.4932942099985667,
+        "encoded_cpu_seconds": 3.4931078350000035,
+        "unencoded_wall_seconds": 0.30451895499936654,
+        "unencoded_cpu_seconds": 0.3044991089999982,
+        "encoded_shots_per_second": 5725.254959274732,
+        "unencoded_shots_per_second": 65677.35660343904,
+        "encoded_operator_calls": 80000,
+        "unencoded_operator_calls": 20000,
+        "encoded_data_qubits": 3,
+        "unencoded_data_qubits": 1,
+        "noiseless_reference_qubits_per_arm": 1,
+        "encoded_max_branches": 16,
+        "unencoded_max_branches": 2
+      }
+    },
+    {
+      "p": 0.75,
+      "shots_per_arm": 20000,
+      "analytic": {
+        "encoded_logical_error_rate": 0.84375,
+        "unencoded_logical_error_rate": 0.75,
+        "encoded_entanglement_fidelity": 0.15625,
+        "unencoded_entanglement_fidelity": 0.25,
+        "encoded_t_state_fidelity": 0.578125,
+        "unencoded_t_state_fidelity": 0.25
+      },
+      "encoded": {
+        "logical_failures": 16850,
+        "logical_error_rate": 0.8425,
+        "logical_error_rate_ci95": [
+          0.837385830833808,
+          0.8474826244677602
+        ],
+        "entanglement_fidelity": 0.15749999999999997,
+        "entanglement_fidelity_ci95": [
+          0.15251737553223976,
+          0.16261416916619198
+        ],
+        "t_state_fidelity": 0.57875,
+        "t_state_fidelity_ci95": [
+          0.5762586877661199,
+          0.581307084583096
+        ]
+      },
+      "unencoded": {
+        "logical_failures": 15040,
+        "logical_error_rate": 0.752,
+        "logical_error_rate_ci95": [
+          0.7459669349754782,
+          0.7579362788522451
+        ],
+        "entanglement_fidelity": 0.248,
+        "entanglement_fidelity_ci95": [
+          0.24206372114775487,
+          0.25403306502452183
+        ],
+        "t_state_fidelity": 0.248,
+        "t_state_fidelity_ci95": [
+          0.24206372114775487,
+          0.25403306502452183
+        ]
+      },
+      "mask_counts": {
+        "000": 303,
+        "001": 932,
+        "010": 977,
+        "011": 2879,
+        "100": 938,
+        "101": 2880,
+        "110": 2765,
+        "111": 8326
+      },
+      "fault_weight_counts": {
+        "0": 303,
+        "1": 2847,
+        "2": 8524,
+        "3": 8326
+      },
+      "error_rate_improvement": -0.09050000000000002,
+      "error_rate_improvement_ci95_conservative": [
+        -0.10309446876018091,
+        -0.07786007648779902
+      ],
+      "observed_regime": "worsens",
+      "cost": {
+        "template_preparation_seconds": 8.087199967121705e-05,
+        "encoded_wall_seconds": 3.6442621469996084,
+        "encoded_cpu_seconds": 3.644135319,
+        "unencoded_wall_seconds": 0.31413218499983486,
+        "unencoded_cpu_seconds": 0.31412181900000036,
+        "encoded_shots_per_second": 5488.079395294432,
+        "unencoded_shots_per_second": 63667.46533791345,
+        "encoded_operator_calls": 80000,
+        "unencoded_operator_calls": 20000,
+        "encoded_data_qubits": 3,
+        "unencoded_data_qubits": 1,
+        "noiseless_reference_qubits_per_arm": 1,
+        "encoded_max_branches": 16,
+        "unencoded_max_branches": 2
+      }
+    },
+    {
+      "p": 0.9,
+      "shots_per_arm": 20000,
+      "analytic": {
+        "encoded_logical_error_rate": 0.972,
+        "unencoded_logical_error_rate": 0.9,
+        "encoded_entanglement_fidelity": 0.028000000000000025,
+        "unencoded_entanglement_fidelity": 0.09999999999999998,
+        "encoded_t_state_fidelity": 0.514,
+        "unencoded_t_state_fidelity": 0.09999999999999998
+      },
+      "encoded": {
+        "logical_failures": 19436,
+        "logical_error_rate": 0.9718,
+        "logical_error_rate_ci95": [
+          0.9694135509517784,
+          0.9740052438256813
+        ],
+        "entanglement_fidelity": 0.028200000000000003,
+        "entanglement_fidelity_ci95": [
+          0.02599475617431868,
+          0.03058644904822161
+        ],
+        "t_state_fidelity": 0.5141,
+        "t_state_fidelity_ci95": [
+          0.5129973780871593,
+          0.5152932245241109
+        ]
+      },
+      "unencoded": {
+        "logical_failures": 17952,
+        "logical_error_rate": 0.8976,
+        "logical_error_rate_ci95": [
+          0.8933216614555641,
+          0.9017256314726214
+        ],
+        "entanglement_fidelity": 0.10240000000000005,
+        "entanglement_fidelity_ci95": [
+          0.09827436852737859,
+          0.10667833854443587
+        ],
+        "t_state_fidelity": 0.10240000000000005,
+        "t_state_fidelity_ci95": [
+          0.09827436852737859,
+          0.10667833854443587
+        ]
+      },
+      "mask_counts": {
+        "000": 18,
+        "001": 173,
+        "010": 201,
+        "011": 1563,
+        "100": 172,
+        "101": 1609,
+        "110": 1704,
+        "111": 14560
+      },
+      "fault_weight_counts": {
+        "0": 18,
+        "1": 546,
+        "2": 4876,
+        "3": 14560
+      },
+      "error_rate_improvement": -0.07420000000000004,
+      "error_rate_improvement_ci95_conservative": [
+        -0.08161289959094009,
+        -0.06674983253502786
+      ],
+      "observed_regime": "worsens",
+      "cost": {
+        "template_preparation_seconds": 8.262499977718107e-05,
+        "encoded_wall_seconds": 3.467392333999669,
+        "encoded_cpu_seconds": 3.4661711680000025,
+        "unencoded_wall_seconds": 0.2987499119990389,
+        "unencoded_cpu_seconds": 0.29874963700000023,
+        "encoded_shots_per_second": 5768.023365538741,
+        "unencoded_shots_per_second": 66945.62641432458,
+        "encoded_operator_calls": 80000,
+        "unencoded_operator_calls": 20000,
+        "encoded_data_qubits": 3,
+        "unencoded_data_qubits": 1,
+        "noiseless_reference_qubits_per_arm": 1,
+        "encoded_max_branches": 16,
+        "unencoded_max_branches": 2
+      }
+    },
+    {
+      "p": 1.0,
+      "shots_per_arm": 20000,
+      "analytic": {
+        "encoded_logical_error_rate": 1.0,
+        "unencoded_logical_error_rate": 1.0,
+        "encoded_entanglement_fidelity": 0.0,
+        "unencoded_entanglement_fidelity": 0.0,
+        "encoded_t_state_fidelity": 0.5,
+        "unencoded_t_state_fidelity": 0.0
+      },
+      "encoded": {
+        "logical_failures": 20000,
+        "logical_error_rate": 1.0,
+        "logical_error_rate_ci95": [
+          0.9998079639438954,
+          1.0
+        ],
+        "entanglement_fidelity": 0.0,
+        "entanglement_fidelity_ci95": [
+          0.0,
+          0.00019203605610462748
+        ],
+        "t_state_fidelity": 0.5,
+        "t_state_fidelity_ci95": [
+          0.5,
+          0.5000960180280523
+        ]
+      },
+      "unencoded": {
+        "logical_failures": 20000,
+        "logical_error_rate": 1.0,
+        "logical_error_rate_ci95": [
+          0.9998079639438954,
+          1.0
+        ],
+        "entanglement_fidelity": 0.0,
+        "entanglement_fidelity_ci95": [
+          0.0,
+          0.00019203605610462748
+        ],
+        "t_state_fidelity": 0.0,
+        "t_state_fidelity_ci95": [
+          0.0,
+          0.00019203605610462748
+        ]
+      },
+      "mask_counts": {
+        "000": 0,
+        "001": 0,
+        "010": 0,
+        "011": 0,
+        "100": 0,
+        "101": 0,
+        "110": 0,
+        "111": 20000
+      },
+      "fault_weight_counts": {
+        "0": 0,
+        "1": 0,
+        "2": 0,
+        "3": 20000
+      },
+      "error_rate_improvement": 0.0,
+      "error_rate_improvement_ci95_conservative": [
+        -0.0002511312266305632,
+        0.0002511312266305632
+      ],
+      "observed_regime": "not resolved at this sample count",
+      "cost": {
+        "template_preparation_seconds": 0.0001925590004248079,
+        "encoded_wall_seconds": 3.607298846998674,
+        "encoded_cpu_seconds": 3.6071661810000037,
+        "unencoded_wall_seconds": 0.3023038159990392,
+        "unencoded_cpu_seconds": 0.30230042499999854,
+        "encoded_shots_per_second": 5544.314693150609,
+        "unencoded_shots_per_second": 66158.60912607059,
+        "encoded_operator_calls": 80000,
+        "unencoded_operator_calls": 20000,
+        "encoded_data_qubits": 3,
+        "unencoded_data_qubits": 1,
+        "noiseless_reference_qubits_per_arm": 1,
+        "encoded_max_branches": 16,
+        "unencoded_max_branches": 2
+      }
+    }
+  ],
+  "persistence": {
+    "database": "benchmarks/phase-noise/ledger.sqlite3",
+    "database_bytes": 1347584,
+    "trials_per_arm_per_probability": 2,
+    "traces": [
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x0.0p+0-0-encoded",
+        "p": 0.0,
+        "shot": 0,
+        "arm": "encoded",
+        "noise_event_id": "evt_31415a439e1eeea76b87966d",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 16,
+          "p": 0.0,
+          "seed": 232304305199914361095284584142733562455,
+          "qubits": [
+            0,
+            1,
+            2
+          ],
+          "draws": [
+            0.20740821667722864,
+            0.03892577354007998,
+            0.7155582043291312
+          ],
+          "fault_qubits": [],
+          "fault_count": 0,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 16,
+          "norm_squared": 1.0
+        },
+        "event_count": 10,
+        "entanglement_fidelity": 1.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 10,
+          "head_hash": "3a463fce23ce516be29a33ff8e2a7ebe380de115bade839f5b55f60f276c865b",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x0.0p+0-0-unencoded",
+        "p": 0.0,
+        "shot": 0,
+        "arm": "unencoded",
+        "noise_event_id": "evt_9740521848862090199d219a",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 2,
+          "p": 0.0,
+          "seed": 186077539281888585554557952417912067029,
+          "qubits": [
+            0
+          ],
+          "draws": [
+            0.3081815369636016
+          ],
+          "fault_qubits": [],
+          "fault_count": 0,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 2,
+          "norm_squared": 1.0
+        },
+        "event_count": 6,
+        "entanglement_fidelity": 1.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 6,
+          "head_hash": "0873ac3aa78e7c9187f4908614401811d621a3c8d89d21e2ce23a3052b1240b4",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x0.0p+0-1-encoded",
+        "p": 0.0,
+        "shot": 1,
+        "arm": "encoded",
+        "noise_event_id": "evt_d04bffcd78da7500fb89cfd6",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 16,
+          "p": 0.0,
+          "seed": 262000862695430234170917459821120518292,
+          "qubits": [
+            0,
+            1,
+            2
+          ],
+          "draws": [
+            0.8622279292983859,
+            0.14259917577253434,
+            0.2626160826167694
+          ],
+          "fault_qubits": [],
+          "fault_count": 0,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 16,
+          "norm_squared": 1.0
+        },
+        "event_count": 10,
+        "entanglement_fidelity": 1.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 10,
+          "head_hash": "a089ced46f1da2a98ffeb4be32d0d60b626837b70fcae281fb84ba887e02eee1",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x0.0p+0-1-unencoded",
+        "p": 0.0,
+        "shot": 1,
+        "arm": "unencoded",
+        "noise_event_id": "evt_0c0225ebdea20a7b0368b01b",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 2,
+          "p": 0.0,
+          "seed": 151722267078411445633443942295403952565,
+          "qubits": [
+            0
+          ],
+          "draws": [
+            0.46874852644738485
+          ],
+          "fault_qubits": [],
+          "fault_count": 0,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 2,
+          "norm_squared": 1.0
+        },
+        "event_count": 6,
+        "entanglement_fidelity": 1.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 6,
+          "head_hash": "996ac6fbb20cb3bb8c4ef4506f9cdc8362f299e31ae4bb033919ac2e285dcfa0",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x1.47ae147ae147bp-7-0-encoded",
+        "p": 0.01,
+        "shot": 0,
+        "arm": "encoded",
+        "noise_event_id": "evt_29d7433b18ad66e26fa899f2",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 16,
+          "p": 0.01,
+          "seed": 41796291210520429729514289236362794782,
+          "qubits": [
+            0,
+            1,
+            2
+          ],
+          "draws": [
+            0.90847219020147,
+            0.42424669347063726,
+            0.4833078433759601
+          ],
+          "fault_qubits": [],
+          "fault_count": 0,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 16,
+          "norm_squared": 1.0
+        },
+        "event_count": 10,
+        "entanglement_fidelity": 1.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 10,
+          "head_hash": "1869b8096f5ae52bb14363b8c6b30bc09f2657ca6d84ce692d28202dac52b9b0",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x1.47ae147ae147bp-7-0-unencoded",
+        "p": 0.01,
+        "shot": 0,
+        "arm": "unencoded",
+        "noise_event_id": "evt_68a7f9925b73d6193e0bb2af",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 2,
+          "p": 0.01,
+          "seed": 17251546632410669126835190585860118756,
+          "qubits": [
+            0
+          ],
+          "draws": [
+            0.968385877340835
+          ],
+          "fault_qubits": [],
+          "fault_count": 0,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 2,
+          "norm_squared": 1.0
+        },
+        "event_count": 6,
+        "entanglement_fidelity": 1.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 6,
+          "head_hash": "eb88e3ff249ac84d7d5ac7d9bd5ff8036c12d963046720187df84c92f0660d3d",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x1.47ae147ae147bp-7-1-encoded",
+        "p": 0.01,
+        "shot": 1,
+        "arm": "encoded",
+        "noise_event_id": "evt_4f5087411b4318fccf94fd01",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 16,
+          "p": 0.01,
+          "seed": 124102772258199733701688592819236104615,
+          "qubits": [
+            0,
+            1,
+            2
+          ],
+          "draws": [
+            0.7521329002991405,
+            0.014368588031157814,
+            0.5570161043800156
+          ],
+          "fault_qubits": [],
+          "fault_count": 0,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 16,
+          "norm_squared": 1.0
+        },
+        "event_count": 10,
+        "entanglement_fidelity": 1.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 10,
+          "head_hash": "67bcb92d4153233b6e44b04e792e6f141e03b006cd242e57ac2d3cc7796ac1d4",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x1.47ae147ae147bp-7-1-unencoded",
+        "p": 0.01,
+        "shot": 1,
+        "arm": "unencoded",
+        "noise_event_id": "evt_6d3dad2efd9be426b7a5fa49",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 2,
+          "p": 0.01,
+          "seed": 43215174484775260902908536918650694486,
+          "qubits": [
+            0
+          ],
+          "draws": [
+            0.7107709384088561
+          ],
+          "fault_qubits": [],
+          "fault_count": 0,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 2,
+          "norm_squared": 1.0
+        },
+        "event_count": 6,
+        "entanglement_fidelity": 1.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 6,
+          "head_hash": "237676a6d1b9c41495a6deda26c398f9a3fc689a061d207166f941e39621ffe2",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x1.999999999999ap-5-0-encoded",
+        "p": 0.05,
+        "shot": 0,
+        "arm": "encoded",
+        "noise_event_id": "evt_c4f85047364f98b1bcee3f27",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 16,
+          "p": 0.05,
+          "seed": 19038606679684156163472400591403577779,
+          "qubits": [
+            0,
+            1,
+            2
+          ],
+          "draws": [
+            0.9976546983042439,
+            0.4923721044025202,
+            0.4502951582709198
+          ],
+          "fault_qubits": [],
+          "fault_count": 0,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 16,
+          "norm_squared": 1.0
+        },
+        "event_count": 10,
+        "entanglement_fidelity": 1.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 10,
+          "head_hash": "6c7ee800afd5e022347c3f897eaf3a655abdfc639093facc18c895be636ac26f",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x1.999999999999ap-5-0-unencoded",
+        "p": 0.05,
+        "shot": 0,
+        "arm": "unencoded",
+        "noise_event_id": "evt_8f1f36b9fea7b5253c4651a1",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 2,
+          "p": 0.05,
+          "seed": 132993126559823399970413119947578567739,
+          "qubits": [
+            0
+          ],
+          "draws": [
+            0.9630270076926098
+          ],
+          "fault_qubits": [],
+          "fault_count": 0,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 2,
+          "norm_squared": 1.0
+        },
+        "event_count": 6,
+        "entanglement_fidelity": 1.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 6,
+          "head_hash": "58e266c0fe85fc40592e8cf57312ddd12e93d280ca419eb65139edfa1a114d2b",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x1.999999999999ap-5-1-encoded",
+        "p": 0.05,
+        "shot": 1,
+        "arm": "encoded",
+        "noise_event_id": "evt_57e76aa312334e1ea29b05db",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 16,
+          "p": 0.05,
+          "seed": 39730569524988600451476620434315176032,
+          "qubits": [
+            0,
+            1,
+            2
+          ],
+          "draws": [
+            0.5292127377158039,
+            0.7925979609035567,
+            0.9318189257733148
+          ],
+          "fault_qubits": [],
+          "fault_count": 0,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 16,
+          "norm_squared": 1.0
+        },
+        "event_count": 10,
+        "entanglement_fidelity": 1.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 10,
+          "head_hash": "a7ef4430e91eecab1a3b7c6b5e278094398294942f5a79d2b5c33bbcdc38c569",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x1.999999999999ap-5-1-unencoded",
+        "p": 0.05,
+        "shot": 1,
+        "arm": "unencoded",
+        "noise_event_id": "evt_eff9400fe20015b3c8d05add",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 2,
+          "p": 0.05,
+          "seed": 35291618434036739471384749347255214340,
+          "qubits": [
+            0
+          ],
+          "draws": [
+            0.27722902224796153
+          ],
+          "fault_qubits": [],
+          "fault_count": 0,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 2,
+          "norm_squared": 1.0
+        },
+        "event_count": 6,
+        "entanglement_fidelity": 1.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 6,
+          "head_hash": "f98f95731023bdb8fc8537d1b08a79b302029b7d017ae76b25e16d5a70b67810",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x1.999999999999ap-4-0-encoded",
+        "p": 0.1,
+        "shot": 0,
+        "arm": "encoded",
+        "noise_event_id": "evt_8f5ef644170439d81d35624a",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 16,
+          "p": 0.1,
+          "seed": 78067946495494165521062554153422313066,
+          "qubits": [
+            0,
+            1,
+            2
+          ],
+          "draws": [
+            0.9777420292171369,
+            0.8319760122214556,
+            0.5087563782269061
+          ],
+          "fault_qubits": [],
+          "fault_count": 0,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 16,
+          "norm_squared": 1.0
+        },
+        "event_count": 10,
+        "entanglement_fidelity": 1.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 10,
+          "head_hash": "a8a38d55fc3865e09d5800e9e6ad41d1980e8ce80882ece5818b0e16f02e2f85",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x1.999999999999ap-4-0-unencoded",
+        "p": 0.1,
+        "shot": 0,
+        "arm": "unencoded",
+        "noise_event_id": "evt_9b0fd61109e9f85cc846e049",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 2,
+          "p": 0.1,
+          "seed": 306194550154405481371393680289389066898,
+          "qubits": [
+            0
+          ],
+          "draws": [
+            0.9005370114433143
+          ],
+          "fault_qubits": [],
+          "fault_count": 0,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 2,
+          "norm_squared": 1.0
+        },
+        "event_count": 6,
+        "entanglement_fidelity": 1.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 6,
+          "head_hash": "a944b4194a2828aaae5014e6dcf9affb694030ee5c0c4653b1edd72a4170b2e0",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x1.999999999999ap-4-1-encoded",
+        "p": 0.1,
+        "shot": 1,
+        "arm": "encoded",
+        "noise_event_id": "evt_e55ddafb561e3c300a24e040",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 16,
+          "p": 0.1,
+          "seed": 252292249126141418882773311273569389960,
+          "qubits": [
+            0,
+            1,
+            2
+          ],
+          "draws": [
+            0.19811644058716937,
+            0.6117184422972647,
+            0.25216353913657497
+          ],
+          "fault_qubits": [],
+          "fault_count": 0,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 16,
+          "norm_squared": 1.0
+        },
+        "event_count": 10,
+        "entanglement_fidelity": 1.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 10,
+          "head_hash": "58bc4661ff94b2ee0dc835f47ae2fa818018224ca07b3caae8fd8d856d2a21ec",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x1.999999999999ap-4-1-unencoded",
+        "p": 0.1,
+        "shot": 1,
+        "arm": "unencoded",
+        "noise_event_id": "evt_e9d0cf14fb1e3938023b5fad",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 2,
+          "p": 0.1,
+          "seed": 231066231970991918253419677633165425281,
+          "qubits": [
+            0
+          ],
+          "draws": [
+            0.013332273974005937
+          ],
+          "fault_qubits": [
+            0
+          ],
+          "fault_count": 1,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 2,
+          "norm_squared": 1.0
+        },
+        "event_count": 6,
+        "entanglement_fidelity": 0.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 6,
+          "head_hash": "e58718d4f391006b2b829f11b9660467f17fdd312cfa0f3f379a384441fc5521",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x1.0000000000000p-2-0-encoded",
+        "p": 0.25,
+        "shot": 0,
+        "arm": "encoded",
+        "noise_event_id": "evt_c4cf072779dc694b2fd859c9",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 16,
+          "p": 0.25,
+          "seed": 161927220442956328914654081520560656887,
+          "qubits": [
+            0,
+            1,
+            2
+          ],
+          "draws": [
+            0.8015437346399081,
+            0.9765550570336079,
+            0.46009436767066925
+          ],
+          "fault_qubits": [],
+          "fault_count": 0,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 16,
+          "norm_squared": 1.0
+        },
+        "event_count": 10,
+        "entanglement_fidelity": 1.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 10,
+          "head_hash": "552472d68e60d6b0e99d6fc398e9fa31441b024810e62385306cc85fc70406ba",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x1.0000000000000p-2-0-unencoded",
+        "p": 0.25,
+        "shot": 0,
+        "arm": "unencoded",
+        "noise_event_id": "evt_c485b4ac41af1033f4faeac9",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 2,
+          "p": 0.25,
+          "seed": 168349840901017211560749954107546026466,
+          "qubits": [
+            0
+          ],
+          "draws": [
+            0.3231742804956882
+          ],
+          "fault_qubits": [],
+          "fault_count": 0,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 2,
+          "norm_squared": 1.0
+        },
+        "event_count": 6,
+        "entanglement_fidelity": 1.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 6,
+          "head_hash": "087ef32e3f93b4ade3378b86987f9152a84c247d315824ae2c6ff96916c0978a",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x1.0000000000000p-2-1-encoded",
+        "p": 0.25,
+        "shot": 1,
+        "arm": "encoded",
+        "noise_event_id": "evt_a5cad89d22ee5456568e3375",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 16,
+          "p": 0.25,
+          "seed": 7018559521592591511953788985693460455,
+          "qubits": [
+            0,
+            1,
+            2
+          ],
+          "draws": [
+            0.6529475221137286,
+            0.6304371537257984,
+            0.5988259966828123
+          ],
+          "fault_qubits": [],
+          "fault_count": 0,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 16,
+          "norm_squared": 1.0
+        },
+        "event_count": 10,
+        "entanglement_fidelity": 1.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 10,
+          "head_hash": "0c1ec53e2d7c9730a321c53e795c6affed86db262f1e5aac9446ff2f52fc263a",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x1.0000000000000p-2-1-unencoded",
+        "p": 0.25,
+        "shot": 1,
+        "arm": "unencoded",
+        "noise_event_id": "evt_eca847b264c9c2875bdf8277",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 2,
+          "p": 0.25,
+          "seed": 169199775779052686928373807506346206933,
+          "qubits": [
+            0
+          ],
+          "draws": [
+            0.4244430556604649
+          ],
+          "fault_qubits": [],
+          "fault_count": 0,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 2,
+          "norm_squared": 1.0
+        },
+        "event_count": 6,
+        "entanglement_fidelity": 1.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 6,
+          "head_hash": "cd757301188a1d28a408984328bfe7d4c0780feb8efd6f89f95a1e5eb7f6bf3d",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x1.ccccccccccccdp-2-0-encoded",
+        "p": 0.45,
+        "shot": 0,
+        "arm": "encoded",
+        "noise_event_id": "evt_e6385eb82196825026762772",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 16,
+          "p": 0.45,
+          "seed": 69173540342926628918564136628433625098,
+          "qubits": [
+            0,
+            1,
+            2
+          ],
+          "draws": [
+            0.9738652521596703,
+            0.07935465722732171,
+            0.2567253119941636
+          ],
+          "fault_qubits": [
+            1,
+            2
+          ],
+          "fault_count": 2,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 16,
+          "norm_squared": 1.0
+        },
+        "event_count": 10,
+        "entanglement_fidelity": 0.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 10,
+          "head_hash": "430188c45eac98dc241dcd82d83ba68edcdfd2da5aec86dd8c3c139f8987aea3",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x1.ccccccccccccdp-2-0-unencoded",
+        "p": 0.45,
+        "shot": 0,
+        "arm": "unencoded",
+        "noise_event_id": "evt_ba5396099005f732de37150e",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 2,
+          "p": 0.45,
+          "seed": 211353984778676607459405588008395725883,
+          "qubits": [
+            0
+          ],
+          "draws": [
+            0.09244497872437085
+          ],
+          "fault_qubits": [
+            0
+          ],
+          "fault_count": 1,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 2,
+          "norm_squared": 1.0
+        },
+        "event_count": 6,
+        "entanglement_fidelity": 0.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 6,
+          "head_hash": "4986f282b8451e8be766ad746fc1c60d05825fde904ffd0cf1790c90183e0c21",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x1.ccccccccccccdp-2-1-encoded",
+        "p": 0.45,
+        "shot": 1,
+        "arm": "encoded",
+        "noise_event_id": "evt_dc6e549051df7f5d4a89ee57",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 16,
+          "p": 0.45,
+          "seed": 72371533243491130664101763240989407552,
+          "qubits": [
+            0,
+            1,
+            2
+          ],
+          "draws": [
+            0.5159551784486265,
+            0.6984978736544253,
+            0.1518855326261761
+          ],
+          "fault_qubits": [
+            2
+          ],
+          "fault_count": 1,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 16,
+          "norm_squared": 1.0
+        },
+        "event_count": 10,
+        "entanglement_fidelity": 1.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 10,
+          "head_hash": "7052bbc5d2398cdaecec9f4fbba4758ccdf8e38229c556837a53e5345b8e439a",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x1.ccccccccccccdp-2-1-unencoded",
+        "p": 0.45,
+        "shot": 1,
+        "arm": "unencoded",
+        "noise_event_id": "evt_e0b2c38565228527945a1a18",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 2,
+          "p": 0.45,
+          "seed": 110506742815330862973913425562028242540,
+          "qubits": [
+            0
+          ],
+          "draws": [
+            0.6744028821168649
+          ],
+          "fault_qubits": [],
+          "fault_count": 0,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 2,
+          "norm_squared": 1.0
+        },
+        "event_count": 6,
+        "entanglement_fidelity": 1.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 6,
+          "head_hash": "4a1c8cdd6c65a6db6be1e0c6cbc0ebb419c0eb3032fbd6c30f257348c11cdc7f",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x1.f5c28f5c28f5cp-2-0-encoded",
+        "p": 0.49,
+        "shot": 0,
+        "arm": "encoded",
+        "noise_event_id": "evt_4978ecf1ddb12a4805ce8b73",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 16,
+          "p": 0.49,
+          "seed": 171418215010527028881804693171001331217,
+          "qubits": [
+            0,
+            1,
+            2
+          ],
+          "draws": [
+            0.0835195596098629,
+            0.3835168103948201,
+            0.1928853129463982
+          ],
+          "fault_qubits": [
+            0,
+            1,
+            2
+          ],
+          "fault_count": 3,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 16,
+          "norm_squared": 1.0
+        },
+        "event_count": 10,
+        "entanglement_fidelity": 0.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 10,
+          "head_hash": "f0b9f173123a3f5d667e228ef38a491460ef863777daa639613ea0b0e38506cb",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x1.f5c28f5c28f5cp-2-0-unencoded",
+        "p": 0.49,
+        "shot": 0,
+        "arm": "unencoded",
+        "noise_event_id": "evt_92a67866213d1f8e5095f392",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 2,
+          "p": 0.49,
+          "seed": 140899909237003834275648743764940062187,
+          "qubits": [
+            0
+          ],
+          "draws": [
+            0.7263920713255252
+          ],
+          "fault_qubits": [],
+          "fault_count": 0,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 2,
+          "norm_squared": 1.0
+        },
+        "event_count": 6,
+        "entanglement_fidelity": 1.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 6,
+          "head_hash": "af09551eb37b47fcc8f0802a9aa380c67cac2d89239b22177abc9f07488a788c",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x1.f5c28f5c28f5cp-2-1-encoded",
+        "p": 0.49,
+        "shot": 1,
+        "arm": "encoded",
+        "noise_event_id": "evt_1fb07b9eb506071d745bf0e5",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 16,
+          "p": 0.49,
+          "seed": 103735326465880897367410487289197326467,
+          "qubits": [
+            0,
+            1,
+            2
+          ],
+          "draws": [
+            0.7445102273382258,
+            0.7841489007998165,
+            0.5644919950311246
+          ],
+          "fault_qubits": [],
+          "fault_count": 0,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 16,
+          "norm_squared": 1.0
+        },
+        "event_count": 10,
+        "entanglement_fidelity": 1.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 10,
+          "head_hash": "288fe941d32cc8bade62d0b3cccc1f1b9a779aa7aac7c40967fee2d4e8383f91",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x1.f5c28f5c28f5cp-2-1-unencoded",
+        "p": 0.49,
+        "shot": 1,
+        "arm": "unencoded",
+        "noise_event_id": "evt_6f9aba6ca7af157116ff653e",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 2,
+          "p": 0.49,
+          "seed": 30391752513380023949462109900705656157,
+          "qubits": [
+            0
+          ],
+          "draws": [
+            0.2802840502708531
+          ],
+          "fault_qubits": [
+            0
+          ],
+          "fault_count": 1,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 2,
+          "norm_squared": 1.0
+        },
+        "event_count": 6,
+        "entanglement_fidelity": 0.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 6,
+          "head_hash": "efd4289c7b346b930bb2806087c0c74a3dfb49c153acc37b9e1f21ba66424207",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x1.0000000000000p-1-0-encoded",
+        "p": 0.5,
+        "shot": 0,
+        "arm": "encoded",
+        "noise_event_id": "evt_bacbb89d53a3966f986e015f",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 16,
+          "p": 0.5,
+          "seed": 273444001443398000717673746183610051457,
+          "qubits": [
+            0,
+            1,
+            2
+          ],
+          "draws": [
+            0.7509616078342866,
+            0.7317108115295448,
+            0.031010993585517954
+          ],
+          "fault_qubits": [
+            2
+          ],
+          "fault_count": 1,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 16,
+          "norm_squared": 1.0
+        },
+        "event_count": 10,
+        "entanglement_fidelity": 1.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 10,
+          "head_hash": "e86e5cb208b575a83d084c18316bd2066649e5b9c2f578b1f4e364bdc6599712",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x1.0000000000000p-1-0-unencoded",
+        "p": 0.5,
+        "shot": 0,
+        "arm": "unencoded",
+        "noise_event_id": "evt_e91c3e342cda88447efcc949",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 2,
+          "p": 0.5,
+          "seed": 152917024376367366959302634015327119441,
+          "qubits": [
+            0
+          ],
+          "draws": [
+            0.9236705168320709
+          ],
+          "fault_qubits": [],
+          "fault_count": 0,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 2,
+          "norm_squared": 1.0
+        },
+        "event_count": 6,
+        "entanglement_fidelity": 1.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 6,
+          "head_hash": "5d061ea3e7c3024b664c9f61adbb202fa2f95010bcedb6a9fe12fd28352c7d91",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x1.0000000000000p-1-1-encoded",
+        "p": 0.5,
+        "shot": 1,
+        "arm": "encoded",
+        "noise_event_id": "evt_4911bb7101fc7e0110ccf5cb",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 16,
+          "p": 0.5,
+          "seed": 316413353775157210611554509740720308202,
+          "qubits": [
+            0,
+            1,
+            2
+          ],
+          "draws": [
+            0.18935197175653473,
+            0.3964649570544527,
+            0.6884636939601554
+          ],
+          "fault_qubits": [
+            0,
+            1
+          ],
+          "fault_count": 2,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 16,
+          "norm_squared": 1.0
+        },
+        "event_count": 10,
+        "entanglement_fidelity": 0.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 10,
+          "head_hash": "113e5e230f56fdae689a29e289f88c640c9913fc2c1bd979cd9edccc6ea3f12f",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x1.0000000000000p-1-1-unencoded",
+        "p": 0.5,
+        "shot": 1,
+        "arm": "unencoded",
+        "noise_event_id": "evt_154beba287559d0e32e52996",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 2,
+          "p": 0.5,
+          "seed": 296960652547203794067750330016016532721,
+          "qubits": [
+            0
+          ],
+          "draws": [
+            0.5015048566839786
+          ],
+          "fault_qubits": [],
+          "fault_count": 0,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 2,
+          "norm_squared": 1.0
+        },
+        "event_count": 6,
+        "entanglement_fidelity": 1.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 6,
+          "head_hash": "63cc4adf0f1ac33b8f3cbed01d80da78cf2e072f9eb7d26c82e9836a9d0a9959",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x1.051eb851eb852p-1-0-encoded",
+        "p": 0.51,
+        "shot": 0,
+        "arm": "encoded",
+        "noise_event_id": "evt_c35f18d8e710876e6c1fc188",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 16,
+          "p": 0.51,
+          "seed": 204443837944607800808726450674497314064,
+          "qubits": [
+            0,
+            1,
+            2
+          ],
+          "draws": [
+            0.5313601084384775,
+            0.03650633364881273,
+            0.87321188122971
+          ],
+          "fault_qubits": [
+            1
+          ],
+          "fault_count": 1,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 16,
+          "norm_squared": 1.0
+        },
+        "event_count": 10,
+        "entanglement_fidelity": 1.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 10,
+          "head_hash": "15131535636ddaa1d7e5e7a6f4cda08d62b59b2c9f8fdfa7f60d2308abb0d072",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x1.051eb851eb852p-1-0-unencoded",
+        "p": 0.51,
+        "shot": 0,
+        "arm": "unencoded",
+        "noise_event_id": "evt_d5b63d8f3664e196abd70a95",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 2,
+          "p": 0.51,
+          "seed": 297888519952933420344709572453348168256,
+          "qubits": [
+            0
+          ],
+          "draws": [
+            0.7724680680985339
+          ],
+          "fault_qubits": [],
+          "fault_count": 0,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 2,
+          "norm_squared": 1.0
+        },
+        "event_count": 6,
+        "entanglement_fidelity": 1.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 6,
+          "head_hash": "1540ebd458e2b6cb8b8c3491eea36fbb3f0db35b3d949e9c7a8c9d7c03ab9af4",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x1.051eb851eb852p-1-1-encoded",
+        "p": 0.51,
+        "shot": 1,
+        "arm": "encoded",
+        "noise_event_id": "evt_d3b4026185a9de528cf8c82d",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 16,
+          "p": 0.51,
+          "seed": 37648880531185891346698053723530789278,
+          "qubits": [
+            0,
+            1,
+            2
+          ],
+          "draws": [
+            0.2918810383678083,
+            0.011417146564075886,
+            0.15531727422072228
+          ],
+          "fault_qubits": [
+            0,
+            1,
+            2
+          ],
+          "fault_count": 3,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 16,
+          "norm_squared": 1.0
+        },
+        "event_count": 10,
+        "entanglement_fidelity": 0.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 10,
+          "head_hash": "f0ddc0a5bf8626c29f5fafb4b24c973103aaa8afd9ade0dc3f011241481d762a",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x1.051eb851eb852p-1-1-unencoded",
+        "p": 0.51,
+        "shot": 1,
+        "arm": "unencoded",
+        "noise_event_id": "evt_4c7c72b6ed609a41bc1d5564",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 2,
+          "p": 0.51,
+          "seed": 55742786659520824856457202397661709767,
+          "qubits": [
+            0
+          ],
+          "draws": [
+            0.5407734729925023
+          ],
+          "fault_qubits": [],
+          "fault_count": 0,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 2,
+          "norm_squared": 1.0
+        },
+        "event_count": 6,
+        "entanglement_fidelity": 1.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 6,
+          "head_hash": "ce8bc51574c35de3e60c7dbc6a259698276ae3baa4cf643a301565a6d3516348",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x1.199999999999ap-1-0-encoded",
+        "p": 0.55,
+        "shot": 0,
+        "arm": "encoded",
+        "noise_event_id": "evt_7b96c16395c80e27ec19ccb2",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 16,
+          "p": 0.55,
+          "seed": 216464131164948275827695989402346710490,
+          "qubits": [
+            0,
+            1,
+            2
+          ],
+          "draws": [
+            0.8190175512650505,
+            0.39636857791320745,
+            0.3394546325654906
+          ],
+          "fault_qubits": [
+            1,
+            2
+          ],
+          "fault_count": 2,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 16,
+          "norm_squared": 1.0
+        },
+        "event_count": 10,
+        "entanglement_fidelity": 0.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 10,
+          "head_hash": "e47337865abf122fa466e666f37d89bca09619167515a4206e13162012b90f39",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x1.199999999999ap-1-0-unencoded",
+        "p": 0.55,
+        "shot": 0,
+        "arm": "unencoded",
+        "noise_event_id": "evt_15eb19ecbb750a9fb026d809",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 2,
+          "p": 0.55,
+          "seed": 64292504899741653468446921328281723079,
+          "qubits": [
+            0
+          ],
+          "draws": [
+            0.16682630949784405
+          ],
+          "fault_qubits": [
+            0
+          ],
+          "fault_count": 1,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 2,
+          "norm_squared": 1.0
+        },
+        "event_count": 6,
+        "entanglement_fidelity": 0.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 6,
+          "head_hash": "e2c411d2f273e2310f08310b3cb9f206d4983932519dc542c45950e822375fde",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x1.199999999999ap-1-1-encoded",
+        "p": 0.55,
+        "shot": 1,
+        "arm": "encoded",
+        "noise_event_id": "evt_8dabe48cb45fcf4e903f5ccf",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 16,
+          "p": 0.55,
+          "seed": 71649583685944677294898456168525019251,
+          "qubits": [
+            0,
+            1,
+            2
+          ],
+          "draws": [
+            0.28184921002604113,
+            0.4700880446128076,
+            0.9386225132312426
+          ],
+          "fault_qubits": [
+            0,
+            1
+          ],
+          "fault_count": 2,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 16,
+          "norm_squared": 1.0
+        },
+        "event_count": 10,
+        "entanglement_fidelity": 0.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 10,
+          "head_hash": "702b086afa8d2c996e8991d2512870208807c6ebf22373d96d065c9e4a15ad42",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x1.199999999999ap-1-1-unencoded",
+        "p": 0.55,
+        "shot": 1,
+        "arm": "unencoded",
+        "noise_event_id": "evt_afde24c742ea7f31eb0038b9",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 2,
+          "p": 0.55,
+          "seed": 317072354845222881443863155592136748551,
+          "qubits": [
+            0
+          ],
+          "draws": [
+            0.7457264955622943
+          ],
+          "fault_qubits": [],
+          "fault_count": 0,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 2,
+          "norm_squared": 1.0
+        },
+        "event_count": 6,
+        "entanglement_fidelity": 1.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 6,
+          "head_hash": "65888d58268ffb04833e7b4ef13c4f39b271d703812414bd8fd69e0f87a24484",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x1.8000000000000p-1-0-encoded",
+        "p": 0.75,
+        "shot": 0,
+        "arm": "encoded",
+        "noise_event_id": "evt_6510a0015dad0b112d86f174",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 16,
+          "p": 0.75,
+          "seed": 280823655051584705075121806329660497952,
+          "qubits": [
+            0,
+            1,
+            2
+          ],
+          "draws": [
+            0.5910326489965695,
+            0.6707160767898668,
+            0.11534764257875518
+          ],
+          "fault_qubits": [
+            0,
+            1,
+            2
+          ],
+          "fault_count": 3,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 16,
+          "norm_squared": 1.0
+        },
+        "event_count": 10,
+        "entanglement_fidelity": 0.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 10,
+          "head_hash": "9492883cc30abe142e06fe91f8395add5408a434b7008728757aef725300bb80",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x1.8000000000000p-1-0-unencoded",
+        "p": 0.75,
+        "shot": 0,
+        "arm": "unencoded",
+        "noise_event_id": "evt_bca4ab43088cd8098341b723",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 2,
+          "p": 0.75,
+          "seed": 233141494548351168980990088468875860921,
+          "qubits": [
+            0
+          ],
+          "draws": [
+            0.5722221019331226
+          ],
+          "fault_qubits": [
+            0
+          ],
+          "fault_count": 1,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 2,
+          "norm_squared": 1.0
+        },
+        "event_count": 6,
+        "entanglement_fidelity": 0.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 6,
+          "head_hash": "b66a3f6e8f82fe3b359cab20682ededb1d9bfaa32825c4cf9c32be5febe2e53d",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x1.8000000000000p-1-1-encoded",
+        "p": 0.75,
+        "shot": 1,
+        "arm": "encoded",
+        "noise_event_id": "evt_7d93091b5adb6b86985f2afb",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 16,
+          "p": 0.75,
+          "seed": 163588856520843381944608247148499157127,
+          "qubits": [
+            0,
+            1,
+            2
+          ],
+          "draws": [
+            0.1067170379114416,
+            0.5078591495881687,
+            0.8370249438844062
+          ],
+          "fault_qubits": [
+            0,
+            1
+          ],
+          "fault_count": 2,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 16,
+          "norm_squared": 1.0
+        },
+        "event_count": 10,
+        "entanglement_fidelity": 0.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 10,
+          "head_hash": "2e11fb87ffdfca4dfd837efd1a64a40ef2febc60864593bffa6f5f7c84a7afd7",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x1.8000000000000p-1-1-unencoded",
+        "p": 0.75,
+        "shot": 1,
+        "arm": "unencoded",
+        "noise_event_id": "evt_9be13c2659ecee90dca3b8b9",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 2,
+          "p": 0.75,
+          "seed": 69062379152960580092013669820591611003,
+          "qubits": [
+            0
+          ],
+          "draws": [
+            0.222200785458593
+          ],
+          "fault_qubits": [
+            0
+          ],
+          "fault_count": 1,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 2,
+          "norm_squared": 1.0
+        },
+        "event_count": 6,
+        "entanglement_fidelity": 0.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 6,
+          "head_hash": "eb8a31626608b4f4a6f49a47423e25cd74119b8a2a9dca88908c9193a7785d9c",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x1.ccccccccccccdp-1-0-encoded",
+        "p": 0.9,
+        "shot": 0,
+        "arm": "encoded",
+        "noise_event_id": "evt_b62d752a30e2279732ae0db2",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 16,
+          "p": 0.9,
+          "seed": 156799515485379993581465270786697214003,
+          "qubits": [
+            0,
+            1,
+            2
+          ],
+          "draws": [
+            0.4366689840682638,
+            0.06711056094769607,
+            0.966475370302609
+          ],
+          "fault_qubits": [
+            0,
+            1
+          ],
+          "fault_count": 2,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 16,
+          "norm_squared": 1.0
+        },
+        "event_count": 10,
+        "entanglement_fidelity": 0.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 10,
+          "head_hash": "833b0b72f3cb3ddd1b99d62f999db16d57ec117068f5800fa446fac03dd5d75d",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x1.ccccccccccccdp-1-0-unencoded",
+        "p": 0.9,
+        "shot": 0,
+        "arm": "unencoded",
+        "noise_event_id": "evt_edeed9201088ce511552b596",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 2,
+          "p": 0.9,
+          "seed": 262814641164835033705838956670405680390,
+          "qubits": [
+            0
+          ],
+          "draws": [
+            0.46470441308441535
+          ],
+          "fault_qubits": [
+            0
+          ],
+          "fault_count": 1,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 2,
+          "norm_squared": 1.0
+        },
+        "event_count": 6,
+        "entanglement_fidelity": 0.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 6,
+          "head_hash": "b5f954efc7cfc80d0966cb7c96ca5ddcfa14684c86bc18a70b9b260cb0d70ff1",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x1.ccccccccccccdp-1-1-encoded",
+        "p": 0.9,
+        "shot": 1,
+        "arm": "encoded",
+        "noise_event_id": "evt_23157763139161cc7c8f6e68",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 16,
+          "p": 0.9,
+          "seed": 8402342561345808339212150432069865432,
+          "qubits": [
+            0,
+            1,
+            2
+          ],
+          "draws": [
+            0.46841352077303977,
+            0.13994587473332476,
+            0.867287536093576
+          ],
+          "fault_qubits": [
+            0,
+            1,
+            2
+          ],
+          "fault_count": 3,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 16,
+          "norm_squared": 1.0
+        },
+        "event_count": 10,
+        "entanglement_fidelity": 0.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 10,
+          "head_hash": "b46a4051181e7e08166cbc7866d406cb9ec78a25b1515cb3e247cc9db4a1db3d",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x1.ccccccccccccdp-1-1-unencoded",
+        "p": 0.9,
+        "shot": 1,
+        "arm": "unencoded",
+        "noise_event_id": "evt_cdb3d62dd729f5089733882d",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 2,
+          "p": 0.9,
+          "seed": 185607511452624978630725474156789044229,
+          "qubits": [
+            0
+          ],
+          "draws": [
+            0.00408245406289498
+          ],
+          "fault_qubits": [
+            0
+          ],
+          "fault_count": 1,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 2,
+          "norm_squared": 1.0
+        },
+        "event_count": 6,
+        "entanglement_fidelity": 0.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 6,
+          "head_hash": "ab88117b9907579ca2ee9536bb8141174872b32787be9727e7fea937401a0efb",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x1.0000000000000p+0-0-encoded",
+        "p": 1.0,
+        "shot": 0,
+        "arm": "encoded",
+        "noise_event_id": "evt_fc9ce1fe4711953a79975233",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 16,
+          "p": 1.0,
+          "seed": 101492363122779181048720834597815751761,
+          "qubits": [
+            0,
+            1,
+            2
+          ],
+          "draws": [
+            0.4664065156492778,
+            0.683933070700599,
+            0.26689610743258463
+          ],
+          "fault_qubits": [
+            0,
+            1,
+            2
+          ],
+          "fault_count": 3,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 16,
+          "norm_squared": 1.0
+        },
+        "event_count": 10,
+        "entanglement_fidelity": 0.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 10,
+          "head_hash": "013a75292bb68e8f3543e7549ad00a116cfec07a9989b42bc383ea25f0204378",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x1.0000000000000p+0-0-unencoded",
+        "p": 1.0,
+        "shot": 0,
+        "arm": "unencoded",
+        "noise_event_id": "evt_ed2b7399db56263cdb6327b8",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 2,
+          "p": 1.0,
+          "seed": 152076978092614055038752593230150764999,
+          "qubits": [
+            0
+          ],
+          "draws": [
+            0.8922309220106158
+          ],
+          "fault_qubits": [
+            0
+          ],
+          "fault_count": 1,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 2,
+          "norm_squared": 1.0
+        },
+        "event_count": 6,
+        "entanglement_fidelity": 0.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 6,
+          "head_hash": "47385675d98878fdd942fcac78ed249dc94069a9ab55bbf8f39c5d01a574fb96",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x1.0000000000000p+0-1-encoded",
+        "p": 1.0,
+        "shot": 1,
+        "arm": "encoded",
+        "noise_event_id": "evt_88bf6d1b028f1f4083154ee7",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 16,
+          "p": 1.0,
+          "seed": 133241978480635171614215733764416773960,
+          "qubits": [
+            0,
+            1,
+            2
+          ],
+          "draws": [
+            0.8884267666576569,
+            0.7452317625666884,
+            0.6933666802326744
+          ],
+          "fault_qubits": [
+            0,
+            1,
+            2
+          ],
+          "fault_count": 3,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 16,
+          "norm_squared": 1.0
+        },
+        "event_count": 10,
+        "entanglement_fidelity": 0.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 10,
+          "head_hash": "5372f2e4203075514dede3278cbc91843a70b40970853584a890aa9ddb496342",
+          "errors": []
+        }
+      },
+      {
+        "world_id": "noise-b4c36c933eb86c87fbd6-0x1.0000000000000p+0-1-unencoded",
+        "p": 1.0,
+        "shot": 1,
+        "arm": "unencoded",
+        "noise_event_id": "evt_f63fef0187f952782fea02f0",
+        "noise_receipt": {
+          "operator": "sample_z_noise",
+          "branch_count_before": 2,
+          "p": 1.0,
+          "seed": 209791947300291896305701537769266978138,
+          "qubits": [
+            0
+          ],
+          "draws": [
+            0.918394154528343
+          ],
+          "fault_qubits": [
+            0
+          ],
+          "fault_count": 1,
+          "rng": "python.random.Random/MT19937; random() < p in qubits order",
+          "error_model": "independent Bernoulli Pauli-Z; one noise round",
+          "meaning": "samples zero, single, or multiple software phase faults with a replayable seed",
+          "branch_count_after": 2,
+          "norm_squared": 1.0
+        },
+        "event_count": 6,
+        "entanglement_fidelity": 0.0,
+        "integrity": {
+          "ok": true,
+          "event_count": 6,
+          "head_hash": "417829de096010cfd3e385213d83d686cfa6f0a9aa947a4509ae31a3ada27679",
+          "errors": []
+        }
+      }
+    ],
+    "wall_seconds": 1.97536028399918,
+    "note": "Only these traces were committed; use --ledger-trials equal to --shots to persist every shot."
+  },
+  "cost": {
+    "simulation_wall_seconds": 50.1838638320005,
+    "simulation_cpu_seconds": 50.179385872999994,
+    "process_peak_rss_bytes": 18870272,
+    "total_shots": 520000,
+    "note": "Host software timings; per-arm loops reuse noiseless templates and exclude SQLite. RSS is process-wide high-water usage; these are not hardware gate costs."
+  },
+  "scope": "Local sparse state-vector simulation; independent Pauli-Z data faults, one round, ideal encoding, measurement, correction, decoding and noiseless reference."
+}

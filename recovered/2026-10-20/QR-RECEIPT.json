@@ -1,0 +1,16 @@
+{
+  "schema": "xi.qr-recovery.receipt.v1",
+  "source_file": "1000036240.jpg",
+  "source_sha256": "a6d5c51c9c7c05b34ef42ab500ae42c28eb7382c43c0e93ab27dc2d8ba42e5bd",
+  "decoder": "zxing-cpp",
+  "decoder_version": "3.1.1",
+  "format": "QRCode",
+  "decoder_valid": true,
+  "declared_display_name": "Ξ.StructuralKernel.v1",
+  "decoded_namespace": "Ξ.Kernel.v1",
+  "payload_file": "StructuralKernel.QR.v1.xi",
+  "payload_bytes": 135,
+  "payload_sha256": "b0769554d36cd87a110ed7892cc622e5ab00f39ad01ea7d6ab71df69a9a00dc7",
+  "raw_bytes_hex": "ce9e2e4b65726e656c2e76313a7b53303ae296a12c53313ae297a62c53323aceb32c53333aceb3e28692ceb32c53343aceb3e28a95ceb32c53353ae296a1e28692ceb32c53363aceb3e28692e297a62c53373ae288b428e296a12cceb32ce297a6293bcea9e2a7823de296a1e28a95e297a63b4e657665724e6f743de288b428cea9e2a782297d",
+  "execution": "source retained as exact bytes; no executable operation binding supplied by QR decoding"
+}

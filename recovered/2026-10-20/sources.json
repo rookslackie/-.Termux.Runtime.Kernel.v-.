@@ -1,0 +1,96 @@
+{
+  "schema": "xi.recovery.sources.v1",
+  "sources": [
+    {
+      "file": "1000035622.jpg",
+      "sha256": "21169b0927c82ffe7aa028eee730b256fa72958e2837f27f71370da35858ec8e",
+      "bytes": 159304,
+      "pixels": [
+        716,
+        1536
+      ]
+    },
+    {
+      "file": "1000035993.jpg",
+      "sha256": "07f4d7ee27660ff74447c6ced1c22654e38695f02ee2a3a3e654187af5100364",
+      "bytes": 195529,
+      "pixels": [
+        716,
+        1536
+      ]
+    },
+    {
+      "file": "1000035997.jpg",
+      "sha256": "ae230cad5d3d78ee616450bfc3ba4a6e53217927183c9ca02e92684418ad337c",
+      "bytes": 149614,
+      "pixels": [
+        716,
+        1536
+      ]
+    },
+    {
+      "file": "1000035786.jpg",
+      "sha256": "e043fd367f131e88322d95e075c660ccb0c281f9b8879afa4cb486da25e16381",
+      "bytes": 148917,
+      "pixels": [
+        716,
+        1536
+      ]
+    },
+    {
+      "file": "1000035930.jpg",
+      "sha256": "9c506e21c0aa6ce21bbf4a2d627d76292f9782639d6fbd4410b3e5b4e60673a7",
+      "bytes": 124898,
+      "pixels": [
+        716,
+        1536
+      ]
+    },
+    {
+      "file": "1000036227.jpg",
+      "sha256": "9225746a54cbe1a23cdf9f21f0135349bf978e0e94e6bbbb9a15769229dea37e",
+      "bytes": 92878,
+      "pixels": [
+        716,
+        1536
+      ]
+    },
+    {
+      "file": "1000036378.jpg",
+      "sha256": "62f017d70d74f16fc1bd04ae441c29c3d36c80347e12d88db977bf5bee37006b",
+      "bytes": 109143,
+      "pixels": [
+        716,
+        1536
+      ]
+    },
+    {
+      "file": "1000036235.jpg",
+      "sha256": "7d15e00756566ee48066b5299ad905c37aba14c02a9a2398c9a8e94a50d9705e",
+      "bytes": 86473,
+      "pixels": [
+        716,
+        1536
+      ]
+    },
+    {
+      "file": "1000036001.jpg",
+      "sha256": "1b8222624187dfcf37386d5d3e7d8abe24479a86db32bfa4c60ce0460ee51af7",
+      "bytes": 136312,
+      "pixels": [
+        716,
+        1536
+      ]
+    },
+    {
+      "file": "1000036240.jpg",
+      "sha256": "a6d5c51c9c7c05b34ef42ab500ae42c28eb7382c43c0e93ab27dc2d8ba42e5bd",
+      "bytes": 161277,
+      "pixels": [
+        716,
+        1536
+      ]
+    }
+  ],
+  "reading": "Read directly from supplied scratch images; screenshots are retained by their owner, not republished here."
+}

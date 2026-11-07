@@ -1,0 +1,16 @@
+{
+  "version": "3.1.0",
+  "outside_checkout": true,
+  "wheel_sha256": "8b0e09eb607ae47729c55de41d79b3894e2ae69962fecfb7c0a03f054b7419aa",
+  "engine_sha256": "b567db1bbef737c0bf9bfe1f0575a0435cdc99151f8d8d8e639107e68067fb30",
+  "example_source_sha256": "b0875fff08ab38f56fd9d4ae1c51ceba8d3155c261cebb537331a338ad30dda6",
+  "compiled_operators": [
+    "PhaseCodeChannel",
+    "PhaseCodeChannel",
+    "PhaseCode",
+    "Seal"
+  ],
+  "encrypted_exact_source_roundtrip": true,
+  "receiver_ledger_integrity": true,
+  "repeat_executed_steps": 0
+}
