@@ -84,7 +84,7 @@ def logical_input(state="T"):
     return result
 
 
-def phase_code(*, state="T", faults=None, seed=20261021, profile=Profile()):
+def phase_code(*, state="T", faults=None, angles=None, seed=20261021, profile=Profile()):
     """Reuse the recovered three-qubit encoder, stabilizers, and decoder."""
     from xi_field.operators import apply_operator, initial_state
     start = time.perf_counter()
@@ -95,6 +95,8 @@ def phase_code(*, state="T", faults=None, seed=20261021, profile=Profile()):
         raise QuantumComputeError("faults must be a list of at most 32 Z-fault indices")
     for qubit in faults:
         integer(qubit, "fault qubit", 0, 2)
+    from .coherent import rotation_angles
+    angles = rotation_angles([0, 0, 0] if angles is None else angles)
     logical = logical_input(state)
     current = initial_state(3)
     current["branches"] = [[bits, [float(value.real), float(value.imag)]]
@@ -108,6 +110,14 @@ def phase_code(*, state="T", faults=None, seed=20261021, profile=Profile()):
     for operator, parameters in cycle:
         current, receipt = apply_operator(current, operator, parameters)
         trace.append({"stage": operator, "parameters": parameters, "receipt": receipt, "state": current})
+        if operator == "encode_phase_code" and any(angles):
+            vector = np.zeros(8, complex)
+            for bits, pair in current["branches"]:
+                vector[int(bits, 2)] = complex(*pair)
+            for qubit, angle in enumerate(angles):
+                vector = gate(vector, rz(angle), qubit, 3)
+            current = {**current, "branches": snapshot(vector)["branches"]}
+            trace.append({"stage": "coherent_rz", "angles_radians": angles, "state": current})
         if operator == "phase_syndrome":
             syndrome = receipt["syndrome"]
         if operator == "correct_z_error":
@@ -115,11 +125,13 @@ def phase_code(*, state="T", faults=None, seed=20261021, profile=Profile()):
     overlap = sum(reference.get(bits, 0j).conjugate() * complex(*pair) for bits, pair in current["branches"])
     fidelity = float(abs(overlap)**2)
     return {"algorithm": "PhaseCode", "execution": "exact sparse state-vector",
-            "code": "three-qubit phase-flip repetition", "fault_model": "declared Pauli-Z sequence",
+            "code": "three-qubit phase-flip repetition", "fault_model":
+            "local coherent RZ then declared Pauli-Z sequence" if any(angles) else "declared Pauli-Z sequence",
+            "coherent_rz_angles": angles,
             "input": snapshot(logical), "faults": faults, "seed": seed,
             "stabilizers": ["XXI", "IXX"], "syndrome": syndrome,
             "corrected_qubit": correction, "recovered_state_fidelity": fidelity,
-            "within_single_fault_scope": sum(faults.count(q) % 2 for q in range(3)) <= 1,
+            "within_single_fault_scope": sum(bool(angles[q]) or faults.count(q) % 2 for q in range(3)) <= 1,
             "trace": trace, "output": current, "resources": resources,
             "wall_seconds": time.perf_counter() - start}
 
