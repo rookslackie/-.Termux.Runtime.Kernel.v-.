@@ -292,6 +292,14 @@ class WorldKernel:
         event_id: str,
         causes: tuple[str, ...],
     ) -> tuple[dict[str, Any], str, tuple[str, ...]]:
+        if action == "quantum.transition":
+            session = self._entity(db, world_id, target_id, "quantum_session")
+            from xi_quantum.ledger import transition
+            updated = transition(session, actor_id, data, event_id)
+            self._write_state(db, world_id, target_id, updated)
+            return ({target_id: updated}, f"{actor_id} commits {data['operator']} through TESSERA.",
+                    ("quantum.plan.follow", "FullCycle.witness", "capsule.state_delta", "causal.link"))
+
         if action == "field.operator":
             field = self._entity(db, world_id, target_id, "field_state")
             from xi_field.operators import FieldOperatorError, apply_operator
