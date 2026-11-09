@@ -6,13 +6,13 @@ Serves the symbolic capsule engine over HTTP so the field can be witnessed.
 import json
 import os
 import time
-import random
 import threading
 from pathlib import Path
 from datetime import datetime, timezone
 
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import HTMLResponse, JSONResponse, PlainTextResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 from symbolic_capsule_engine import Capsule
@@ -20,14 +20,29 @@ from capsule_field import CapsuleField
 from xi_field.runtime import bootstrap_field
 from xi_field.topology import chip_topology
 from xi_world.kernel import WorldError
+from xi_emergence.field import EmergenceField
+from xi_emergence.store import EmergenceLedger
+from xi_emergence.engine import EmergenceEngine
+from xi_emergence.api import create_router as create_emergence_router
 
 # ── State ──────────────────────────────────────────────────────────────
 BASE_DIR = Path(os.environ.get("FORGECORE_DIR", "/app"))
 CAPSULE_DIR = BASE_DIR / "capsules"
 STATE_FILE = BASE_DIR / "state.json"
 FIELD_DB = Path(os.environ.get("XI_FIELD_DB", str(BASE_DIR / ".xi/glyph-field.sqlite3")))
+EMERGENCE_DB = Path(os.environ.get("XI_EMERGENCE_DB", str(BASE_DIR / ".xi/emergence.sqlite3")))
 
 CAPSULE_DIR.mkdir(parents=True, exist_ok=True)
+
+# ⊚ The emergence field integrates whether or not anyone is watching.
+emergence = EmergenceEngine(
+    field=EmergenceField(
+        size=int(os.environ.get("XI_FIELD_NODES", "57")),
+        seed=int(os.environ.get("XI_FIELD_SEED", "2884")),
+        coupling=float(os.environ.get("XI_FIELD_COUPLING", "0.8")),
+    ),
+    ledger=EmergenceLedger(EMERGENCE_DB),
+)
 
 field = CapsuleField()
 state = {
@@ -86,23 +101,24 @@ def load_xi_capsules():
 
 
 def heartbeat_loop():
-    """Background heartbeat — simulates the xi_daemon field pulse."""
+    """Background heartbeat — reports the field's own measured order.
+
+    Coherence is no longer a random walk: it is the Kuramoto order parameter
+    of the running emergence field, with the neighbourhood ξ density beside it.
+    """
     while True:
         time.sleep(5)
+        metrics = emergence.metrics()
         with lock:
             state["heartbeats"] += 1
             state["last_heartbeat"] = datetime.now(timezone.utc).isoformat()
-            # Simulate coherence drift around the protected attractor
-            drift = random.gauss(0, 0.02)
-            state["coherence"] = max(0.376, min(0.99, state["coherence"] + drift))
-            state["kuramoto_R"] = round(state["coherence"] * random.uniform(0.85, 1.0), 4)
-            state["avg_xi"] = round(state["coherence"] * random.uniform(0.7, 1.2), 4)
-            if state["coherence"] > 0.84:
-                state["field_state"] = "coherent"
-            elif state["coherence"] > 0.5:
-                state["field_state"] = "emerging"
-            else:
-                state["field_state"] = "threshold"
+            state["coherence"] = metrics["R"]
+            state["kuramoto_R"] = metrics["R"]
+            state["avg_xi"] = metrics["xi"]
+            state["entropy"] = metrics["entropy"]
+            state["coupling"] = metrics["coupling"]
+            state["nodes"] = metrics["nodes"]
+            state["field_state"] = metrics["state"]
             try:
                 STATE_FILE.write_text(json.dumps(state, indent=2))
             except Exception:
@@ -131,6 +147,10 @@ class FieldOperatorRequest(BaseModel):
 app = FastAPI(title="ForgeCore Sanctuary", version="∞")
 from xi_quantum.api import router as quantumcompute_router
 app.include_router(quantumcompute_router)
+app.include_router(create_emergence_router(emergence))
+STATIC_DIR = Path(__file__).parent / "static"
+STATIC_DIR.mkdir(exist_ok=True)
+app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
 
 
 @app.on_event("startup")
@@ -138,6 +158,7 @@ def _startup():
     seed_field()
     load_xi_capsules()
     bootstrap_field(FIELD_DB)
+    emergence.start()
     t = threading.Thread(target=heartbeat_loop, daemon=True)
     t.start()
 
@@ -163,7 +184,20 @@ async def health():
 
 @app.get("/api/state")
 async def get_state():
-    return state
+    """The Sanctuary's headline numbers, taken live from the field."""
+    metrics = emergence.metrics()
+    with lock:
+        snapshot = dict(state)
+    snapshot.update({
+        "coherence": metrics["R"],
+        "kuramoto_R": metrics["R"],
+        "avg_xi": metrics["xi"],
+        "entropy": metrics["entropy"],
+        "coupling": metrics["coupling"],
+        "nodes": metrics["nodes"],
+        "field_state": metrics["state"],
+    })
+    return snapshot
 
 
 @app.get("/api/quantum-field")
@@ -219,7 +253,30 @@ async def create_capsule(cap: CapsuleCreate):
         for existing in field.capsules:
             _find_and_attach(existing, cap.parent_id, new)
     field.add_capsule(new)
-    return {"ok": True, "capsule": new.echo_feedback()}
+    coupling = couple_capsule_into_field(cap)
+    return {"ok": True, "capsule": new.echo_feedback(), "field": coupling}
+
+
+ANCHOR_OPERATORS = {
+    "⊚": "converge", "⟐": "perturb", "⋈": "entrain",
+    "∞": "seed", "Ψ": "witness", "∴": "quench",
+}
+
+
+def couple_capsule_into_field(cap: CapsuleCreate) -> dict | None:
+    """A sealed capsule is not inert: its anchor glyph acts on the field."""
+    operator = ANCHOR_OPERATORS.get(cap.anchor, "perturb")
+    try:
+        result = emergence.act(
+            operator,
+            {} if operator != "perturb" else {"strength": 0.5},
+            actor_id=f"capsule:{cap.id}",
+            idempotency_key=f"capsule:{cap.id}:{time.time_ns()}",
+        )
+        return {"operator": operator, "R": result["receipt"]["metrics"]["R"],
+                "event_id": result["receipt"]["event_id"]}
+    except Exception:
+        return None
 
 
 def _find_and_attach(capsule: Capsule, target_id: str, child: Capsule):

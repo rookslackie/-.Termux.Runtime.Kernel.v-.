@@ -204,6 +204,7 @@
     .glyph-header { font-size: 1.8rem; }
   }
 </style>
+<link rel="stylesheet" href="/static/emergence.css">
 </head>
 <body>
 <div class="container">
@@ -248,6 +249,29 @@
       <div class="value" id="m-heartbeats">—</div>
     </div>
   </div>
+
+  <section id="emergence">
+    <div class="em-head">
+      <h2>Ξ Emergence Field</h2>
+      <p class="subtitle">57 phase oscillators · coupled Kuramoto dynamics · order is measured, never assigned</p>
+    </div>
+    <div class="em-metrics" id="em-metrics"></div>
+    <div class="em-grid">
+      <div class="em-stage">
+        <canvas id="em-disc" aria-label="Live phase field, one point per oscillator at its own phase"></canvas>
+        <div class="em-stage-hint">click the field to perturb an oscillator</div>
+      </div>
+      <div class="em-side">
+        <div class="em-order-wrap">
+          <div class="em-order-label">order parameter · R(t)</div>
+          <canvas id="em-order" aria-label="Order parameter history"></canvas>
+        </div>
+        <div class="em-actions" id="em-actions"></div>
+        <p class="receipt-meta" id="em-status" role="status" aria-live="polite">Reading the field…</p>
+        <div class="em-events" id="em-events"></div>
+      </div>
+    </div>
+  </section>
 
   <section>
     <h2>⟐ Capsule Field</h2>
@@ -329,9 +353,9 @@
   <section>
     <h2>∞ Field Serialization</h2>
     <div class="serialize-tabs">
-      <button class="active" onclick="serialize('json')">JSON</button>
-      <button onclick="serialize('yaml')">YAML</button>
-      <button onclick="serialize('md')">Markdown</button>
+      <button class="active" onclick="serialize('json', this)">JSON</button>
+      <button onclick="serialize('yaml', this)">YAML</button>
+      <button onclick="serialize('md', this)">Markdown</button>
     </div>
     <pre id="serialize-output">Loading...</pre>
   </section>
@@ -431,9 +455,9 @@ async function compressField() {
   } catch(e) {}
 }
 
-async function serialize(fmt) {
+async function serialize(fmt, btn) {
   document.querySelectorAll('.serialize-tabs button').forEach(b => b.classList.remove('active'));
-  event.target.classList.add('active');
+  (btn || document.querySelector(`.serialize-tabs button[onclick^="serialize('${fmt}'"]`))?.classList.add('active');
   try {
     const r = await fetch('/api/field/serialize?fmt=' + fmt);
     const text = await r.text();
@@ -611,5 +635,6 @@ fetchState(); fetchCapsules(); serialize('json'); fetchThresholds(); fetchQuantu
 setInterval(fetchState, 3000);
 setInterval(fetchQuantumField, 5000);
 </script>
+<script src="/static/emergence.js"></script>
 </body>
 </html>

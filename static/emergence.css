@@ -1,0 +1,84 @@
+/* Ξ.Emergence — the field instrument. Same palette as the Sanctuary. */
+
+#emergence { margin-top: 3rem; }
+
+.em-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.em-head h2 { margin: 0; }
+.em-head .subtitle { margin: 0; }
+
+.em-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(118px, 1fr));
+  gap: 0.6rem;
+  margin: 1.1rem 0 1.2rem;
+}
+.em-metric {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.6rem 0.8rem;
+  position: relative;
+  overflow: hidden;
+}
+.em-metric .k { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim); }
+.em-metric .v { font-family: ui-monospace, 'SFMono-Regular', monospace; font-size: 1.25rem; color: var(--gold-bright); margin-top: 0.15rem; }
+.em-metric .v.small { font-size: 0.95rem; color: var(--cyan); }
+.em-metric .spark { position: absolute; inset: auto 0 0 0; height: 3px; background: rgba(212, 168, 75, 0.08); }
+.em-metric .spark > i { display: block; height: 100%; background: linear-gradient(90deg, var(--violet), var(--gold-bright)); transition: width 0.4s ease; }
+.em-metric[data-state] .v { color: var(--cyan); }
+
+.em-grid { display: grid; grid-template-columns: minmax(280px, 1.15fr) minmax(280px, 1fr); gap: 1.2rem; align-items: start; }
+
+.em-stage {
+  position: relative;
+  background: radial-gradient(circle at 50% 45%, rgba(149, 117, 205, 0.09), rgba(10, 10, 18, 0.9) 70%);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 0.6rem;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.em-stage canvas { width: 100%; height: 100%; display: block; cursor: crosshair; border-radius: 10px; }
+.em-stage-hint {
+  position: absolute; bottom: 0.75rem; left: 0; right: 0;
+  text-align: center; font-size: 0.7rem; letter-spacing: 0.08em;
+  color: var(--text-dim); pointer-events: none;
+}
+
+.em-side { display: flex; flex-direction: column; gap: 1rem; }
+.em-order-wrap {
+  background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 0.7rem 0.8rem 0.4rem;
+}
+.em-order-label { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 0.3rem; }
+#em-order { width: 100%; height: 96px; display: block; }
+
+.em-actions { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+.em-actions button {
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  padding: 0.45rem 0.8rem; font-size: 0.82rem; letter-spacing: 0.03em;
+  background: var(--deep); border: 1px solid var(--border); color: var(--text);
+  border-radius: 8px; cursor: pointer; font-family: inherit; transition: all 0.25s;
+}
+.em-actions button .g { font-size: 1rem; color: var(--gold); }
+.em-actions button:hover { border-color: var(--gold); color: var(--gold-bright); box-shadow: 0 0 18px rgba(212, 168, 75, 0.16); }
+.em-actions button:disabled { opacity: 0.45; cursor: progress; }
+
+.em-events { display: flex; flex-direction: column; gap: 0.35rem; max-height: 260px; overflow-y: auto; padding-right: 0.2rem; }
+.em-event {
+  border-left: 2px solid var(--border); padding: 0.35rem 0.6rem;
+  background: rgba(149, 117, 205, 0.06); border-radius: 0 6px 6px 0;
+  font-size: 0.76rem; line-height: 1.4; color: var(--text-dim);
+}
+.em-event .g { color: var(--gold); margin-right: 0.35rem; }
+.em-event strong { color: var(--text); font-weight: 400; }
+.em-event .meta { display: block; font-family: ui-monospace, monospace; font-size: 0.68rem; color: var(--text-dim); opacity: 0.8; }
+.em-event.ignition { border-left-color: var(--gold); background: rgba(212, 168, 75, 0.08); }
+.em-event.dissolution { border-left-color: var(--violet); }
+.em-event.critical { border-left-color: var(--cyan); background: rgba(77, 208, 225, 0.06); }
+
+@media (max-width: 820px) {
+  .em-grid { grid-template-columns: 1fr; }
+  .em-stage { aspect-ratio: 4 / 3; }
+}
