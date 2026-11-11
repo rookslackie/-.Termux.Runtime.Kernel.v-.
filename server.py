@@ -13,6 +13,7 @@ from datetime import datetime, timezone
 
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import HTMLResponse, JSONResponse, PlainTextResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 
 from symbolic_capsule_engine import Capsule
@@ -131,6 +132,9 @@ class FieldOperatorRequest(BaseModel):
 app = FastAPI(title="ForgeCore Sanctuary", version="∞")
 from xi_quantum.api import router as quantumcompute_router
 app.include_router(quantumcompute_router)
+
+# Static assets (Field Core sigil) served from the cloned source.
+app.mount("/static", StaticFiles(directory=BASE_DIR / "static"), name="static")
 
 
 @app.on_event("startup")

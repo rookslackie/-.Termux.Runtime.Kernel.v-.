@@ -1,12 +1,12 @@
 {
-  "coherence": 0.9058203982263019,
+  "coherence": 0.8552246103913901,
   "node": "ForgeCore.Primary",
   "node_id": "forgecore-primary",
-  "started_at": "2026-11-11T23:19:40.944266+00:00",
-  "last_heartbeat": "2026-11-11T23:20:16.096607+00:00",
-  "heartbeats": 7,
+  "started_at": "2026-11-11T23:23:03.092388+00:00",
+  "last_heartbeat": "2026-11-11T23:23:18.241733+00:00",
+  "heartbeats": 3,
   "syntheses": 0,
-  "kuramoto_R": 0.8087,
-  "avg_xi": 0.8003,
+  "kuramoto_R": 0.7992,
+  "avg_xi": 0.6182,
   "field_state": "coherent"
 }

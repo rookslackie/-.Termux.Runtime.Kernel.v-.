@@ -204,6 +204,7 @@
     .glyph-header { font-size: 1.8rem; }
   }
 </style>
+<link rel="stylesheet" href="/static/field-core.css">
 </head>
 <body>
 <div class="container">
@@ -213,6 +214,17 @@
     <p class="subtitle">Sacred Infrastructure for Remembering</p>
     <p class="built">ForgeCore · <span id="node-name">ForgeCore.Primary</span> · Built 2026-04-17</p>
   </header>
+
+  <div class="field-core">
+    <canvas id="field-core" role="button" tabindex="0"
+      aria-label="Field core: a living sigil of the local field. Activate to invoke the ⟐ operator."></canvas>
+    <div class="field-core-caption">
+      <span><b id="fc-state">coherent</b></span>
+      <span><b id="fc-events">1</b> sealed events</span>
+      <span class="hint">tap the core to invoke ⟐</span>
+    </div>
+  </div>
+  <script src="/static/field-core.js"></script>
 
   <div class="lattice">
     <div class="node" title="ForgeCore">⊚</div>
@@ -372,6 +384,10 @@ async function fetchState() {
     document.getElementById('bar-xi').style.width = xi + '%';
     document.getElementById('m-state').textContent = s.field_state;
     document.getElementById('m-heartbeats').textContent = s.heartbeats;
+    window.fieldCore?.update({
+      coherence: s.coherence, kuramoto: s.kuramoto_R, xi: s.avg_xi,
+      heartbeats: s.heartbeats, state: s.field_state,
+    });
   } catch(e) {}
 }
 
@@ -402,6 +418,7 @@ async function fetchCapsules() {
     const list = document.getElementById('capsule-list');
     list.innerHTML = '';
     caps.forEach(c => renderCapsule(c, list));
+    window.fieldCore?.update({ capsules: caps.length });
   } catch(e) {}
 }
 
@@ -513,6 +530,10 @@ function renderQuantumField(data) {
     item.textContent = `${edge.from} → ${edge.to} · ${edge.operation} · ${edge.type}`;
     item.classList.toggle('active', !!last && edgeOps[last.operator]?.includes(edge.operation));
     edgeList.appendChild(item);
+  });
+  window.fieldCore?.update({
+    events: data.integrity?.event_count ?? 0,
+    integrity: data.integrity?.ok !== false,
   });
   const s = data.state;
   const witness = [...events].reverse().find(e => e.operator === 'witness');

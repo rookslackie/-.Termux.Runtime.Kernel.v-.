@@ -1,0 +1,55 @@
+/* Field Core — living sigil band for The Sanctuary. */
+.field-core {
+  position: relative;
+  margin: 0 0 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 45%, rgba(149, 117, 205, 0.14), rgba(10, 10, 18, 0.92) 70%),
+    var(--void);
+  box-shadow: inset 0 0 40px rgba(10, 10, 18, 0.8);
+}
+
+.field-core canvas {
+  display: block;
+  width: 100%;
+  height: clamp(220px, 32vh, 320px);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.field-core canvas:focus-visible {
+  outline: 1px solid var(--gold);
+  outline-offset: -4px;
+}
+
+.field-core-caption {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.35rem 1rem;
+  padding: 0 0.9rem 0.85rem;
+  font: 0.72rem / 1.4 monospace;
+  letter-spacing: 0.05em;
+  color: var(--text-dim);
+  text-transform: uppercase;
+}
+
+.field-core-caption b {
+  color: var(--gold-bright);
+  font-weight: 400;
+}
+
+.field-core-caption .hint {
+  color: var(--violet);
+}
+
+@media (max-width: 600px) {
+  .field-core canvas { height: 250px; }
+  .field-core-caption { font-size: 0.66rem; letter-spacing: 0.03em; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .field-core canvas { cursor: default; }
+}

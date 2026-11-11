@@ -30,6 +30,9 @@ docker compose -f docker-compose.base44.yml up -d --build
 - Web interface: http://localhost:3000
 - Health: http://localhost:3000/health
 - API: /api/state, /api/capsules, /api/field/serialize, /api/prism30
+- Static assets: `static/` is served at `/static` (the Field Core sigil lives in
+  `static/field-core.js` + `static/field-core.css` and is fed by the page's
+  existing polling; a tap invokes a real `hadamard` operator).
 
 ### Development container notes
 
