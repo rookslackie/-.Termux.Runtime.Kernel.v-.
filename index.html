@@ -329,9 +329,9 @@
   <section>
     <h2>∞ Field Serialization</h2>
     <div class="serialize-tabs">
-      <button class="active" onclick="serialize('json')">JSON</button>
-      <button onclick="serialize('yaml')">YAML</button>
-      <button onclick="serialize('md')">Markdown</button>
+      <button class="active" data-fmt="json" onclick="serialize('json', this)">JSON</button>
+      <button data-fmt="yaml" onclick="serialize('yaml', this)">YAML</button>
+      <button data-fmt="md" onclick="serialize('md', this)">Markdown</button>
     </div>
     <pre id="serialize-output">Loading...</pre>
   </section>
@@ -431,9 +431,11 @@ async function compressField() {
   } catch(e) {}
 }
 
-async function serialize(fmt) {
-  document.querySelectorAll('.serialize-tabs button').forEach(b => b.classList.remove('active'));
-  event.target.classList.add('active');
+async function serialize(fmt, el) {
+  const tabs = document.querySelectorAll('.serialize-tabs button');
+  tabs.forEach(b => b.classList.remove('active'));
+  const active = el || document.querySelector(`.serialize-tabs button[data-fmt="${fmt}"]`);
+  if (active) active.classList.add('active');
   try {
     const r = await fetch('/api/field/serialize?fmt=' + fmt);
     const text = await r.text();
